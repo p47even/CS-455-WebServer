@@ -1,7 +1,15 @@
 h1{
-	background-color:green;
-	color: #AC5BE;
+        color: #AC5BE;
+        background-color: red;
+        font-weight: bold;
+
+}
+h2{
+        color: #AC5BE;
+        background-color: red;
+        font-weight: bold;
+
 }
 body{
-	background-color: lightblue;
+        background-color: lightblue;
 }
