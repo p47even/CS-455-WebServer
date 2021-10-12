@@ -1,3 +1,9 @@
-<?php
-    phpinfo();
-?>
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <?php
+            phpinfo();
+        ?>
+    </body>
+</html> 
