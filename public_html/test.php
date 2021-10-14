@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<body>
 <?php
-    phpinfo();
+    echo "<p>hello world!</p>";
 ?>
+
+</body>
+</html>
