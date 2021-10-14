@@ -16,7 +16,7 @@
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             //return all passengers, and store the result set
-            $query_str = "select * from passengers;";  // <----- Line 19
+            $query_str = "select * from passengers where ssn='$_GET[passenger_ssn]';"; // <------ Line 19
             $result_set = $db->query($query_str);
 
             //loop through each tuple in result set and print out the data
