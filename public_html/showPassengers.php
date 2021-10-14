@@ -41,5 +41,6 @@ Var: <input type="text" name="var" id="var"><br>
     ?>
 
 </p>
+    <a href="./index.html">return to homepage</a>
 </body>
 </html>
