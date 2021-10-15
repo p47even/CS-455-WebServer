@@ -1,7 +1,7 @@
 <?php
 //path to the SQLite database file
 $db_file = './myDB/airport.db';
-include 'htmlForm.php';
+require './htmlForm.php';
 
 echo $old_ssn;
 echo $old_f_name;
