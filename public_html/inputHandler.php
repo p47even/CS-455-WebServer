@@ -2,6 +2,7 @@
 //path to the SQLite database file
 $db_file = './myDB/airport.db';
 include './htmlForm.php';
+print_r($GLOBALS);
 
 try {
 
