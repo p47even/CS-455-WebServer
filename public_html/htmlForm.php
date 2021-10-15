@@ -2,7 +2,7 @@
 <html>
 <body>
     <?php
-        $old_ssn = $_GET["oldSsn"];
+        if (isset($_GET["oldSsn"])){ $old_ssn = $_GET["oldSsn"];}
         $old_f_name = $_GET["oldFName"];
         $old_m_name = $_GET["oldMName"];
         $old_l_name = $_GET["oldLName"];
