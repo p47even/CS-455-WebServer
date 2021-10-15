@@ -22,7 +22,7 @@
             //loop through each tuple in result set and print out the data
             //ssn will be shown in blue (see below)
             foreach($result_set as $tuple) {          // <------ Line 24
-                echo "<font color='blue'>$tuple[ssn]</font> $tuple[f_name] $tuple[m_name] $tuple[l_name]<br/>\n";
+                echo "<font color='blue'>$tuple[ssn]</font> $tuple[f_name] $tuple[m_name] $tuple[l_name]<br/> \t<a href='./htmlFrom.php?oldSsn=$tuple[ssn]&oldName=$tuple[f_name] $tuple[m_name] $tuple[l_name]'> Update </a>\n";
             }
 
             //disconnect from db
