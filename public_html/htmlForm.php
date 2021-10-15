@@ -4,10 +4,10 @@
     
 
     <?php
-        $old_ssn = $_GET[oldSsn];
-        $old_fname = $_GET[oldFName];
-        $old_mname = $_GET[oldMName];
-        $old_lname = $_GET[oldLName];
+        $old_ssn = $_GET["oldSsn"];
+        $old_fname = $_GET["oldFName"];
+        $old_mname = $_GET["oldMName"];
+        $old_lname = $_GET["oldLName"];
 
         echo
         "<form action='inputHandler.php' method='post'>

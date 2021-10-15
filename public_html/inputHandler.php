@@ -9,9 +9,27 @@ try {
     //set errormode to use exceptions
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    //return the html query                                              previous     previous
-    $query_str = "UPDATE passengers SET $_GET[attr] = '$_GET[var]' where $_GET[attr]='$_GET[var]';"; // Update db
-    query($query_str);
+    $updateSSN = $db->prepare("UPDATE passengers SET (old_f_name = new_f_name, old_m_name = new_m_name, old_l_name = new_l_name, old_ssn = new_ssn) WHERE (ssn == old_ssn)");
+        $updateSSN->bindParam('new_f_name', $new_f_name);
+        $updateSSN->bindParam('new_m_name', $new_m_name);
+        $updateSSN->bindParam('new_l_name', $new_l_name);
+        $updateSSN->bindParam('new_ssn', $new_ssn);
+        $updateSSN->bindParam('old_f_name', $old_f_name);
+        $updateSSN->bindParam('old_m_name', $old_m_name);
+        $updateSSN->bindParam('old_l_name', $old_l_name);
+        $updateSSN->bindParam('old_ssn', $old_ssn);
+  
+  
+    $new_f_name = $_GET[f_name];
+    $new_m_name = $_GET[m_name];
+    $new_l_name = $_GET[l_name];
+    $new_ssn = $_GET[ssn]
+    $f_name = $_GET[old_f_name]
+    $m_name = $_GET[old_m_name]
+    $l_name = $_GET[old_l_name]
+    $old_ssn = $_GET[old_ssn]
+    $updateSSN->execute();
+    //query($query_str);
 
     //disconnect from db
     $db = null;
