@@ -8,7 +8,7 @@
         $old_fname = $_GET["oldFName"];
         $old_mname = $_GET["oldMName"];
         $old_lname = $_GET["oldLName"];
-        echo "<script>console.log($old_ssn + ' ' + $old_fname + ' ' + $old_mname + ' ' + $old_lname)</script>"
+        echo "<script>console.log($old_ssn + ' ' + $old_fname + ' ' + $old_mname + ' ' + $old_lname);</script>"
 
         echo
         "<form action='inputHandler.php' method='post'>
