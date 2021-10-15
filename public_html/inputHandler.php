@@ -2,8 +2,13 @@
 //path to the SQLite database file
 $db_file = './myDB/airport.db';
 include './htmlForm.php';
-print_r($GLOBALS);
 
+echo $old_ssn;
+echo $old_f_name;
+echo $old_m_name;
+echo $old_l_name;
+////print_r($GLOBALS);
+/*
 try {
 
     //open connection to the airport database file
@@ -39,5 +44,5 @@ try {
 }
 catch(PDOException $e) {
     die('Exception : '.$e->getMessage());
-}
+}*/
 ?>
