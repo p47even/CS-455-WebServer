@@ -5,10 +5,9 @@
 
     <?php
         $old_ssn = $_GET["oldSsn"];
-        $old_fname = $_GET["oldFName"];
-        $old_mname = $_GET["oldMName"];
-        $old_lname = $_GET["oldLName"];
-        echo "<script>console.log('$old_ssn = $old_fname $old_mname $old_lname');</script>";
+        $old_f_name = $_GET["oldFName"];
+        $old_m_name = $_GET["oldMName"];
+        $old_l_name = $_GET["oldLName"];
 
         echo
         "<form action='inputHandler.php' method='post'>
