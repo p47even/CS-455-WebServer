@@ -1,7 +1,7 @@
 <?php
 //path to the SQLite database file
 $db_file = './myDB/airport.db';
-include htmlForm.php
+include htmlForm.php;
 
 try {
     //open connection to the airport database file
