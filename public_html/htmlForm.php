@@ -4,11 +4,17 @@
     
 
     <?php
-        echo "<form action='ipnutHandler.php' name='form' method='post' value='$_GET[oldName]'>
-        Attr: <input type='text' name='attr' id='attr'><br>
-        <form action='inputHandler.php' name='form' method='post' value='$_GET[oldSsn]'>
-        Var: <input type='text' name='var' id='var'><br>
-        <input type='submit' name='submit' value='Update Info'>";
+        echo
+        "<form action='inputHandler.php' method='post' value='$_GET[oldSsn]'>
+        SSN: <input type='text' name='$_GET[oldSsn]' id='var'><br>
+        <form action='inputHandler.php' method='post' value='$_GET[oldFName]'>
+        FName: <input type='text' name='$_GET[oldFName]' id='fName'><br>
+        <form action='inputHandler.php' method='post' value='$_GET[oldMName]'>
+        MName: <input type='text' name='$_GET[oldMName]' id='mName'><br>
+        <form action='inputHandler.php' method='post' value='$_GET[oldLName]'>
+        Last Name: <input type='text' name='$_GET[oldLName]' id='lName'><br>
+        <input type='submit' name='submit' value='Update Info'>"
+        ;
     ?>
 </body>
 </html>
