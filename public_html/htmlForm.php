@@ -2,7 +2,7 @@
 <html>
 <body>
     <?php
-        $old_ssn = $_GET["oldSsn"];
+        global $old_ssn = $_GET["oldSsn"];
         global $old_f_name = $_GET["oldFName"];
         global $old_m_name = $_GET["oldMName"];
         global $old_l_name = $_GET["oldLName"];
