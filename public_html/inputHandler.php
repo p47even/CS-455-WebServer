@@ -1,9 +1,10 @@
 <?php
 //path to the SQLite database file
 $db_file = './myDB/airport.db';
-include './htmlForm.php';
 
 try {
+    include './htmlForm.php';
+    
     //open connection to the airport database file
     $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
 
