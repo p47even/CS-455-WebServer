@@ -26,10 +26,10 @@ try {
     $new_m_name = $_GET[m_name];
     $new_l_name = $_GET[l_name];
     $new_ssn = $_GET[ssn];
-    $f_name = $old_f_name;
-    $m_name = $old_m_name;
-    $l_name = $old_l_name;
-    $old_ssn = $old_ssn;
+    //$f_name = $old_f_name;
+    //$m_name = $old_m_name;
+    //$l_name = $old_l_name;
+    //$old_ssn = $old_ssn;
     $updateSSN->execute();
     //query($query_str);
 
