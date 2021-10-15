@@ -9,6 +9,8 @@
         $old_m_name = $_GET["oldMName"];
         $old_l_name = $_GET["oldLName"];
 
+        echo "<script>console.log($old_ssn);</script>";
+
         echo
         "<form action='inputHandler.php' method='post'>
         SSN: <input type='text' name='ssn' id='ssn'><br>
