@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-<form action="showPassengers.php" name='form' method='get'>
-Attr: <input type="text" name="attr" id="attr"><br>
-<form action="showPassengers.php" name='form' method='get'>
-Var: <input type="text" name="var" id="var"><br>
-<input type="submit" name="submit" value="Update Info">
-
 <h2>Query Results</h2>
 <p>
     <?php
