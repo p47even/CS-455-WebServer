@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
 <body>
-    
-
     <?php
-        $old_ssn = $_GET[oldSsn];
+        $old_ssn = $_GET["oldSsn"];
         $old_f_name = $_GET["oldFName"];
         $old_m_name = $_GET["oldMName"];
         $old_l_name = $_GET["oldLName"];
 
-        echo "<script>console.log($old_ssn);</script>";
+        echo "<script>console.log($old_ssn $old_f_name $old_m_name $old_l_name);</script>";
 
         echo
         "<form action='inputHandler.php' method='post'>
