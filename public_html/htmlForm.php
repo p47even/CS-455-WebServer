@@ -9,7 +9,7 @@
     
     <?php
         $query_str = "$_GET[oldSsn] $_GET[oldName]";
-        echo "log.console('$query_str');";
+        echo "<script>log.console('$query_str');</script>";
     ?>
 </body>
 </html>
