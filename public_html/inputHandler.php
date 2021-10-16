@@ -6,7 +6,9 @@ $db_file = './myDB/airport.db';
 try{
 echo $_SESSION["oldSsn"];
 }
-
+catch(PDOException $e) {
+    die('Exception : '.$e->getMessage());
+}
 session_destroy();
 ////print_r($GLOBALS);
 /*

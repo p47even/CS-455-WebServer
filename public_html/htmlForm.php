@@ -12,6 +12,9 @@
             $_SESSION["oldMName"] = $_GET["oldMName"];
             $_SESSION["oldLName"] = $_GET["oldLName"];
         }
+        catch(PDOException $e) {
+            die('Exception : '.$e->getMessage());
+        }
 
         echo
         "<form action='inputHandler.php' method='post'>
