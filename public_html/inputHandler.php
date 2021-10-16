@@ -26,10 +26,11 @@ try {
         $updateSSN->bindParam('old_ssn', $old_ssn);
     */
   
-    $new_f_name = $_GET["fName"];
-    $new_m_name = $_GET["mName"];
-    $new_l_name = $_GET["lName"];
-    $new_ssn = $_GET["ssn"];
+    $new_f_name = $_POST["fName"];
+    $new_m_name = $_POST["mName"];
+    $new_l_name = $_POST["lName"];
+    $new_ssn = $_POST["ssn"];
+
     $f_name = $_SESSION["oldFName"];
     $m_name = $_SESSION["oldMName"];
     $l_name = $_SESSION["oldLName"];
