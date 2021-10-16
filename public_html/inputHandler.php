@@ -26,9 +26,9 @@ try {
         $updateSSN->bindParam('old_ssn', $old_ssn);
     */
   
-    $new_f_name = $_GET[f_name];
-    $new_m_name = $_GET[m_name];
-    $new_l_name = $_GET[l_name];
+    $new_f_name = $_GET["f_name"];
+    $new_m_name = $_GET["m_name"];
+    $new_l_name = $_GET["l_name"];
     $new_ssn = $_GET[ssn];
     $f_name = $_SESSION["oldFName"];
     $m_name = $_SESSION["oldMName"];
