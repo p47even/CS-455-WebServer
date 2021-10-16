@@ -3,15 +3,9 @@ session_start();
 //path to the SQLite database file
 $db_file = './myDB/airport.db';
 ##require './htmlForm.php';
-try{
-echo $_SESSION["oldSsn"];
-}
-catch(PDOException $e) {
-    die('Exception : '.$e->getMessage());
-}
-session_destroy();
+
 ////print_r($GLOBALS);
-/*
+
 try {
 
     //open connection to the airport database file
@@ -35,10 +29,10 @@ try {
     $new_m_name = $_GET[m_name];
     $new_l_name = $_GET[l_name];
     $new_ssn = $_GET[ssn];
-    //$f_name = $old_f_name;
-    //$m_name = $old_m_name;
-    //$l_name = $old_l_name;
-    //$old_ssn = $old_ssn;
+    $f_name = $_SESSION["oldFName"];
+    $m_name = $_SESSION["oldMName"];
+    $l_name = $_SESSION["oldLName"];
+    $old_ssn = $_SESSION["oldSsn"];
     $updateSSN->execute();
     //query($query_str);
 
@@ -47,5 +41,6 @@ try {
 }
 catch(PDOException $e) {
     die('Exception : '.$e->getMessage());
-}*/
+}
+session_destroy();
 ?>
