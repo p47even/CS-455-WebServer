@@ -2,13 +2,13 @@
 <html>
 <body>
     <?php
-        if (isset($_GET["oldSsn"])){ $old_ssn = $_GET["oldSsn"];}
-        $old_f_name = $_GET["oldFName"];
-        $old_m_name = $_GET["oldMName"];
-        $old_l_name = $_GET["oldLName"];
-        
-        echo "<script>console.log('$old_ssn $old_f_name $old_m_name $old_l_name');</script>";
+        session_start();
 
+        $_SESSION["oldSsn"] = $_GET["ssn"];
+        $_SESSION["oldFName"] = $_GET["oldFName"];
+        $_SESSION["oldMName"] = $_GET["oldMName"];
+        $_SESSION["oldLName"] = $_GET["oldLName"];
+        
         echo
         "<form action='inputHandler.php' method='post'>
         SSN: <input type='text' name='ssn' id='ssn'><br>

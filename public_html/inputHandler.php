@@ -1,12 +1,10 @@
 <?php
+session_start();
 //path to the SQLite database file
 $db_file = './myDB/airport.db';
 require './htmlForm.php';
 
-echo $old_ssn;
-echo $old_f_name;
-echo $old_m_name;
-echo $old_l_name;
+echo $_SESSION["oldFName"];
 ////print_r($GLOBALS);
 /*
 try {
