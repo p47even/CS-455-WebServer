@@ -12,10 +12,6 @@
             $_SESSION["oldMName"] = $_GET["oldMName"];
             $_SESSION["oldLName"] = $_GET["oldLName"];
         }
-        catch
-        {
-            echo "oops";
-        }
 
         echo
         "<form action='inputHandler.php' method='post'>
