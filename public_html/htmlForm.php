@@ -13,7 +13,7 @@
             $_SESSION["oldLName"] = $_GET["oldLName"];
         }
         catch(PDOException $e) {
-           
+            die('Exception : '.$e->getMessage());
         }
 
         echo
