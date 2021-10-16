@@ -4,12 +4,19 @@
     <?php
         session_start();
 
-        $_SESSION["test"] = "testo";
-        //$_SESSION["oldSsn"] = $_GET["ssn"];
-        //$_SESSION["oldFName"] = $_GET["oldFName"];
-        //$_SESSION["oldMName"] = $_GET["oldMName"];
-        //$_SESSION["oldLName"] = $_GET["oldLName"];
-        
+        //$_SESSION["test"] = "testo";
+        try
+        {
+            $_SESSION["oldSsn"] = $_GET["ssn"];
+            $_SESSION["oldFName"] = $_GET["oldFName"];
+            $_SESSION["oldMName"] = $_GET["oldMName"];
+            $_SESSION["oldLName"] = $_GET["oldLName"];
+        }
+        catch
+        {
+            echo "oops";
+        }
+
         echo
         "<form action='inputHandler.php' method='post'>
         SSN: <input type='text' name='ssn' id='ssn'><br>

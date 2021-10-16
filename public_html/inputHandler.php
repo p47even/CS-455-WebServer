@@ -3,9 +3,12 @@ session_start();
 //path to the SQLite database file
 $db_file = './myDB/airport.db';
 ##require './htmlForm.php';
-
-echo $_SESSION["test"];
-
+try{
+echo $_SESSION["oldSsn"];
+}
+catch{
+    echo "daisy";
+}
 session_destroy();
 ////print_r($GLOBALS);
 /*
