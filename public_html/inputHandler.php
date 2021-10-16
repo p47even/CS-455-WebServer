@@ -36,8 +36,9 @@ try {
     $l_name = $_SESSION["oldLName"];
     $old_ssn = $_SESSION["oldSsn"];
     
-    /////$updateSSN->execute();
-    //query($query_str);
+    $query_str = "UPDATE passengers SET f_name = '$new_f_name' WHERE f_name = '$f_name';";
+
+    query($query_str);
 
     //disconnect from db
     $db = null;
