@@ -14,6 +14,7 @@ try {
     //set errormode to use exceptions
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    /*
     $updateSSN = $db->prepare("UPDATE passengers SET (old_f_name = new_f_name, old_m_name = new_m_name, old_l_name = new_l_name, old_ssn = new_ssn) WHERE (ssn == old_ssn)");
         $updateSSN->bindParam('new_f_name', $new_f_name);
         $updateSSN->bindParam('new_m_name', $new_m_name);
@@ -23,7 +24,7 @@ try {
         $updateSSN->bindParam('old_m_name', $old_m_name);
         $updateSSN->bindParam('old_l_name', $old_l_name);
         $updateSSN->bindParam('old_ssn', $old_ssn);
-  
+    */
   
     $new_f_name = $_GET[f_name];
     $new_m_name = $_GET[m_name];
@@ -33,8 +34,8 @@ try {
     $m_name = $_SESSION["oldMName"];
     $l_name = $_SESSION["oldLName"];
     $old_ssn = $_SESSION["oldSsn"];
-    echo "36";
-    $updateSSN->execute();
+    
+    /////$updateSSN->execute();
     //query($query_str);
 
     //disconnect from db
