@@ -2,9 +2,11 @@
 session_start();
 //path to the SQLite database file
 $db_file = './myDB/airport.db';
-require './htmlForm.php';
+##require './htmlForm.php';
 
-echo $_SESSION["oldFName"];
+echo $_SESSION["test"];
+
+session_destroy();
 ////print_r($GLOBALS);
 /*
 try {
