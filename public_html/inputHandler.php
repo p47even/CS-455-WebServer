@@ -33,6 +33,7 @@ try {
     $m_name = $_SESSION["oldMName"];
     $l_name = $_SESSION["oldLName"];
     $old_ssn = $_SESSION["oldSsn"];
+    echo "36";
     $updateSSN->execute();
     //query($query_str);
 
