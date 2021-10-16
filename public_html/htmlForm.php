@@ -7,13 +7,13 @@
         //$_SESSION["test"] = "testo";
         try
         {
-            $_SESSION["oldSsn"] = $_GET["ssn"];
+            $_SESSION["oldSsn"] = $_GET["oldSsn"];
             $_SESSION["oldFName"] = $_GET["oldFName"];
             $_SESSION["oldMName"] = $_GET["oldMName"];
             $_SESSION["oldLName"] = $_GET["oldLName"];
         }
         catch(PDOException $e) {
-            die('Exception : '.$e->getMessage());
+           
         }
 
         echo
