@@ -53,7 +53,7 @@
         // Check status of update
         if($update_status)
         {
-            echo "success!";
+            echo "success! " + $db->rowCount();
         }
         else
         {
