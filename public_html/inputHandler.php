@@ -39,21 +39,12 @@
         $l_name = $_SESSION["oldLName"];
         $old_ssn = $_SESSION["oldSsn"];
         
-        $test_query = "SELECT * FROM passengers where ssn = $old_ssn;";
         $update_query = "UPDATE passengers SET f_name = '$new_f_name', m_name = '$new_m_name', l_name = '$new_l_name', ssn = '$new_ssn' WHERE ssn = '$old_ssn';";
 
-        //$m_name_query = "UPDATE passengers SET m_name = '$new_m_name' WHERE ssn = $old_ssn;";
-        //$l_name_query = "UPDATE passengers SET l_name = '$new_l_name' WHERE ssn = $old_ssn;";
-        //$ssn_query = "UPDATE passengers SET ssn = $new_ssn WHERE ssn = $old_ssn;";
-
-        $test_result = $db->query($test_query);
-
-        $update_status = $db->query($update_query);
-        //$db->query($m_name_query);
-        //$db->query($l_name_query);
-        //$db->query($ssn_query);
+        //$update_status = $db->query($update_query);
 
         // Check status of update
+        /*
         if($update_status)
         {
             echo "success! at updating SSN = $old_ssn<br>";
@@ -66,6 +57,7 @@
         {
             echo "fail!";
         }
+        */
 
         //disconnect from db
         $db = null;
@@ -77,7 +69,7 @@
     session_destroy();
     ?>
 
-    <!--   <meta http-equiv="refresh" content="0; url=./showPassengers.php"/>  -->
+    <meta http-equiv="refresh" content="0; url=./showPassengers.php"/>
     <a href="./showPassengers.php">If you are not redirected, click here</a>
 </body>
 </html>
