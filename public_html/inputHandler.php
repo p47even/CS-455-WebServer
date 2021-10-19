@@ -39,9 +39,9 @@
         $l_name = $_SESSION["oldLName"];
         $old_ssn = $_SESSION["oldSsn"];
         
-        $f_name_query = "UPDATE passengers SET f_name = '$new_f_name' WHERE ssn = $old_ssn;";
-        $m_name_query = "UPDATE passengers SET m_name = '$new_m_name' WHERE ssn = $old_ssn;";
-        $l_name_query = "UPDATE passengers SET l_name = '$new_l_name' WHERE ssn = $old_ssn;";
+        $f_name_query = "UPDATE passengers SET f_name = $new_f_name WHERE ssn = $old_ssn;";
+        $m_name_query = "UPDATE passengers SET m_name = $new_m_name WHERE ssn = $old_ssn;";
+        $l_name_query = "UPDATE passengers SET l_name = $new_l_name WHERE ssn = $old_ssn;";
         $ssn_query = "UPDATE passengers SET ssn = $new_ssn WHERE ssn = $old_ssn;";
 
         $db->query($f_name_query);
@@ -55,8 +55,10 @@
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
     }
+
     session_destroy();
     ?>
+
     <meta http-equiv="refresh" content="0; url=./showPassengers.php"/>
     <a href="./showPassengers.php">If you are not redirected, click here</a>
 </body>
