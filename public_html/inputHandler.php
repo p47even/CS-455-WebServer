@@ -39,10 +39,7 @@
         $l_name = $_SESSION["oldLName"];
         $old_ssn = $_SESSION["oldSsn"];
         
-        $update_query = "UPDATE passengers SET f_name = '$new_f_name' WHERE ssn = $old_ssn,
-        UPDATE passengers SET m_name = '$new_m_name' WHERE ssn = $old_ssn,
-        UPDATE passengers SET l_name = '$new_l_name' WHERE ssn = $old_ssn,
-        UPDATE passengers SET ssn = $new_ssn WHERE ssn = $old_ssn;";
+        $update_query = "UPDATE passengers SET f_name = '$new_f_name', m_name = '$new_m_name', l_name = '$new_l_name', ssn = $new_ssn WHERE ssn = $old_ssn;";
 
         //$m_name_query = "UPDATE passengers SET m_name = '$new_m_name' WHERE ssn = $old_ssn;";
         //$l_name_query = "UPDATE passengers SET l_name = '$new_l_name' WHERE ssn = $old_ssn;";
