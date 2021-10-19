@@ -56,7 +56,7 @@
         // Check status of update
         if($update_status)
         {
-            echo "success!";
+            echo "success! at updating SSN = $old_ssn";
             foreach($test_result as $tuple) {          // <------ Line 24
                 echo "$tuple";
             }
