@@ -18,7 +18,7 @@
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         
-        $update_query = $db->prepare("UPDATE passengers SET (f_name = 'new_f_name', m_name = 'new_m_name', l_name = 'new_l_name', ssn = 'new_ssn') WHERE (ssn == 'old_ssn')");
+        $update_query = $db->prepare("UPDATE passengers SET (f_name = 'new_f_name', m_name = 'new_m_name', l_name = 'new_l_name', ssn = 'new_ssn') WHERE (ssn = 'old_ssn')");
             $updateSSN->bindParam('new_f_name', $new_f_name);
             $updateSSN->bindParam('new_m_name', $new_m_name);
             $updateSSN->bindParam('new_l_name', $new_l_name);
