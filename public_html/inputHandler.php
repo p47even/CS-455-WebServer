@@ -42,15 +42,15 @@
         $old_ssn = $_SESSION["oldSsn"];
        
         $update_query->execute();
-        echo "executed<br>";
+        //echo "executed<br>";
         
         
         //$update_query = "UPDATE passengers SET f_name = '$new_f_name', m_name = '$new_m_name', l_name = '$new_l_name', ssn = '$new_ssn' WHERE ssn = '$old_ssn';";
 
-        $update_status = $db->query($update_query);
+        //$update_status = $db->query($update_query);
 
         // Check status of update
-        
+        /*
         if($update_status)
         {
             echo "success! at updating SSN = $old_ssn<br>";
@@ -60,7 +60,7 @@
         {
             echo "fail!";
         } 
-        
+        */
 
         //disconnect from db
         $db = null;
