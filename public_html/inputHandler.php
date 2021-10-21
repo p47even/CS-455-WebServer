@@ -29,14 +29,14 @@
 
         
         $update_query = $db->prepare("UPDATE passengers SET f_name = 'new_f_name', m_name = 'new_m_name', l_name = 'new_l_name', ssn = 'new_ssn' WHERE ssn = 'old_ssn';");
-            $updateSSN->bindParam('new_f_name', $new_f_name);
-            $updateSSN->bindParam('new_m_name', $new_m_name);
-            $updateSSN->bindParam('new_l_name', $new_l_name);
-            $updateSSN->bindParam('new_ssn', $new_ssn);
-            $updateSSN->bindParam('f_name', $f_name);
-            $updateSSN->bindParam('m_name', $m_name);
-            $updateSSN->bindParam('l_name', $l_name);
-            $updateSSN->bindParam('old_ssn', $old_ssn);
+            $update_query->bindParam('new_f_name', $new_f_name);
+            $update_query->bindParam('new_m_name', $new_m_name);
+            $update_query->bindParam('new_l_name', $new_l_name);
+            $update_query->bindParam('new_ssn', $new_ssn);
+            $update_query->bindParam('f_name', $f_name);
+            $update_query->bindParam('m_name', $m_name);
+            $update_query->bindParam('l_name', $l_name);
+            $update_query->bindParam('old_ssn', $old_ssn);
         
         echo "query updated";
         
