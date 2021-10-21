@@ -28,7 +28,7 @@
         $old_ssn = $_SESSION["oldSsn"];
 
         
-        $update_query = $db->prepare("UPDATE passengers SET f_name = 'new_f_name', m_name = 'new_m_name', l_name = 'new_l_name', ssn = 'new_ssn' WHERE ssn = 'old_ssn';");
+        $update_query = $db->prepare("UPDATE passengers SET f_name = 'new_f_name', m_name = 'new_m_name', l_name = 'new_l_name', old_ssn = 'new_ssn' WHERE ssn = 'old_ssn';");
             $update_query->bindParam('new_f_name', $new_f_name);
             $update_query->bindParam('new_m_name', $new_m_name);
             $update_query->bindParam('new_l_name', $new_l_name);
@@ -38,12 +38,12 @@
             $update_query->bindParam('l_name', $l_name);
             $update_query->bindParam('old_ssn', $old_ssn);
         
-        $update_query->execute();
+        //$update_query->execute();
         
         
         //$update_query = "UPDATE passengers SET f_name = '$new_f_name', m_name = '$new_m_name', l_name = '$new_l_name', ssn = '$new_ssn' WHERE ssn = '$old_ssn';";
 
-        /*$update_status = $db->query($update_query);
+        $update_status = $db->query($update_query);
 
         // Check status of update
         
@@ -55,7 +55,7 @@
         else
         {
             echo "fail!";
-        } */
+        } 
         
 
         //disconnect from db
