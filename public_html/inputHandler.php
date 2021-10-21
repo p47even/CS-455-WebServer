@@ -17,15 +17,7 @@
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $new_f_name = $_POST["fName"];
-        $new_m_name = $_POST["mName"];
-        $new_l_name = $_POST["lName"];
-        $new_ssn = $_POST["ssn"];
-
-        //$f_name = $_SESSION["oldFName"];
-        //$m_name = $_SESSION["oldMName"];
-        //$l_name = $_SESSION["oldLName"];
-        $old_ssn = $_SESSION["oldSsn"];
+        
 
         
         $update_query = $db->prepare("UPDATE passengers SET f_name = ':f_name', m_name = ':m_name', l_name = ':l_name', ssn = ':ssn' WHERE ssn = 'old_ssn';");
@@ -38,7 +30,19 @@
             //$update_query->bindParam('l_name', $l_name);
             $update_query->bindParam('old_ssn', $old_ssn);
         
-        //$update_query->execute();
+        
+        $new_f_name = $_POST["fName"];
+        $new_m_name = $_POST["mName"];
+        $new_l_name = $_POST["lName"];
+        $new_ssn = $_POST["ssn"];
+
+        //$f_name = $_SESSION["oldFName"];
+        //$m_name = $_SESSION["oldMName"];
+        //$l_name = $_SESSION["oldLName"];
+        $old_ssn = $_SESSION["oldSsn"];
+       
+        $update_query->execute();
+        echo "executed<br>";
         
         
         //$update_query = "UPDATE passengers SET f_name = '$new_f_name', m_name = '$new_m_name', l_name = '$new_l_name', ssn = '$new_ssn' WHERE ssn = '$old_ssn';";
