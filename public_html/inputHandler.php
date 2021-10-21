@@ -38,7 +38,8 @@
             $update_query->bindParam('l_name', $l_name);
             $update_query->bindParam('old_ssn', $old_ssn);
         
-        echo "query updated";
+        $update_query->execute();
+        
         
         //$update_query = "UPDATE passengers SET f_name = '$new_f_name', m_name = '$new_m_name', l_name = '$new_l_name', ssn = '$new_ssn' WHERE ssn = '$old_ssn';";
 
