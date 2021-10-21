@@ -17,17 +17,17 @@
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        /*
-        $updateSSN = $db->prepare("UPDATE passengers SET (old_f_name = new_f_name, old_m_name = new_m_name, old_l_name = new_l_name, old_ssn = new_ssn) WHERE (ssn == old_ssn)");
+        
+        $update_query = $db->prepare("UPDATE passengers SET (f_name = 'new_f_name', m_name = 'new_m_name', l_name = 'new_l_name', ssn = 'new_ssn') WHERE (ssn == 'old_ssn')");
             $updateSSN->bindParam('new_f_name', $new_f_name);
             $updateSSN->bindParam('new_m_name', $new_m_name);
             $updateSSN->bindParam('new_l_name', $new_l_name);
             $updateSSN->bindParam('new_ssn', $new_ssn);
-            $updateSSN->bindParam('old_f_name', $old_f_name);
-            $updateSSN->bindParam('old_m_name', $old_m_name);
-            $updateSSN->bindParam('old_l_name', $old_l_name);
+            $updateSSN->bindParam('f_name', $f_name);
+            $updateSSN->bindParam('m_name', $m_name);
+            $updateSSN->bindParam('l_name', $l_name);
             $updateSSN->bindParam('old_ssn', $old_ssn);
-        */
+        
     
         $new_f_name = $_POST["fName"];
         $new_m_name = $_POST["mName"];
@@ -39,12 +39,12 @@
         $l_name = $_SESSION["oldLName"];
         $old_ssn = $_SESSION["oldSsn"];
         
-        $update_query = "UPDATE passengers SET f_name = '$new_f_name', m_name = '$new_m_name', l_name = '$new_l_name', ssn = '$new_ssn' WHERE ssn = '$old_ssn';";
+        //$update_query = "UPDATE passengers SET f_name = '$new_f_name', m_name = '$new_m_name', l_name = '$new_l_name', ssn = '$new_ssn' WHERE ssn = '$old_ssn';";
 
         $update_status = $db->query($update_query);
 
         // Check status of update
-        /*
+        
         if($update_status)
         {
             echo "success! at updating SSN = $old_ssn<br>";
@@ -54,7 +54,7 @@
         {
             echo "fail!";
         }
-        */
+        
 
         //disconnect from db
         $db = null;
