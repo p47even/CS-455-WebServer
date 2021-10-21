@@ -22,13 +22,13 @@
         $new_l_name = $_POST["lName"];
         $new_ssn = $_POST["ssn"];
 
-        $f_name = $_SESSION["oldFName"];
-        $m_name = $_SESSION["oldMName"];
-        $l_name = $_SESSION["oldLName"];
+        //$f_name = $_SESSION["oldFName"];
+        //$m_name = $_SESSION["oldMName"];
+        //$l_name = $_SESSION["oldLName"];
         $old_ssn = $_SESSION["oldSsn"];
 
         
-        $update_query = $db->prepare("UPDATE passengers SET f_name = 'new_f_name', m_name = 'new_m_name', l_name = 'new_l_name', old_ssn = 'new_ssn' WHERE ssn = 'old_ssn';");
+        $update_query = $db->prepare("UPDATE passengers SET f_name = 'new_f_name', m_name = 'new_m_name', l_name = 'new_l_name', ssn = 'new_ssn' WHERE ssn = 'old_ssn';");
             $update_query->bindParam('new_f_name', $new_f_name);
             $update_query->bindParam('new_m_name', $new_m_name);
             $update_query->bindParam('new_l_name', $new_l_name);
