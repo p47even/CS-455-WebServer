@@ -36,9 +36,21 @@
         $new_ssn = $_POST["ssn"];
 
         $msg = "";
-        if((not is_numeric($new_m_name) and strlen($new_m_name) == 1) or (strlen($new_m_name) == 0))
+
+        if((preg_match("/[a-zA-Z]*/", $new_f_name))
+        {
+            $msg .= "First name must be non-empty and consist of letters only\n";
+        }
+
+
+        if((preg_match("/[a-zA-Z]/", $new_m_name) || strcmp("", $new_m_name))
         {
             $msg .= "Middle name must be empty or a single letter\n";
+        }
+
+        if((preg_match("/[a-zA-Z]*/", $new_l_name))
+        {
+            $msg .= "Last name must be non-empty and consist of letters only\n";
         }
         
         if(preg_match("/[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]/", $new_ssn))
