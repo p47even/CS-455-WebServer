@@ -7,8 +7,6 @@
         //path to the SQLite database file
         $db_file = './myDB/airport.db';
 
-        echo $_GET["msg"] .= "\n";
-
         try {
             //open connection to the airport database file
             $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
@@ -25,6 +23,8 @@
             foreach($result_set as $tuple) {          // <------ Line 24
                 echo "<font color='blue'>$tuple[ssn]</font> $tuple[f_name] $tuple[m_name] $tuple[l_name] \t<a href='./htmlForm.php?oldSsn=$tuple[ssn]&oldFName=$tuple[f_name]&oldMName=$tuple[m_name]&oldLName=$tuple[l_name]'> Update </a> <br/>\n";
             }
+
+            echo $_GET["msg"] .= "\n";
 
             //disconnect from db
             $db = null;
