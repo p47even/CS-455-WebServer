@@ -46,6 +46,7 @@
         {$update_query->execute();}
         catch (PDOException $e){
             console.log('failure');
+            exit;
         }
         //echo "executed<br>";
         
