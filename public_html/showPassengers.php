@@ -7,7 +7,7 @@
         //path to the SQLite database file
         $db_file = './myDB/airport.db';
 
-        echo "<font color='red'>$_GET['msg']</font>\n";
+        echo $_GET["msg"];
 
         try {
             //open connection to the airport database file
