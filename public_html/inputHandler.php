@@ -20,7 +20,7 @@
         
 
         
-        $update_query = $db->prepare("UPDATE passengers SET f_name = :f_name, m_name = :m_name, l_name = :l_name, ssn = :ssn WHERE ssn = :old_ssn and :ssn == '[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]';
+        $update_query = $db->prepare("UPDATE passengers SET f_name = :f_name, m_name = :m_name, l_name = :l_name, ssn = :ssn WHERE ssn = :old_ssn and :ssn LIKE '___-__-____';
             $update_query->bindParam(':f_name', $new_f_name);
             $update_query->bindParam(':m_name', $new_m_name);
             $update_query->bindParam(':l_name', $new_l_name);
