@@ -26,9 +26,7 @@
             $update_query->bindParam(':m_name', $new_m_name);
             $update_query->bindParam(':l_name', $new_l_name);
             $update_query->bindParam(':ssn', $new_ssn);
-            //$update_query->bindParam('f_name', $f_name);
-            //$update_query->bindParam('m_name', $m_name);
-            //$update_query->bindParam('l_name', $l_name);
+            
             $update_query->bindParam(':old_ssn', $old_ssn);
         
         
@@ -37,43 +35,37 @@
         $new_l_name = $_POST["lName"];
         $new_ssn = $_POST["ssn"];
 
-        //$f_name = $_SESSION["oldFName"];
-        //$m_name = $_SESSION["oldMName"];
-        //$l_name = $_SESSION["oldLName"];
+        $msg = "";
+        if((not is_numeric($new_m_name) and strlen($new_m_name) == 1) or (strlen($new_m_name) == 0))
+        {
+            $msg .= "Middle name must be empty or a single letter\n";
+        }
+        
+        if(preg_match("/[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]/", $new_ssn))
+        {
+            $msg .= "SSN must be in the form xxx-xx-xxxx where x is a whole number between 0 and 9";
+        }
+
+        if(strcmp("", $msg) == 0)
+        {
+            $msg = "Success!";
+        }
+
         $old_ssn = $_SESSION["oldSsn"];
         
-        $update_query->execute();
-        
-        //echo "executed<br>";
+        $result_status = $update_query->execute();
         
         
-        //$update_query = "UPDATE passengers SET f_name = '$new_f_name', m_name = '$new_m_name', l_name = '$new_l_name', ssn = '$new_ssn' WHERE ssn = '$old_ssn';";
-
-        //$update_status = $db->query($update_query);
-
-        // Check status of update
-        /*
-        if($update_status)
-        {
-            echo "success! at updating SSN = $old_ssn<br>";
-        }
-        else
-        {
-            echo "fail!";
-        } 
-        */
-
-        //disconnect from db
         $db = null;
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
     }
 
+    echo "<meta http-equiv='refresh' content='0; url=./showPassengers.php?msg=$msg'/>";
+    echo "<a href='./showPassengers.php?msg=$msg'>If you are not redirected, click here</a>";
+
     session_destroy();
     ?>
-
-    <meta http-equiv="refresh" content="0; url=./showPassengers.php"/>
-    <a href="./showPassengers.php">If you are not redirected, click here</a>
 </body>
 </html>

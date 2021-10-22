@@ -4,9 +4,10 @@
 <h2>Query Results</h2>
 <p>
     <?php
-
         //path to the SQLite database file
         $db_file = './myDB/airport.db';
+
+        echo "<font color='red'>$_GET["msg"]</font>\n";
 
         try {
             //open connection to the airport database file
