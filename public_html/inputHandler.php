@@ -67,7 +67,7 @@
         $db = null;
     }
     catch(PDOException $e) {
-        echo 'FAILURE';
+        console.log('FAILURE');
         die('Exception : '.$e->getMessage());
     }
 
@@ -75,6 +75,6 @@
     ?>
 
     <!--- <meta http-equiv="refresh" content="0; url=./showPassengers.php"/> --->
-    <a href="./showPassengers.php">If you are not redirected, click here</a>
+    <!--- <a href="./showPassengers.php">If you are not redirected, click here</a> --->
 </body>
 </html>
