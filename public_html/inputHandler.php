@@ -41,13 +41,9 @@
         //$m_name = $_SESSION["oldMName"];
         //$l_name = $_SESSION["oldLName"];
         $old_ssn = $_SESSION["oldSsn"];
-       
-        try
-        {$update_query->execute();}
-        catch (PDOException $e){
-            console.log('failure');
-            exit;
-        }
+      
+        $update_query->execute();
+        
         //echo "executed<br>";
         
         
