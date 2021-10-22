@@ -67,6 +67,7 @@
         $db = null;
     }
     catch(PDOException $e) {
+        echo 'FAILURE';
         die('Exception : '.$e->getMessage());
     }
 
