@@ -73,7 +73,7 @@
     session_destroy();
     ?>
 
-    <meta http-equiv="refresh" content="0; url=./showPassengers.php"/>
+    <!--- <meta http-equiv="refresh" content="0; url=./showPassengers.php"/> --->
     <a href="./showPassengers.php">If you are not redirected, click here</a>
 </body>
 </html>
