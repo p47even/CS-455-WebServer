@@ -28,7 +28,7 @@
             }
             else
             {
-                $msg = "Added new<br>";
+                $msg = "Added new passenger<br>";
                 $update_query = $db->prepare("INSERT INTO passengers VALUES (f_name = :f_name, m_name = :m_name, l_name = :l_name, ssn = :ssn);");
                     $update_query->bindParam(':f_name', $new_f_name);
                     $update_query->bindParam(':m_name', $new_m_name);
@@ -77,7 +77,7 @@
         if(strcmp("", $msg) == 0)
         {
             $result_status = $update_query->execute();
-            $msg = "Success!";
+            $msg .= "Success!";
         }
         
         $db = null;
