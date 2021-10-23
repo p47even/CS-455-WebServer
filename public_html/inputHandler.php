@@ -19,7 +19,7 @@
 
         if(strcmp($_SESSION["oldSsn"], '') == 0)
         {
-            $select_res = $db->query("SELECT ssn FROM passengers WHERE ssn = '$new_ssn';"
+            $select_res = $db->query("SELECT ssn FROM passengers WHERE ssn = '$new_ssn';";
             if($select_res->fetchColumn() > 0)
             {
                 $msg = "SSN already exists<br>";
