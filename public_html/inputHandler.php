@@ -76,14 +76,16 @@
             $result_status = $update_query->execute();
             echo "<meta http-equiv='refresh' content='0; url=./showPassengers.php?msg=Success!'/>";
         }
+        else
+        {
+            echo "<meta http-equiv='refresh' content='0; url=./htmlForm.php?oldSsn=$new_ssn&oldFName=$new_f_name&oldMName=$new_m_name&oldLName=$new_l_name&msg=$msg'/>";
+        }
         
         $db = null;
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
     }
-
-    echo "<meta http-equiv='refresh' content='0; url=./htmlForm.php?oldSsn=$new_ssn&oldFName=$new_f_name&oldMName=$new_m_name&oldLName=$new_l_name&msg=$msg'/>";
 
     session_destroy();
     ?>
