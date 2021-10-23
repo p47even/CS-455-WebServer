@@ -4,7 +4,7 @@
 <h2>Query Results</h2>
 <p>
 
-<a href="./htmlForm.php?oldSsn=''&oldFName=''&oldMName=''&oldLName=''">Add New Passenger</a><br><br>
+<a href="./htmlForm.php?oldSsn=&oldFName=&oldMName=&oldLName=">Add New Passenger</a><br><br>
 
     <?php
         //path to the SQLite database file
