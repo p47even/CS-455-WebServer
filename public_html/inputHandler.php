@@ -37,7 +37,7 @@
 
         $msg = "";
 
-        if(!preg_match("/^[a-zA-Z]*$/", $new_f_name))
+        if(!preg_match("/^[a-zA-Z]+$/", $new_f_name))
         {
             $msg .= "First name must be non-empty and consist of letters only  ";
         }
@@ -47,7 +47,7 @@
             $msg .= "Middle name must be empty or a single letter  ";
         }
 
-        if(!preg_match("/^[a-zA-Z]*$/", $new_l_name))
+        if(!preg_match("/^[a-zA-Z]+$/", $new_l_name))
         {
             $msg .= "Last name must be non-empty and consist of letters only  ";
         }
