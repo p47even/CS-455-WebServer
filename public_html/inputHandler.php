@@ -14,6 +14,13 @@
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
+        $new_f_name = $_POST["fName"];
+        $new_m_name = $_POST["mName"];
+        $new_l_name = $_POST["lName"];
+        $new_ssn = $_POST["ssn"];
+
+        $old_ssn = $_SESSION["oldSsn"];
+
         $msg = "";
         $update_query = "";
 
@@ -44,13 +51,6 @@
                 $update_query->bindParam(':ssn', $new_ssn);
                 $update_query->bindParam(':old_ssn', $old_ssn);
         }
-
-        $new_f_name = $_POST["fName"];
-        $new_m_name = $_POST["mName"];
-        $new_l_name = $_POST["lName"];
-        $new_ssn = $_POST["ssn"];
-
-        $old_ssn = $_SESSION["oldSsn"];
 
         if(!preg_match("/^[a-zA-Z]+$/", $new_f_name))
         {
