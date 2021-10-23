@@ -35,6 +35,8 @@
         $new_l_name = $_POST["lName"];
         $new_ssn = $_POST["ssn"];
 
+        $old_ssn = $_SESSION["oldSsn"];
+
         $msg = "";
 
         if(!preg_match("/^[a-zA-Z]+$/", $new_f_name))
@@ -59,13 +61,9 @@
 
         if(strcmp("", $msg) == 0)
         {
+            $result_status = $update_query->execute();
             $msg = "Success!";
         }
-
-        $old_ssn = $_SESSION["oldSsn"];
-        
-        $result_status = $update_query->execute();
-        
         
         $db = null;
     }
