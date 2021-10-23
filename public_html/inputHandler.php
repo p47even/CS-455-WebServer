@@ -58,7 +58,7 @@
             $msg .= "SSN must be in the form xxx-xx-xxxx where x is a whole number between 0 and 9";
         }
 
-        if(!strcmp("", $msg) == 0)
+        if(strcmp("", $msg) == 0)
         {
             $msg = "Success!";
         }
