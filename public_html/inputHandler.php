@@ -17,12 +17,9 @@
         $msg = "";
         $update_query = "";
 
-        echo $_SESSION["oldSsn"];
-        echo strcmp($_SESSION["oldSsn"], ''); 
-
         if(strcmp($_SESSION["oldSsn"], '') == 0)
         {
-            if(count($db->query("SELECT ssn FROM passengers WHERE ssn = '$new_ssn';")) > 0)
+            if(length($db->query("SELECT ssn FROM passengers WHERE ssn = '$new_ssn';")) > 0)
             {
                 $msg = "SSN already exists<br>";
             }
