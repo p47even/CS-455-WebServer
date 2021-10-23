@@ -33,7 +33,6 @@
             }
             else
             {
-                $msg = "Added new passenger<br>";
                 $update_query = $db->prepare("INSERT INTO passengers VALUES (:f_name, :m_name, :l_name, :ssn);");
                     $update_query->bindParam(':f_name', $new_f_name);
                     $update_query->bindParam(':m_name', $new_m_name);
