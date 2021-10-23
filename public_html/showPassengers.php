@@ -29,7 +29,7 @@
                 echo "<font color='blue'>$tuple[ssn]</font> $tuple[f_name] $tuple[m_name] $tuple[l_name] \t<a href='./htmlForm.php?oldSsn=$tuple[ssn]&oldFName=$tuple[f_name]&oldMName=$tuple[m_name]&oldLName=$tuple[l_name]'> Update </a> <br/>\n";
             }
             
-            echo "<br><br>" + $_GET["msg"];
+            echo "<br><br> $_GET['msg']";
 
             //disconnect from db
             $db = null;
