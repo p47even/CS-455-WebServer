@@ -3,9 +3,14 @@
 <body>
 <h2>Query Results</h2>
 <p>
+
+<a href="./htmlForm.php?oldSsn=''&oldFName=''&oldMName=''&oldLName=''">Add New Passenger</a>
+
     <?php
         //path to the SQLite database file
         $db_file = './myDB/airport.db';
+
+        
 
         try {
             //open connection to the airport database file

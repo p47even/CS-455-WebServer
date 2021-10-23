@@ -17,27 +17,41 @@
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        
+        $msg = "";
+        $update_query = "";
 
-        
-        $update_query = $db->prepare("UPDATE passengers SET f_name = :f_name, m_name = :m_name, l_name = :l_name, ssn = :ssn 
-        WHERE ssn = :old_ssn;");
-            $update_query->bindParam(':f_name', $new_f_name);
-            $update_query->bindParam(':m_name', $new_m_name);
-            $update_query->bindParam(':l_name', $new_l_name);
-            $update_query->bindParam(':ssn', $new_ssn);
-            
-            $update_query->bindParam(':old_ssn', $old_ssn);
-        
-        
+        if(strcmp($_SESSION["oldSsn"], "") == 0)
+        {
+            if(count($db->query("SELECT ssn FROM passengers WHERE ssn = '$new_ssn'")) > 0)
+            {
+                $msg = "SSN already exists<br>";
+            }
+            else
+            {
+                $update_query = $db->prepare("INSERT INTO passengers VALUES (f_name = :f_name, m_name = :m_name, l_name = :l_name, ssn = :ssn);");
+                    $update_query->bindParam(':f_name', $new_f_name);
+                    $update_query->bindParam(':m_name', $new_m_name);
+                    $update_query->bindParam(':l_name', $new_l_name);
+                    $update_query->bindParam(':ssn', $new_ssn);
+            }
+        }
+        else
+        {
+            $update_query = $db->prepare("UPDATE passengers SET f_name = :f_name, m_name = :m_name, l_name = :l_name, ssn = :ssn 
+            WHERE ssn = :old_ssn;");
+                $update_query->bindParam(':f_name', $new_f_name);
+                $update_query->bindParam(':m_name', $new_m_name);
+                $update_query->bindParam(':l_name', $new_l_name);
+                $update_query->bindParam(':ssn', $new_ssn);
+                $update_query->bindParam(':old_ssn', $old_ssn);
+        }
+
         $new_f_name = $_POST["fName"];
         $new_m_name = $_POST["mName"];
         $new_l_name = $_POST["lName"];
         $new_ssn = $_POST["ssn"];
 
         $old_ssn = $_SESSION["oldSsn"];
-
-        $msg = "";
 
         if(!preg_match("/^[a-zA-Z]+$/", $new_f_name))
         {
