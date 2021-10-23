@@ -8,6 +8,7 @@
         try
         {
             $_SESSION["oldSsn"] = $_GET["oldSsn"];
+            echo $_SESSION["oldSsn"];
             $_SESSION["oldFName"] = $_GET["oldFName"];
             $_SESSION["oldMName"] = $_GET["oldMName"];
             $_SESSION["oldLName"] = $_GET["oldLName"];
