@@ -74,7 +74,7 @@
         if(strcmp("", $msg) == 0)
         {
             $result_status = $update_query->execute();
-            $msg .= "Success!";
+            echo "<meta http-equiv='refresh' content='0; url=./showPassengers.php?msg=Success!'/>";
         }
         
         $db = null;
@@ -83,8 +83,7 @@
         die('Exception : '.$e->getMessage());
     }
 
-    echo "<meta http-equiv='refresh' content='0; url=./showPassengers.php?msg=$msg'/>";
-    echo "<a href='./showPassengers.php?msg=$msg'>If you are not redirected, click here</a>";
+    echo "<meta http-equiv='refresh' content='0; url=./htmlForm.php?oldSsn=$new_ssn&oldFName=$new_f_name&oldMName=$new_m_name&oldLName=$new_l_name&msg=$msg'/>";
 
     session_destroy();
     ?>

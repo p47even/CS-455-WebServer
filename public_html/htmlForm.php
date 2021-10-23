@@ -31,6 +31,8 @@
         
         <input type='submit' name='submit' value='Update Info'>"
         ;
+        echo $_GET['msg'] .= "";
+
     ?>
 </body>
 </html>
