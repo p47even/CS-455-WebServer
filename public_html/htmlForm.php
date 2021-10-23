@@ -31,10 +31,14 @@
         
         <input type='submit' name='submit' value='Update Info'>"
         ;
-        
+
         echo "<br><br>";
         echo $_GET['msg'] .= "";
 
     ?>
+    
+    <br>
+    <br>
+    <a href="./showPassengers.php?msg=">Return to main info page</a>
 </body>
 </html>
