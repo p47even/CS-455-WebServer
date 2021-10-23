@@ -83,7 +83,7 @@
         die('Exception : '.$e->getMessage());
     }
 
-    //echo "<meta http-equiv='refresh' content='0; url=./showPassengers.php?msg=$msg'/>";
+    echo "<meta http-equiv='refresh' content='0; url=./showPassengers.php?msg=$msg'/>";
     echo "<a href='./showPassengers.php?msg=$msg'>If you are not redirected, click here</a>";
 
     session_destroy();
