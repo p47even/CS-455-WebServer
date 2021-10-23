@@ -17,6 +17,7 @@
         $msg = "";
         $update_query = "";
 
+        echo $_SESSION["oldSsn"];
         echo strcmp($_SESSION["oldSsn"], ''); 
 
         if(strcmp($_SESSION["oldSsn"], '') == 0)
