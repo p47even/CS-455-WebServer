@@ -55,7 +55,7 @@
         
         if(!preg_match("/[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]/", $new_ssn))
         {
-            $msg .= "SSN must be in the form xxx-xx-xxxx where x is a whole number between 0 and 9\n";
+            $msg .= "SSN must be in the form xxx-xx-xxxx where x is a whole number between 0 and 9";
         }
 
         if(strcmp("", $msg) == 0)
