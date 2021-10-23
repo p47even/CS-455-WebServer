@@ -5,9 +5,6 @@
     session_start();
     //path to the SQLite database file
     $db_file = './myDB/airport.db';
-    ##require './htmlForm.php';
-
-    ////print_r($GLOBALS);
 
     try {
 
@@ -20,7 +17,9 @@
         $msg = "";
         $update_query = "";
 
-        if(strcmp($_SESSION["oldSsn"], "") == 0)
+        echo strcmp($_SESSION["oldSsn"], ''); 
+
+        if(strcmp($_SESSION["oldSsn"], '') == 0)
         {
             if(count($db->query("SELECT ssn FROM passengers WHERE ssn = '$new_ssn';")) > 0)
             {
@@ -86,7 +85,7 @@
         die('Exception : '.$e->getMessage());
     }
 
-    echo "<meta http-equiv='refresh' content='0; url=./showPassengers.php?msg=$msg'/>";
+    //echo "<meta http-equiv='refresh' content='0; url=./showPassengers.php?msg=$msg'/>";
     echo "<a href='./showPassengers.php?msg=$msg'>If you are not redirected, click here</a>";
 
     session_destroy();
