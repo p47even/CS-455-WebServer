@@ -43,7 +43,7 @@
         }
 
 
-        if(!preg_match("/[a-zA-Z]/", $new_m_name) || !(strcmp("", $new_m_name) == 0))
+        if(!preg_match("/[a-zA-Z]/", $new_m_name) && !(strcmp("", $new_m_name) == 0))
         {
             $msg .= "Middle name must be empty or a single letter\n";
         }
