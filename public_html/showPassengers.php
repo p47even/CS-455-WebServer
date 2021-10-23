@@ -4,7 +4,7 @@
 <h2>Query Results</h2>
 <p>
 
-<a href="./htmlForm.php?oldSsn=''&oldFName=''&oldMName=''&oldLName=''">Add New Passenger</a>
+<a href="./htmlForm.php?oldSsn=''&oldFName=''&oldMName=''&oldLName=''">Add New Passenger</a><br><br>
 
     <?php
         //path to the SQLite database file
@@ -28,7 +28,7 @@
             foreach($result_set as $tuple) {          // <------ Line 24
                 echo "<font color='blue'>$tuple[ssn]</font> $tuple[f_name] $tuple[m_name] $tuple[l_name] \t<a href='./htmlForm.php?oldSsn=$tuple[ssn]&oldFName=$tuple[f_name]&oldMName=$tuple[m_name]&oldLName=$tuple[l_name]'> Update </a> <br/>\n";
             }
-
+            <br><br>
             echo $_GET["msg"] .= "";
 
             //disconnect from db
