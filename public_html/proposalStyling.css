@@ -9,3 +9,7 @@ body
     background-color: beige;
 }
 
+li{
+    margin: 10px 0;
+}
+
