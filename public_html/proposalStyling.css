@@ -9,7 +9,7 @@ body
     background-color: beige;
 }
 
-/* ol {
-  line-height: 45px;
-} */
+li{
+  margin: 10px 0;
+}
 
