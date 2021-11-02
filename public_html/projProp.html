@@ -84,6 +84,29 @@
         <p>
             <img src='CS455 Schema.jpg'/>
         </p>
+        
+        <ul>
+            <li>Students(<u>StudentID</u>, StudentName, Class, GPA): Stores the student’s unique ID used to identify them, the student’s name, class standing and GPA. 
+                This is the most important relation since our website will center on helping students plan and enroll for classes. 
+                It will tell us what students are currently enrolled, how far they are from graduating and their GPA.</li>
+            <li>Minor(<u>StudentID</u>,<u> Minor</u>): Similarly to the Major table, the Minor relation keeps track of the student's ID and minor if they have declared any. 
+                It will also help identify the classes that the students need to graduate.</li>
+            <li>Enroll(<u>StudentID</u>, <u>CourseID</u>): Will store the records of what classes currently enrolled students have taken while at UPS by keeping track of the students’ ID as well as the unique number used to identify classes CourseID. 
+                This relation will tell us if the student is on track to graduate.</li>
+            <li>Professor(<u>FacultyID</u>, ProfessorName, deptID): Stores information about all professors currently working at UPS. It stores a unique identifier number for every professor, their names, and what department they belong to. 
+                Students like to know who is teaching their classes. It will also help us know who taught the class students make when they make comments about their classes.</li>
+            <li>Department(<u>deptID</u>, DepartmentName, Building, FacultyID): Stores unique, not numerical  label to identify departments deptID, department’s name, the building where they are based, and the FacultyID of the department head. 
+                It is important to know what departments are available at the university to know what majors and minors students can choose as well as what fields of study they can take classes in.</li>
+            <li>Course(<u>CourseID</u>, deptID, CourseName, FallSemester, SpringSemester): Stores a unique number to identify the class CourseID, the department it belongs to deptID, the classes Name, and whether it is taught in the Fall and/or Spring semesters by storing a 1 if the class is taught during that semester and a 0 otherwise. 
+                By knowing what classes are taught in what semester, we will be able to generate a four year plan for students.</li>
+            <li>Class(<u>FacultyID</u>, CourseID, <u>Section</u>, MeetTime, MeetDay, Location): Stores the classes that are being at the semester/term for which registration is currently open. It keeps track of the professor teaching the class, the section for a professor might teach two sections of the same class as well as the time, day, and location where the class will meet. 
+                Will help make suggestions of what classes students should take that do not overlap and meet the students’ needs</li>
+            <li>IsRequired(<u>CourseID</u>, <u>Requirement</u>): Stores a class’ ID and also states whether it fulfills a requirement. The Requirement attribute will have a text value that states what the class can be used for. A class will have an entry for every requirement it fulfills.
+                For example, CS161 can be used for the Computer Science major, minor, and for the math core requirement. 
+                Therefore, it will have three entries. Will help when creating students' four year plan.</li>
+            <li>Discussion(<u>StudentID</u>, CourseID, FacultyID, Comment, <u>Date</u>, <u>Time</u>): It creates a forum for students to post information about classes like if they liked the class, if they thought the professor was a harsh grader, study guides they created, among others. It stores what student made the comment, what class they are making the comment about, who taught the class, the comment, and the date and time of when they made the comment.
+                It will help students make informed decisions about what classes they want to take.</li>
+        <ul/>
 
         <h>Project Management</h>
         <h>Team Member Roles</h>
