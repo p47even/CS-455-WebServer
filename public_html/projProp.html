@@ -82,7 +82,7 @@
 
         <h>Schema</h>
         <p>
-            <img src='./photos/CS455 Schema.jpg'/>
+            <img src='./photos/CS 455 DB Schema.JPG'/>
         </p>
 
         <ul>
@@ -99,7 +99,7 @@
                 It is important to know what departments are available at the university to know what majors and minors students can choose as well as what fields of study they can take classes in.</li>
             <li><b>Course(<u>CourseID</u>, deptID, CourseName, FallSemester, SpringSemester):</b> Stores a unique number to identify the class CourseID, the department it belongs to deptID, the classes Name, and whether it is taught in the Fall and/or Spring semesters by storing a 1 if the class is taught during that semester and a 0 otherwise.
                 By knowing what classes are taught in what semester, we will be able to generate a four year plan for students.</li>
-            <li><b>Class(<u>FacultyID</u>, CourseID, <u>Section</u>, MeetTime, MeetDay, Location):</b> Stores the classes that are being at the semester/term for which registration is currently open. It keeps track of the professor teaching the class, the section for a professor might teach two sections of the same class as well as the time, day, and location where the class will meet.
+            <li><b>Class(FacultyID, <u>CourseID</u>, <u>Section</u>, <u>deptID</u>, MeetTime, MeetDay, Location):</b> Stores the classes that are being at the semester/term for which registration is currently open. It keeps track of the professor teaching the class, the section for a professor might teach two sections of the same class as well as the time, day, and location where the class will meet.
                 Will help make suggestions of what classes students should take that do not overlap and meet the students' needs</li>
             <li><b>IsRequired(<u>CourseID</u>, <u>Requirement</u>):</b> Stores a class' ID and also states whether it fulfills a requirement. The Requirement attribute will have a text value that states what the class can be used for. A class will have an entry for every requirement it fulfills.
                 For example, CS161 can be used for the Computer Science major, minor, and for the math core requirement.
