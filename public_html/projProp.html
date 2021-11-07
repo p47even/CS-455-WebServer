@@ -82,19 +82,21 @@
 
         <h>Schema</h>
         <p>
-            <img src='./photos/CS 455 DB Schema.JPG'/>
+            <img src='./photos/CS455 DB Schema.JPG'/>
         </p>
 
         <ul>
             <li><b>Students(<u>StudentID</u>, StudentName, Class, GPA):</b> Stores the student's unique ID used to identify them, the student's name, class standing and GPA.
                 This is the most important relation since our website will center on helping students plan and enroll for classes.
                 It will tell us what students are currently enrolled, how far they are from graduating and their GPA.</li>
+            <li><b>Studetn Log In(<u>StudentID</u>, userName, password):</b> Stores students' log in information so that they can access the portal and see their information.</li>
             <li><b>Minor(<u>StudentID</u>,<u> Minor</u>):</b> Similarly to the Major table, the Minor relation keeps track of the student's ID and minor if they have declared any.
                 It will also help identify the classes that the students need to graduate.</li>
             <li><b>Enroll(<u>StudentID</u>, <u>CourseID</u>):</b> Will store the records of what classes currently enrolled students have taken while at UPS by keeping track of the students' ID as well as the unique number used to identify classes CourseID.
                 This relation will tell us if the student is on track to graduate.</li>
             <li><b>Professor(<u>FacultyID</u>, ProfessorName, deptID):</b> Stores information about all professors currently working at UPS. It stores a unique identifier number for every professor, their names, and what department they belong to.
                 Students like to know who is teaching their classes. It will also help us know who taught the class students make when they make comments about their classes.</li>
+            <li><b>Professor Log In(<u>FacultyID</u>, UserName, password):</b> Stores professors' log in information so they can add or delete classes to the platform.</li>
             <li><b>Department(<u>deptID</u>, DepartmentName, Building, FacultyID):</b> Stores unique, not numerical  label to identify departments deptID, department's name, the building where they are based, and the FacultyID of the department head.
                 It is important to know what departments are available at the university to know what majors and minors students can choose as well as what fields of study they can take classes in.</li>
             <li><b>Course(<u>CourseID</u>, deptID, CourseName, FallSemester, SpringSemester):</b> Stores a unique number to identify the class CourseID, the department it belongs to deptID, the classes Name, and whether it is taught in the Fall and/or Spring semesters by storing a 1 if the class is taught during that semester and a 0 otherwise.
