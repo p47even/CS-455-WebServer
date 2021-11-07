@@ -7,15 +7,14 @@
 
         <body>
                 <div class='page'>
-                        <div class='menu'>Menu</div>
+                        <div class='menu'>
+                                <h1>Enrollment Planner Login!</h1>
+                        </div>
                         <div class='sidebar'>Sidebar</div>
                         <div class='content'>Content</div>
                         <div class='footer'>Footer</div>
                 </div>
                 
-                <menu>
-                        <h1>Enrollment Planner Login!</h1>
-                </menu>
                 
                 <?php
                 echo
