@@ -8,22 +8,22 @@
     <body>
         <h>Introduction</h>
         <p>
-            Registering for classes is a total pain. Not only is it difficult to schedule the classes around each other, you have to figure out which classes you need for your major and graduation. 
-            A few tools already exist (graduation reqs. on my.pugetsound, coursicle), but each only does a handful of the various things necessary to plan your schedule. 
-            It would be much more convenient and usable in one integrated piece of software that could allow you to plan your schedule with knowledge of the classes and not overlap them. 
-            We want to build a software environment where students, department heads, and administrators can securely log in and access slightly different sites. 
+            Registering for classes is a total pain. Not only is it difficult to schedule the classes around each other, you have to figure out which classes you need for your major and graduation.
+            A few tools already exist (graduation reqs. on my.pugetsound, coursicle), but each only does a handful of the various things necessary to plan your schedule.
+            It would be much more convenient and usable in one integrated piece of software that could allow you to plan your schedule with knowledge of the classes and not overlap them.
+            We want to build a software environment where students, department heads, and administrators can securely log in and access slightly different sites.
         </p>
         <p>
-            The students have a homepage where they can reach several different features. It will include a  feature to search classes that will recommend certain classes based on major and year as well as general graduation requirements. 
+            The students have a homepage where they can reach several different features. It will include a  feature to search classes that will recommend certain classes based on major and year as well as general graduation requirements.
             Other than that the student should be able to access a weekly schedule view that will visibly show if there are overlap times or if they're non major classes.
         </p>
         <p>
             The registrar and department heads will have a slightly different view of the site where they can create classes in different departments and add them to the graduation requirements. Students can't do either of those things and registrar/department heads shouldn't be able to plan a schedule.
         </p>
-        
+
         <h>Proposed Features</h>
             <ol>
-                <li>Students and administrators can login in securely using encrypted credentials 
+                <li>Students and administrators can login in securely using encrypted credentials
                     <ul>
                         <li>Students can't access other students' pages</li>
                         <li>Students can't access the database</li>
@@ -31,7 +31,7 @@
                     </ul>
                 </li>
                 <li>The department head and registrar facing part of the site is different and allows them to add/remove classes that are offered that year and determine what the required prerequisites are and if it is required for graduation or a major</li>
-                
+
                 <li>On student login it has a dashboard that allows them to select between different options
                     <ul>
                         <li>Planned weekly schedule</li>
@@ -43,7 +43,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li>Display a weekly schedule of all classes you are planning to enroll in
                     <ul>
                         <li>Blocks change color if there is an overlap between two classes</li>
@@ -57,7 +57,7 @@
                         <li>Certain classes are only offered some semesters</li>
                     </ul>
                 </li>
-                
+
                 <li>Create a list of recommended classes
                     <ul>
                         <li>by semester & major</li>
@@ -67,8 +67,8 @@
                         <li>By professors you liked in past</li>
                     </ul>
                 </li>
-    
-                <li>When searching classes have a board set up so previous students/the professor can include information about the class - 
+
+                <li>When searching classes have a board set up so previous students/the professor can include information about the class -
                     <ul>
                         <li>If the textbook is required/textbook exchange</li>
                         <li>Level of homework</li>
@@ -76,33 +76,33 @@
                         <li>Prof availability</li>
                     </ul>
                 </li>
-                
+
                 <li>Countdown to your registration time in the sites corner</li>
             </ol>
 
         <h>Schema</h>
         <p>
-            <img src='CS455 Schema.jpg'/>
+            <img src='/photos/CS455 Schema.jpg'/>
         </p>
-        
+
         <ul>
-            <li><b>Students(<u>StudentID</u>, StudentName, Class, GPA):</b> Stores the student's unique ID used to identify them, the student's name, class standing and GPA. 
-                This is the most important relation since our website will center on helping students plan and enroll for classes. 
+            <li><b>Students(<u>StudentID</u>, StudentName, Class, GPA):</b> Stores the student's unique ID used to identify them, the student's name, class standing and GPA.
+                This is the most important relation since our website will center on helping students plan and enroll for classes.
                 It will tell us what students are currently enrolled, how far they are from graduating and their GPA.</li>
-            <li><b>Minor(<u>StudentID</u>,<u> Minor</u>):</b> Similarly to the Major table, the Minor relation keeps track of the student's ID and minor if they have declared any. 
+            <li><b>Minor(<u>StudentID</u>,<u> Minor</u>):</b> Similarly to the Major table, the Minor relation keeps track of the student's ID and minor if they have declared any.
                 It will also help identify the classes that the students need to graduate.</li>
-            <li><b>Enroll(<u>StudentID</u>, <u>CourseID</u>):</b> Will store the records of what classes currently enrolled students have taken while at UPS by keeping track of the students' ID as well as the unique number used to identify classes CourseID. 
+            <li><b>Enroll(<u>StudentID</u>, <u>CourseID</u>):</b> Will store the records of what classes currently enrolled students have taken while at UPS by keeping track of the students' ID as well as the unique number used to identify classes CourseID.
                 This relation will tell us if the student is on track to graduate.</li>
-            <li><b>Professor(<u>FacultyID</u>, ProfessorName, deptID):</b> Stores information about all professors currently working at UPS. It stores a unique identifier number for every professor, their names, and what department they belong to. 
+            <li><b>Professor(<u>FacultyID</u>, ProfessorName, deptID):</b> Stores information about all professors currently working at UPS. It stores a unique identifier number for every professor, their names, and what department they belong to.
                 Students like to know who is teaching their classes. It will also help us know who taught the class students make when they make comments about their classes.</li>
-            <li><b>Department(<u>deptID</u>, DepartmentName, Building, FacultyID):</b> Stores unique, not numerical  label to identify departments deptID, department's name, the building where they are based, and the FacultyID of the department head. 
+            <li><b>Department(<u>deptID</u>, DepartmentName, Building, FacultyID):</b> Stores unique, not numerical  label to identify departments deptID, department's name, the building where they are based, and the FacultyID of the department head.
                 It is important to know what departments are available at the university to know what majors and minors students can choose as well as what fields of study they can take classes in.</li>
-            <li><b>Course(<u>CourseID</u>, deptID, CourseName, FallSemester, SpringSemester):</b> Stores a unique number to identify the class CourseID, the department it belongs to deptID, the classes Name, and whether it is taught in the Fall and/or Spring semesters by storing a 1 if the class is taught during that semester and a 0 otherwise. 
+            <li><b>Course(<u>CourseID</u>, deptID, CourseName, FallSemester, SpringSemester):</b> Stores a unique number to identify the class CourseID, the department it belongs to deptID, the classes Name, and whether it is taught in the Fall and/or Spring semesters by storing a 1 if the class is taught during that semester and a 0 otherwise.
                 By knowing what classes are taught in what semester, we will be able to generate a four year plan for students.</li>
-            <li><b>Class(<u>FacultyID</u>, CourseID, <u>Section</u>, MeetTime, MeetDay, Location):</b> Stores the classes that are being at the semester/term for which registration is currently open. It keeps track of the professor teaching the class, the section for a professor might teach two sections of the same class as well as the time, day, and location where the class will meet. 
+            <li><b>Class(<u>FacultyID</u>, CourseID, <u>Section</u>, MeetTime, MeetDay, Location):</b> Stores the classes that are being at the semester/term for which registration is currently open. It keeps track of the professor teaching the class, the section for a professor might teach two sections of the same class as well as the time, day, and location where the class will meet.
                 Will help make suggestions of what classes students should take that do not overlap and meet the students' needs</li>
             <li><b>IsRequired(<u>CourseID</u>, <u>Requirement</u>):</b> Stores a class' ID and also states whether it fulfills a requirement. The Requirement attribute will have a text value that states what the class can be used for. A class will have an entry for every requirement it fulfills.
-                For example, CS161 can be used for the Computer Science major, minor, and for the math core requirement. 
+                For example, CS161 can be used for the Computer Science major, minor, and for the math core requirement.
                 Therefore, it will have three entries. Will help when creating students' four year plan.</li>
             <li><b>Discussion(<u>StudentID</u>, CourseID, FacultyID, Comment, <u>Date</u>, <u>Time</u>):</b> It creates a forum for students to post information about classes like if they liked the class, if they thought the professor was a harsh grader, study guides they created, among others. It stores what student made the comment, what class they are making the comment about, who taught the class, the comment, and the date and time of when they made the comment.
                 It will help students make informed decisions about what classes they want to take.</li>
@@ -127,7 +127,7 @@
 
         <h>Gantt Chart</h>
         <p>
-            <img src='GnattChartCS455'/>
+            <img src='/photos/GnattChartCS455'/>
         </p>
 
         <br>
