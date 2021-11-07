@@ -1,1 +1,19 @@
+.menu {
+  height: 100px;
+  background-color: #007a99;
+}
 
+.sidebar {
+  height: 300px;
+  background-color: #ff3385;
+}
+
+.content {
+  height: 500px;
+  background-color: #ff9966
+}
+
+.footer {
+  height: 200px;
+  background-color: #007a99;
+}
