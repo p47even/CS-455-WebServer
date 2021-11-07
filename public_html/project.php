@@ -6,6 +6,6 @@
         </head>
 
         <body>
-            <h1>Enrollment Planner Login!</h1>
+            
         </body>
 </html>
