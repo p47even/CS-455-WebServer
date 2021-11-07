@@ -12,8 +12,10 @@
                 echo
                 "<form action='./login/login.php' method='post'>
                 Username: <input type='text' name='username' id='username'><br>
+                <form action='./login/login.php' method='post'>
+                Password: <input type='text' name='password' id='password'><br>
               
-                <input type='submit' name='submit' value='Update Info'>"
+                <input type='submit' name='submit' value='Student Login'>"
                 ;
                 
                 ?>
