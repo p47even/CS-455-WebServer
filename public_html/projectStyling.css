@@ -18,6 +18,7 @@
 }
 
 .footer {
+  clear: both;
   height: 200px;
   background-color: #007a99;
 }
