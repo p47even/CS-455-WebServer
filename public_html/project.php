@@ -13,7 +13,9 @@
                         <div class='footer'>Footer</div>
                 </div>
                 
-                <h1>Enrollment Planner Login!</h1>
+                <menu>
+                        <h1>Enrollment Planner Login!</h1>
+                </menu>
                 
                 <?php
                 echo
