@@ -4,22 +4,46 @@
   table, th, td {
      border:1px solid black;
    }
+  .center {
+    margin-left: auto;
+  margin-right: auto;
+}
+.weekdays{
+    margin: 0;
+    padding: 10px 0;
+    background-color: antiquewhite;
+}
+
+.weekdays li{
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.weekdays .next{
+    float: right;
+    padding-top: 10px;
+}
+
+.weekdays .prev{
+    float: left;
+    padding-top: 10px;
+}
 </style>
     
 <body>
     <h1>Weekly Schedule</h1>
-    <table>
-        <tr>
+    <table class="center">
+        <tr class="weekdays">
             <th>Time</th>
-            <ul class="weekdays">
-                <th>Mo</th>
-                <th>Tu</th>
-                <th>We</th>
-                <th>Th</th>
-                <th>Fr</th>
-                <th>Sa</th>
-                <th>Su</th>
-            </ul>
+            <th>Mo</th>
+            <th>Tu</th>
+            <th>We</th>
+            <th>Th</th>
+            <th>Fr</th>
+            <th>Sa</th>
+            <th>Su</th>
         </tr>
         <tr>
             <td>8:00</td>
