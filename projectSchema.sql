@@ -111,7 +111,7 @@ create table isMeeting(
     section text check (section like '[A-Z]'),
     meetDay text
         check (meetDay = 'Monday' or meetDay = 'Tuesday' or meetDay = 'Wednesday' or meetDay = 'Thursday' or meetDay = 'Friday'),
-    meetTime text check (meetTime = '[0-9][0-9]/[0-9][0-9]'),
+    meetTime text check (meetTime = '[0-9][0-9]:[0-9][0-9]'),
     location text,
     primary key (courseID, section),
     foreign key (facultyID) references Professor(facultyID)
