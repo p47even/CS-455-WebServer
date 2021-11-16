@@ -1,17 +1,25 @@
 import random
 
 #Creates statements to be entered in SQLite
+ 
+tables = ['Students','StudentLogin','Department','Major','Minor','Professor','DepartmentHeads','ProfessorLogin','Course','Enroll','isMeeting','isRequired'] #full list
 
-tables = ['Student','Department','Course',] #Only generates Students and creates statments for Students, Courses, and Departments currently 
-#tables = ['Students','StudentLogin','Department','Major','Minor','Professor','DepartmentHeads','ProfessorLogin','Course','Enroll','isMeeting','isRequired'] #full list
-
-studentFile = 'sampleStudents'
+studentFile = 'sampleStudents.txt'
+studentLoginFile = 'studentLogins.txt'
 departmentFile = 'depts.txt'
+majorFile = 'major.txt'
+minorFile = 'minor.txt'
+profFile = 'sampleProfs.txt'
+headFile = 'heads.txt'
+profLoginFile = 'profLogins.txt'
 courseFile = 'courses.txt'
+enrollFile = 'enrollments.txt'
+isMeetingFile = 'isMeetings.txt'
+isRequiredFile = 'requirements.txt'
+
 
 fileNames = [studentFile]
-fileNames.extend([departmentFile, courseFile])
-#filesNames.extend[(studentLoginFile,departmentFile,majorFile,minorFile,profFile,headFile,profLoginFile,courseFile,enrollFile,isMeetingFile,isRequiredFile]) #full list
+fileNames.extend([studentLoginFile,departmentFile,majorFile,minorFile,profFile,headFile,profLoginFile,courseFile,enrollFile,isMeetingFile,isRequiredFile]) #full list
 
 def toString(list):
     for item in list: print(item)
