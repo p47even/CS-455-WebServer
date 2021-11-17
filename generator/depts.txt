@@ -1,19 +1,19 @@
---dept,building
-AFAM,Howarth
-ARTS,Kittredge
-ARTH,Wyatt
-BIOL,Thompson
-BUS,McIntyre
-CHEM,Thompson
-CSCI,Thompson
-ECON,McIntyre
-ENGL,Wyatt
-GEOL,Thompson
-HIST,Wyatt
-MATH,Thompson
-MUS,Music Building
-PG,Wyatt
-PHIL,Wyatt
-PHYS,Thompson
-PSYC,Weyerhaeuser
-SOAN,McIntyre
+--dept,departmentName,building
+AFAM,African American Studies,Howarth
+ARTS,Studio Art,Kittredge
+ARTH,Art History,Wyatt
+BIOL,Biology,Thompson
+BUS,Business,McIntyre
+CHEM,Chemistry,Thompson
+CSCI,Computer Science,Thompson
+ECON,Economics,McIntyre
+ENGL,English,Wyatt
+GEOL,Geology,Thompson
+HIST,History,Wyatt
+MATH,Math,Thompson
+MUS,Music,Music Building
+PG,Politics and Government,Wyatt
+PHIL,Philosophy,Wyatt
+PHYS,Physics,Thompson
+PSYC,Psychology,Weyerhaeuser
+SOAN,Sociology and Antropology,McIntyre

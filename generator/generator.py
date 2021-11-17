@@ -42,6 +42,7 @@ def createStatement(list, table): #create and print insert statement
     for item in list:
         statement = 'INSERT INTO '+table+' VALUES ('
         for i,attr in enumerate(item) :
+            if not attr.isnumeric() : attr = addQuotes(attr)
             statement+=str(attr)
             if i != len(item)-1 : #check if last attribute 
                 statement += ', '
