@@ -42,7 +42,7 @@ create table Major(
     foreign key (studentID) references Students(studentID)
         on update cascade
         on delete cascade,
-	foreign key (major) references Dept (deptID)
+	foreign key (major) references Department(deptID)
 		on update cascade
 		on delete set null
 );
@@ -53,7 +53,7 @@ create table Minor(
     foreign key (studentID) references Students(studentID)
         on update cascade
         on delete cascade,
-	foreign key (minor) references Dept (deptID)
+	foreign key (minor) references Department(deptID)
 		on update cascade
 		on delete set null    
 );
@@ -108,12 +108,12 @@ create table Enroll(
 create table isMeeting(
     courseID integer,
     facultyID integer,
-    section text check (section like '[A-Z]'),
+    section text check (section GLOB '[A-Z]'),
     meetDay text
         check (meetDay = 'Monday' or meetDay = 'Tuesday' or meetDay = 'Wednesday' or meetDay = 'Thursday' or meetDay = 'Friday'),
-    meetTime text check (meetTime = '[0-9][0-9]:[0-9][0-9]'),
+    meetTime text check (meetTime GLOB '[0-9][0-9]:[0-9][0-9]'),
     location text,
-    primary key (courseID, section),
+    primary key (courseID, section, meetDay),
     foreign key (facultyID) references Professor(facultyID)
         on update cascade
         on delete cascade,
@@ -144,10 +144,10 @@ create table isRequired(
     courseID integer,
     requirementID integer,
     primary key (courseID, requirementID),
-    foreign key (courseID) references Class(courseID)
+    foreign key (courseID) references Course(courseID)
         on update cascade
         on delete cascade,
-    foreign key (requirementID) references Class(courseID)
+    foreign key (requirementID) references Course(courseID)
         on update cascade
         on delete cascade
 );
@@ -156,8 +156,8 @@ create table Discussion(
     courseID integer,
     facultyID integer,
     comment text,
-    date text check (date like '[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]'), 
-    time text check (time like '[0-9][0-9]:[0-9][0-9]:[0-9][0-9]'),
+    date text check (date GLOB '[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]'), 
+    time text check (time GLOB '[0-9][0-9]:[0-9][0-9]:[0-9][0-9]'),
     primary key (studentID, date, time),
     foreign key (studentID) references Students(studentID)
         on update cascade
