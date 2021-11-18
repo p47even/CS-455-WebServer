@@ -26,9 +26,7 @@ create table StudentLogin(
     studentID integer primary key,
     userName text,
     stuPassword text,
-    foreign key (studentID) references Students(studentID)
-        on update cascade
-        on delete cascade    
+    foreign key (studentID) references Students(studentID) on update cascade on delete cascade    
 );
 create table Department(
     deptID text primary key check (length(deptID) <= 4),
@@ -39,50 +37,34 @@ create table Major(
     studentID integer,
     major text,
     primary key (studentID, major),
-    foreign key (studentID) references Students(studentID)
-        on update cascade
-        on delete cascade,
-	foreign key (major) references Department(deptID)
-		on update cascade
-		on delete set null
+    foreign key (studentID) references Students(studentID) on update cascade on delete cascade,
+	foreign key (major) references Department(deptID) on update cascade on delete set null
 );
 create table Minor(
     studentID integer,
     minor text,
     primary key (studentID, minor),
-    foreign key (studentID) references Students(studentID)
-        on update cascade
-        on delete cascade,
-	foreign key (minor) references Department(deptID)
-		on update cascade
-		on delete set null    
+    foreign key (studentID) references Students(studentID) on update cascade on delete cascade,
+	foreign key (minor) references Department(deptID) on update cascade on delete set null    
 );
 create table Professor(
     facultyID integer primary key,
     professorName text,
     deptID text,
-    foreign key (deptID) references Department(deptID)
-        on update cascade
-        on delete cascade    
+    foreign key (deptID) references Department(deptID) on update cascade on delete cascade    
 );
 create table DepartmentHeads( 
     deptID text,
     departmentHeadID integer,
     primary key (deptID, departmentHeadID),
-    foreign key (deptID) references Department(deptID)
-        on update cascade
-        on delete cascade,
-    foreign key (departmentHeadID) references Professor(facultyID)
-        on update cascade
-        on delete cascade
+    foreign key (deptID) references Department(deptID) on update cascade on delete cascade,
+    foreign key (departmentHeadID) references Professor(facultyID) on update cascade on delete cascade
 );
 create table ProfessorLogin(
     facultyID integer primary key,
     userName text,
     facPassword text,
-    foreign key (facultyID) references Professor(facultyID)
-        on update cascade
-        on delete cascade    
+    foreign key (facultyID) references Professor(facultyID) on update cascade on delete cascade    
 );
 create table Course(
     courseID integer primary key,
@@ -90,20 +72,14 @@ create table Course(
     courseName text,
     fallSemester integer check (fallSemester = 1 or fallSemester = 0), -- 0: Is not in fall semester.  1: Is in fall semester
     springSemester integer check (springSemester = 1 or springSemester = 0),
-    foreign key (deptID) references Department(deptID)
-        on update cascade
-        on delete cascade
+    foreign key (deptID) references Department(deptID) on update cascade on delete cascade
 );
 create table Enroll(
     studentID integer,
     courseID integer,
     primary key (studentID, courseID),
-    foreign key (studentID) references Students(studentID)
-        on update cascade
-        on delete cascade,
-    foreign key (courseID) references Course(courseID)
-        on update cascade
-        on delete cascade
+    foreign key (studentID) references Students(studentID) on update cascade on delete cascade,
+    foreign key (courseID) references Course(courseID) on update cascade on delete cascade
 );
 create table isMeeting(
     courseID integer,
@@ -114,12 +90,8 @@ create table isMeeting(
     meetTime text check (meetTime GLOB '[0-9][0-9]:[0-9][0-9]'),
     location text,
     primary key (courseID, section, meetDay),
-    foreign key (facultyID) references Professor(facultyID)
-        on update cascade
-        on delete cascade,
-    foreign key (courseID) references Course(courseID)
-        on update cascade
-        on delete cascade
+    foreign key (facultyID) references Professor(facultyID) on update cascade on delete cascade,
+    foreign key (courseID) references Course(courseID) on update cascade on delete cascade
 );
 --create table Class(
 --    facultyID integer, 
@@ -144,12 +116,8 @@ create table isRequired(
     courseID integer,
     requirementID integer,
     primary key (courseID, requirementID),
-    foreign key (courseID) references Course(courseID)
-        on update cascade
-        on delete cascade,
-    foreign key (requirementID) references Course(courseID)
-        on update cascade
-        on delete cascade
+    foreign key (courseID) references Course(courseID) on update cascade on delete cascade,
+    foreign key (requirementID) references Course(courseID) on update cascade on delete cascade
 );
 create table Discussion(
     studentID integer,
@@ -159,13 +127,7 @@ create table Discussion(
     date text check (date GLOB '[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]'), 
     time text check (time GLOB '[0-9][0-9]:[0-9][0-9]:[0-9][0-9]'),
     primary key (studentID, date, time),
-    foreign key (studentID) references Students(studentID)
-        on update cascade
-        on delete cascade,
-    foreign key (courseID) references Course(courseID)
-        on update cascade
-        on delete cascade,
-    foreign key (facultyID) references Professor(facultyID)
-        on update cascade
-        on delete cascade      
+    foreign key (studentID) references Students(studentID) on update cascade on delete cascade,
+    foreign key (courseID) references Course(courseID) on update cascade on delete cascade,
+    foreign key (facultyID) references Professor(facultyID) on update cascade on delete cascade      
 );
