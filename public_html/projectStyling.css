@@ -6,14 +6,12 @@
 .sidebar {
   float: left;
   height: 500px;
-  width: 500px;
   background-color: #ff3385;
 }
 
 .content {
   float: left;
   height: 500px;
-  width: 500px;
   background-color: #ff9966
 }
 
