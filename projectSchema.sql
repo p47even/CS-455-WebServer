@@ -31,7 +31,7 @@ create table StudentLogin(
 create table Department(
     deptID text primary key check (length(deptID) <= 4),
     departmentName text,
-    building name
+    building text
 );
 create table Major(
     studentID integer,
