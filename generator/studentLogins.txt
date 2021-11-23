@@ -1,0 +1,26 @@
+--studentID, username, stuPassword
+0,aadiana,zSLPj4JV
+1,equintina,2JxCQnub
+2,cdion,4vmZmHA3
+3,ginez,5tLyKNrQ
+4,cshae,57T22Kic
+5,sbenita,xpjD8H25
+6,bviola,pECG4u90
+7,vtootsie,aL10lSN9
+8,tjudy,7PCfvUaL
+9,ojohanna,Xfr5YYjw
+10,kmartita,lCMl8iqs
+11,vcherrita,WzU4RMrE
+12,ewylma,9Ug3Aof3
+13,jbabita,UX1hwD0y
+14,akrystyna,mlNT9KUE
+15,dehetabel,8O9ly2q0
+16,janett,8yfe5WHs
+17,cdruci,5lSjrHHm
+18,amarleah,NM1Rragv
+19,aleslie,z3VzxC1V
+20,gphebe,C473YzQz
+21,melwira,vX2is8wx
+22,rfilia,wT26iswF
+23,jcarine,aiY864fk
+24,ewileen,Cmnoc0O1

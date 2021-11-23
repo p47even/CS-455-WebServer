@@ -1,0 +1,8 @@
+--studentID,minor
+3,ARTS
+5,PHIL
+13,MUS
+16,BUS
+18,PSYC
+22,CHEM
+23,AFAM

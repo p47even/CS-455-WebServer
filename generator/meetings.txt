@@ -1,0 +1,24 @@
+--courseID,section,meetDay,meetTime,endTime,location
+0,A,Monday,09:00,09:50,Thompson 409
+0,A,Wednesday,09:00,09:50,Thompson 409
+0,A,Friday,09:00,09:50,Thompson 409
+0,B,Tuesday,09:00,09:50,Thompson 409
+0,B,Thursday,09:00,09:50,Thompson 409
+1,A,Tuesday,10:00,10:50,Thompson 409
+1,A,Thursday,10:00,10:50,Thompson 409
+2,A,Monday,10:00,10:50,Thompson 409
+2,A,Wednesday,10:00,10:50,Thompson 409
+2,A,Friday,10:00,10:50,Thompson 409
+2,B,Tuesday,12:00,13:50,Thompson 409
+2,B,Thursday,12:00,13:50,Thompson 409
+3,A,Monday,12:00,12:50,Thompson 301
+3,A,Wednesday,12:00,12:50,Thompson 301
+3,A,Friday,12:00,12:50,Thompson 301
+4,A,Monday,11:00,11:50,Thompson 356
+4,A,Wednesday,11:00,11:50,Thompson 356
+4,A,Friday,11:00,11:50,Thompson 356
+5,A,Monday,13:00,13:50,Thompson 409
+5,A,Wednesday,13:00,13:50,Thompson 409
+5,A,Friday,13:00,13:50,Thompson 409
+6,A,Monday,15:00,15:50,Thompson 356
+6,A,Friday,15:00,15:50,Thompson 356

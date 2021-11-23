@@ -1,0 +1,10 @@
+--courseID,section,facultyID
+0,A,3
+0,B,0
+1,A,3
+2,A,4
+2,B,0
+3,A,2
+4,A,5
+5,A,1
+6,A,3

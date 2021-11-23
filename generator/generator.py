@@ -2,7 +2,7 @@ import random
 
 #Creates statements to be entered in SQLite
  
-tables = ['Students','StudentLogin','Department','Major','Minor','Professor','DepartmentHeads','ProfessorLogin','Course','Enroll','isMeeting','isRequired'] #full list
+tables = ['Students','StudentLogin','Department','Major','Minor','Professor','DepartmentHeads','ProfessorLogin','Course','Enroll','Teaching','IsMeeting','Requirements'] #full list
 
 studentFile = 'sampleStudents.txt'
 studentLoginFile = 'studentLogins.txt'
@@ -14,12 +14,13 @@ headFile = 'heads.txt'
 profLoginFile = 'profLogins.txt'
 courseFile = 'courses.txt'
 enrollFile = 'enrollments.txt'
-isMeetingFile = 'isMeetings.txt'
+isMeetingFile = 'meetings.txt'
+teachingsFile = 'teachings.txt'
 isRequiredFile = 'requirements.txt'
 
 
 fileNames = [studentFile]
-fileNames.extend([studentLoginFile,departmentFile,majorFile,minorFile,profFile,headFile,profLoginFile,courseFile,enrollFile,isMeetingFile,isRequiredFile]) #full list
+fileNames.extend([studentLoginFile,departmentFile,majorFile,minorFile,profFile,headFile,profLoginFile,courseFile,enrollFile,teachingsFile,isMeetingFile,isRequiredFile]) #full list
 
 def toString(list):
     for item in list: print(item)

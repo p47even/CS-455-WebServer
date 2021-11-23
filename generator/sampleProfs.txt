@@ -1,0 +1,7 @@
+--facultyID,professorName,deptID
+0,Goldia Daisi,CSCI
+1,Junette Vernice,CSCI
+2,Korie Danella,CSCI
+3,Liz Viv,CSCI
+4,Marlie Nannette,CSCI
+5,Johna Pierette,CSCI

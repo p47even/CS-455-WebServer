@@ -1,7 +1,7 @@
 import random
 nameFile = 'firstNames.txt'
 numNames = 4944
-numStudentsGenerated = 25
+numStudentsGenerated = 6
 classes = ['Freshman','Sophomore','Junior','Senior']
 
 def readFile(fileName): #reads file
@@ -25,9 +25,9 @@ def randomStudents(names, toGenerate): #Prepare random student data
         gpa = round(random.uniform(0.0,4.0),1)
 
         fullName = firstName[0]+' '+lastName[0]
-        #print(fullName) #print some random names
+        print(fullName) #print some random names
         currClass = classes[classNum]
-        print(str(i)+','+fullName+','+currClass+','+str(gpa)) #print raw student data
+        #print(str(i)+','+fullName+','+currClass+','+str(gpa)) #print raw student data
         #currStudent = [i, fullName, currClass, gpa] #uncomment this and others for array format
         #data.append(currStudent) #uncheck this and others for array format
         i+=1

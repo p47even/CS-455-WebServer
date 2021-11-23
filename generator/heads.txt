@@ -1,2 +1,2 @@
 --deptID,deptHeadID
-CSCI,0
+CSCI,3
