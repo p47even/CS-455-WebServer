@@ -2,7 +2,10 @@ PRAGMA foreign_keys = ON;
 
 -- Delete tables if they already exist
 drop table if exists Discussion;
-drop table if exists isRequired;
+drop table if exists Requirements;
+drop table if exists Teaching;
+drop table if exists WhichDept;
+drop table if exists IsMeeting;
 drop table if exists Class;
 drop table if exists Enroll;
 drop table if exists Course;
@@ -54,9 +57,8 @@ create table Professor(
     foreign key (deptID) references Department(deptID) on update cascade on delete cascade    
 );
 create table DepartmentHeads( 
-    deptID text,
+    deptID text primary key,
     departmentHeadID integer,
-    primary key (deptID, departmentHeadID),
     foreign key (deptID) references Department(deptID) on update cascade on delete cascade,
     foreign key (departmentHeadID) references Professor(facultyID) on update cascade on delete cascade
 );
@@ -81,38 +83,29 @@ create table Enroll(
     foreign key (studentID) references Students(studentID) on update cascade on delete cascade,
     foreign key (courseID) references Course(courseID) on update cascade on delete cascade
 );
-create table isMeeting(
+create table IsMeeting(
     courseID integer,
-    facultyID integer,
-    section text check (section GLOB '[A-Z]'),
-    meetDay text
-        check (meetDay = 'Monday' or meetDay = 'Tuesday' or meetDay = 'Wednesday' or meetDay = 'Thursday' or meetDay = 'Friday'),
+    meetDay text check (meetDay = 'Monday' or meetDay = 'Tuesday' or meetDay = 'Wednesday' or meetDay = 'Thursday' or meetDay = 'Friday'),
     meetTime text check (meetTime GLOB '[0-9][0-9]:[0-9][0-9]'),
     location text,
-    primary key (courseID, section, meetDay),
-    foreign key (facultyID) references Professor(facultyID) on update cascade on delete cascade,
+    primary key (courseID, meetDay),
     foreign key (courseID) references Course(courseID) on update cascade on delete cascade
 );
---create table Class(
---    facultyID integer, 
---    courseID integer,
---    section text check section like '[A-Z]',
---    deptID text,
---    meetDay text, 
---    meetTime text,
---    location text,
---    primary key (courseID, section), 
---    foreign key (facultyID) references Professor(facultyID)
---        on update cascade
---        on delete cascade,
---    foreign key (courseID) references Course(courseID)
---        on update cascade
---        on delete cascade,
---    foreign key (deptID) references Department(deptID)
---        on update cascade
---        on delete cascade
---);
-create table isRequired(
+create table WhichDept(
+    courseID integer primary key,
+    deptID integer,
+    foreign key (courseID) references Course(courseID) on update cascade on delete cascade,
+    foreign key (deptID) references Department(deptID) on update cascade on delete cascade
+)
+create table Teaching(
+    courseID integer,
+    section text check (section GLOB '[A-Z]'),
+    facultyID integer,
+    primary key(courseID, section),
+    foreign key (courseID) references Course(courseID) on update cascade on delete cascade,
+    foreign key (facultyID) references Professor(facultyID) on update cascade on delete cascade
+);
+create table Requirements(
     courseID integer,
     requirementID integer,
     primary key (courseID, requirementID),
