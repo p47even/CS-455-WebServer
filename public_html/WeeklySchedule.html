@@ -1,34 +1,30 @@
 
  <!DOCTYPE html>
   <html>    
-      <?php
-         //path to the SQLite database file
-        $db_file = './myDB/uni.db';
+       <p  
+        <?php
+            $db_file = './myDB/uni.db';
 
-        try {
-            //open connection to the university database file
-            $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
+            try {
+                $db = new PDO('sqlite:' . $db_file);  
 
-            //set errormode to use exceptions
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            //all the classes the current student is enrolled in
-            $query_str = "SELECT courseID, courseName, section, meetDay, meetTime, location FROM isMeeting Natural JOIN Enroll where studentID = 1";
-            $result_set = $db->query($query_str);
+                $query_str = "SELECT courseID, courseName, section, meetDay, meetTime, location FROM isMeeting Natural JOIN Enroll where studentID = 1";
+                $result_set = $db->query($query_str);
 
-            //loop through each tuple in result set and print out the data
-            //ssn will be shown in blue (see below)
-            foreach($result_set as $tuple) {          // <------ Line 24
-                echo "<font color='blue'>$tuple[courseID]</font> $tuple[courseName] $tuple[section] $tuple[meetDay]<br/>\n";
+                
+                foreach($result_set as $tuple) {        
+                    echo "<font color='blue'>$tuple[courseID]</font> $tuple[courseName] $tuple[section] $tuple[meetDay]<br/>\n";
+                }
+
+                $db = null;
             }
-
-            //disconnect from db
-            $db = null;
-        }
-        catch(PDOException $e) {
-            die('Exception : '.$e->getMessage());
-        }
-      ?>
+            catch(PDOException $e) {
+                die('Exception : '.$e->getMessage());
+            }
+        ?>
+    p>
         <style>
             /**SOURCES: https://codepen.io/m0skar/pen/WjBdVW**/
             * {
