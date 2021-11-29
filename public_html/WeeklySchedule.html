@@ -2,32 +2,32 @@
  <!DOCTYPE html>
   <html>    
       <?php
-        $user = 1;
-        $hostname = "129.114.19.130";
-        $username = "dbteam@129.114.19.130";
-        $password = "qwer1234";
-        $databaseName = "projectSchema.sql";
+         //path to the SQLite database file
+        $db_file = './myDB/uni.db';
 
-        //connect to database
-        $connect = mysqli_connect($hostname, $username, $password, $databaseName);
+        try {
+            //open connection to the university database file
+            $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
 
-        $user_Query = "SELECT studentID FROM StudentLogin WHERE studentID = $user";
-        $currentUser = mysqli_query($connect, $user_Query);
-        $json = array();
-        $sqlQuery = "SELECT courseID, facultyID, section, meetDay, meetTime, location FROM isMeeting Natural JOIN Enroll where studentID = $currentUser";
+            //set errormode to use exceptions
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $result = mysqli_query($connect, $sqlQuery);
+            //all the classes the current student is enrolled in
+            $query_str = "SELECT courseID, courseName, section, meetDay, meetTime, location FROM isMeeting Natural JOIN Enroll where studentID = 1";
+            $result_set = $db->query($query_str);
 
-        $classes = array();
-        while($row = mysqli_fetch_assoc($result)){
-            array_push($alldata, row);
+            //loop through each tuple in result set and print out the data
+            //ssn will be shown in blue (see below)
+            foreach($result_set as $tuple) {          // <------ Line 24
+                echo "<font color='blue'>$tuple[courseID]</font> $tuple[courseName] $tuple[section] $tuple[meetDay]<br/>\n";
+            }
+
+            //disconnect from db
+            $db = null;
         }
-
-        mysqli_free_result($result);
-
-        mysqli_close($connect);
-        echo json_encode($classes);
-
+        catch(PDOException $e) {
+            die('Exception : '.$e->getMessage());
+        }
       ?>
         <style>
             /**SOURCES: https://codepen.io/m0skar/pen/WjBdVW**/
