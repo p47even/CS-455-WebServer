@@ -1,20 +1,23 @@
-.menu {
-  height: 100px;
-  background-color: #007a99;
+body{
+    background-color: Maroon;
+    text-align: center;
+
+}
+h1{
+    color: White;
+}
+body{
+    color: White;
+
+}
+.main{
+    display:flex;
 }
 
-.sidebar {
-  height: 500px;
-  background-color: #ff3385;
+.studentLogin {
+    flex:1;
 }
 
-.content {
-  height: 500px;
-  background-color: #ff9966
-}
-
-.footer {
-  clear: both;
-  height: 200px;
-  background-color: #007a99;
+.adminLogin {
+    flex:1;
 }
