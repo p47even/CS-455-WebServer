@@ -1,1 +1,1 @@
-# /home/dbteam/uni.db
+# /home/dbteam/public_html/uni.db
