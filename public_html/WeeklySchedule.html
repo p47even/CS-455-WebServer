@@ -1,38 +1,29 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h2>List of all passengers</h2>
-<p>
     <?php
+    session_start();
+    //path to the SQLite database file
+    $db_file = './myDB/uni.db';
 
-        //path to the SQLite database file
-        $db_file = './myDB/uni.db';
+    try {
 
-        try {
-            //open connection to the airport database file
-            $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
+        //open connection to the airport database file
+        $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
 
-            //set errormode to use exceptions
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //set errormode to use exceptions
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        $classes = $db->query("SELECT * FROM Students NATURAL JOIN Enroll NATURAL JOIN IsMeeting WHERE StudentID = 1");
+         echo $classes;
+      
+        $db = null;
+    }
+    catch(PDOException $e) {
+        die('Exception : '.$e->getMessage());
+    }
 
-            //return all passengers, and store the result set
-            $query_str = "select courseID, meetTime from enroll natural join isMeeting where studentID = 1;";  // <----- Line 19
-            $result_set = $db->query($query_str);
-
-            //loop through each tuple in result set and print out the data
-            //ssn will be shown in blue (see below)
-            foreach($result_set as $tuple) {          // <------ Line 24
-                echo "<font color='blue'>$tuple[courseID]</font> $tuple[meetTime]<br/>\n";
-            }
-
-            //disconnect from db
-            $db = null;
-        }
-        catch(PDOException $e) {
-            die('Exception : '.$e->getMessage());
-        }
+    session_destroy();
     ?>
-
-</p>
 </body>
 </html>
