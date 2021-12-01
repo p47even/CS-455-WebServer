@@ -15,27 +15,27 @@
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         $courseID = $_POST["courseID"];
-        if $courseID == ""
+        if($courseID == "")
         {
             $courseID = "*";
         }
         $dept = $_POST["deptID"];
-        if $deptID == ""
+        if($deptID == "")
         {
             $deptID = "*";
         }
         $courseName = $_POST["courseName"];
-        if $courseName == ""
+        if($courseName == "")
         {
             $courseName = "*";
         }
         $fallSemester = $_POST["fallSemester"];
-        if $fallSemester == ""
+        if($fallSemester == "")
         {
             $fallSemester = "*";
         }
         $springSemester = $_POST["springSemester"];
-        if $springSemester == ""
+        if($springSemester == "")
         {
             $springSemester = "*";
         }
