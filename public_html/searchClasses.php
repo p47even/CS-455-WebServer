@@ -14,7 +14,7 @@
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $courseId = $_POST["courseID"];
+        $courseID = $_POST["courseID"];
         if $courseID == ""
         {
             $courseID = "*";
