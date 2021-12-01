@@ -39,7 +39,7 @@
         {
             $springSemester = "*";
         }
-
+        /*
         $classes_query = $db->prepare("SELECT FROM COURSE WHERE courseID = :courseID, deptID = :deptID, courseName = :courseName, fallSemester = :fallSemester, springSemester = :springSemester;");
             $classes_query->bindParam(':courseID', $courseID);
             $classes_query->bindParam(':deptID', $courseName);
@@ -48,7 +48,12 @@
             $classes_query->bindParam(':springSemester', $springSemester);
         
         $query_result = $classes_query->execute();
-      
+        */
+
+        $query_str = "SELECT FROM COURSE WHERE courseID = *, deptID = :deptID, courseName = *, fallSemester = *, springSemester = *";
+
+        $query_result = $db->query($query_str);
+
         $_SESSION["courAttrQuer"] = $query_result;
     }
     catch(PDOException $e) {
