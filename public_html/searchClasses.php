@@ -19,7 +19,7 @@
         {
             $courseID = "*";
         }
-        $dept = $_POST["deptID"];
+        $deptID = $_POST["deptID"];
         if($deptID == "")
         {
             $deptID = "*";
