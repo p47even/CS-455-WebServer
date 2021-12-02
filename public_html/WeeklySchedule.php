@@ -17,8 +17,14 @@
             text-decoration: none;
         }
 
-        table, th, td {
+        table, {
             border: 1px solid black;
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
+        th{
+            background-color:maroon;
         }
     </style>
     <div class="toolbar">
@@ -65,53 +71,50 @@
             echo
                         "<table>
                             <tr>
-                                <th>Monday</th>
-                                <th>Tuesday</th>
-                                <th>Wednesday</th>
-                                <th>Thursday</th>
-                                <th>Friday</th>
+                                <th>Meeting Day</th>
+                                <th>Meeting Time</th>
+                                <th>Class</th>
+                                <th>Location</th>
+                                <th>Instructor</th>
                             </tr>"; 
 
+                echo "<tr><th>Monday</th>";
                 foreach($monClass as $class) {
-                    echo "<tr>
+                    echo " <tr>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
                             <td>".$class["courseName"]. "</td>
                             <td>".$class["location"]." </td>
                             </tr>"; 
                 }
 
+                echo "<tr><th>Tuesday</th>";
                 foreach($tuClass as $class) {
-                    echo "<tr>
+                    echo " <tr>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
-                            <td>".$class["courseName"]. "</td>
+                           <td>".$class["courseName"]. "</td>
                             <td>".$class["location"]." </td>
                             </tr>"; 
                 }
 
+                echo "<tr><th>Wednesday</th>";
                 foreach($wedClass as $class) {
-                    echo "<tr>
+                    echo " <tr>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
                             <td>".$class["courseName"]. "</td>
                             <td>".$class["location"]." </td>
                             </tr>"; 
                 }
 
+                echo "<tr><th>Tursday</th>";
                 foreach($thClass as $class) {
-                    echo "<tr>
+                    echo " <tr>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
                             <td>".$class["courseName"]. "</td>
                             <td>".$class["location"]." </td>
                             </tr>"; 
                 }
 
-                foreach($thClass as $class) {
-                    echo "<tr>
-                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
-                            <td>".$class["courseName"]. "</td>
-                            <td>".$class["location"]." </td>
-                            </tr>"; 
-                }
-
+                echo "<tr><th>Friday</th>";
                 foreach($frClass as $class) {
                     echo "<tr>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
@@ -119,6 +122,7 @@
                             <td>".$class["location"]." </td>
                             </tr>"; 
                 }
+
                 echo "</table>";
         $db = null;
     ?>
