@@ -58,7 +58,7 @@
 </head>
 <body>
     <?php 
-       
+       echo "<table>$query_str</table>";
         if ($query_str->rowCount() > 0) {
             echo
                         "<table>
@@ -78,7 +78,7 @@
                             </table>"; 
                 }
         } else {
-            echo "You are not currently enrolled";
+            echo "You are not currently enrolled in any classes";
         }
 
         $db = null;
