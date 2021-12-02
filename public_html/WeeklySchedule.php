@@ -16,6 +16,10 @@
             font-size: 20px;
             text-decoration: none;
         }
+
+        table, th, td {
+            border: 1px solid black;
+        }
     </style>
     <div class="toolbar">
         <a href="Dashboard.html">Home</a>
@@ -43,7 +47,7 @@
         $thClass = "";
         $frClass = "";
         
-        $query_str = $db->query("SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1;");
+        //$query_str = $db->query("SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1;");
         $monClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Monday' ORDER BY meetTime;");
         $tuClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Tuesday' ORDER BY meetTime;");
         $wedClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Wedmesday' ORDER BY meetTime;");
@@ -70,12 +74,52 @@
 
                 foreach($monClass as $class) {
                     echo "<tr>
-                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " ".$class["courseName"]. " " .$class["location"]." 
-                            </td>
-                            </tr>
-                            </table>"; 
+                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                            <td>".$class["courseName"]. "</td>
+                            <td>".$class["location"]." </td>
+                            </tr>"; 
                 }
 
+                foreach($tuClass as $class) {
+                    echo "<tr>
+                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                            <td>".$class["courseName"]. "</td>
+                            <td>".$class["location"]." </td>
+                            </tr>"; 
+                }
+
+                foreach($wedClass as $class) {
+                    echo "<tr>
+                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                            <td>".$class["courseName"]. "</td>
+                            <td>".$class["location"]." </td>
+                            </tr>"; 
+                }
+
+                foreach($thClass as $class) {
+                    echo "<tr>
+                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                            <td>".$class["courseName"]. "</td>
+                            <td>".$class["location"]." </td>
+                            </tr>"; 
+                }
+
+                foreach($thClass as $class) {
+                    echo "<tr>
+                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                            <td>".$class["courseName"]. "</td>
+                            <td>".$class["location"]." </td>
+                            </tr>"; 
+                }
+
+                foreach($frClass as $class) {
+                    echo "<tr>
+                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                            <td>".$class["courseName"]. "</td>
+                            <td>".$class["location"]." </td>
+                            </tr>"; 
+                }
+                echo "</table>";
         $db = null;
     ?>
 
