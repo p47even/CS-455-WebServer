@@ -69,9 +69,9 @@
                         <th>Friday</th>
                     </tr>"; 
 
-        while($monClass = $monClass->fetch_assoc()) {
+        while($class = $monClass->fetch_assoc()) {
             echo "<tr>
-                    <td>".$monClass[meetTime]. "-" .$monClass[endTime]. " ".$monClass[courseName]. " " .$monClass[location]." 
+                    <td>".$class[meetTime]. "-" .$class[endTime]. " ".$class[courseName]. " " .$class[location]." 
                     </td>
                     </tr>
                     </table>"; 
