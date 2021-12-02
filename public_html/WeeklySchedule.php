@@ -58,9 +58,6 @@
 </head>
 <body>
     <?php 
-        $rows = $query_str->rowCount();
-       echo $rows;
-        if ($rows > 0) {
             echo
                         "<table>
                             <tr>
@@ -71,16 +68,13 @@
                                 <th>Friday</th>
                             </tr>"; 
 
-                while($class = $monClass->fetch_assoc()) {
+                foreach($monClass as $class) {
                     echo "<tr>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " ".$class["courseName"]. " " .$class["location"]." 
                             </td>
                             </tr>
                             </table>"; 
                 }
-        } else {
-            echo "You are not currently enrolled in any classes";
-        }
 
         $db = null;
     ?>
