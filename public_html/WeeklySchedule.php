@@ -7,7 +7,7 @@
         }
         .toolbar a:hover{
             background-color:white;
-            color: black
+            color: black;
         }
 
         .toolbar a{
@@ -19,13 +19,16 @@
 
         table, {
             border: 1px solid black;
-            margin-left: center; 
-            margin-right: center;
-            color: white;
+            margin-left: auto; 
+            margin-right: auto;
         }
 
         th{
             background-color:maroon;
+            color: white;
+        }
+        td{
+            border: 1px solid black;
         }
     </style>
     <div class="toolbar">
@@ -37,7 +40,7 @@
         <a href="4YearPlan.php">Four Year Plan</a>
     </div>
 
-    <h2>Weekly Scedule</h2>
+    <h2 <style>text-align: center;</style>>Weekly Scedule</h2>
     <?php
 
     try {
