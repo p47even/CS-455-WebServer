@@ -19,16 +19,21 @@
 
         table, {
             border: 1px solid black;
+        }
+
+        table.center {
             margin-left: auto; 
             margin-right: auto;
         }
 
         th{
-            background-color:maroon;
-            color: white;
+            color: maroon;
         }
         td{
             border: 1px solid black;
+        }
+        h2{
+            text-align: center;
         }
     </style>
     <div class="toolbar">
@@ -40,7 +45,7 @@
         <a href="4YearPlan.php">Four Year Plan</a>
     </div>
 
-    <h2 <style>text-align: center;</style>>Weekly Scedule</h2>
+    <h2>Weekly Scedule</h2>
     <?php
 
     try {
@@ -73,7 +78,7 @@
 <body>
     <?php 
             echo
-                        "<table>
+                        "<table class='center'>
                             <tr>
                                 <th>Meeting Day</th>
                                 <th>Meeting Time</th>
