@@ -19,8 +19,9 @@
 
         table, {
             border: 1px solid black;
-            margin-left: auto; 
-            margin-right: auto;
+            margin-left: center; 
+            margin-right: center;
+            color: white;
         }
 
         th{
@@ -81,6 +82,7 @@
                 echo "<tr><th>Monday</th>";
                 foreach($monClass as $class) {
                     echo " <tr>
+                            <td></td>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
                             <td>".$class["courseName"]. "</td>
                             <td>".$class["location"]." </td>
@@ -90,6 +92,7 @@
                 echo "<tr><th>Tuesday</th>";
                 foreach($tuClass as $class) {
                     echo " <tr>
+                            <td></td>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
                            <td>".$class["courseName"]. "</td>
                             <td>".$class["location"]." </td>
@@ -99,6 +102,7 @@
                 echo "<tr><th>Wednesday</th>";
                 foreach($wedClass as $class) {
                     echo " <tr>
+                            <td></td>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
                             <td>".$class["courseName"]. "</td>
                             <td>".$class["location"]." </td>
@@ -108,6 +112,7 @@
                 echo "<tr><th>Tursday</th>";
                 foreach($thClass as $class) {
                     echo " <tr>
+                            <td></td>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
                             <td>".$class["courseName"]. "</td>
                             <td>".$class["location"]." </td>
@@ -117,6 +122,7 @@
                 echo "<tr><th>Friday</th>";
                 foreach($frClass as $class) {
                     echo "<tr>
+                            <td></td>
                             <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
                             <td>".$class["courseName"]. "</td>
                             <td>".$class["location"]." </td>
