@@ -21,8 +21,8 @@
         <a href="WeeklySchedule.html">Schedule</a>
         <a href="Search4Classes">Search for classes</a>
         <a href="AcademicRequirements">Academic Rqueirements</a>
-        <a href="Enrollment.html">Enroll</a>
-        <a href="Discussion.html">Discussion Board</a>
+        <a href="Enrollment.php">Enroll</a>
+        <a href="4YearPlanSample.php">Four Year Plan</a>
     </div>
 
     <table>
@@ -48,9 +48,8 @@
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         $query_str = $db->query("SELECT * FROM Enroll NATURAL JOIN IsMeeting WHERE studentID = 1;");
-        $classes = $db->query($query_str);
          
-        foreach($classes as $class){
+        foreach($query_str as $class){
             echo "$class[meetTime] $class[meetDay] $class[className] $class[location]\t";
         }
       
