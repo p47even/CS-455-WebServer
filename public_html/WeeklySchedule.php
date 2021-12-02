@@ -47,13 +47,18 @@
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $query_str = $db->query("SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1;");
+        $query_str = $db->query("SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1 GROUP BY courseID;");
          
+        $classes = "";
         foreach($query_str as $class){
-            echo "$class[meetTime] $class[meetDay] $class[courseName] $class[location]\t";
+            $classes = array(array("$class[meetDay] $class[meetTime] $class[endTime] $class[courseName] $class[location]\t"));
         }
       
         $db = null;
+
+        foreach($classes as $class){
+            echo "<tr>$class</tr>";
+        }
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
