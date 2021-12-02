@@ -59,27 +59,24 @@
     ?>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Sunday</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-        </tr>
-        
-        <tr>
-            <th><th>
-            <th><?php echo $monClass?></th>
-            <th><?php echo $tuClass?></th>
-            <th><?php echo $wedClass?></th>
-            <th><?php echo $thClass?></th>
-            <th><?php echo $frClass?></th>
-            <th></th>
-        </tr>
+    <?php echo
+                "<table>
+                    <tr>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>"; 
 
-    </table>
+        while($monClass = $monClass->fetch_assoc()) {
+            echo "<tr>
+                    <td>".$monClass[meetTime]. "-" .$monClass[endTime]. " ".$monClass[courseName]. " " .$monClass[location]." 
+                    </td>
+                    </tr>
+                    </table>"; 
+        }
+    ?>
+
 </body>
 </html>
