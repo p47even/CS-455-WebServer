@@ -58,8 +58,9 @@
 </head>
 <body>
     <?php 
-       echo "<table>$query_str</table>";
-        if ($query_str->rowCount() > 0) {
+        $rows = $query_str->rowCount();
+       echo $rows;
+        if ($rows > 0) {
             echo
                         "<table>
                             <tr>
