@@ -43,14 +43,12 @@
         $thClass = "";
         $frClass = "";
         
-        //$query_str = $db->query("SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1;");
+        $query_str = $db->query("SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1;");
         $monClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Monday' ORDER BY meetTime;");
         $tuClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Tuesday' ORDER BY meetTime;");
         $wedClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Wedmesday' ORDER BY meetTime;");
         $thClass = $db->query("SELECT  meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Thursday' ORDER BY meetTime;"); 
         $frClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Friday' ORDER BY meetTime;");
-
-        $db = null;
 
     }
     catch(PDOException $e) {
@@ -59,23 +57,31 @@
     ?>
 </head>
 <body>
-    <?php echo
-                "<table>
-                    <tr>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                    </tr>"; 
+    <?php 
+    
+        if ($query_str->num_rows > 0) {
+            echo
+                        "<table>
+                            <tr>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>"; 
 
-        while($class = $monClass->fetch_assoc()) {
-            echo "<tr>
-                    <td>".$class["meetTime"]. "-" .$class["endTime"]. " ".$class["courseName"]. " " .$class["location"]." 
-                    </td>
-                    </tr>
-                    </table>"; 
+                while($class = $monClass->fetch_assoc()) {
+                    echo "<tr>
+                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " ".$class["courseName"]. " " .$class["location"]." 
+                            </td>
+                            </tr>
+                            </table>"; 
+                }
+        } else {
+            echo "You are not currently enrolled";
         }
+
+        $db = null;
     ?>
 
 </body>
