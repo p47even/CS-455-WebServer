@@ -36,6 +36,12 @@
 
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $monClass = "";
+        $tuClass = "";
+        $wedClass = "";
+        $thClass = "";
+        $frClass = "";
         
         //$query_str = $db->query("SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1;");
         $monClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Monday' ORDER BY meetTime;");
@@ -43,33 +49,7 @@
         $wedClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Wedmesday' ORDER BY meetTime;");
         $thClass = $db->query("SELECT  meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Thursday' ORDER BY meetTime;"); 
         $frClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Friday' ORDER BY meetTime;");
-        
-        $monClassesArray = array();
-        $tuClassesArray = array();
-        $wedClassesArray = array();
-        $thClassesArray = array();
-        $frClassesArray = array();
 
-        foreach($monClasss as $class){
-            $monClassesArray = array("$class[meetTime] $class[endTime] $class[courseName] $class[location]\t");
-        }
-
-        foreach($tuClasss as $class){
-            $tuClassesArray = array("$class[meetTime] $class[endTime] $class[courseName] $class[location]\t");
-        }
-
-        foreach($wedClasss as $class){
-            $wedClassesArray = array("$class[meetTime] $class[endTime] $class[courseName] $class[location]\t");
-        }
-
-        foreach($thClasss as $class){
-            $thClassesArray = array("$class[meetTime] $class[endTime] $class[courseName] $class[location]\t");
-        }
-
-        foreach($frClasss as $class){
-            $frClassesArray = array("$class[meetTime] $class[endTime] $class[courseName] $class[location]\t");
-        }
-      
         $db = null;
 
     }
@@ -92,25 +72,11 @@
         
         <tr>
             <th><th>
-            <th><?php foreach ($monClassesArray as $class){
-                echo $class;
-            } ?></th>
-            <th><?php foreach ($tuClassesArray as $class){
-                echo $class;
-            } ?></th>
-
-            <th><?php foreach ($wedClassesArray as $class){
-                echo $class;
-            } ?></th>
-
-            <th><?php foreach ($thClassesArray as $class){
-                echo $class;
-            } ?></th>
-
-            <th><?php foreach ($frClassesArray as $class){
-                echo $class;
-            } ?></th>
-
+            <th><?php echo $monClass?></th>
+            <th><?php echo $tuClass?></th>
+            <th><?php echo $wedClass?></th>
+            <th><?php echo $thClass?></th>
+            <th><?php echo $frClass?></th>
             <th></th>
         </tr>
 
