@@ -17,8 +17,9 @@
             text-decoration: none;
         }
 
-        table, {
+        table, th, td{
             border: 1px solid black;
+            border-collapse: collapse;
         }
 
         table.center {
@@ -28,9 +29,6 @@
 
         th{
             color: maroon;
-        }
-        td{
-            border: 1px solid black;
         }
         h2{
             text-align: center;
