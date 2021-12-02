@@ -71,7 +71,7 @@
 
         while($class = $monClass->fetch_assoc()) {
             echo "<tr>
-                    <td>".$class[meetTime]. "-" .$class[endTime]. " ".$class[courseName]. " " .$class[location]." 
+                    <td>".$class["meetTime"]. "-" .$class["endTime"]. " ".$class["courseName"]. " " .$class["location"]." 
                     </td>
                     </tr>
                     </table>"; 
