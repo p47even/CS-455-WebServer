@@ -15,6 +15,19 @@
             font-size: 20px;
             text-decoration: none;
         }
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table.center {
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
+        th{
+            color: maroon;
+        }
     </style>
     <div class="toolbar">
         <a href="Dashboard.html">Home</a>
@@ -61,6 +74,7 @@
                 <td>10:00 - 11:00</td>
                 <td>TH</td>
         </table>
+        <input type='submit' value='Enroll'>
     </form>
 </body>
 </html>
