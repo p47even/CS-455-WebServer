@@ -82,57 +82,106 @@
                                 <th>Meeting Time</th>
                                 <th>Class</th>
                                 <th>Location</th>
-                                <th>Instructor</th>
                             </tr>"; 
 
-                echo "<tr><th>Monday</th>";
-                foreach($monClass as $class) {
+                echo "<tr><th>Monday</th><td></td><td></td></tr>";
+                $monEmpty = $db->query("SELECT COUNT (courseName) FROM $query_str where meetDay = 'Monday'");
+                if ($monEmpty>0){
+                    foreach($monClass as $class) {
+                        echo " <tr>
+                                <td></td>
+                                <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                                <td>".$class["courseName"]. "</td>
+                                <td>".$class["location"]." </td>
+                                </tr>"; 
+                    }
+                } else {
                     echo " <tr>
-                            <td></td>
-                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
-                            <td>".$class["courseName"]. "</td>
-                            <td>".$class["location"]." </td>
-                            </tr>"; 
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>";
                 }
 
-                echo "<tr><th>Tuesday</th>";
-                foreach($tuClass as $class) {
+                echo "<tr><th>Tuesday</th><td></td><td></td><td></td></tr>";
+                $tuEmpty = $db->query("SELECT COUNT (courseName) FROM $query_str where meetDay = 'Tuesday'");
+                if ($tuEmpty>0){
+                    foreach($tuClass as $class) {
+                        echo " <tr>
+                                <td></td>
+                                <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                            <td>".$class["courseName"]. "</td>
+                                <td>".$class["location"]." </td>
+                                </tr>"; 
+                    }
+                } else {
                     echo " <tr>
-                            <td></td>
-                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
-                           <td>".$class["courseName"]. "</td>
-                            <td>".$class["location"]." </td>
-                            </tr>"; 
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>";
                 }
 
-                echo "<tr><th>Wednesday</th>";
-                foreach($wedClass as $class) {
+                echo "<tr><th>Wednesday</th><td></td><td></td><td></td><td></tr>";
+                $wedEmpty = $db->query("SELECT COUNT (courseName) FROM $query_str where meetDay = 'Wednesday'");
+                if ($wedEmpty>0){
+                    foreach($wedClass as $class) {
+                        echo " <tr>
+                                <td></td>
+                                <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                                <td>".$class["courseName"]. "</td>
+                                <td>".$class["location"]." </td>
+                                </tr>"; 
+                    }
+                } else {
                     echo " <tr>
-                            <td></td>
-                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
-                            <td>".$class["courseName"]. "</td>
-                            <td>".$class["location"]." </td>
-                            </tr>"; 
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>";
                 }
 
-                echo "<tr><th>Tursday</th>";
-                foreach($thClass as $class) {
+                echo "<tr><th>Tursday</th><td></td><td></td><td></td></tr>";
+                $thEmpty = $db->query("SELECT COUNT (courseName) FROM $query_str where meetDay = 'Thursday'");
+                if ($thEmpty>0){
+                    foreach($thClass as $class) {
+                        echo " <tr>
+                                <td></td>
+                                <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                                <td>".$class["courseName"]. "</td>
+                                <td>".$class["location"]." </td>
+                                </tr>"; 
+                    }
+                } else {
                     echo " <tr>
-                            <td></td>
-                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
-                            <td>".$class["courseName"]. "</td>
-                            <td>".$class["location"]." </td>
-                            </tr>"; 
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>";
                 }
 
-                echo "<tr><th>Friday</th>";
-                foreach($frClass as $class) {
-                    echo "<tr>
-                            <td></td>
-                            <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
-                            <td>".$class["courseName"]. "</td>
-                            <td>".$class["location"]." </td>
-                            </tr>"; 
+                echo "<tr><th>Friday</th><td></td><td></td><td></td></tr>";
+                $frEmpty = $db->query("SELECT COUNT (courseName) FROM $query_str where meetDay = 'Friday'");
+                if ($frEmpty>0){
+                    foreach($frClass as $class) {
+                        echo "<tr>
+                                <td></td>
+                                <td>".$class["meetTime"]. "-" .$class["endTime"]. " </td>
+                                <td>".$class["courseName"]. "</td>
+                                <td>".$class["location"]." </td>
+                                </tr>"; 
+                    }
+                } else {
+                    echo " <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>";
                 }
 
                 echo "</table>";
