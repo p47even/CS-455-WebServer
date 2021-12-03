@@ -84,7 +84,7 @@
                                 <th>Location</th>
                             </tr>"; 
 
-                echo "<tr><th>Monday</th><td></td><td></td></tr>";
+                echo "<tr><th>Monday</th><td></td><td></td><td></td></tr>";
                     foreach($monClass as $class) {
                         echo " <tr>
                                 <td></td>
@@ -104,7 +104,7 @@
                                 </tr>"; 
                     }
 
-                echo "<tr><th>Wednesday</th><td></td><td></td><td></td><td></tr>";
+                echo "<tr><th>Wednesday</th><td></td><td></td><td></td></tr>";
                     foreach($wedClass as $class) {
                         echo " <tr>
                                 <td></td>
@@ -124,7 +124,7 @@
                                 </tr>"; 
                     }
 
-                echo "<tr><th>Friday</th><td></td><td></td><td></td></tr>";
+                echo "<tr><th>Friday</th><td></td><td></td><td>";
                     foreach($frClass as $class) {
                         echo "<tr>
                                 <td></td>
