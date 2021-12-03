@@ -77,10 +77,10 @@
 
                     foreach($students as $student) {
                         echo " <tr>
-                                <td>".$class["stduentID"]." </td>
-                                <td>".$class["studentName"]. "</td>
-                                <td>".$class["class"]." </td>
-                                <td>".$class["major"]."</td>
+                                <td>".$student["stduentID"]." </td>
+                                <td>".$student["studentName"]. "</td>
+                                <td>".$student["class"]." </td>
+                                <td>".$student["major"]."</td>
                                 </tr>"; 
                     }
 
