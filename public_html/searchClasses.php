@@ -88,6 +88,8 @@
         
         $querStmnt = "SELECT * FROM COURSE".$addStr;
 
+        echo $querStmnt;
+
         $classes_query = $db->prepare($querStmnt);
 
         if($courseIDGiven == TRUE)
