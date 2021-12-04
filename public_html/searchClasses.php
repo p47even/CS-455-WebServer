@@ -13,34 +13,71 @@
 
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $attrStr = "";
+        $attrAdded = 0;
         
         $courseID = $_POST["courseID"];
-        if($courseID == "")
+        if($courseID != "")
         {
-            $courseID = "*";
+            if($attrAdded == 0)
+            {
+                $attrStr += ",";
+            }
+            $attrStr += " courseID = :courseID";
+            $attrAdded++;
         }
         $deptID = $_POST["deptID"];
-        if($deptID == "")
+        if($deptID != "")
         {
-            $deptID = "*";
+            if($attrAdded == 0)
+            {
+                $attrStr += ",";
+            }
+            $attrStr += " deptID = :deptID";
+            $attrAdded++;
         }
         $courseName = $_POST["courseName"];
-        if($courseName == "")
+        if($courseName != "")
         {
-            $courseName = "*";
+            if($attrAdded == 0)
+            {
+                $attrStr += ",";
+            }
+            $attrStr += " courseName = :courseName";
+            $attrAdded++;
         }
         $fallSemester = $_POST["fallSemester"];
-        if($fallSemester == "")
+        if($fallSemester != "")
         {
-            $fallSemester = "*";
+            if($attrAdded == 0)
+            {
+                $attrStr += ",";
+            }
+            $attrStr += " fallSemester = :fallSemester";
+            $attrAdded++;
         }
         $springSemester = $_POST["springSemester"];
-        if($springSemester == "")
+        if($springSemester != "")
         {
-            $springSemester = "*";
+            if($attrAdded == 0)
+            {
+                $attrStr += ",";
+            }
+            $attrStr += " springSemester = :springSemester";
+            $attrAdded++;
         }
+
+        $addStr = "";
+
+        if($attrAdded != 0)
+        {
+            $addStr += " WHERE ";
+        }
+
+        $addStr += $attrStr + ";";
         
-        $classes_query = $db->prepare("SELECT * FROM COURSE WHERE courseID = :courseID, deptID = :deptID, courseName = :courseName, fallSemester = :fallSemester, springSemester = :springSemester;");
+        $classes_query = $db->prepare("SELECT * FROM COURSE" + $addStr);
             $classes_query->bindParam(':courseID', $courseID);
             $classes_query->bindParam(':deptID', $courseName);
             $classes_query->bindParam(':courseName', $courseName);
