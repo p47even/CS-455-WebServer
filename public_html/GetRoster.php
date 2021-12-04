@@ -77,7 +77,7 @@
 </head>
 <body>
     <?php 
-        echo "<h2>Roster for ".$class["courseName"]."</h2>";
+        echo "<h2>Roster for ".$class."</h2>";
             echo
                         "<table class='center'>
                             <tr>

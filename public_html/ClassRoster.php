@@ -53,7 +53,7 @@
         Course ID: <input type='text' name='courseID' id='courseID' value ='".$_SESSION["courseID"]."'><br>
         
         <form action='./GetRoster.php' method='post'>
-        Course Name: <input type='text' name='courseID' id='courseID' value ='".$_SESSION["courseID"]."'><br>
+        Course Name: <input type='text' name='courseID' id='courseID' value ='".$_SESSION["courseName"]."'><br>
         
         <input type='submit' name='search' value='Search'>"
         ;
