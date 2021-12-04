@@ -94,7 +94,7 @@
         echo $querStmnt;
 
         $classes_query = $db->prepare($querStmnt);
-        $classes_query->bindParam(':courseID', $courseID);
+        //$classes_query->bindParam(':courseID', $courseID);
         if($courseIDGiven == TRUE)
         {    
             $classes_query->bindParam(':courseID', $courseID);
