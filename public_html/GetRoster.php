@@ -45,23 +45,23 @@
 
     <h2>Weekly Scedule</h2>
     <?php
+        session_start();
+        try {
 
-    try {
+            //open connection to the university's database file
+            $db = new PDO('sqlite:' . './uni.db');      // <------ Line 13
 
-        //open connection to the university's database file
-        $db = new PDO('sqlite:' . './uni.db');      // <------ Line 13
+            //set errormode to use exceptions
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        //set errormode to use exceptions
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $courseID = $_POST["courseID"];
-        $section = $_POST["section"];
-        
-        $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major WHERE courseID = $courseID;");
-    }
-    catch(PDOException $e) {
-        die('Exception : '.$e->getMessage());
-    }
+            $courseID = $_POST["courseID"];
+            $section = $_POST["section"];
+            
+            $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major NATURAL JOIN Teaching WHERE courseID = $courseID AND section = $section;");
+        }
+        catch(PDOException $e) {
+            die('Exception : '.$e->getMessage());
+        }
     ?>
 </head>
 <body>
@@ -77,7 +77,7 @@
 
                     foreach($students as $student) {
                         echo " <tr>
-                                <td>".$student["stduentID"]." </td>
+                                <td value = '".$_SESSION["courseID"]."'>".$student["stduentID"]." </td>
                                 <td>".$student["studentName"]. "</td>
                                 <td>".$student["class"]." </td>
                                 <td>".$student["major"]."</td>
