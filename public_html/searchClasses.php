@@ -95,10 +95,10 @@
 
         $classes_query = $db->prepare($querStmnt);
         $classes_query->bindParam(':courseID', $courseID);
-        //if($courseIDGiven == TRUE)
-        //{    
-            //$classes_query->bindParam(':courseID', $courseID);
-        //}
+        if($courseIDGiven == TRUE)
+        {    
+            $classes_query->bindParam(':courseID', $courseID);
+        }
         if($deptIDGiven == TRUE)
         {
             $classes_query->bindParam(':deptID', $courseName);
