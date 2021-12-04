@@ -111,7 +111,7 @@
             $classes_query->bindParam(':springSemester', $springSemester);
         }
         
-        $query_result = $classes_query->execute();
+        $classes_query->execute();
         
 
         //$query_str = "SELECT * FROM COURSE WHERE courseID = *, deptID = :deptID, courseName = *, fallSemester = *, springSemester = *";
@@ -120,7 +120,7 @@
 
         $_SESSION["courAttrQuer"] = $query_result;
 
-        echo $query_result->fetchAll();
+        echo $classes_query->fetchAll();
 
         //$redirect_url = $_SESSION['redirect_url']; 
         //unset($_SESSION['redirect_url']);
