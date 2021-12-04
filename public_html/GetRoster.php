@@ -38,9 +38,8 @@
         <a href="Dashboard.html">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
         <a href="Search4Classes">Search for classes</a>
-        <a href="AcademicRequirements">Academic Rqueirements</a>
-        <a href="Enrollment.php">Enroll</a>
-        <a href="4YearPlan.php">Four Year Plan</a>
+        <a href="Class Roster">Class Roster</a>
+        <a href="AddClass.php">Add Class</a>
     </div>
 
     <?php
@@ -57,7 +56,6 @@
             $courseID = $_POST["courseID"];
             $students = "";
             $class = "";
-            echo "".$courseID."";
             if (preg_match("/^[0-9]$/", $courseID) && strcmp("", $courseID) != 0){
                 $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major NATURAL JOIN Teaching WHERE courseID = $courseID AND facultyID = $facultyID;");
                 $class = $db->query("SELECT courseName FROM Course WHERE courseID = $courseID;");
@@ -72,7 +70,7 @@
 </head>
 <body>
     <?php 
-        //echo "<h2>Roster for ".$class["courseName"]."</h2>";
+        echo "<h2>".$class["courseName"]."</h2>";
             echo
                         "<table class='center'>
                             <tr>
