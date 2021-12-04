@@ -81,7 +81,6 @@
 
                     foreach($teaching as $class) {
                         echo " <tr>
-                                <td></td>
                                 <td>".$class["courseID"]. " </td>
                                 <td>".$class["courseName"]. "</td>
                                 </tr>"; 

@@ -58,7 +58,7 @@
             $students = "";
             $class = "";
             echo "".$courseID."";
-            if (strcmp("", $courseID) != 0 && !preg_match("/^[0-9]$/", $courseID)){
+            if (preg_match("/^[0-9]$/", $courseID) && strcmp("", $courseID) != 0){
                 $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major NATURAL JOIN Teaching WHERE courseID = $courseID AND facultyID = $facultyID;");
                 $class = $db->query("SELECT courseName FROM Course WHERE courseID = $courseID;");
             } else {
@@ -72,7 +72,7 @@
 </head>
 <body>
     <?php 
-        echo "<h2>Roster for ".$class["courseName"]."</h2>";
+        //echo "<h2>Roster for ".$class["courseName"]."</h2>";
             echo
                         "<table class='center'>
                             <tr>
