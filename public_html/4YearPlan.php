@@ -1,34 +1,85 @@
 <html>
-    <?php //TODO: GET STUDENTID FROM OUTSIDE, HANDLE UNDECLAREDS
+    <?php 
         $season = 1; //current semester
         $db = new SQLite3('uni.db');
-        $query = 'select * from Students natural join Enroll natural join Course natural join Major where studentID = 13;';
-        $result = $db->query($query);
-        $resultArray1 = array();
-        $resultArray1 = $result->fetchArray();
-        $startingCourses = array();
-        $allCourseNames = array();
-        $coursesinDept = array();
         $numCoursesPerSemester = 4;
         $numSemesters = 8;
-        if (!$resultArray1){
-            $major = "Undeclared";
-            $studentName = "John Smith";
-            $class = "Freshman";
+        $studentID = 9; //TODO: GET STUDENTID FROM SOMEWHERE, REDO HOW COURSES ARE SPACED
+        $query = 'select * from Students natural join Enroll natural join Course where studentID = '.$studentID.';';
+
+        $result = $db->query($query);
+        $currCoursesArray = array();
+        $currCoursesArray = $result->fetchArray();
+
+        //declare arrays
+        $startingCourses = array(); //courses currently enrolled in
+        $startingCourseNames = array(); //names of all currently enrolled courses
+        $allCourseNames = array(); //courseNames for whole department
+        $coursesinDept = array(); //courseIDs for whole department
+
+        $startingCourses[0] = $currCoursesArray['courseID'];
+        $startingCourseNames[0] = $currCoursesArray['courseName'];
+
+        $studentName = $currCoursesArray['studentName'];
+        $class = $currCoursesArray['class'];
+
+        //populate $startingCourses
+        $i = 1;
+        while ($currCoursesArray = $result->fetchArray()) { 
+            $startingCourses[$i] = $currCoursesArray['courseID'];
+            $startingCourseNames[$i] = $currCoursesArray['courseName'];
+            $i ++;
+        }
+
+        //fill table for current semester
+        $schedule = array_fill(0,$numCoursesPerSemester*$numSemesters,'');
+
+        $schedIndex = 0; //set starting index
+        if ($class == "Sophomore"){ $schedIndex = $numCoursesPerSemester*2; }
+        else if ($class == "Junior"){ $schedIndex = $numCoursesPerSemester*4; }
+        else if ($class == "Senior"){ $schedIndex = $numCoursesPerSemester*6; }
+        if ($season == 1) {
+            $schedIndex += $numCoursesPerSemester;
+        }
+
+        for($SC = 0; $SC < count($startingCourseNames); $SC++){
+            $schedule[$schedIndex] = $startingCourseNames[$SC];
+            $schedIndex++;
+        }
+
+        //get major
+        $majorQuery = 'select Major from Students natural join Major where studentID = '.$studentID.';';
+        $majorArr = $db->query($majorQuery)->fetchArray();
+        
+    
+        if (!$majorArr){
+            $major = 'Undeclared';
         }
         else {
-            $studentName = $resultArray1['studentName'];
-            $class = $resultArray1['class'];
-            $major = $resultArray1['major'];
+            $major = $majorArr[0];
             $courseIDs = array();
+            $courseNames = array();
             $fallSems = array();
             $springSems = array();
-            $i = 0;
-            while ($resultArray1 = $result->fetchArray()) {
-                $startingCourses[$i] = $resultArray1['courseID'];
-                $courseIDs[$i] = $resultArray1['courseID'];
-                $i ++;
+            $filterResultArray = array();
+            $j = 0;
+
+            $filterQuery = 'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),tmp2 as (select distinct courseID from Requirements where requirementID in tmp), tmp3 as (select courseID from tmp2 union select courseID from Requirements natural join Course where deptID = \''.$major.'\' and requirementID in tmp2) select * from tmp3 natural join course;';
+            $filterResult = $db->query($filterQuery);
+
+            while ($filterResultArray = $filterResult->fetchArray()){
+                $courseIDs[$j] = $filterResultArray['courseID'];
+                $courseNames[$j] = $filterResultArray['courseName'];
+                $fallSems[$j] = $filterResultArray['fallSemester'];
+                $springSems[$j] = $filterResultArray['springSemester'];
+                $j++;
             }
+            for($FC = 0; $FC < count($courseNames); $FC++){
+                $schedule[$schedIndex] = $courseNames[$FC];
+                $schedIndex++;
+            } 
+            
+            /*
             //get all courses in department
             $query2 = 'select * from course natural join department where deptID = \''.$major.'\';';
             $result2 = $db->query($query2);
@@ -72,53 +123,42 @@
                     }
                 }
             }
-            
-        }
-        //organize courses for table
-        $schedule = array_fill(0,$numCoursesPerSemester*$numSemesters,'');
-
-        $schedIndex = 0; //set starting index
-        if ($class == "Sophomore"){ $schedIndex = $numCoursesPerSemester*2; }
-        else if ($class == "Junior"){ $schedIndex = $numCoursesPerSemester*4; }
-        else if ($class == "Senior"){ $schedIndex = $numCoursesPerSemester*6; }
-        if ($season == 1) {
-            $schedIndex += $numCoursesPerSemester;
-        }
-
-        for($SC = 0; $SC < count($startingCourses); $SC++){
-            $schedule[$schedIndex] = getCourseName($startingCourses[$SC],$coursesinDept,$allCourseNames);
-            $schedIndex++;
-        }
-        $move = FALSE;
-        
-        for($courseIter = 0; $courseIter < count($courseIDs); $courseIter++){
-            //ensure courses are not in same semester as reqs
-            if (in_array( $courseIDs[$courseIter],$reqParents)) { //if course has requirement
-                for ($j = 0; $j < count($reqParents); $j++){
-                    $offset = $schedIndex-($schedIndex%$numCoursesPerSemester);
-                    $length = $numCoursesPerSemester;
-                    $semester = (array_slice( $schedule, $offset,$length  ));
-                    if ( ($reqParents[$j] == $courseIDs[$courseIter]) && (in_array( getCourseName($reqChildren[$j],$coursesinDept,$allCourseNames), $semester) ) ){ //if child is in this semester
-                        $move = TRUE;
-                        break;
-                    } 
-                    
-                } 
-            }
-            if ($move == TRUE) { 
-                $season = flip($season);
-                $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester); } //determine if currently doing fall (0) or spring (1) semester
-            
-            //handle seasons
-            if ( ($schedIndex-($schedIndex%$numCoursesPerSemester)) % ($numCoursesPerSemester*2) != 0 ) { $season = 1; }
-            else { $season = 0; }
-            $supportedSeasons = getSeasons($courseIDs[$courseIter],$coursesinDept,$fallSems, $springSems);
-            if ($supportedSeasons[$season] == 0){ $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester); } //if fall and course is not taught in fall, move to spring and vice versa
-
-            //add course to schedule
-            $schedule[$schedIndex] = getCourseName($courseIDs[$courseIter],$coursesinDept,$allCourseNames);
-            $schedIndex++;
+            */
+            //fill rest of table
+            /*
             $move = FALSE;
+        
+            for($courseIter = 0; $courseIter < count($courseIDs); $courseIter++){
+                //ensure courses are not in same semester as reqs
+                if (in_array( $courseIDs[$courseIter],$reqParents)) { //if course has requirement
+                    for ($j = 0; $j < count($reqParents); $j++){
+                        $offset = $schedIndex-($schedIndex%$numCoursesPerSemester);
+                        $length = $numCoursesPerSemester;
+                        $semester = (array_slice( $schedule, $offset,$length  ));
+                        if ( ($reqParents[$j] == $courseIDs[$courseIter]) && (in_array( getCourseName($reqChildren[$j],$coursesinDept,$allCourseNames), $semester) ) ){ //if child is in this semester
+                            $move = TRUE;
+                            break;
+                        } 
+                        
+                    } 
+                }
+                if ($move == TRUE) { 
+                    $season = flip($season);
+                    $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester); } //determine if currently doing fall (0) or spring (1) semester
+                
+                //handle seasons
+                if ( ($schedIndex-($schedIndex%$numCoursesPerSemester)) % ($numCoursesPerSemester*2) != 0 ) { $season = 1; }
+                else { $season = 0; }
+                $supportedSeasons = getSeasons($courseIDs[$courseIter],$coursesinDept,$fallSems, $springSems);
+                if ($supportedSeasons[$season] == 0){ $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester); } //if fall and course is not taught in fall, move to spring and vice versa
+    
+                //add course to schedule
+                $schedule[$schedIndex] = getCourseName($courseIDs[$courseIter],$coursesinDept,$allCourseNames);
+                $schedIndex++;
+                $move = FALSE;
+            }
+            */
+            
         }
 
         function flip($int){
@@ -156,6 +196,24 @@
 
     ?>
     <style>
+        .toolbar{
+            background-color: maroon;
+        }
+        .toolbar a:hover{
+            background-color:lightcyan;
+            padding: 5px 5px;
+            color: black;
+            border:1.75px solid black;
+        }
+
+        .toolbar a{
+            padding: 15px 15px;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            font-family: arial;
+        }
+
         table{
             border:1.75px solid black;
             border-collapse:collapse;
@@ -186,6 +244,14 @@
             font-family:arial;
         }
         </style>
+        <div class="toolbar">
+        <a href="Dashboard.html">Home</a>
+        <a href="WeeklySchedule.php">Schedule</a>
+        <a href="Search4Classes">Search for classes</a>
+        <a href="AcademicRequirements">Academic Rqueirements</a>
+        <a href="Enrollment.php">Enroll</a>
+        <a href="4YearPlan.php">Four Year Plan</a>
+    </div>
     <head>
         <title>Four Year Plan</title>
 </head>
@@ -193,6 +259,7 @@
     <h1 style = "color:beige;font-family:arial;background-color:maroon;text-align:center"> Four Year Plan </h1>
     <p><?php echo $studentName; ?></p>
     <p>Major: <?php echo $major; ?></p>
+    <p>Class: <?php echo $class; ?></p>
     <table>
         <tr>
             <th colspan = "2">Freshman</th>
