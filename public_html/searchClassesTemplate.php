@@ -23,9 +23,13 @@
     <br>
 
     <p>
-        <?php>
-            foreach($_SESSION["courAttrQuer"] as $tuple) {
-                echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[fallSemester] $tuple[springSemester]></font>";
+        <?php
+            if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
+            {
+                foreach($_SESSION["courAttrQuer"] as $tuple) 
+                {
+                    echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[fallSemester] $tuple[springSemester]></font>";
+                }
             }
         ?>
     </p>
