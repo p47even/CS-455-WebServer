@@ -37,8 +37,8 @@
     <div class="toolbar">
         <a href="Dashboard.html">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
-        <a href="Search4Classes">Search for classes</a>
-        <a href="Class Roster">Class Roster</a>
+        <a href="searchClasses.php">Search for classes</a>
+        <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClass.php">Add Class</a>
     </div>
 
