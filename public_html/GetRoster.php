@@ -43,7 +43,6 @@
         <a href="4YearPlan.php">Four Year Plan</a>
     </div>
 
-    <h2>Weekly Scedule</h2>
     <?php
         session_start();
         try {
@@ -58,6 +57,7 @@
             $section = $_POST["section"];
             
             $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major NATURAL JOIN Teaching WHERE courseID = $courseID AND section = $section;");
+            $class = $db->query("SELECT courseName FROM course WHERE courseID = $courseID;");
         }
         catch(PDOException $e) {
             die('Exception : '.$e->getMessage());
@@ -66,6 +66,7 @@
 </head>
 <body>
     <?php 
+        echo "<h2>Roster for ".$class."</h2>";
             echo
                         "<table class='center'>
                             <tr>
