@@ -18,6 +18,9 @@
         $attrAdded = 0;
         
         $courseID = $_POST["courseID"];
+        
+        echo $courseID;
+        
         $courseIDGiven = FALSE;
         if($courseID != "")
         {
@@ -87,6 +90,8 @@
         $addStr .= $attrStr.";";
         
         $querStmnt = "SELECT * FROM COURSE".$addStr;
+
+        echo $querStmnt;
 
         $classes_query = $db->prepare($querStmnt);
 
