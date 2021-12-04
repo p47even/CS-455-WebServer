@@ -25,7 +25,7 @@
     <p>
         <?php
             session_start();
-            $_SESSION["prevUrl"] = "./searchClassesTemplate.php";
+            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
             if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
             {

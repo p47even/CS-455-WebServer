@@ -117,7 +117,9 @@
 
         $_SESSION["courAttrQuer"] = $query_result;
 
-        echo "<meta http-equiv='refresh' content='0; url=".$_SESSION["prevUrl"]."'/>";
+        unset($_SESSION['redirect_url']);
+        header("Location: $redirect_url", true, 303);
+        exit;
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
