@@ -21,7 +21,7 @@
         $courseIDGiven = FALSE;
         if($courseID != "")
         {
-            if($attrAdded == 0)
+            if($attrAdded != 0)
             {
                 $attrStr .= ",";
             }
@@ -33,7 +33,7 @@
         $deptIDGiven = FALSE;
         if($deptID != "")
         {
-            if($attrAdded == 0)
+            if($attrAdded != 0)
             {
                 $attrStr .= ",";
             }
@@ -45,7 +45,7 @@
         $courseNameGiven = FALSE;
         if($courseName != "")
         {
-            if($attrAdded == 0)
+            if($attrAdded != 0)
             {
                 $attrStr .= ",";
             }
@@ -57,7 +57,7 @@
         $fallSemesterGiven = FALSE;
         if($fallSemester != "")
         {
-            if($attrAdded == 0)
+            if($attrAdded != 0)
             {
                 $attrStr .= ",";
             }
@@ -69,7 +69,7 @@
         $springSemesterGiven = FALSE;
         if($springSemester != "")
         {
-            if($attrAdded == 0)
+            if($attrAdded != 0)
             {
                 $attrStr .= ",";
             }
