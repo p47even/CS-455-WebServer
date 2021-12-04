@@ -88,7 +88,7 @@
         
         $querStmnt = "SELECT * FROM COURSE".$addStr;
 
-        echo $querStmnt;
+        echo $attrAdded != 0;
 
         $classes_query = $db->prepare($querStmnt);
 
