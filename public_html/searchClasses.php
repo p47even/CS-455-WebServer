@@ -117,7 +117,7 @@
 
         $_SESSION["courAttrQuer"] = $query_result;
 
-        echo $query_result;
+        echo $query_result->fetchArray();
 
         //$redirect_url = $_SESSION['redirect_url']; 
         //unset($_SESSION['redirect_url']);
