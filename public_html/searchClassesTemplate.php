@@ -24,6 +24,7 @@
 
     <p>
         <?php
+            session_start();
             $_SESSION["prevUrl"] = "./searchClassesTemplate.php";
 
             if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
