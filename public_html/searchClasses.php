@@ -117,7 +117,7 @@
 
         $_SESSION["courAttrQuer"] = $query_result;
 
-        echo "SELECT * FROM COURSE".$addStr; //->fetchArray();
+        echo $query_result->fetchAll();
 
         //$redirect_url = $_SESSION['redirect_url']; 
         //unset($_SESSION['redirect_url']);
