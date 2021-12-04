@@ -116,6 +116,9 @@
         //$query_result = $db->query($query_str);
 
         $_SESSION["courAttrQuer"] = $query_result;
+
+        header(&quot;Location: {$_SERVER['HTTP_REFERER']}&quot;);
+	    exit;
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
