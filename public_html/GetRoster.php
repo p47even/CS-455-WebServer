@@ -70,7 +70,7 @@
 </head>
 <body>
     <?php 
-        echo "<h2>".$class["courseName"]."</h2>";
+        //echo "<h2>".$class["courseName"]."</h2>";
             echo
                         "<table class='center'>
                             <tr>
@@ -86,7 +86,7 @@
                                 <td>".$student["studentName"]. "</td>
                                 <td>".$student["class"]." </td>
                                 <td>".$student["major"]."</td>
-                                </tr>"; 
+                                </tr>";  
                     }
 
                 echo "</table>";
