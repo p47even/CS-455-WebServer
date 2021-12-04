@@ -86,7 +86,10 @@
 
         $addStr .= $attrStr.";";
         
-        $classes_query = $db->prepare("SELECT * FROM COURSE".$addStr);
+        $querStmnt = "SELECT * FROM COURSE".$addStr;
+
+        $classes_query = $db->prepare($querStmnt);
+
         if($courseIDGiven == TRUE)
         {    
             $classes_query->bindParam(':courseID', $courseID);
