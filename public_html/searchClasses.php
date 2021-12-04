@@ -117,7 +117,7 @@
 
         $_SESSION["courAttrQuer"] = $query_result;
 
-        echo "<meta http-equiv='refresh' content='0; url=javascript:history.go(-1)'/>";
+        echo "<meta http-equiv='refresh' content='0; url=$_SESSION["prevUrl"]'/>";
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());

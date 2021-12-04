@@ -24,6 +24,8 @@
 
     <p>
         <?php
+            $_SESSION["prevUrl"] = "./searchClassesTemplate.php";
+
             if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
             {
                 foreach($_SESSION["courAttrQuer"] as $tuple) 
