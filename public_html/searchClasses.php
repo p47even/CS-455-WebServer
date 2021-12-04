@@ -115,7 +115,7 @@
 
         //$query_result = $db->query($query_str);
 
-        //$_SESSION["courAttrQuer"] = $query_result;
+        $_SESSION["courAttrQuer"] = $query_result;
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
