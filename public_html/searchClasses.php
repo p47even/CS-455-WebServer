@@ -88,8 +88,6 @@
         
         $querStmnt = "SELECT * FROM COURSE".$addStr;
 
-        echo $attrAdded != 0;
-
         $classes_query = $db->prepare($querStmnt);
 
         if($courseIDGiven == TRUE)
@@ -122,10 +120,10 @@
 
         $_SESSION["courAttrQuer"] = $query_result;
 
-        //$redirect_url = $_SESSION['redirect_url']; 
-        //unset($_SESSION['redirect_url']);
-        //header("Location: $redirect_url", true, 303);
-        //exit;
+        $redirect_url = $_SESSION['redirect_url']; 
+        unset($_SESSION['redirect_url']);
+        header("Location: $redirect_url", true, 303);
+        exit;
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
