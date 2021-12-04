@@ -116,16 +116,14 @@
 
         //$query_str = "SELECT * FROM COURSE WHERE courseID = *, deptID = :deptID, courseName = *, fallSemester = *, springSemester = *";
 
-        //$query_result = $db->query($query_str);
+        $query_result = $classes_query->fetchAll();
 
         $_SESSION["courAttrQuer"] = $query_result;
 
-        echo $classes_query->fetchAll();
-
-        //$redirect_url = $_SESSION['redirect_url']; 
-        //unset($_SESSION['redirect_url']);
-        //header("Location: $redirect_url", true, 303);
-        //exit;
+        $redirect_url = $_SESSION['redirect_url']; 
+        unset($_SESSION['redirect_url']);
+        header("Location: $redirect_url", true, 303);
+        exit;
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
