@@ -88,8 +88,6 @@
         
         $querStmnt = "SELECT * FROM COURSE".$addStr;
 
-        echo $querStmnt;
-
         $classes_query = $db->prepare($querStmnt);
 
         if($courseIDGiven == TRUE)
@@ -113,10 +111,9 @@
             $classes_query->bindParam(':springSemester', $springSemester);
         }
         
-        $classes_query->execute();
-        
+        echo $classes_query;
 
-        //$query_str = "SELECT * FROM COURSE WHERE courseID = *, deptID = :deptID, courseName = *, fallSemester = *, springSemester = *";
+        $classes_query->execute();
 
         $query_result = $classes_query->fetchAll();
 
