@@ -84,7 +84,7 @@
 
                     foreach($students as $student) {
                         echo " <tr>
-                                <td value = '".$_SESSION["courseID"]."'>".$student["stduentID"]." </td>
+                                <td>".$student["studentID"]." </td>
                                 <td>".$student["studentName"]. "</td>
                                 <td>".$student["class"]." </td>
                                 <td>".$student["major"]."</td>
