@@ -42,23 +42,52 @@
         <a href="Enrollment.php">Enroll</a>
         <a href="4YearPlan.php">Four Year Plan</a>
     </div>
+    <?php
+        session_start();
+        $facultyID = 3;
+        try {
+
+            //open connection to the university's database file
+            $db = new PDO('sqlite:' . './uni.db');      // <------ Line 13
+
+            //set errormode to use exceptions
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $teaching = $db->query("SELECT courseID, courseName FROM Teaching NATURAL JOIN Course WHERE facultyID = $facultyID;");
+            
+        } catch(PDOException $e) {
+            die('Exception : '.$e->getMessage());
+        }
+    ?>
     </head>
     <body>
         <?php
 
         $_SESSION["courseID"] = "";
-        $_SESSION["courseName"] = "";
         echo
         "<form action='./GetRoster.php' method='post'>
         Course ID: <input type='text' name='courseID' id='courseID' value ='".$_SESSION["courseID"]."'><br>
-        
-        <form action='./GetRoster.php' method='post'>
-        Course Name: <input type='text' name='courseID' id='courseID' value ='".$_SESSION["courseName"]."'><br>
-        
         <input type='submit' name='search' value='Search'>"
         ;
 
         echo "<br><br>";
+        echo "<h2>Currently Teaching</h2>";
+        echo
+                        "<table class='center'>
+                            <tr>
+                                <th>Course ID</th>
+                                <th>Course Name</th>
+                            </tr>"; 
+
+                    foreach($teaching as $class) {
+                        echo " <tr>
+                                <td></td>
+                                <td>".$class["courseID"]. " </td>
+                                <td>".$class["courseName"]. "</td>
+                                </tr>"; 
+                    }
+
+        
         ?>
     </body>
     </html>
