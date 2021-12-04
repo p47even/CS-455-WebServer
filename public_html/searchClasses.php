@@ -18,6 +18,7 @@
         $attrAdded = 0;
         
         $courseID = $_POST["courseID"];
+        $courseIDGiven = FALSE;
         if($courseID != "")
         {
             if($attrAdded == 0)
@@ -27,7 +28,9 @@
             $attrStr .= " courseID = :courseID";
             $attrAdded++;
         }
+
         $deptID = $_POST["deptID"];
+        $deptIDGiven = FALSE;
         if($deptID != "")
         {
             if($attrAdded == 0)
@@ -37,7 +40,9 @@
             $attrStr .= " deptID = :deptID";
             $attrAdded++;
         }
+
         $courseName = $_POST["courseName"];
+        $CourseNameGiven = FALSE;
         if($courseName != "")
         {
             if($attrAdded == 0)
@@ -47,7 +52,9 @@
             $attrStr .= " courseName = :courseName";
             $attrAdded++;
         }
+
         $fallSemester = $_POST["fallSemester"];
+        $fallSemesterGiven = FALSE;
         if($fallSemester != "")
         {
             if($attrAdded == 0)
@@ -57,7 +64,9 @@
             $attrStr .= " fallSemester = :fallSemester";
             $attrAdded++;
         }
+
         $springSemester = $_POST["springSemester"];
+        $springSemesterGiven = FALSE;
         if($springSemester != "")
         {
             if($attrAdded == 0)
@@ -78,11 +87,26 @@
         $addStr .= $attrStr.";";
         
         $classes_query = $db->prepare("SELECT * FROM COURSE".$addStr);
+        if($courseIDGiven == TRUE)
+        {    
             $classes_query->bindParam(':courseID', $courseID);
+        }
+        if($deptIDGiven == TRUE)
+        {
             $classes_query->bindParam(':deptID', $courseName);
+        }
+        if($courseNameGiven == TRUE)
+        {
             $classes_query->bindParam(':courseName', $courseName);
+        }
+        if($fallSemesterGiven == TRUE)
+        {
             $classes_query->bindParam(':fallSemester', $fallSemester);
+        }
+        if($springSemesterGiven == TRUE)
+        {
             $classes_query->bindParam(':springSemester', $springSemester);
+        }
         
         $query_result = $classes_query->execute();
         
