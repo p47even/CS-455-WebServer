@@ -45,6 +45,7 @@
 
     <?php
         session_start();
+        $facultyID = 3;
         try {
 
             //open connection to the university's database file
@@ -54,10 +55,20 @@
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $courseID = $_POST["courseID"];
-            $section = $_POST["section"];
-            
-            $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major NATURAL JOIN Teaching WHERE courseID = $courseID AND section = $section;");
-            $class = $db->query("SELECT courseName FROM course WHERE courseID = $courseID;");
+            $courseName = $_POST["courseName"];
+            $students = "";
+            $class = "";
+            if (strcmp("", $courseID) != 0 && !preg_match("/^[0-9]$/", $courseID)){
+                $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major NATURAL JOIN Teaching WHERE courseID = $courseID AND facultyID = $facultyID;");
+                $class = $db->query("SELECT courseName FROM Course WHERE courseID = $courseID;");
+            } else {
+                if (strcmp("", $courseName) != 0 && !preg_match("/^[a-zA-Z]$/", $courseName)){
+                    $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major NATURAL JOIN Teaching WHERE courseID = $courseID AND facultyID = $facultyID;");
+                    $class = $courseName;
+                } else {
+                    echo "Invalid input please provide a valid course ID or a valid course name";
+                }
+            }
         }
         catch(PDOException $e) {
             die('Exception : '.$e->getMessage());
@@ -66,7 +77,7 @@
 </head>
 <body>
     <?php 
-        echo "<h2>Roster for ".$class."</h2>";
+        echo "<h2>Roster for ".$class["courseName"]."</h2>";
             echo
                         "<table class='center'>
                             <tr>

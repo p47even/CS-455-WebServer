@@ -47,12 +47,13 @@
         <?php
 
         $_SESSION["courseID"] = "";
-        $_SESSION["section"] = "";
+        $_SESSION["courseName"] = "";
         echo
         "<form action='./GetRoster.php' method='post'>
         Course ID: <input type='text' name='courseID' id='courseID' value ='".$_SESSION["courseID"]."'><br>
+        
         <form action='./GetRoster.php' method='post'>
-        Section: <input type='text' name='section' id='section' value='".$_SESSION["section"]."'><br>
+        Course Name: <input type='text' name='courseID' id='courseID' value ='".$_SESSION["courseID"]."'><br>
         
         <input type='submit' name='search' value='Search'>"
         ;
