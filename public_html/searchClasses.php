@@ -110,8 +110,6 @@
         {
             $classes_query->bindParam(':springSemester', $springSemester);
         }
-        
-        echo $classes_query;
 
         $classes_query->execute();
 
