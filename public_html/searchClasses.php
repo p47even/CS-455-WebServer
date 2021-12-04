@@ -117,10 +117,12 @@
 
         $_SESSION["courAttrQuer"] = $query_result;
 
-        $redirect_url = $_SESSION['redirect_url']; 
-        unset($_SESSION['redirect_url']);
-        header("Location: $redirect_url", true, 303);
-        exit;
+        echo "SELECT * FROM COURSE".$addStr;
+
+        //$redirect_url = $_SESSION['redirect_url']; 
+        //unset($_SESSION['redirect_url']);
+        //header("Location: $redirect_url", true, 303);
+        //exit;
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
