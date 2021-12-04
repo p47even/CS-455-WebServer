@@ -24,7 +24,7 @@
 
     <?php>
         foreach($_SESSION["courAttrQuer"] as $tuple) {
-                echo "<font color='blue'>$tuple[courseID]</font> $tuple[deptID] $tuple[courseName] $tuple[fallSemester] $tuple[springSemester]> </a>";
+                echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[fallSemester] $tuple[springSemester]></font>";
             }
     ?>
 </body>
