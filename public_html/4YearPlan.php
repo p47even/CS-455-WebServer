@@ -1,33 +1,30 @@
 <html>
     <?php 
-        $season = 1; //current semester
+        $season = 1; //current semester; 0 = Fall, 1 = Spring
         $db = new SQLite3('uni.db');
         $numCoursesPerSemester = 4;
         $numSemesters = 8;
-        $studentID = 9; //TODO: GET STUDENTID FROM SOMEWHERE, REDO HOW COURSES ARE SPACED
+        $studentID = 5; //TODO: GET STUDENTID FROM SOMEWHERE, NOT JUMPING TO NEW SEMESTER BTWN 291 TO 361, MAYBE MAKE HTML TABLE GENERATION LESS HARD CODEY
         $query = 'select * from Students natural join Enroll natural join Course where studentID = '.$studentID.';';
 
         $result = $db->query($query);
         $currCoursesArray = array();
-        $currCoursesArray = $result->fetchArray();
 
-        //declare arrays
+        //declare vars
         $startingCourses = array(); //courses currently enrolled in
         $startingCourseNames = array(); //names of all currently enrolled courses
         $allCourseNames = array(); //courseNames for whole department
         $coursesinDept = array(); //courseIDs for whole department
-
-        $startingCourses[0] = $currCoursesArray['courseID'];
-        $startingCourseNames[0] = $currCoursesArray['courseName'];
-
-        $studentName = $currCoursesArray['studentName'];
-        $class = $currCoursesArray['class'];
+        $class = '';
+        $studentName = '';
 
         //populate $startingCourses
-        $i = 1;
+        $i = 0;
         while ($currCoursesArray = $result->fetchArray()) { 
             $startingCourses[$i] = $currCoursesArray['courseID'];
             $startingCourseNames[$i] = $currCoursesArray['courseName'];
+            $studentName = $currCoursesArray['studentName'];
+            $class = $currCoursesArray['class'];
             $i ++;
         }
 
@@ -64,7 +61,11 @@
             $filterResultArray = array();
             $j = 0;
 
-            $filterQuery = 'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),tmp2 as (select distinct courseID from Requirements where requirementID in tmp), tmp3 as (select courseID from tmp2 union select courseID from Requirements natural join Course where deptID = \''.$major.'\' and requirementID in tmp2) select * from tmp3 natural join course;';
+            $filterQuery = 
+                'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),
+                tmp2 as (select distinct courseID from Requirements where requirementID in tmp),
+                tmp3 as (select courseID from tmp2 union select courseID from Requirements natural join Course where deptID = \''.$major.'\' and requirementID in tmp2)
+                select * from tmp3 natural join course;';
             $filterResult = $db->query($filterQuery);
 
             while ($filterResultArray = $filterResult->fetchArray()){
@@ -74,90 +75,61 @@
                 $springSems[$j] = $filterResultArray['springSemester'];
                 $j++;
             }
-            for($FC = 0; $FC < count($courseNames); $FC++){
-                $schedule[$schedIndex] = $courseNames[$FC];
-                $schedIndex++;
-            } 
-            
-            /*
-            //get all courses in department
-            $query2 = 'select * from course natural join department where deptID = \''.$major.'\';';
-            $result2 = $db->query($query2);
-            $resultArray2 = array();
-            $j = 0;
-            while ($resultArray2 = $result2->fetchArray()) {
-                $coursesinDept[$j] = $resultArray2['courseID'];
-                $allCourseNames[$j] = $resultArray2['courseName'];
-                $fallSems[$j] = $resultArray2['fallSemester'];
-                $springSems[$j] = $resultArray2['springSemester'];
-                $j ++;
-            }
-            //filter course list 
-            $toTake = array();
-            $query3 = 'select * from requirements natural join course where deptID = \''.$major.'\';';
-            $result3 = $db->query($query3);
-            $resultArray3 = array();
+
+            //get reqs for all future courses
+            $reqQuery = 'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),
+                tmp2 as (select distinct courseID from Requirements where requirementID in tmp),
+                tmp3 as (select courseID from tmp2 union select courseID from Requirements natural join Course where deptID = \''.$major.'\' and requirementID in tmp2),
+                tmp4 as (select * from tmp3 natural join course),
+                tmp5 as (select * from tmp4 natural join Requirements),
+                tmp6 as (select requirementID as courseID from tmp5),
+                tmp7 as (select courseID as requirementID, courseName as requirementName from tmp6 natural join course)
+                select * from tmp5 natural join tmp7;';
+            $reqResult = $db->query($reqQuery);
+            $reqResultArray = array();
             $reqParents = array();
             $reqChildren = array();
-            while ($resultArray3 = $result3->fetchArray()) { //store query results
-                array_push($reqParents, $resultArray3['courseID']);
-                array_push($reqChildren, $resultArray3['requirementID']);
-            }
-            for ($iter = 0; $iter < count($coursesinDept); $iter++){
-                if ( !in_array($coursesinDept[$iter], $courseIDs)){ //if course is not listed as being taken
-                    $allgood = 0;
-                    for ($reqIter = 0; $reqIter < count($reqParents); $reqIter++ ){ //if course hasn't been retroactively fulfilled, add it
-                        if (in_array($reqParents[$reqIter], $courseIDs) && $reqChildren[$reqIter] == $coursesinDept[$iter] ){
-                            $allgood = 1;
-                        }
-                    }
-                    if ($allgood == 0) { array_push($courseIDs,$coursesinDept[$iter]); }   
-                }
-                if ( in_array($coursesinDept[$iter], $courseIDs) ){ //if course is listed as being taken
-                    for ($reqIter = 0; $reqIter < count($reqParents); $reqIter++ ){
-                        if ( $coursesinDept[$iter] == $reqChildren[$reqIter] ) { //if course is required for another, add parent course
-                            if (!in_array($reqChildren[$reqIter], $courseIDs)){
-                                array_push( $courseIDs,$reqParents[$reqIter] );
-                            }
-                        }
-                    }
-                }
-            }
-            */
-            //fill rest of table
-            /*
+            $reqParentNames = array();
+            $reqChildrenNames = array();
+            $k = 0;
+            while ($reqResultArray = $reqResult->fetchArray()){
+                $reqParents[$k] = $reqResultArray['courseID'];
+                $reqParentNames[$k] = $reqResultArray['courseName'];
+                $reqChildren[$k] = $reqResultArray['requirementID'];
+                $reqChildrenNames[$k] = $reqResultArray['requirementName'];
+            }          
+
+            //add in future courses
             $move = FALSE;
-        
-            for($courseIter = 0; $courseIter < count($courseIDs); $courseIter++){
-                //ensure courses are not in same semester as reqs
-                if (in_array( $courseIDs[$courseIter],$reqParents)) { //if course has requirement
+
+            for ($courseIter = 0; $courseIter < count($courseIDs); $courseIter++ ){
+                if (in_array($courseIDs[$courseIter], $reqParents) ){
                     for ($j = 0; $j < count($reqParents); $j++){
                         $offset = $schedIndex-($schedIndex%$numCoursesPerSemester);
                         $length = $numCoursesPerSemester;
                         $semester = (array_slice( $schedule, $offset,$length  ));
-                        if ( ($reqParents[$j] == $courseIDs[$courseIter]) && (in_array( getCourseName($reqChildren[$j],$coursesinDept,$allCourseNames), $semester) ) ){ //if child is in this semester
+                        if ( ($reqParents[$j] == $courseIDs[$courseIter]) && (in_array( $reqChildrenNames[$j], $semester) ) ){ //if child is in this semester
                             $move = TRUE;
                             break;
                         } 
                         
-                    } 
+                    }                    
                 }
-                if ($move == TRUE) { 
+                if ($move == TRUE){
                     $season = flip($season);
-                    $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester); } //determine if currently doing fall (0) or spring (1) semester
-                
+                    $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester);
+                }
                 //handle seasons
                 if ( ($schedIndex-($schedIndex%$numCoursesPerSemester)) % ($numCoursesPerSemester*2) != 0 ) { $season = 1; }
                 else { $season = 0; }
-                $supportedSeasons = getSeasons($courseIDs[$courseIter],$coursesinDept,$fallSems, $springSems);
+                $supportedSeasons = [$fallSems[$courseIter],$springSems[$courseIter]];
                 if ($supportedSeasons[$season] == 0){ $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester); } //if fall and course is not taught in fall, move to spring and vice versa
     
                 //add course to schedule
-                $schedule[$schedIndex] = getCourseName($courseIDs[$courseIter],$coursesinDept,$allCourseNames);
+                $schedule[$schedIndex] = $courseNames[$courseIter];
                 $schedIndex++;
-                $move = FALSE;
+                $move = FALSE;                
             }
-            */
             
         }
 
@@ -165,33 +137,6 @@
             if ($int == 0) { return 1; }
             else if ($int == 1) { return 0; }
             else { return 0; }
-        }
-
-        function getCourseName( $courseID, $listOfCourseIDs, $listOfNames ){
-            for ($i = 0; $i < count($listOfCourseIDs); $i++){
-                if ($courseID == $listOfCourseIDs[$i]){
-                    return $listOfNames[$i];
-                }
-            }
-            return "";
-        }
-
-        function getSeasons( $courseID, $listOfCourseIDs, $falls, $springs){
-            for ($i = 0; $i < count($listOfCourseIDs); $i++){
-                if ($courseID == $listOfCourseIDs[$i]){
-                    return [ $falls[$i],$springs[$i] ];
-                }
-            }
-            return [0][0];
-        }
-
-        function getCourseID( $courseName, $listOfCourseIDs, $listOfNames ){
-            for ($i = 0; $i < count($listOfNames); $i++){
-                if ($courseName == $listOfNames[$i]){
-                    return $listOfCourseIDs[$i];
-                }
-            }
-            return "";
         }
 
     ?>
@@ -247,10 +192,11 @@
         <div class="toolbar">
         <a href="Dashboard.html">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
-        <a href="Search4Classes">Search for classes</a>
-        <a href="AcademicRequirements">Academic Rqueirements</a>
-        <a href="Enrollment.php">Enroll</a>
-        <a href="4YearPlan.php">Four Year Plan</a>
+        <a href="Class Roster.php">Class Roster</a>
+        <a href="ProfSchedule.php">Schedule</a>
+        <a href="searchClasses.php">Search for classes</a>
+        <a href="ClassRoster.php">Class Roster</a>
+        <a href="AddClass.php">Add Class</a>
     </div>
     <head>
         <title>Four Year Plan</title>
