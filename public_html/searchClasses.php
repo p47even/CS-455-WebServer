@@ -22,9 +22,9 @@
         {
             if($attrAdded == 0)
             {
-                $attrStr += ",";
+                $attrStr .= ",";
             }
-            $attrStr += " courseID = :courseID";
+            $attrStr .= " courseID = :courseID";
             $attrAdded++;
         }
         $deptID = $_POST["deptID"];
@@ -32,9 +32,9 @@
         {
             if($attrAdded == 0)
             {
-                $attrStr += ",";
+                $attrStr .= ",";
             }
-            $attrStr += " deptID = :deptID";
+            $attrStr .= " deptID = :deptID";
             $attrAdded++;
         }
         $courseName = $_POST["courseName"];
@@ -42,9 +42,9 @@
         {
             if($attrAdded == 0)
             {
-                $attrStr += ",";
+                $attrStr .= ",";
             }
-            $attrStr += " courseName = :courseName";
+            $attrStr .= " courseName = :courseName";
             $attrAdded++;
         }
         $fallSemester = $_POST["fallSemester"];
@@ -52,9 +52,9 @@
         {
             if($attrAdded == 0)
             {
-                $attrStr += ",";
+                $attrStr .= ",";
             }
-            $attrStr += " fallSemester = :fallSemester";
+            $attrStr .= " fallSemester = :fallSemester";
             $attrAdded++;
         }
         $springSemester = $_POST["springSemester"];
@@ -62,9 +62,9 @@
         {
             if($attrAdded == 0)
             {
-                $attrStr += ",";
+                $attrStr .= ",";
             }
-            $attrStr += " springSemester = :springSemester";
+            $attrStr .= " springSemester = :springSemester";
             $attrAdded++;
         }
 
@@ -72,12 +72,12 @@
 
         if($attrAdded != 0)
         {
-            $addStr += " WHERE ";
+            $addStr .= " WHERE ";
         }
 
-        $addStr += $attrStr + ";";
+        $addStr .= $attrStr.";";
         
-        $classes_query = $db->prepare("SELECT * FROM COURSE" + $addStr);
+        $classes_query = $db->prepare("SELECT * FROM COURSE".$addStr);
             $classes_query->bindParam(':courseID', $courseID);
             $classes_query->bindParam(':deptID', $courseName);
             $classes_query->bindParam(':courseName', $courseName);
