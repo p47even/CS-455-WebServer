@@ -42,7 +42,7 @@
         }
 
         $courseName = $_POST["courseName"];
-        $CourseNameGiven = FALSE;
+        $courseNameGiven = FALSE;
         if($courseName != "")
         {
             if($attrAdded == 0)
