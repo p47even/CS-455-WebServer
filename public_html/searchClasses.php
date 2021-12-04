@@ -117,8 +117,7 @@
 
         $_SESSION["courAttrQuer"] = $query_result;
 
-        header(&quot;Location: {$_SERVER['HTTP_REFERER']}&quot;);
-	    exit;
+        echo "<meta http-equiv='refresh' content='0; url=javascript:history.go(-1)'/>";
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
