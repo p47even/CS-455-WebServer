@@ -37,10 +37,10 @@
 
         $db = null;
 
-        // $redirect_url = $_SESSION['redirect_url']; 
-        // unset($_SESSION['redirect_url']);
-        // header("Location: $redirect_url", true, 303);
-        // exit;
+        $redirect_url = $_SESSION['redirect_url']; 
+        unset($_SESSION['redirect_url']);
+        header("Location: $redirect_url", true, 303);
+        exit;
         
     }
     catch(PDOException $e) {

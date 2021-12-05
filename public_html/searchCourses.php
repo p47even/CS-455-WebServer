@@ -107,12 +107,12 @@
             if($semester == "fall")
             {
                 $attrStr .= " fallSemester = 1";
-                $attrStr .= ", springSemester = 0";
+                $attrStr .= " and springSemester = 0";
             }
             else
             {
                 $attrStr .= " springSemester = 1";
-                $attrStr .= ", fallSemester = 0";
+                $attrStr .= " and fallSemester = 0";
             }
             $attrAdded++;
         }
