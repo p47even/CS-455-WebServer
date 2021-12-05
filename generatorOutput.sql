@@ -184,3 +184,4 @@ INSERT INTO Requirements VALUES (5, 3);
 INSERT INTO Requirements VALUES (5, 4);
 INSERT INTO Requirements VALUES (6, 1);
 INSERT INTO Requirements VALUES (6, 5);
+INSERT INTO ClassRequirements VALUES (6, 'Senior');
