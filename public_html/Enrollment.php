@@ -70,12 +70,14 @@
         
         <br><input type='submit' name='submit' value='Search'> <br>
 
-        <h>Search Results: </h>
+        
     <p>
         <?php
             session_start();
-
+            
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
+
+            echo "<h>Search Results: </h><br>";
 
             if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
             {
@@ -85,7 +87,7 @@
                 }
             }
             
-            echo "<h>Cart:<h><br>";
+            echo "<br><br><br><h>Cart:<h><br>";
 
             if(isset($_SESSION["cart"]) and count($_SESSION["cart"]) > 0)
             {

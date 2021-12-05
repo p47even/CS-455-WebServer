@@ -29,6 +29,8 @@
 
         $db = null;
 
+        $_SESSION['cart'] = array(); 
+
         $redirect_url = $_SESSION['redirect_url']; 
         unset($_SESSION['redirect_url']);
         header("Location: $redirect_url", true, 303);
