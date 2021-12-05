@@ -28,6 +28,11 @@
 </head>
 <body>
     <?php
+        $_SESSION["courseID"] = "";
+        $_SESSION["courseName"] = "";
+        $_SESSION["deptID"] = "";
+        $_SESSION["Fall"] = "";
+        $_SESSION["Spring"] = "";
         echo
         "<form action='./AddClassHandler.php' method='post'>
         Course ID: <input type='text' name='courseID' id='courseID' value ='".$_SESSION["courseID"]."'><br>
