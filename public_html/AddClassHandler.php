@@ -36,11 +36,14 @@
             $db = new PDO('sqlite:' . './myDB/uni.db');  
 
             $msg = "";
+            $existing_ID = "";
+            $existing_class = "";
             $courseID = $_POST["courseID"];
             $courseName = $_POST["courseName"];
             $deptID = $_POST["deptID"];
             $fall = $_POST["Fall"];
             $spring = $_POST["Spring"];
+
 
             //set errormode to use exceptions
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -49,7 +52,7 @@
             $existing_class = $db->query("SELECT courseID, courseName FROM Course WHERE courseName = $courseName;");
 
             if (mysql_num_rows($existing_ID) == 0 && mysql_num_rows($existing_class) == 0){
-                $insert_query = $db->prepare("INSERT INTO passengers VALUES (:courseID, :deptID, :courseName, :fall, :spring);");
+                $insert_query = $db->prepare("INSERT INTO Course VALUES (:courseID, :deptID, :courseName, :fall, :spring);");
                     $insert_query->bindParam(':courseID', $courseID);
                     $insert_query->bindParam(':courseName', $courseName);
                     $iinsert_query->bindParam(':deptID', $deptID);
