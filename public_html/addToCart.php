@@ -13,11 +13,9 @@
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        session_start();
-        
-        $meetDay = $_POST["meetDay"];
-        $section = $_POST["section"];
-        $courseID = $_POST["courseID"];
+        $meetDay = $_GET["meetDay"];
+        $section = $_GET["section"];
+        $courseID = $_GET["courseID"];
 
         echo $meetDay." ";
         echo $section." ";
@@ -33,6 +31,8 @@
         $queryResult = $update_query->fetchAll();
 
         //echo $queryResult[0];
+        
+        session_start();
 
         if(!isset($_SESSION["cart"]))
         {
