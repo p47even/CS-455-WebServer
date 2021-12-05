@@ -32,7 +32,7 @@
                     $update_query->bindParam(':user', $username);
                     $update_query->bindParam(':pass', $password);
 
-                if(!is_int($username))
+                if(!((string)(int)$username == $username))
                 {
                     $msg .= "Error 'studentID' must be numbers only";
                 }
