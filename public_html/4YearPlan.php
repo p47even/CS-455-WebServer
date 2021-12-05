@@ -1,10 +1,15 @@
 <html>
     <?php 
-        $season = 1; //current semester; 0 = Fall, 1 = Spring
+        //session_start();
+        //$studentID = $_SESSION['studentID'];
+        $studentID = 13;
+
+        $seasonSpring = TRUE; 
         $db = new SQLite3('uni.db');
+        $classes = ['Freshman','Sophomore','Junior','Senior'];
         $numCoursesPerSemester = 4;
         $numSemesters = 8;
-        $studentID = 5; //TODO: GET STUDENTID FROM SOMEWHERE, MAYBE MAKE HTML TABLE GENERATION LESS HARD CODEY
+
         $query = 'select * from Students natural join Enroll natural join Course where studentID = '.$studentID.';';
 
         $result = $db->query($query);
@@ -35,7 +40,7 @@
         if ($class == "Sophomore"){ $schedIndex = $numCoursesPerSemester*2; }
         else if ($class == "Junior"){ $schedIndex = $numCoursesPerSemester*4; }
         else if ($class == "Senior"){ $schedIndex = $numCoursesPerSemester*6; }
-        if ($season == 1) {
+        if ($seasonSpring) {
             $schedIndex += $numCoursesPerSemester;
         }
 
@@ -43,6 +48,7 @@
             $schedule[$schedIndex] = $startingCourseNames[$SC];
             $schedIndex++;
         }
+        $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester);
 
         //get major
         $majorQuery = 'select Major from Students natural join Major where studentID = '.$studentID.';';
@@ -64,8 +70,12 @@
             $filterQuery = 
                 'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),
                 tmp2 as (select distinct courseID from Requirements where requirementID in tmp),
-                tmp3 as (select courseID from tmp2 union select courseID from Requirements natural join Course where deptID = \''.$major.'\' and requirementID in tmp2)
-                select * from tmp3 natural join course;';
+                tmp3 as (select courseID from tmp2 union select courseID from Requirements natural join Course where deptID = \''.$major.'\' and requirementID in tmp2),
+                tmp4 as (select * from tmp3 natural join Requirements),		
+                tmp5 as (select requirementID as courseID from tmp4),
+                tmp6 as (select * from tmp5 where courseID not in tmp),
+                tmp7 as (select distinct courseID from tmp3 union select distinct courseID from tmp6 group by courseID)
+                select * from tmp7 natural join course;';
             $filterResult = $db->query($filterQuery);
 
             while ($filterResultArray = $filterResult->fetchArray()){
@@ -77,14 +87,20 @@
             }
 
             //get reqs for all future courses
-            $reqQuery = 'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),
+            $reqQuery = 
+                'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),
                 tmp2 as (select distinct courseID from Requirements where requirementID in tmp),
                 tmp3 as (select courseID from tmp2 union select courseID from Requirements natural join Course where deptID = \''.$major.'\' and requirementID in tmp2),
-                tmp4 as (select * from tmp3 natural join course),
-                tmp5 as (select * from tmp4 natural join Requirements),
-                tmp6 as (select requirementID as courseID from tmp5),
-                tmp7 as (select courseID as requirementID, courseName as requirementName from tmp6 natural join course)
-                select * from tmp5 natural join tmp7;';
+                tmp4 as (select * from tmp3 natural join Requirements),		
+                tmp5 as (select requirementID as courseID from tmp4),
+                tmp6 as (select * from tmp5 where courseID not in tmp),
+                tmp7 as (select distinct courseID from tmp3 union select distinct courseID from tmp6 group by courseID),
+                tmp8 as (select * from tmp7 natural join course),
+                tmp9 as (select * from tmp8 natural join Requirements),
+                tmp10 as (select requirementID as courseID from tmp9),
+                tmp11 as (select courseID as requirementID, courseName as requirementName from tmp10 natural join course)
+                select * from tmp9 natural join tmp11;';         
+
             $reqResult = $db->query($reqQuery);
             $reqResultArray = array();
             $reqParents = array();
@@ -108,17 +124,17 @@
                         $length = $numCoursesPerSemester;
                         $semester = (array_slice( $schedule, $offset,$length  ));
                         if ( ($reqParents[$j] == $courseIDs[$courseIter]) && (in_array( $reqChildrenNames[$j], $semester) ) ){ //if child is in this semester
-                            $season = flip($season);
+                            $seasonSpring = !$seasonSpring;
                             $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester);
                         } 
                         
                     }                    
                 }
                 //handle seasons
-                if ( ($schedIndex-($schedIndex%$numCoursesPerSemester)) % ($numCoursesPerSemester*2) != 0 ) { $season = 1; }
-                else { $season = 0; }
+                if ( ($schedIndex-($schedIndex%$numCoursesPerSemester)) % ($numCoursesPerSemester*2) != 0 ) { $seasonSpring = TRUE; }
+                else { $seasonSpring = FALSE; }
                 $supportedSeasons = [$fallSems[$courseIter],$springSems[$courseIter]];
-                if ($supportedSeasons[$season] == 0){ $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester); } //if fall and course is not taught in fall, move to spring and vice versa
+                if ($supportedSeasons[$seasonSpring] == 0){ $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester); } //if fall and course is not taught in fall, move to spring and vice versa
     
                 //add course to schedule
                 $schedule[$schedIndex] = $courseNames[$courseIter];
@@ -127,10 +143,13 @@
             
         }
 
-        function flip($int){
-            if ($int == 0) { return 1; }
-            else if ($int == 1) { return 0; }
-            else { return 0; }
+        function echoTableElements($start, $schedule, $numToIter){
+            $str = '<tr>';
+            for ($i = $start; $i < count($schedule); $i += $numToIter){
+                $str = $str.'<td>'.$schedule[$i].'</td>';
+            }
+            $str = $str.'</tr>';
+            echo $str;
         }
 
     ?>
@@ -184,7 +203,7 @@
         }
         </style>
         <div class="toolbar">
-        <a href="Dashboard.html">Home</a>
+        <a href="Dashboard.php">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
         <a href="Class Roster.php">Class Roster</a>
         <a href="ProfSchedule.php">Schedule</a>
@@ -202,60 +221,18 @@
     <p>Class: <?php echo $class; ?></p>
     <table>
         <tr>
-            <th colspan = "2">Freshman</th>
-            <th colspan = "2">Sophomore</th>
-            <th colspan = "2">Junior</th>
-            <th colspan = "2">Senior</th>
+            <?php for ($i = 0; $i < count($classes); $i++){ //table headers
+                echo "<th colspan = \"2\">".$classes[$i]."</th>";
+            }?>
         </tr>
         <tr>
-            <th>Fall</th>
-            <th>Spring</th>
-            <th>Fall</th>
-            <th>Spring</th>
-            <th>Fall</th>
-            <th>Spring</th>
-            <th>Fall</th>
-            <th>Spring</th>
-        <tr> <!--Row 1 -->
-            <td><?php echo $schedule[0]; ?></td>
-            <td><?php echo $schedule[4]; ?></td>
-            <td><?php echo $schedule[8]; ?></td>
-            <td><?php echo $schedule[12]; ?></td>
-            <td><?php echo $schedule[16]; ?></td>
-            <td><?php echo $schedule[20]; ?></td>
-            <td><?php echo $schedule[24]; ?></td>
-            <td><?php echo $schedule[28]; ?></td>
-        </tr>
-        <tr> <!--Row 2 -->
-            <td><?php echo $schedule[1]; ?></td>
-            <td><?php echo $schedule[5]; ?></td>
-            <td><?php echo $schedule[9]; ?></td>
-            <td><?php echo $schedule[13]; ?></td>
-            <td><?php echo $schedule[17]; ?></td>
-            <td><?php echo $schedule[21]; ?></td>
-            <td><?php echo $schedule[25]; ?></td>
-            <td><?php echo $schedule[29]; ?></td>
-        </tr>
-        <tr> <!--Row 3 -->
-            <td><?php echo $schedule[2]; ?></td>
-            <td><?php echo $schedule[6]; ?></td>
-            <td><?php echo $schedule[10]; ?></td>
-            <td><?php echo $schedule[14]; ?></td>
-            <td><?php echo $schedule[18]; ?></td>
-            <td><?php echo $schedule[22]; ?></td>
-            <td><?php echo $schedule[26]; ?></td>
-            <td><?php echo $schedule[30]; ?></td>
-        </tr>
-        <tr> <!--Row 3 -->
-            <td><?php echo $schedule[3]; ?></td>
-            <td><?php echo $schedule[7]; ?></td>
-            <td><?php echo $schedule[11]; ?></td>
-            <td><?php echo $schedule[15]; ?></td>
-            <td><?php echo $schedule[19]; ?></td>
-            <td><?php echo $schedule[23]; ?></td>
-            <td><?php echo $schedule[27]; ?></td>
-            <td><?php echo $schedule[31]; ?></td>
-        </tr>
+            <?php for ($i = 0; $i < $numSemesters; $i+=2){ //table subheaders
+                echo "<th>"."Fall"."</th>";
+                echo "<th>"."Spring"."</th>";
+            }?>
+        <?php for ($i = 0; $i < $numSemesters/2; $i++){ //table contents
+            echoTableElements($i, $schedule, $numCoursesPerSemester);
+        }?>
     </table>
 </body>
 </html>
