@@ -29,15 +29,19 @@
           
         $update_query->execute();
         
+        $queryResult = $update_query->fetchAll();
 
-        array_push($_SESSION['cart'], ($update_query->fetchAll())[0]);
+        echo $queryResult[0];
 
-        $redirect_url = $_SESSION['redirect_url']; 
-        unset($_SESSION['redirect_url']);
-        header("Location: $redirect_url", true, 303);
-        exit;
-        
+        array_push($_SESSION['cart'], $queryResult[0];
+
         $db = null;
+
+        -- $redirect_url = $_SESSION['redirect_url']; 
+        -- unset($_SESSION['redirect_url']);
+        -- header("Location: $redirect_url", true, 303);
+        -- exit;
+        
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
