@@ -61,6 +61,7 @@
                 }
                 else
                 {
+                    echo "Message below!";
                     echo $msg;
                     #//echo "<meta http-equiv='refresh' content='0; url=./htmlForm.php?oldSsn=$new_ssn&oldFName=$new_f_name&oldMName=$new_m_name&oldLName=$new_l_name&msg=$msg'/>";
                 }
