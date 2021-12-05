@@ -82,7 +82,7 @@
 
         if($attrAdded != 0)
         {
-            $attrStr = " WHERE ".$attrStr;
+            $attrStr = "WHERE ".$attrStr;
         }
         
         $querStmnt = "SELECT * FROM COURSE:attrStr;";
@@ -90,7 +90,7 @@
         echo $attrStr;
         echo $querStmnt;
 
-        $classes_query = $db->prepare($querStmnt);
+        $classes_query = $db->prepare("SELECT * FROM COURSE :attrStr;");
         $classes_query->bindParam(':attrStr', $attrStr);
         // if($courseIDGiven == TRUE)
         // {    
