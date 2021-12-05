@@ -20,7 +20,15 @@
             $msg = "";
             $update_query = "";
 
-            if(strcmp($_SESSION["oldSsn"], '') == 0)
+
+            $update_query = $db->prepare("SELECT StudentID, Username FROM StudentLogIn WHERE Username = :user AND Password = :pass;");
+                $update_query->bindParam(':user', $username);
+                $update_query->bindParam(':pass', $password);
+
+
+
+
+            /*if(strcmp($_SESSION["oldSsn"], '') == 0)
             {
                 $select_res = $db->query("SELECT ssn FROM passengers WHERE ssn = '$new_ssn';");
                 if($select_res->fetchColumn() > 0)
@@ -45,7 +53,7 @@
                     $update_query->bindParam(':l_name', $new_l_name);
                     $update_query->bindParam(':ssn', $new_ssn);
                     $update_query->bindParam(':old_ssn', $old_ssn);
-            }
+            }*/
 
             if(!preg_match("/^[a-zA-Z]+$/", $new_f_name))
             {
