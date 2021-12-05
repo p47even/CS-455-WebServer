@@ -35,7 +35,6 @@
                 }
                 unset($_SESSION["courAttrQuer"]);
             }
-            unset($_SESSION['redirect_url']);
         ?>
     </p>
 
