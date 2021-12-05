@@ -77,7 +77,8 @@
 
             if(!isset($_SESSION["sID"]))
             { 
-                header("Location: 'project.php?msg=Please Login First'", true, 303);
+                $loginUrl = 'project.php?msg=Please Login First';
+                header("Location: $loginUrl", true, 303);
                 exit; 
             }
             
