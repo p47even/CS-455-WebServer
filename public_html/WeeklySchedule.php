@@ -49,7 +49,7 @@
     try {
 
         //open connection to the university's database file
-        $db = new PDO('sqlite:' . './uni.db');      // <------ Line 13
+        $db = new PDO('sqlite:' . './myDB/uni.db');      // <------ Line 13
 
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

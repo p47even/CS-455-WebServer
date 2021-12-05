@@ -16,6 +16,9 @@
             font-size: 20px;
             text-decoration: none;
         }
+        h2{
+            text-align: center;
+        }
     </style>
     <div class="toolbar">
         <a href="Dashboard.html">Home</a>
@@ -25,6 +28,7 @@
         <a href="Enrollment.php">Enroll</a>
         <a href="4YearPlan.php">Four Year Plan</a>
     </div>
+    <h2> Add New Class to Catalogue</h2>
 </head>
 <body>
     <?php
