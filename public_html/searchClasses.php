@@ -28,7 +28,7 @@
             {
                 $attrStr .= ",";
             }
-            $attrStr .= " courseID = :courseID";
+            $attrStr .= " courseID = ".$courseID;
             $attrAdded++;
         }
 
@@ -40,7 +40,7 @@
             {
                 $attrStr .= ",";
             }
-            $attrStr .= " deptID = :deptID";
+            $attrStr .= " deptID = ".$deptID;
             $attrAdded++;
         }
 
@@ -52,7 +52,7 @@
             {
                 $attrStr .= ",";
             }
-            $attrStr .= " courseName = :courseName";
+            $attrStr .= " courseName = ".$courseName;
             $attrAdded++;
         }
 
@@ -64,7 +64,7 @@
             {
                 $attrStr .= ",";
             }
-            $attrStr .= " fallSemester = :fallSemester";
+            $attrStr .= " fallSemester = ".$fallSemester;
             $attrAdded++;
         }
 
@@ -76,7 +76,7 @@
             {
                 $attrStr .= ",";
             }
-            $attrStr .= " springSemester = :springSemester";
+            $attrStr .= " springSemester = ".$springSemester;
             $attrAdded++;
         }
 
@@ -87,34 +87,34 @@
             $addStr .= " WHERE ";
         }
 
-        $addStr .= $attrStr.";";
+        $addStr .= ":attrStr;";
         
         $querStmnt = "SELECT * FROM COURSE".$addStr;
 
         echo $querStmnt;
 
         $classes_query = $db->prepare($querStmnt);
-        $classes_query->bindParam(':courseID', $courseID);
-        if($courseIDGiven == TRUE)
-        {    
-            $classes_query->bindParam(':courseID', $courseID);
-        }
-        if($deptIDGiven == TRUE)
-        {
-            $classes_query->bindParam(':deptID', $courseName);
-        }
-        if($courseNameGiven == TRUE)
-        {
-            $classes_query->bindParam(':courseName', $courseName);
-        }
-        if($fallSemesterGiven == TRUE)
-        {
-            $classes_query->bindParam(':fallSemester', $fallSemester);
-        }
-        if($springSemesterGiven == TRUE)
-        {
-            $classes_query->bindParam(':springSemester', $springSemester);
-        }
+        $classes_query->bindParam(':attrStr', $attrStr);
+        // if($courseIDGiven == TRUE)
+        // {    
+        //     $classes_query->bindParam(':courseID', $courseID);
+        // }
+        // if($deptIDGiven == TRUE)
+        // {
+        //     $classes_query->bindParam(':deptID', $courseName);
+        // }
+        // if($courseNameGiven == TRUE)
+        // {
+        //     $classes_query->bindParam(':courseName', $courseName);
+        // }
+        // if($fallSemesterGiven == TRUE)
+        // {
+        //     $classes_query->bindParam(':fallSemester', $fallSemester);
+        // }
+        // if($springSemesterGiven == TRUE)
+        // {
+        //     $classes_query->bindParam(':springSemester', $springSemester);
+        // }
 
         $classes_query->execute();
 
