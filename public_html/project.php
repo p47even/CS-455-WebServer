@@ -31,6 +31,7 @@
 
                     if(strlen($error_message) >= 0){
                         echo $error_message;
+                        
                     }
                 ?>
         </body>
