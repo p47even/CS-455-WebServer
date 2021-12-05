@@ -70,7 +70,8 @@
         
         <br><input type='submit' name='submit' value='Search'> <br>
 
-        <p>
+        <h>Search Results: </h>
+    <p>
         <?php
             session_start();
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
@@ -79,12 +80,25 @@
             {
                 foreach($_SESSION["courAttrQuer"] as $tuple) 
                 {
-                    echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]<br></font>";
+                    echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font><a href='./addToCart.php?meetDay=$tuple[meetDay]&section=$tuple[section]&courseID=$tuple[courseID]'>Add To Cart</a><br>";
                 }
-                unset($_SESSION["courAttrQuer"]);
             }
         ?>
     </p>
-    
+
+    <h>Cart:</h>
+    <p>
+        <?php
+            if(isset($_SESSION["cart"]) and count($_SESSION["cart"]) != 0)
+            {
+                foreach($_SESSION["cart"] as $tuple) 
+                {
+                    echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font><br>";
+                }
+            }
+        ?>
+        <a href="./enroll.php">Enroll</a>
+    </p>
+
 </body>
 </html>
