@@ -4,7 +4,7 @@
         $db = new SQLite3('uni.db');
         $numCoursesPerSemester = 4;
         $numSemesters = 8;
-        $studentID = 5; //TODO: GET STUDENTID FROM SOMEWHERE, NOT JUMPING TO NEW SEMESTER BTWN 291 TO 361, MAYBE MAKE HTML TABLE GENERATION LESS HARD CODEY
+        $studentID = 5; //TODO: GET STUDENTID FROM SOMEWHERE, MAYBE MAKE HTML TABLE GENERATION LESS HARD CODEY
         $query = 'select * from Students natural join Enroll natural join Course where studentID = '.$studentID.';';
 
         $result = $db->query($query);
@@ -97,11 +97,10 @@
                 $reqParentNames[$k] = $reqResultArray['courseName'];
                 $reqChildren[$k] = $reqResultArray['requirementID'];
                 $reqChildrenNames[$k] = $reqResultArray['requirementName'];
+                $k++;
             }          
 
             //add in future courses
-            $move = FALSE;
-
             for ($courseIter = 0; $courseIter < count($courseIDs); $courseIter++ ){
                 if (in_array($courseIDs[$courseIter], $reqParents) ){
                     for ($j = 0; $j < count($reqParents); $j++){
@@ -109,15 +108,11 @@
                         $length = $numCoursesPerSemester;
                         $semester = (array_slice( $schedule, $offset,$length  ));
                         if ( ($reqParents[$j] == $courseIDs[$courseIter]) && (in_array( $reqChildrenNames[$j], $semester) ) ){ //if child is in this semester
-                            $move = TRUE;
-                            break;
+                            $season = flip($season);
+                            $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester);
                         } 
                         
                     }                    
-                }
-                if ($move == TRUE){
-                    $season = flip($season);
-                    $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester);
                 }
                 //handle seasons
                 if ( ($schedIndex-($schedIndex%$numCoursesPerSemester)) % ($numCoursesPerSemester*2) != 0 ) { $season = 1; }
@@ -127,8 +122,7 @@
     
                 //add course to schedule
                 $schedule[$schedIndex] = $courseNames[$courseIter];
-                $schedIndex++;
-                $move = FALSE;                
+                $schedIndex++;             
             }
             
         }
