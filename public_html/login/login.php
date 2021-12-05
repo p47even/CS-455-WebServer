@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <?php
+        session_start();
+        //path to the SQLite database file
+        $db_file = '../uni.db';
+
+        try {
+
+            //open connection to the university database file
+            $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
+
+            //set errormode to use exceptions
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+
+            $msg = "";
+            $update_query = "";
+
+            if(strcmp($_SESSION["oldSsn"], '') == 0)
+            {
+                $select_res = $db->query("SELECT ssn FROM passengers WHERE ssn = '$new_ssn';");
+                if($select_res->fetchColumn() > 0)
+                {
+                    $msg = "SSN already exists<br>";
+                }
+                else
+                {
+                    $update_query = $db->prepare("INSERT INTO passengers VALUES (:f_name, :m_name, :l_name, :ssn);");
+                        $update_query->bindParam(':f_name', $new_f_name);
+                        $update_query->bindParam(':m_name', $new_m_name);
+                        $update_query->bindParam(':l_name', $new_l_name);
+                        $update_query->bindParam(':ssn', $new_ssn);
+                }
+            }
+            else
+            {
+                $update_query = $db->prepare("UPDATE passengers SET f_name = :f_name, m_name = :m_name, l_name = :l_name, ssn = :ssn
+                WHERE ssn = :old_ssn;");
+                    $update_query->bindParam(':f_name', $new_f_name);
+                    $update_query->bindParam(':m_name', $new_m_name);
+                    $update_query->bindParam(':l_name', $new_l_name);
+                    $update_query->bindParam(':ssn', $new_ssn);
+                    $update_query->bindParam(':old_ssn', $old_ssn);
+            }
+
+            if(!preg_match("/^[a-zA-Z]+$/", $new_f_name))
+            {
+                $msg .= "First name must be non-empty and consist of letters only<br>";
+            }
+
+            if(!preg_match("/^[a-zA-Z]$/", $new_m_name) && (strcmp("", $new_m_name) != 0))
+            {
+                $msg .= "Middle name must be empty or a single letter<br>";
+            }
+
+            if(!preg_match("/^[a-zA-Z]+$/", $new_l_name))
+            {
+                $msg .= "Last name must be non-empty and consist of letters only<br>";
+            }
+
+            if(!preg_match("/^[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]$/", $new_ssn))
+            {
+                $msg .= "SSN must be in the form xxx-xx-xxxx where x is a whole number between 0 and 9<br>";
+            }
+
+            if(strcmp("", $msg) == 0)
+            {
+                $result_status = $update_query->execute();
+                echo "<meta http-equiv='refresh' content='0; url=./showPassengers.php?msg=Success!'/>";
+            }
+            else
+            {
+                echo "<meta http-equiv='refresh' content='0; url=./htmlForm.php?oldSsn=$new_ssn&oldFName=$new_f_name&oldMName=$new_m_name&oldLName=$new_l_name&msg=$msg'/>";
+            }
+
+            $db = null;
+        }
+        catch(PDOException $e) {
+            die('Exception : '.$e->getMessage());
+        }
+
+        session_destroy();
+        ?>
+    </body>
+</html>
