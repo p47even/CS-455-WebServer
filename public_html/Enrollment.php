@@ -83,17 +83,14 @@
                     echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font><a href='./addToCart.php?meetDay=$tuple[meetDay]&section=$tuple[section]&courseID=$tuple[courseID]'>Add To Cart</a><br>";
                 }
             }
-        ?>
-    </p>
+            
+            echo "<h>Cart:<h><br>";
 
-    <h>Cart:</h>
-    <p>
-        <?php
             if(isset($_SESSION["cart"]) and count($_SESSION["cart"]) != 0)
             {
                 foreach($_SESSION["cart"] as $tuple) 
                 {
-                    echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font><br>";
+                   echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font><br>";
                 }
             }
         ?>
