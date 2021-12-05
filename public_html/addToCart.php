@@ -15,9 +15,9 @@
         
         session_start();
         
-        $meetDay = $_POST['meetDay'];
-        $section = $_POST['section'];
-        $courseID = $_POST['courseID'];
+        $meetDay = $_POST["meetDay"];
+        $section = $_POST["section"];
+        $courseID = $_POST["courseID"];
 
         echo $meetDay." ";
         echo $section." ";
@@ -34,10 +34,10 @@
 
         //echo $queryResult[0];
 
-        // if(!isset($_SESSION["cart"]))
-        // {
-        //     $_SESSION["cart"] = [];
-        // }
+        if(!isset($_SESSION["cart"]))
+        {
+            $_SESSION["cart"] = array();
+        }
 
         // array_push($_SESSION['cart'], $queryResult[0]);
 
