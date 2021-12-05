@@ -4,7 +4,7 @@
         <?php
             session_start();
             //path to the SQLite database file
-            $db_file = '../uni.db';
+            $db_file = '../myDB/uni.db';
 
             try {
 
@@ -18,7 +18,7 @@
                 $password = $_POST["password"];
 
 
-                
+
 
 
                 #echo $username;
@@ -47,7 +47,7 @@
                 else
                 {
                     //echo $msg;
-                    $redirect_url = './project.php?msg=$msg';
+                    $redirect_url = '../../project.php?msg='.$msg;
                     header("Location: $redirect_url", true, 303);
                     //echo "<meta http-equiv='refresh' content='0; url=./htmlForm.php?oldSsn=$new_ssn&oldFName=$new_f_name&oldMName=$new_m_name&oldLName=$new_l_name&msg=$msg'/>";
                 }

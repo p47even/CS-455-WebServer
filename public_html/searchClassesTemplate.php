@@ -12,11 +12,11 @@
         <form action='./searchClasses.php' method='post'>
         courseName: <input type='text' name='courseName' id='courseName'><br>
 
-        <form action='./searchClasses.php' method='post'>
-        fallSemester: <input type='text' name='fallSemester' id='fallSemester'><br>
-        
-        <form action='./searchClasses.php' method='post'>
-        springSemester: <input type='text' name='springSemester' id='springSemester'><br>
+        <form action='./searchCourses.php' method='post'>
+        semester: <select name='semester' id='semester'>
+                  <option value=''>---</option>
+                  <option value='fall'>Fall Semester</option>
+                  <option value='spring'>Spring Semester</option>
         
         <input type='submit' name='submit' value='Search'>
     <br>
@@ -25,6 +25,13 @@
     <p>
         <?php
             session_start();
+
+            if(!isset($_SESSION["sID"]))
+            { 
+                header("Location: 'project.php?msg=Please Login First'", true, 303);
+                exit; 
+            }
+
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
             if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)

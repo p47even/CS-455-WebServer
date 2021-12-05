@@ -19,7 +19,7 @@
 
                     <div class='adminLogin'>
                         <h2>Admin Login!</h2>
-                        <form action='./login/adminLogin.php' method='post'>
+                        <form action='./login/adminLogin.php/' method='post'>
                         AdminID: <input type='text' name='username' id='username'><br>
                         <form action='./login/adminLogin.php' method='post'>
                         Password: <input type='text' name='password' id='password'><br>

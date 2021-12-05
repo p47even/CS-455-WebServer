@@ -57,30 +57,25 @@
             $courseNameGiven = TRUE;
         }
 
-        $fallSemester = $_POST["fallSemester"];
-        $fallSemesterGiven = FALSE;
-        if($fallSemester != "")
+        $semester = $_POST["semester"];
+        if($semester != "")
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= " and";
             }
-            $attrStr .= " fallSemester = :fallSemester";
-            $attrAdded++;
-            $fallSemesterGiven = TRUE;
-        }
 
-        $springSemester = $_POST["springSemester"];
-        $springSemesterGiven = FALSE;
-        if($springSemester != "")
-        {
-            if($attrAdded != 0)
+            if($semester == "fall")
             {
-                $attrStr .= ",";
+                $attrStr .= " fallSemester = 1";
+                $attrStr .= " and springSemester = 0";
             }
-            $attrStr .= " springSemester = :springSemester";
+            else
+            {
+                $attrStr .= " springSemester = 1";
+                $attrStr .= " and fallSemester = 0";
+            }
             $attrAdded++;
-            $springSemesterGiven = TRUE;
         }
 
         $addStr = "";
@@ -106,14 +101,6 @@
         if($courseNameGiven == TRUE)
         {
             $classes_query->bindParam(':courseName', $courseName);
-        }
-        if($fallSemesterGiven == TRUE)
-        {
-            $classes_query->bindParam(':fallSemester', $fallSemester);
-        }
-        if($springSemesterGiven == TRUE)
-        {
-            $classes_query->bindParam(':springSemester', $springSemester);
         }
 
         $classes_query->execute();
