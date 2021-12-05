@@ -24,7 +24,7 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= " and";
             }
             $attrStr .= " courseID = :courseID";
             $attrAdded++;
@@ -37,7 +37,7 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= " and";
             }
             $attrStr .= " deptID = :deptID";
             $attrAdded++;
@@ -50,7 +50,7 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= " and";
             }
             $attrStr .= " courseName = :courseName";
             $attrAdded++;
@@ -63,9 +63,9 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= " and";
             }
-            $attrStr .= " ISMEETING.meetTime = :meetTime";
+            $attrStr .= " meetTime = :meetTime";
             $attrAdded++;
             $meetTimeGiven = TRUE;
         }
@@ -76,9 +76,9 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= " and";
             }
-            $attrStr .= " ISMEETING.endTime = :endTime";
+            $attrStr .= " endTime = :endTime";
             $attrAdded++;
             $endTimeGiven = TRUE;
         }
@@ -89,9 +89,9 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= " and";
             }
-            $attrStr .= " ISMEETING.location = :location";
+            $attrStr .= " location = :location";
             $attrAdded++;
             $locationGiven = TRUE;
         }
@@ -101,7 +101,7 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= " and";
             }
 
             if($semester == "fall")
@@ -127,8 +127,6 @@
         $addStr .= $attrStr.";";
 
         echo $addStr;
-        echo $courseID;
-        echo $meetTime;
 
         $querStmnt = "SELECT * FROM COURSE NATURAL JOIN ISMEETING".$addStr;
 
