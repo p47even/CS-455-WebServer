@@ -13,11 +13,19 @@
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         session_start();
+        
+        $meetDay = $_POST['meetDay'];
+        $section = $_POST['section'];
+        $courseID = $_POST['courseID'];
+
+        echo $meetDay." ";
+        echo $section." ";
+        echo $courseID." ";
 
         $update_query = $db->prepare("SELECT * FROM COURSE NATURAL JOIN ISMEETING WHERE meetDay = :meetDay AND section = :section AND courseID = :courseID);
-            $update_query->bindParam(':meetDay', $_POST['meetDay']);
-            $update_query->bindParam(':section', $_POST['section']);
-            $update_query->bindParam(':courseID', $_POST['courseID']);
+            $update_query->bindParam(':meetDay', $meetDay);
+            $update_query->bindParam(':section', $section);
+            $update_query->bindParam(':courseID', $courseID);
           
         $update_query->execute();
         
