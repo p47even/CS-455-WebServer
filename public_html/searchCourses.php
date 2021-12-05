@@ -59,7 +59,7 @@
 
         $meetTime = $_POST["meetTime"];
         $meetTimeGiven = FALSE;
-        if($meetTimeName != "")
+        if($meetTime != "")
         {
             if($attrAdded != 0)
             {
@@ -72,7 +72,7 @@
 
         $endTime = $_POST["endTime"];
         $endTimeGiven = FALSE;
-        if($endTimeName != "")
+        if($endTime != "")
         {
             if($attrAdded != 0)
             {
@@ -85,7 +85,7 @@
 
         $location = $_POST["location"];
         $locationGiven = FALSE;
-        if($locationName != "")
+        if($location != "")
         {
             if($attrAdded != 0)
             {
