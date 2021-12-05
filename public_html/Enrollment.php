@@ -75,8 +75,6 @@
         <?php
             session_start();
 
-            $_SESSION['cart'] = array();
-
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
             if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
@@ -91,9 +89,11 @@
 
             if(isset($_SESSION["cart"]) and count($_SESSION["cart"]) > 0)
             {
+                $counter = 0;
                 foreach($_SESSION["cart"] as $tuple) 
                 {
-                   echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font><br>";
+                   echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font> <a href='./removeFromCart.php?index=$counter'>Remove</a><br>";
+                   $counter++;
                 }
             }
         ?>
