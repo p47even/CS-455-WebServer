@@ -85,10 +85,10 @@
             $attrStr = "WHERE ".$attrStr;
         }
 
-        echo $attrStr;
+        //echo $attrStr;
 
-        $classes_query = $db->prepare("SELECT * FROM COURSE :attrStr;");
-            $classes_query->bindParam(':attrStr', $attrStr);
+        $classes_query = $db->prepare("SELECT * FROM COURSE ?;");
+            $classes_query->bindParam('?', $attrStr);
         // if($courseIDGiven == TRUE)
         // {    
         //     $classes_query->bindParam(':courseID', $courseID);
