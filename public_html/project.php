@@ -29,8 +29,9 @@
                 <?php
                     $error_message = $_GET["msg"]
 
-                    if(strlen($error_message) >= 0)
-                        echo $error_message
+                    if(strlen($error_message) >= 0){
+                        echo $error_message;
+                    }    
                 ?>
         </body>
 </html>
