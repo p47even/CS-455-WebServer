@@ -26,10 +26,11 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ", ";
+                $attrStr .= ",";
             }
-            $attrStr .= "courseID = ".$courseID;
+            $attrStr .= " courseID = :courseID";
             $attrAdded++;
+            $courseIDGiven = TRUE;
         }
 
         $deptID = $_POST["deptID"];
@@ -38,10 +39,11 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ", ";
+                $attrStr .= ",";
             }
-            $attrStr .= "deptID = ".$deptID;
+            $attrStr .= " deptID = :deptID";
             $attrAdded++;
+            $deptIDGiven = TRUE;
         }
 
         $courseName = $_POST["courseName"];
@@ -50,10 +52,11 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ", ";
+                $attrStr .= ",";
             }
-            $attrStr .= "courseName = ".$courseName;
+            $attrStr .= " courseName = :courseName";
             $attrAdded++;
+            $courseNameGiven = TRUE;
         }
 
         $fallSemester = $_POST["fallSemester"];
@@ -62,10 +65,11 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ", ";
+                $attrStr .= ",";
             }
-            $attrStr .= "fallSemester = ".$fallSemester;
+            $attrStr .= " fallSemester = :fallSemester";
             $attrAdded++;
+            $fallSemesterGiven = TRUE;
         }
 
         $springSemester = $_POST["springSemester"];
@@ -74,41 +78,47 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ", ";
+                $attrStr .= ",";
             }
-            $attrStr .= "springSemester = ".$springSemester;
+            $attrStr .= " springSemester = :springSemester";
             $attrAdded++;
+            $springSemesterGiven = TRUE;
         }
+
+        $addStr = "";
 
         if($attrAdded != 0)
         {
-            $attrStr = "WHERE ".$attrStr;
+            $addStr .= " WHERE ";
         }
 
-        //echo $attrStr;
+        $addStr .= $attrStr.";";
+        
+        $querStmnt = "SELECT * FROM COURSE".$addStr;
 
-        $classes_query = $db->prepare("SELECT * FROM COURSE ?;");
-            $classes_query->bindParam('?', $attrStr);
-        // if($courseIDGiven == TRUE)
-        // {    
-        //     $classes_query->bindParam(':courseID', $courseID);
-        // }
-        // if($deptIDGiven == TRUE)
-        // {
-        //     $classes_query->bindParam(':deptID', $courseName);
-        // }
-        // if($courseNameGiven == TRUE)
-        // {
-        //     $classes_query->bindParam(':courseName', $courseName);
-        // }
-        // if($fallSemesterGiven == TRUE)
-        // {
-        //     $classes_query->bindParam(':fallSemester', $fallSemester);
-        // }
-        // if($springSemesterGiven == TRUE)
-        // {
-        //     $classes_query->bindParam(':springSemester', $springSemester);
-        // }
+        echo $querStmnt;
+
+        $classes_query = $db->prepare($querStmnt);
+        if($courseIDGiven == TRUE)
+        {    
+            $classes_query->bindParam(':courseID', $courseID);
+        }
+        if($deptIDGiven == TRUE)
+        {
+            $classes_query->bindParam(':deptID', $courseName);
+        }
+        if($courseNameGiven == TRUE)
+        {
+            $classes_query->bindParam(':courseName', $courseName);
+        }
+        if($fallSemesterGiven == TRUE)
+        {
+            $classes_query->bindParam(':fallSemester', $fallSemester);
+        }
+        if($springSemesterGiven == TRUE)
+        {
+            $classes_query->bindParam(':springSemester', $springSemester);
+        }
 
         $classes_query->execute();
 
