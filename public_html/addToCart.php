@@ -17,10 +17,6 @@
         $section = $_GET["section"];
         $courseID = $_GET["courseID"];
 
-        echo $meetDay." ";
-        echo $section." ";
-        echo $courseID." ";
-
         $update_query = $db->prepare("SELECT * FROM COURSE NATURAL JOIN ISMEETING WHERE meetDay = :meetDay AND section = :section AND courseID = :courseID");
             $update_query->bindParam(':meetDay', $meetDay);
             $update_query->bindParam(':section', $section);
@@ -30,7 +26,7 @@
         
         $queryResult = $update_query->fetchAll();
 
-        //echo $queryResult[0];
+        echo $queryResult[0];
         
         session_start();
 
