@@ -91,7 +91,7 @@
             {
                 $attrStr .= ",";
             }
-            $attrStr .= " endTime = :endTime";
+            $attrStr .= " location = :location";
             $attrAdded++;
             $locationGiven = TRUE;
         }
@@ -127,6 +127,8 @@
         $addStr .= $attrStr.";";
 
         echo $addStr;
+        echo $courseID;
+        echo $meetTime;
 
         $querStmnt = "SELECT * FROM COURSE NATURAL JOIN ISMEETING".$addStr;
 
