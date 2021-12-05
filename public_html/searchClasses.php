@@ -91,7 +91,7 @@
         
         $querStmnt = "SELECT * FROM COURSE".$addStr;
 
-        echo $querStmnt;
+        echo $attrStr;
 
         $classes_query = $db->prepare($querStmnt);
         $classes_query->bindParam(':attrStr', $attrStr);
