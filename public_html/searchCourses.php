@@ -145,6 +145,7 @@
         }
         if($meetTimeGiven == TRUE)
         {
+            echo $meetTime;
             $classes_query->bindParam(':meetTime', $meetTime);
         }
         if($endTimeGiven == TRUE)
