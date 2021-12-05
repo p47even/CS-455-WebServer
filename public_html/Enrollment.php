@@ -74,6 +74,9 @@
     <p>
         <?php
             session_start();
+
+            $_SESSION['cart'] = array();
+
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
             if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
@@ -86,7 +89,7 @@
             
             echo "<h>Cart:<h><br>";
 
-            if(isset($_SESSION["cart"]) and count($_SESSION["cart"]) != 0)
+            if(isset($_SESSION["cart"]) and count($_SESSION["cart"]) > 0)
             {
                 foreach($_SESSION["cart"] as $tuple) 
                 {
