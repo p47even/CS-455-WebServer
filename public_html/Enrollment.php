@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<head>
 <style>
         .toolbar{
             background-color: maroon;
@@ -35,9 +36,9 @@
     <div class="toolbar">
         <a href="Dashboard.html">Home</a>
         <a href="WeeklySchedule.html">Schedule</a>
-        <a href="searchClasses.php">Search for classes</a>
+        <a href="searchClassesTemplate.php">Search for classes</a>
         <a href="AcademicRequirements">Academic Rqueirements</a>
-        <a href="Enrollment.html">Enroll</a>
+        <a href="Enrollment.php">Enroll</a>
         <a href="Discussion.html">Discussion Board</a>
     </div>
 
