@@ -2,6 +2,7 @@
 <html>
 <body>
     <?php
+
     $db_file = './uni.db';
 
     try {
@@ -22,7 +23,7 @@
         echo $section." ";
         echo $courseID." ";
 
-        $update_query = $db->prepare("SELECT * FROM COURSE NATURAL JOIN ISMEETING WHERE meetDay = :meetDay AND section = :section AND courseID = :courseID);
+        $update_query = $db->prepare("SELECT * FROM COURSE NATURAL JOIN ISMEETING WHERE meetDay = :meetDay AND section = :section AND courseID = :courseID");
             $update_query->bindParam(':meetDay', $meetDay);
             $update_query->bindParam(':section', $section);
             $update_query->bindParam(':courseID', $courseID);
@@ -33,14 +34,14 @@
 
         echo $queryResult[0];
 
-        --array_push($_SESSION['cart'], $queryResult[0];
+        array_push($_SESSION['cart'], $queryResult[0];
 
         $db = null;
 
-        -- $redirect_url = $_SESSION['redirect_url']; 
-        -- unset($_SESSION['redirect_url']);
-        -- header("Location: $redirect_url", true, 303);
-        -- exit;
+        // $redirect_url = $_SESSION['redirect_url']; 
+        // unset($_SESSION['redirect_url']);
+        // header("Location: $redirect_url", true, 303);
+        // exit;
         
     }
     catch(PDOException $e) {
@@ -49,5 +50,6 @@
     
     
     ?>
+
 </body>
 </html>
