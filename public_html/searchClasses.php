@@ -80,14 +80,12 @@
             $attrAdded++;
         }
 
-        $addStr = "";
-
         if($attrAdded != 0)
         {
-            $attStr = " WHERE ".$attStr;
+            $attrStr = " WHERE ".$attrStr;
         }
         
-        $querStmnt = "SELECT * FROM COURSE:attStr;";
+        $querStmnt = "SELECT * FROM COURSE:attrStr;";
 
         echo $attrStr;
         echo $querStmnt;
