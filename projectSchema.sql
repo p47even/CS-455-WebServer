@@ -1,6 +1,7 @@
 PRAGMA foreign_keys = ON;
 
 -- Delete tables if they already exist
+drop table if exists ClassRequirements;
 drop table if exists Discussion;
 drop table if exists Requirements;
 drop table if exists IsMeeting;
@@ -118,4 +119,10 @@ create table Discussion(
     foreign key (studentID) references Students(studentID) on update cascade on delete cascade,
     foreign key (courseID) references Course(courseID) on update cascade on delete cascade,
     foreign key (facultyID) references Professor(facultyID) on update cascade on delete cascade      
+);
+create table ClassRequirements(
+    courseID integer,
+    class text check(class = 'Freshman' or class = 'Sophomore' or class = 'Junior' or class = 'Senior'),
+    primary key (courseID, class),
+    foreign key (courseID) references Course(courseID) on update cascade on delete cascade
 );
