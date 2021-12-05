@@ -33,7 +33,7 @@
 
         echo $queryResult[0];
 
-        array_push($_SESSION['cart'], $queryResult[0];
+        --array_push($_SESSION['cart'], $queryResult[0];
 
         $db = null;
 
