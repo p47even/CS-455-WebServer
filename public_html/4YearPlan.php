@@ -5,7 +5,7 @@
         $studentID = 13;
 
         $seasonSpring = TRUE; 
-        $db = new SQLite3('myDB/uni.db');
+        $db = new SQLite3('./myDB/uni.db');
         $classes = ['Freshman','Sophomore','Junior','Senior'];
         $numCoursesPerSemester = 4;
         $numSemesters = 8;
