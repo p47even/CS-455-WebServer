@@ -3,7 +3,7 @@
 <body>
     <?php
 
-    $db_file = './uni.db';
+    $db_file = './myDB/uni.db';
 
     try {
 
