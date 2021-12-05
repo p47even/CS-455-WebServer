@@ -25,8 +25,6 @@
         $update_query->execute();
         
         $queryResult = $update_query->fetchAll();
-
-        echo $queryResult[0];
         
         session_start();
 
@@ -35,7 +33,7 @@
             $_SESSION["cart"] = array();
         }
 
-        // array_push($_SESSION['cart'], $queryResult[0]);
+        array_push($_SESSION['cart'], $queryResult[0]);
 
         $db = null;
 
