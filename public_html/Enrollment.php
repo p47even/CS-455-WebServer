@@ -81,7 +81,6 @@
                 {
                     echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]<br></font>";
                 }
-                unset($_SESSION["courAttrQuer"]);
             }
         ?>
     </p>
