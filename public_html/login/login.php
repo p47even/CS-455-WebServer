@@ -34,7 +34,7 @@
 
                 if(!is_int($username))
                 {
-                    $msg .= "Error 'studentID' must be numbers only<br>";
+                    $msg .= "Error 'studentID' must be numbers only";
                 }
 
                 if(strcmp("", $msg) == 0)
