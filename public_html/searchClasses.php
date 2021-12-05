@@ -4,7 +4,7 @@
     <?php
     session_start();
     //path to the SQLite database file
-    $db_file = './uni.db';
+    $db_file = './myDB/uni.db';
 
     try {
 
