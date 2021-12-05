@@ -37,14 +37,13 @@
         $_POST["deptID"] = "";
         $_POST["Fall"] = "";
         $_POST["Spring"] = "";
-        echo
-        "<form action='./AddClassHandler.php' method='post'>
-        Course ID: <input type='text' name='courseID' id='courseID' value ='".$_POST["courseID"]."'><br>
-        Course Name: <input type='text' name='courseName' id='courseName' value ='".$_POST["courseName"]."'><br>
-        Department ID: <input type='text' name='deptID' id='deptID' value ='".$_POST["deptID"]."'><br>
-        Meet in Fall? (0 = no, 1 = yes) <input type='text' name='Fall' id='Fall' value ='".$_POST["Fall"]."'><br>
-        Meet in Spring? (0 = no, 1 = yes)<input type='text' name='Spring' id='Spring' value ='".$_POST["Spring"]."'><br>
-        <input type='submit' name='Create' value='Create'>";
     ?>
+    <form action='./AddClassHandler.php' method='post'>
+        Course ID: <input type='text' name='courseID' id='courseID'><br>
+        Course Name: <input type='text' name='courseName' id='courseName' ><br>
+        Department ID: <input type='text' name='deptID' id='deptID'><br>
+        Meet in Fall? (0 = no, 1 = yes) <input type='text' name='Fall' id='Fall'><br>
+        Meet in Spring? (0 = no, 1 = yes)<input type='text' name='Spring' id='Spring'><br>
+        <input type='submit' name='Create' value='Create'>
 </body>
 </html>
