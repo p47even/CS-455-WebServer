@@ -24,7 +24,7 @@
                 $update_query = "";
 
 
-                $update_query = $db->prepare("SELECT StudentID, Username FROM StudentLogIn WHERE Username = :user AND Password = :pass;");
+                $update_query = $db->prepare("SELECT StudentID, Username FROM StudentLogIn WHERE Username = :user AND StuPassword = :pass;");
                     $update_query->bindParam(':user', $username);
                     $update_query->bindParam(':pass', $password);
 
