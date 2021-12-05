@@ -26,9 +26,9 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= ", ";
             }
-            $attrStr .= " courseID = ".$courseID;
+            $attrStr .= "courseID = ".$courseID;
             $attrAdded++;
         }
 
@@ -38,9 +38,9 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= ", ";
             }
-            $attrStr .= " deptID = ".$deptID;
+            $attrStr .= "deptID = ".$deptID;
             $attrAdded++;
         }
 
@@ -50,9 +50,9 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= ", ";
             }
-            $attrStr .= " courseName = ".$courseName;
+            $attrStr .= "courseName = ".$courseName;
             $attrAdded++;
         }
 
@@ -62,9 +62,9 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= ", ";
             }
-            $attrStr .= " fallSemester = ".$fallSemester;
+            $attrStr .= "fallSemester = ".$fallSemester;
             $attrAdded++;
         }
 
@@ -74,9 +74,9 @@
         {
             if($attrAdded != 0)
             {
-                $attrStr .= ",";
+                $attrStr .= ", ";
             }
-            $attrStr .= " springSemester = ".$springSemester;
+            $attrStr .= "springSemester = ".$springSemester;
             $attrAdded++;
         }
 
@@ -92,6 +92,7 @@
         $querStmnt = "SELECT * FROM COURSE".$addStr;
 
         echo $attrStr;
+        echo $querStmnt;
 
         $classes_query = $db->prepare($querStmnt);
         $classes_query->bindParam(':attrStr', $attrStr);
