@@ -30,7 +30,7 @@
         $update_query->execute();
         
 
-        array_push($_SESSION['cart'], $update_query->fetchAll()[0]);
+        array_push($_SESSION['cart'], ($update_query->fetchAll())[0]);
 
         $redirect_url = $_SESSION['redirect_url']; 
         unset($_SESSION['redirect_url']);
