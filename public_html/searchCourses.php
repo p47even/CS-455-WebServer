@@ -143,15 +143,15 @@
         {
             $classes_query->bindParam(':courseName', $courseName);
         }
-        if($meetTime == TRUE)
+        if($meetTimeGiven == TRUE)
         {
             $classes_query->bindParam(':meetTime', $meetTime);
         }
-        if($endTime == TRUE)
+        if($endTimeGiven == TRUE)
         {
             $classes_query->bindParam(':endTime', $endTime);
         }
-        if($location == TRUE)
+        if($locationGiven == TRUE)
         {
             $classes_query->bindParam(':location', $location);
         }
