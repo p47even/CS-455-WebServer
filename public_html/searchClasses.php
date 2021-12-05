@@ -13,43 +13,119 @@
 
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $attrStr = "";
+        $attrAdded = 0;
         
-        $courseId = $_POST["courseID"];
-        if $courseID == ""
+        $courseID = $_POST["courseID"];
+        
+        $courseIDGiven = FALSE;
+        if($courseID != "")
         {
-            $courseID = "*";
-        }
-        $dept = $_POST["deptID"];
-        if $deptID == ""
-        {
-            $deptID = "*";
-        }
-        $courseName = $_POST["courseName"];
-        if $courseName == ""
-        {
-            $courseName = "*";
-        }
-        $fallSemester = $_POST["fallSemester"];
-        if $fallSemester == ""
-        {
-            $fallSemester = "*";
-        }
-        $springSemester = $_POST["springSemester"];
-        if $springSemester == ""
-        {
-            $springSemester = "*";
+            if($attrAdded != 0)
+            {
+                $attrStr .= ",";
+            }
+            $attrStr .= " courseID = :courseID";
+            $attrAdded++;
+            $courseIDGiven = TRUE;
         }
 
-        $classes_query = $db->prepare("SELECT FROM COURSE WHERE courseID = :courseID, deptID = :deptID, courseName = :courseName, fallSemester = :fallSemester, springSemester = :springSemester;");
-            $classes_query->bindParam(':courseID', $courseID);
-            $classes_query->bindParam(':deptID', $courseName);
-            $classes_query->bindParam(':courseName', $courseName);
-            $classes_query->bindParam(':fallSemester', $fallSemester);
-            $classes_query->bindParam(':springSemester', $springSemester);
+        $deptID = $_POST["deptID"];
+        $deptIDGiven = FALSE;
+        if($deptID != "")
+        {
+            if($attrAdded != 0)
+            {
+                $attrStr .= ",";
+            }
+            $attrStr .= " deptID = :deptID";
+            $attrAdded++;
+            $deptIDGiven = TRUE;
+        }
+
+        $courseName = $_POST["courseName"];
+        $courseNameGiven = FALSE;
+        if($courseName != "")
+        {
+            if($attrAdded != 0)
+            {
+                $attrStr .= ",";
+            }
+            $attrStr .= " courseName = :courseName";
+            $attrAdded++;
+            $courseNameGiven = TRUE;
+        }
+
+        $fallSemester = $_POST["fallSemester"];
+        $fallSemesterGiven = FALSE;
+        if($fallSemester != "")
+        {
+            if($attrAdded != 0)
+            {
+                $attrStr .= ",";
+            }
+            $attrStr .= " fallSemester = :fallSemester";
+            $attrAdded++;
+            $fallSemesterGiven = TRUE;
+        }
+
+        $springSemester = $_POST["springSemester"];
+        $springSemesterGiven = FALSE;
+        if($springSemester != "")
+        {
+            if($attrAdded != 0)
+            {
+                $attrStr .= ",";
+            }
+            $attrStr .= " springSemester = :springSemester";
+            $attrAdded++;
+            $springSemesterGiven = TRUE;
+        }
+
+        $addStr = "";
+
+        if($attrAdded != 0)
+        {
+            $addStr .= " WHERE ";
+        }
+
+        $addStr .= $attrStr.";";
         
-        $query_result = $classes_query->execute();
-      
+        $querStmnt = "SELECT * FROM COURSE".$addStr;
+
+        $classes_query = $db->prepare($querStmnt);
+        if($courseIDGiven == TRUE)
+        {    
+            $classes_query->bindParam(':courseID', $courseID);
+        }
+        if($deptIDGiven == TRUE)
+        {
+            $classes_query->bindParam(':deptID', $courseName);
+        }
+        if($courseNameGiven == TRUE)
+        {
+            $classes_query->bindParam(':courseName', $courseName);
+        }
+        if($fallSemesterGiven == TRUE)
+        {
+            $classes_query->bindParam(':fallSemester', $fallSemester);
+        }
+        if($springSemesterGiven == TRUE)
+        {
+            $classes_query->bindParam(':springSemester', $springSemester);
+        }
+
+        $classes_query->execute();
+
+        $query_result = $classes_query->fetchAll();
+
         $_SESSION["courAttrQuer"] = $query_result;
+
+        $redirect_url = $_SESSION['redirect_url']; 
+        unset($_SESSION['redirect_url']);
+        header("Location: $redirect_url", true, 303);
+        exit;
     }
     catch(PDOException $e) {
         die('Exception : '.$e->getMessage());
