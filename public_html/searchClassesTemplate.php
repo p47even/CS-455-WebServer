@@ -18,7 +18,7 @@
         <form action='./searchClasses.php' method='post'>
         springSemester: <input type='text' name='springSemester' id='springSemester'><br>
         
-        <input type='submit' name='submit' value='Update Info'>
+        <input type='submit' name='submit' value='Search'>
     <br>
     <br>
 

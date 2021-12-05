@@ -41,7 +41,6 @@
         <a href="Discussion.html">Discussion Board</a>
     </div>
 
-    <h2>Shopping Cart</h2>
 </head>
 <body>
 
@@ -68,54 +67,25 @@
                   <option value=''>---</option>
                   <option value='fall'>Fall Semester</option>
                   <option value='spring'>Spring Semester</option>
-        <br>
         
-        <input type='submit' name='submit' value='Search'>
+        <br><input type='submit' name='submit' value='Search'> <br>
 
-    <?php
-        try {
+        <p>
+        <?php
+            session_start();
+            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
-            //open connection to the university's database file
-            $db = new PDO('sqlite:' . './uni.db');      // <------ Line 13
+            if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
+            {
+                foreach($_SESSION["courAttrQuer"] as $tuple) 
+                {
+                    echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]<br></font>";
+                }
+                unset($_SESSION["courAttrQuer"]);
+            }
+            unset($_SESSION['redirect_url']);
+        ?>
+    </p>
     
-            //set errormode to use exceptions
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-            echo "<h>Search For Classes:<h><br>";
-
-            
-
-          
-            $db = null;
-        }
-        catch(PDOException $e) {
-            die('Exception : '.$e->getMessage());
-        }
-
-
-        // echo 
-        //     "<form action="/EnrollmentHandler.php">
-        //         <table class="center">
-        //             <tr>
-        //                 <th>Select</th>
-        //                 <th>Course Number</th>
-        //                 <th>Course Name</th>
-        //                 <th>Meeting Time</th>
-        //                 <th>Location</th>
-        //             </tr>";
-        //             foreach($classes as $class){
-        //                 echo 
-        //                     "<tr>
-        //                         <td><input type="checkbox"></td>
-        //                         <td value='".$class["courseID"]."'></td>
-        //                         <td value='".$class["courseName"]."'></td>
-        //                         <td  value='".$class["deptID"]."'></td>
-        //                         <td value='".$class["location"]."'></td>";
-        //             }
-                
-        //         echo  "</table>
-        //         <input type='submit' value='Enroll'>
-        //     </form>"
-    ?>
 </body>
 </html>
