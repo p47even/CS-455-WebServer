@@ -97,23 +97,23 @@
         //$classes_query->bindParam(':courseID', $courseID);
         if($courseIDGiven == TRUE)
         {    
-            $classes_query->bindParam(':courseID', $courseID);
+            $classes_query = $classes_query->bindParam(':courseID', $courseID);
         }
         if($deptIDGiven == TRUE)
         {
-            $classes_query->bindParam(':deptID', $courseName);
+            $classes_query = $classes_query->bindParam(':deptID', $courseName);
         }
         if($courseNameGiven == TRUE)
         {
-            $classes_query->bindParam(':courseName', $courseName);
+            $classes_query = $classes_query->bindParam(':courseName', $courseName);
         }
         if($fallSemesterGiven == TRUE)
         {
-            $classes_query->bindParam(':fallSemester', $fallSemester);
+            $classes_query = $classes_query->bindParam(':fallSemester', $fallSemester);
         }
         if($springSemesterGiven == TRUE)
         {
-            $classes_query->bindParam(':springSemester', $springSemester);
+            $classes_query = $classes_query->bindParam(':springSemester', $springSemester);
         }
 
         $classes_query->execute();
