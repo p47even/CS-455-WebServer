@@ -32,9 +32,8 @@
                     $update_query->bindParam(':user', $username);
                     $update_query->bindParam(':pass', $password);
 
-                    #filter_var($username, FILTER_VALIDATE_INT) === true;
 
-                if(filter_var($username, FILTER_VALIDATE_INT) === true)
+                if(!is_numeric($username))
                 {
                     $msg .= "Error 'studentID' must be numbers only";
                 }
