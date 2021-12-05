@@ -33,7 +33,7 @@
         try {
 
             //open connection to the university's database file
-            $db = new PDO('sqlite:' . './uni.db');  
+            $db = new PDO('sqlite:' . './myDB/uni.db');  
 
             $msg = "";
             $courseID = $_POST["courseID"];
