@@ -17,8 +17,12 @@
                 $username = $_POST["username"];
                 $password = $_POST["password"];
 
-                echo $username;
-                echo $password;
+
+                
+
+
+                #echo $username;
+                #echo $password;
 
                 $msg = "";
                 $update_query = "";
@@ -30,26 +34,8 @@
 
                 if(!is_int($username))
                 {
-                    $msg .= "StudentID must be numbers only<br>";
+                    $msg .= "Error 'studentID' must be numbers only<br>";
                 }
-
-
-                /*
-                if(!preg_match("/^[a-zA-Z]$/", $new_m_name) && (strcmp("", $new_m_name) != 0))
-                {
-                    $msg .= "Middle name must be empty or a single letter<br>";
-                }
-
-                if(!preg_match("/^[a-zA-Z]+$/", $new_l_name))
-                {
-                    $msg .= "Last name must be non-empty and consist of letters only<br>";
-                }
-
-                if(!preg_match("/^[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]$/", $new_ssn))
-                {
-                    $msg .= "SSN must be in the form xxx-xx-xxxx where x is a whole number between 0 and 9<br>";
-                } */
-
 
                 if(strcmp("", $msg) == 0)
                 {
@@ -60,8 +46,10 @@
                 }
                 else
                 {
-                    echo $msg;
-                    #//echo "<meta http-equiv='refresh' content='0; url=./htmlForm.php?oldSsn=$new_ssn&oldFName=$new_f_name&oldMName=$new_m_name&oldLName=$new_l_name&msg=$msg'/>";
+                    //echo $msg;
+                    $redirect_url = './project.php?msg=$msg';
+                    header("Location: $redirect_url", true, 303);
+                    //echo "<meta http-equiv='refresh' content='0; url=./htmlForm.php?oldSsn=$new_ssn&oldFName=$new_f_name&oldMName=$new_m_name&oldLName=$new_l_name&msg=$msg'/>";
                 }
 
                 $db = null;
