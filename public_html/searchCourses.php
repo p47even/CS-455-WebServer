@@ -65,7 +65,7 @@
             {
                 $attrStr .= ",";
             }
-            $attrStr .= " meetTime = :meetTime";
+            $attrStr .= " ISMEETING.meetTime = :meetTime";
             $attrAdded++;
             $meetTimeGiven = TRUE;
         }
@@ -78,7 +78,7 @@
             {
                 $attrStr .= ",";
             }
-            $attrStr .= " endTime = :endTime";
+            $attrStr .= " ISMEETING.endTime = :endTime";
             $attrAdded++;
             $endTimeGiven = TRUE;
         }
@@ -91,7 +91,7 @@
             {
                 $attrStr .= ",";
             }
-            $attrStr .= " location = :location";
+            $attrStr .= " ISMEETING.location = :location";
             $attrAdded++;
             $locationGiven = TRUE;
         }
