@@ -28,11 +28,14 @@
         th{
             color: maroon;
         }
+        h2{
+            text-align: center;
+        }
     </style>
     <div class="toolbar">
         <a href="Dashboard.html">Home</a>
         <a href="WeeklySchedule.html">Schedule</a>
-        <a href="Search4Classes">Search for classes</a>
+        <a href="searchClasses.php">Search for classes</a>
         <a href="AcademicRequirements">Academic Rqueirements</a>
         <a href="Enrollment.html">Enroll</a>
         <a href="Discussion.html">Discussion Board</a>
@@ -46,6 +49,8 @@
 
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $classes = $_SESSION["courAttrQuer"];
         
         $newClass = $db->prepare("INSERT INTO Enroll VALUES (:studentID, :courseID);");         
       
@@ -55,26 +60,33 @@
         die('Exception : '.$e->getMessage());
     }
     ?>
+    <h2>Shopping Cart</h2>
 </head>
 <body>
-    
-    <form action="/EnrollmentHandler.php">
-        <table>
-            <tr>
-                <th>Select</th>
-                <th>Course Number</th>
-                <th>Course Name</th>
-                <th>Meeting Time</th>
-                <th>Location</th>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>CS161</td>
-                <td>Intro to CS</td>
-                <td>10:00 - 11:00</td>
-                <td>TH</td>
-        </table>
-        <input type='submit' value='Enroll'>
-    </form>
+    <?php
+        echo 
+            "<form action="/EnrollmentHandler.php">
+                <table class="center">
+                    <tr>
+                        <th>Select</th>
+                        <th>Course Number</th>
+                        <th>Course Name</th>
+                        <th>Meeting Time</th>
+                        <th>Location</th>
+                    </tr>";
+                    foreach($classes as $class){
+                        echo 
+                            "<tr>
+                                <td><input type="checkbox"></td>
+                                <td value='".$class["courseID"]."'></td>
+                                <td value='".$class["courseName"]."'></td>
+                                <td  value='".$class["deptID"]."'></td>
+                                <td value='".$class["location"]."'></td>";
+                    }
+                
+                echo  "</table>
+                <input type='submit' value='Enroll'>
+            </form>"
+    ?>
 </body>
 </html>
