@@ -65,8 +65,8 @@
         foreach($classes as $class){
            echo"<tr>
                 <td><input type='checkbox' value=".$_POST["courseID"]."></td>
-                <td>".$class["courseID"]"</td>
-                <td>".$class["courseName"]"</td>
+                <td>".$class["courseID"]."</td>
+                <td>".$class["courseName"]."</td>
                 </tr>";
         }
         session_destroy();
