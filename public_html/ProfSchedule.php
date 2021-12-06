@@ -39,7 +39,7 @@
         <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
-        <a href="AddClass.php">Add Class</a>
+        <a href="AddClassForm.php">Add Class</a>
     </div>
 
     <h2>Weekly Scedule</h2>
@@ -49,7 +49,7 @@
 
         $faculty_ID =3;
         //open connection to the university's database file
-        $db = new PDO('sqlite:' . './uni.db');      // <------ Line 13
+        $db = new PDO('sqlite:' . './myDB/uni.db');      // <------ Line 13
 
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
