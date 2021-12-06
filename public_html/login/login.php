@@ -54,7 +54,7 @@
                     $msg .= "SSN must be in the form xxx-xx-xxxx where x is a whole number between 0 and 9<br>";
                 } */
 
-                $all_digits = ctype_digit($username)
+                $all_digits = ctype_digit($username);
                 echo $all_digits;
                 if(!$all_digits){
                     $msg .= "Error 'studentID' must be numbers only";
