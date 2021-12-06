@@ -45,7 +45,7 @@
                     $update_query->execute();
                     $query_result = $update_query->fetchAll();
                     echo $query_result;
-                    #//echo "<meta http-equiv='refresh' content='0; url=./showPassengers.php?msg=Success!'/>";
+                    echo "Error should be here username: ".$username." alldigits:".$all_digits. " ". $_SERVER["REQUEST_METHOD"]. " password: ". $password;
                 }
                 else
                 {
