@@ -70,6 +70,8 @@
                 <td>".$class["courseName"]."</td>
                 </tr>";
         }
+        echo "</table> 
+        <input type='submit' name='delete' value='Delete'></form>";
         session_destroy();
     ?>
 </body>
