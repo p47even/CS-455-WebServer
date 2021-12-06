@@ -53,7 +53,7 @@
 
                     #echo $username;
                     #echo $all_digits;
-                    $redirect_url = '../../project.php?msg='.$msg.$username.$password;
+                    $redirect_url = '../project.php?msg='.$msg.$username.$password;
                     header("Location: $redirect_url", true, 303); #uncomment out for the redirect
 
                 }
