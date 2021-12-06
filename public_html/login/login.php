@@ -45,9 +45,8 @@
                     $update_query->execute();
                     $query_result = $update_query->fetchAll();
                     print_r($query_result);
-                    $update_query->debugDumpParams();
-                    echo $username;
-                    echo $password;
+                    $hashed_pass = hash('sha256', $password, true);
+                    echo $hashed_pass
                 }
                 else
                 {
