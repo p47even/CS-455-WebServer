@@ -7,6 +7,5 @@ foreach($userPassPairs as $id => $pass){
     $update_command = "UPDATE StudentLogin SET stuPassword = '" . $hashedPass ."' WHERE studentID = ". $id.",<br>";
     echo $update_command;
 
-
 }
 ?>
