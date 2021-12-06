@@ -55,7 +55,7 @@
                 } */
 
                 $all_digits = ctype_digit($username);
-                echo $all_digits;
+                print $all_digits;
                 if(!$all_digits){
                     $msg .= "Error 'studentID' must be numbers only";
                 }
