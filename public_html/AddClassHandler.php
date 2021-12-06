@@ -103,7 +103,7 @@
         if(strcmp("", $msg) == 0)
         {
             $insert_status = $insert_query->execute();
-            echo "<meta http-equiv='refresh' content='0; url=./AddClassPrompt.php?msg=Success!'/>";
+            echo "<meta http-equiv='refresh' content='0; url=./AddResult.php'/>";
         }  else
         {
             echo "<meta http-equiv='refresh' content='0; url=./AddClassForm.php?msg=$msg'/>";
