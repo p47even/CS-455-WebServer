@@ -17,12 +17,7 @@
                 $username = $_POST['username'];
                 $password = $_POST['password'];
 
-
-
-
-
-                #echo $username;
-                #echo $password;
+                $hashed_pass = hash('sha256', $password, false);
 
                 $msg = "";
                 $update_query = "";
@@ -31,9 +26,7 @@
                 $update_query = $db->prepare("SELECT StudentID, Username FROM StudentLogin WHERE studentID = :user AND stuPassword = :pass;");
                     $update_query->bindParam(':user', $username);
                     $update_query->bindParam(':pass', $password);
-
-                /*$update_query = $db->prepare("SELECT * FROM StudentLogin;"); */
-
+                    #$update_query->bindParam(':pass', $hashed_pass);
 
                 $all_digits = preg_match("/[0-9]/", $username);
                 if(!$all_digits){
@@ -47,20 +40,20 @@
                     print_r($query_result);
                     if(count($query_result) == 1){
                         echo "LOGIN SUCCESFUL";
+                        $redirect_url = '../dashboard.php';
+                        header("Location: $redirect_url", true, 303);
                     }
                     else{
                         echo "FAILED LOGIN!";
+                        $msg .= "Incorrect Username or password!"
+                        $redirect_url = '../project.php?msg='.$msg;
+                        header("Location: $redirect_url", true, 303); 
                     }
-                    #$hashed_pass = hash('sha256', $password, false);
-                    #echo $hashed_pass;
                 }
                 else
                 {
-                    #print_r($_POST);
-                    #echo $username;
-                    #echo $all_digits;
                     $redirect_url = '../project.php?msg='.$msg;
-                    header("Location: $redirect_url", true, 303); #uncomment out for the redirect
+                    header("Location: $redirect_url", true, 303);
 
                 }
 
