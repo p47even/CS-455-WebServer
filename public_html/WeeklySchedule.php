@@ -47,7 +47,15 @@
     <?php
 
     try {
+        session_start();
 
+        if(!isset($_SESSION["sID"]))
+            { 
+                $loginUrl = 'project.php?msg=Please Login First';
+                header("Location: $loginUrl", true, 303);
+                exit; 
+            }
+        $sID = $_SESSION["sID"];
         //open connection to the university's database file
         $db = new PDO('sqlite:' . './myDB/uni.db');      // <------ Line 13
 
@@ -61,11 +69,11 @@
         $frClass = "";
         
         //$query_str = $db->query("SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1;");
-        $monClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Monday' ORDER BY meetTime;");
-        $tuClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Tuesday' ORDER BY meetTime;");
-        $wedClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Wedmesday' ORDER BY meetTime;");
-        $thClass = $db->query("SELECT  meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Thursday' ORDER BY meetTime;"); 
-        $frClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = 1) WHERE meetDay = 'Friday' ORDER BY meetTime;");
+        $monClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = $sID) WHERE meetDay = 'Monday' ORDER BY meetTime;");
+        $tuClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = $sID) WHERE meetDay = 'Tuesday' ORDER BY meetTime;");
+        $wedClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = $sID) WHERE meetDay = 'Wedmesday' ORDER BY meetTime;");
+        $thClass = $db->query("SELECT  meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = $sID) WHERE meetDay = 'Thursday' ORDER BY meetTime;"); 
+        $frClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Enroll NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE studentID = $sID) WHERE meetDay = 'Friday' ORDER BY meetTime;");
 
     }
     catch(PDOException $e) {
