@@ -18,7 +18,7 @@
         }
     </style>
     <div class="toolbar">
-        <a href="Dashboard.html">Home</a>
+        <a href="dashboard.php">Home</a>
         <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
         <a href="4YearPlan.php">Four Year Plan</a>
