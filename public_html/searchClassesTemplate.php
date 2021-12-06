@@ -36,15 +36,14 @@
     <div class="toolbar">
         <a href="Dashboard.html">Home</a>
         <a href="WeeklySchedule.html">Schedule</a>
-        <a href="searchClassesTemplate.php">Search for classes</a>
-        <a href="AcademicRequirements">Academic Rqueirements</a>
+        <a href="searchClassesTemplate.php">Search for Classes</a>
+        <a href="AcademicRequirements">Academic Requirements</a>
         <a href="Enrollment.php">Enroll</a>
         <a href="Discussion.html">Discussion Board</a>
     </div>
 
 </head>
 <body>
-<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
 
         <form action='./searchClasses.php' method='post'>
         courseID: <input type='text' name='courseID' id='courseID'><br>
@@ -69,11 +68,11 @@
         <?php
             session_start();
 
-            if(!isset($_SESSION["sID"]))
-            { 
-                header("Location: 'project.php?msg=Please Login First'", true, 303);
-                exit; 
-            }
+            // if(!isset($_SESSION["sID"]))
+            // { 
+            //     header("Location: 'project.php?msg=Please Login First'", true, 303);
+            //     exit; 
+            // }
 
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 

@@ -37,7 +37,7 @@
         <a href="Dashboard.html">Home</a>
         <a href="WeeklySchedule.html">Schedule</a>
         <a href="searchClassesTemplate.php">Search for classes</a>
-        <a href="AcademicRequirements">Academic Rqueirements</a>
+        <a href="AcademicRequirements">Academic Requirements</a>
         <a href="Enrollment.php">Enroll</a>
         <a href="Discussion.html">Discussion Board</a>
     </div>
@@ -76,12 +76,12 @@
         <?php
             session_start();
 
-            if(!isset($_SESSION["sID"]))
-            { 
-                $loginUrl = 'project.php?msg=Please Login First';
-                header("Location: $loginUrl", true, 303);
-                exit; 
-            }
+            // if(!isset($_SESSION["sID"]))
+            // { 
+            //     $loginUrl = 'project.php?msg=Please Login First';
+            //     header("Location: $loginUrl", true, 303);
+            //     exit; 
+            // }
             
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
