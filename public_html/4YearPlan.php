@@ -1,14 +1,18 @@
 <html>
     <?php 
         //session_start();
-        //$studentID = $_SESSION['studentID'];
-        $studentID = 13;
+        //$studentID = $_SESSION['sID'];
+        //$studentID = $sID;
+        
+        $studentID = 13; //comment this and uncomment above when it's time 
 
         $seasonSpring = TRUE; 
-        $db = new SQLite3('./myDB/uni.db');
+        $db = new SQLite3('myDB/uni.db');
         $classes = ['Freshman','Sophomore','Junior','Senior'];
+        $classInd = 0;
         $numCoursesPerSemester = 4;
         $numSemesters = 8;
+        $numSemestersPerClass = 2;
 
         $query = 'select * from Students natural join Enroll natural join Course where studentID = '.$studentID.';';
 
@@ -37,9 +41,13 @@
         $schedule = array_fill(0,$numCoursesPerSemester*$numSemesters,'');
 
         $schedIndex = 0; //set starting index
-        if ($class == "Sophomore"){ $schedIndex = $numCoursesPerSemester*2; }
-        else if ($class == "Junior"){ $schedIndex = $numCoursesPerSemester*4; }
-        else if ($class == "Senior"){ $schedIndex = $numCoursesPerSemester*6; }
+        $toMultiply = 0;
+        while (!($class == $classes[$classInd])){
+            $toMultiply+=$numSemestersPerClass;
+            $classInd++;
+        }
+        $schedIndex = $numCoursesPerSemester*$toMultiply;
+
         if ($seasonSpring) {
             $schedIndex += $numCoursesPerSemester;
         }
@@ -48,7 +56,9 @@
             $schedule[$schedIndex] = $startingCourseNames[$SC];
             $schedIndex++;
         }
-        $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester);
+        $schedIndex = goToNextSemester($schedIndex, $numCoursesPerSemester);
+        if ($seasonSpring) { $classInd++; }
+        $seasonSpring = !$seasonSpring;
 
         //get major
         $majorQuery = 'select Major from Students natural join Major where studentID = '.$studentID.';';
@@ -75,7 +85,7 @@
                 tmp5 as (select requirementID as courseID from tmp4),
                 tmp6 as (select * from tmp5 where courseID not in tmp),
                 tmp7 as (select distinct courseID from tmp3 union select distinct courseID from tmp6 group by courseID)
-                select * from tmp7 natural join course;';
+                select * from tmp7 natural join course group by courseID;';
             $filterResult = $db->query($filterQuery);
 
             while ($filterResultArray = $filterResult->fetchArray()){
@@ -116,31 +126,76 @@
                 $k++;
             }          
 
+            //get reqs per class
+            $classReqQuery = 
+                'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),
+                tmp2 as (select distinct courseID from Requirements where requirementID in tmp),
+                tmp3 as (select courseID from tmp2 union select courseID from Requirements natural join Course where deptID = \''.$major.'\' and requirementID in tmp2),
+                tmp4 as (select * from tmp3 natural join Requirements),		
+                tmp5 as (select requirementID as courseID from tmp4),
+                tmp6 as (select * from tmp5 where courseID not in tmp),
+                tmp7 as (select distinct courseID from tmp3 union select distinct courseID from tmp6 group by courseID),
+                tmp8 as (select * from tmp7 natural join course)
+                select courseID, class from tmp8 natural join ClassRequirements;';        
+            $classReqResult = $db->query($classReqQuery);
+            $classReqResultArray = array();
+            $classReqCourseID = array();
+            $classReqClass = array();
+            $l = 0;
+            while ($classReqResultArray = $classReqResult->fetchArray()){
+                $classReqCourseID[$l] = $classReqResultArray['courseID'];
+                $classReqClass[$l] = $classReqResultArray['class'];
+                $l++;
+            }        
             //add in future courses
-            for ($courseIter = 0; $courseIter < count($courseIDs); $courseIter++ ){
+            for ($courseIter = 0; $courseIter < count($courseIDs); $courseIter++ ){ //if required class is in this semester, go to next semester
                 if (in_array($courseIDs[$courseIter], $reqParents) ){
                     for ($j = 0; $j < count($reqParents); $j++){
                         $offset = $schedIndex-($schedIndex%$numCoursesPerSemester);
                         $length = $numCoursesPerSemester;
                         $semester = (array_slice( $schedule, $offset,$length  ));
-                        if ( ($reqParents[$j] == $courseIDs[$courseIter]) && (in_array( $reqChildrenNames[$j], $semester) ) ){ //if child is in this semester
+                        if ( ($reqParents[$j] == $courseIDs[$courseIter]) && (in_array( $reqChildrenNames[$j], $semester) ) ){ 
+                            $schedIndex = goToNextSemester($schedIndex,$numCoursesPerSemester);
+                            if ($seasonSpring) { $classInd++; }
                             $seasonSpring = !$seasonSpring;
-                            $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester);
-                        } 
-                        
+                        }
                     }                    
                 }
+                if (in_array($courseIDs[$courseIter], $classReqCourseID) ){ //ensure class requirement is met (ie wait until senior year to take a senior only class)
+                    $classReqInd = array_search($courseIDs[$courseIter], $classReqCourseID);
+                    while ($classes[$classInd] != $classReqClass[$classReqInd]){
+                        if ($seasonSpring){
+                            $schedIndex = goToNextSemester($schedIndex,$numCoursesPerSemester);
+                            $seasonSpring = FALSE;
+                        }
+                        else {
+                            $schedIndex = goToNextSemester($schedIndex,$numCoursesPerSemester);
+                            $schedIndex = goToNextSemester($schedIndex,$numCoursesPerSemester);
+                        }
+                        $classInd++;
+                    }
+                }
                 //handle seasons
-                if ( ($schedIndex-($schedIndex%$numCoursesPerSemester)) % ($numCoursesPerSemester*2) != 0 ) { $seasonSpring = TRUE; }
-                else { $seasonSpring = FALSE; }
                 $supportedSeasons = [$fallSems[$courseIter],$springSems[$courseIter]];
-                if ($supportedSeasons[$seasonSpring] == 0){ $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester); } //if fall and course is not taught in fall, move to spring and vice versa
+                if ($supportedSeasons[$seasonSpring] == 0){ //if fall and course is not taught in fall, move to spring and vice versa
+                    $schedIndex = goToNextSemester($schedIndex, $numCoursesPerSemester);
+                    if ($seasonSpring) { $classInd++; }
+                    $seasonSpring = !$seasonSpring;
+                } 
     
                 //add course to schedule
                 $schedule[$schedIndex] = $courseNames[$courseIter];
-                $schedIndex++;             
+                $schedIndex++;
+                if ($schedIndex%$numCoursesPerSemester == 0) { 
+                    if ($seasonSpring) { $classInd++; }
+                    $seasonSpring = !$seasonSpring;
+                }             
             }
             
+        }
+
+        function goToNextSemester($schedIndex, $numCoursesPerSemester){
+            return $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester);
         }
 
         function echoTableElements($start, $schedule, $numToIter){
