@@ -49,9 +49,9 @@
 
             $existing_ID = $db->query("SELECT courseName, courseID FROM Course WHERE courseID = $courseID;");
             $existing_class = $db->query("SELECT courseID, courseName FROM Course WHERE courseName = '$courseName';");
-            $ID_count = $db->query("SELECT COUNT(*) AS COUNT FROM $existing_ID;");
-            $class_count = $db->query("SELECT COUNT(*) AS COUNT $existing_class;");
-            if ($ID_count["COUNT"] == 0 && $class_count["COUNT"] == 0){
+            $ID_count = $existing_ID->fetch();
+            $class_count = $existing_class->fetch();
+            if (!$ID_count && !$class_count){
                 $insert_query = $db->prepare("INSERT INTO Course VALUES (:courseID, :deptID, :courseName, :fall, :spring);");
                     $insert_query->bindParam(':courseID', $courseID);
                     $insert_query->bindParam(':deptID', $deptID);
@@ -59,11 +59,11 @@
                     $insert_query->bindParam(':fall', $fall);
                     $insert_query->bindParam(':spring', $spring);
             } else {
-                if (mysql_num_rows($existing_ID)!=0){
+                if ($existing_ID){
                     $msg .= "The course ID you have entered is already in use for class".$existing_ID["courseID"]." ".$existing_ID["courseName"].". Please try again";
                 }
 
-                if (mysql_num_rows($existing_class)!=0){
+                if ($existing_class){
                     $msg .= "The class name you have entered is already in use for class".$existing_class["courseID"]." ".$existing_class["courseNmae"]." Please try again";
                 }
             } 
