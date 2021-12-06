@@ -45,7 +45,8 @@
                     $update_query->execute();
                     $query_result = $update_query->fetchAll();
                     print_r($query_result);
-                    echo $update_query;
+                    $update_query->debugDumpParams();
+                    #echo $update_query;
                 }
                 else
                 {
