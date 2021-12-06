@@ -27,12 +27,12 @@
                 $msg = "";
                 $update_query = "";
 
-
-                $update_query = $db->prepare("SELECT StudentID, Username FROM StudentLogIn WHERE Username ="."'".":user"."'"." AND StuPassword = "."'".":pass"."'".";");
+                /*
+                $update_query = $db->prepare("SELECT StudentID, Username FROM StudentLogIn WHERE Username = :user AND StuPassword = :pass;");
                     $update_query->bindParam(':user', $username);
-                    $update_query->bindParam(':pass', $password);
+                    $update_query->bindParam(':pass', $password); */
 
-
+                $update_query = $db->prepare("SELECT * FROM StudentLogin;");
 
 
                 $all_digits = preg_match("/[0-9]/", $username);
