@@ -50,7 +50,7 @@
 
             $existing_ID = $db->query("SELECT courseName, courseID FROM Course WHERE courseID = $courseID;");
             $existing_class = $db->query("SELECT courseID, courseName FROM Course WHERE courseName = '$courseName';");
-            $query_deptID = $db->query("SELECT * FROM Department WHERE deptID = $deptID;");
+            $query_deptID = $db->query("SELECT * FROM Department WHERE deptID = '$deptID';");
             $ID_count = $existing_ID->fetch();
             $class_count = $existing_class->fetch();
             $valid_deptID = $query_deptID->fetch();
