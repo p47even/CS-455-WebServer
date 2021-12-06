@@ -29,7 +29,7 @@
 
                         <form action='./login/adminLogin.php' method='post'>
                         Password: <input type='password' name='admin_password' id='admin_password'><br>
-                        <input type='submit' name='submit' value='Admin Login'>
+                        <input type='submit' name='submit' value='Admin Login' id='submit'>
                     </div>
                 </div>
 
