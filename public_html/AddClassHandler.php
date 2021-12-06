@@ -62,11 +62,11 @@
                     $insert_query->bindParam(':spring', $spring);
             } else {
                 if ($existing_ID){
-                    $msg .= "The course ID you have entered is already in use for class".$existing_ID["courseID"]." ".$existing_ID["courseName"].". Please try again";
+                    $msg .= "The course ID you have entered is already in use for class. Please try again";
                 }
 
                 if ($existing_class){
-                    $msg .= "The class name you have entered is already in use for class".$existing_class["courseID"]." ".$existing_class["courseNmae"]." Please try again";
+                    $msg .= "The class name you have entered is already in use for class. Please try again";
                 }
 
                 if(!$valid_deptID){
