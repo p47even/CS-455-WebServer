@@ -69,7 +69,7 @@
                 }
                 else
                 {
-                    echo "Error should be here";
+                    echo "Error should be here".$all_digits;
                     echo $username;
                     echo $all_digits;
                     $redirect_url = '../../project.php?msg='.$msg;
