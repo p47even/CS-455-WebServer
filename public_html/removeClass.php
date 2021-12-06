@@ -58,6 +58,7 @@
         echo "<form action='./removeClassHandler.php' method='post'>
                 <table class='center'>
                 <tr>
+                    <th>Select</th>
                     <th>Course ID</th>
                     <th>Course Name</th>
                 </tr>";
