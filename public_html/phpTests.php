@@ -4,7 +4,7 @@ $userPassPairs = array("0"=>"zSLPj4JV","1"=>"2JxCQnub","2"=>"4vmZmHA3","3"=>"5tL
 foreach($userPassPairs as $id => $pass){
 
     $hashedPass = hash('sha256', $pass, false);
-    $update_command = "UPDATE StudentLogin SET stuPassword = " . $hashedPass ." WHERE studentID = ". $id."<br>";
+    $update_command = "UPDATE StudentLogin SET stuPassword = " . $hashedPass ." WHERE studentID = ". $id.",<br>";
     echo $update_command;
 
 
