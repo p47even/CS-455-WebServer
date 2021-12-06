@@ -90,7 +90,7 @@
             $msg .= "error";
         }
 
-        if(!preg_match("/^[0-9]+$/", $deptID))
+        if(!preg_match("/^[A-Z]+$/", $deptID))
         {
             echo "Department ID must be non-empty and consist of numbers 0-9 only<br>";
             $msg .= "error";
