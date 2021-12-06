@@ -49,9 +49,11 @@
 
             $existing_ID = $db->query("SELECT courseName, courseID FROM Course WHERE courseID = $courseID;");
             $existing_class = $db->query("SELECT courseID, courseName FROM Course WHERE courseName = '$courseName';");
+            $query_deptID = $db->query("SELECT * FROM Department WHERE deptID = $deptID;");
             $ID_count = $existing_ID->fetch();
             $class_count = $existing_class->fetch();
-            if (!$ID_count && !$class_count){
+            $valid_deptID = $query_deptID->fetch();
+            if (!$ID_count && !$class_count && $valid_deptID){
                 $insert_query = $db->prepare("INSERT INTO Course VALUES (:courseID, :deptID, :courseName, :fall, :spring);");
                     $insert_query->bindParam(':courseID', $courseID);
                     $insert_query->bindParam(':deptID', $deptID);
@@ -65,6 +67,10 @@
 
                 if ($existing_class){
                     $msg .= "The class name you have entered is already in use for class".$existing_class["courseID"]." ".$existing_class["courseNmae"]." Please try again";
+                }
+
+                if(!$valid_deptID){
+                    $msg .= "The Department ID you have entered does not exist";
                 }
             } 
             
@@ -101,7 +107,7 @@
         {
             echo "<meta http-equiv='refresh' content='0; url=./AddClassForm.php?msg=$msg'/>";
         }
-        
+        session_destroy();
         $db = null;
         } catch(PDOException $e) {
             die('Exception : '.$e->getMessage());
