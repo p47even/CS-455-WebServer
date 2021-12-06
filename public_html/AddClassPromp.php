@@ -19,10 +19,8 @@
     </style>
     <div class="toolbar">
         <a href="Dashboard.html">Home</a>
-        <a href="WeeklySchedule.php">Schedule</a>
+        <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
-        <a href="AcademicRequirements">Academic Rqueirements</a>
-        <a href="Enrollment.php">Enroll</a>
         <a href="4YearPlan.php">Four Year Plan</a>
     </div>
 </head>
@@ -32,8 +30,8 @@
         echo
         "<form action='./AddClassForm.php' method='post'>
         <input type='checkbox'>Add a new class to catalogue<br>
-        <form action='./EditSchedule.php' method='post'>
-        <input type='checkbox'>Add class to schedule<br>
+        <form action='./removeClass.php' method='post'>
+        <input type='checkbox'>Delete a class<br>
         <input type='submit' value='Submit'>";
     ?>
 </body>

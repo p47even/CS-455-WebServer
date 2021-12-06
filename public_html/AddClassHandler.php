@@ -18,11 +18,11 @@
         }
     </style>
     <div class="toolbar">
-    <a href="Dashboard.html">Home</a>
+        <a href="Dashboard.html">Home</a>
         <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
-        <a href="AddClassForm.php">Add Class</a>
+        <a href="AddClassPromp.php">Edit Class</a>
     </div>
 </head>
 <body>
