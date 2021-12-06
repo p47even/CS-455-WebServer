@@ -17,14 +17,14 @@
                         <form action='./login/login.php' method='post'>
                         Password: <input type='password' name='password' id='password'><br>
 
-                        <input type='submit' name='submit' value='Student Login' id='submit'>
+                        <input type='submit' name='submit' value='Student Login' id='submit'><br>
 
 
                 </div>
 
                 <h3>Not a Student?</h3>
                     <p>
-                        <a href="./fProject.php">Faculty Login Here!</a>
+                        <a href="./fProject.php?msg=">Faculty Login Here!</a>
                     </p>
 
 
