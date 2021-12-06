@@ -46,7 +46,8 @@
                     $query_result = $update_query->fetchAll();
                     print_r($query_result);
                     $update_query->debugDumpParams();
-                    #echo $update_query;
+                    echo $username;
+                    echo $password;
                 }
                 else
                 {
