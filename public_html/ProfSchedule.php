@@ -36,7 +36,7 @@
     </style>
     <div class="toolbar">
         <a href="Dashboard.html">Home</a>
-        <a href="WeeklySchedule.php">Schedule</a>
+        <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClass.php">Add Class</a>
@@ -44,7 +44,7 @@
 
     <h2>Weekly Scedule</h2>
     <?php
-
+    session_start();
     try {
 
         $faculty_ID =3;
@@ -136,6 +136,7 @@
 
                 echo "</table>";
         $db = null;
+        session_destroy();
     ?>
 
 </body>
