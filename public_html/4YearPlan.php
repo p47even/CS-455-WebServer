@@ -260,11 +260,10 @@
         <div class="toolbar">
         <a href="Dashboard.php">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
-        <a href="Class Roster.php">Class Roster</a>
         <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
-        <a href="AddClass.php">Add Class</a>
+        <a href="AddClassForm.php">Add Class</a>
     </div>
     <head>
         <title>Four Year Plan</title>
