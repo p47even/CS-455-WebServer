@@ -265,6 +265,7 @@
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClassForm.php">Add Class</a>
+        <a href="4YearPlanHelper.php">Four Year Plan</a>
     </div>
     <head>
         <title>Four Year Plan</title>
