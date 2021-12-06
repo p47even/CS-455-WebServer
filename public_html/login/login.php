@@ -55,7 +55,7 @@
                 } */
 
                 #!preg_match('/^[0-9]*$/', $id)
-                if(!preg_match('/^[0-9]*$/', $username))
+                if(!ctype_digit($username))
                 {
                     $msg .= "Error 'studentID' must be numbers only";
                 }
