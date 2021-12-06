@@ -17,7 +17,7 @@
                         <form action='./login/login.php' method='post'>
                         Password: <input type='password' name='password' id='password'><br>
 
-                        <input type='submit' name='submit' value='Login'>
+                        <input type='submit' name='stu_submit' value='stu_Login'>
 
                     </div>
 
@@ -29,7 +29,7 @@
 
                         <form action='./login/adminLogin.php' method='post'>
                         Password: <input type='password' name='admin_password' id='admin_password'><br>
-                        <input type='submit' name='submit' value='Login'>
+                        <input type='submit' name='admin_submit' value='admin_Login'>
                     </div>
                 </div>
 
