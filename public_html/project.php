@@ -8,7 +8,7 @@
         <body>
             <h1>Enrollment Planner Login!</h1>
                 <div class='main'>
-                    <div class='studentLogin'>
+
                         <h2>Student Login!</h2>
 
                         <form action='./login/login.php' method='post'>
@@ -19,19 +19,14 @@
 
                         <input type='submit' name='submit' value='Student Login' id='submit'>
 
-                    </div>
 
-                    <div class='adminLogin'>
-                        <h2>Admin Login!</h2>
-
-                        <form action='./login/adminLogin.php/' method='post'>
-                        AdminID: <input type='text' name='admin_username' id='admin_username'><br>
-
-                        <form action='./login/adminLogin.php' method='post'>
-                        Password: <input type='password' name='admin_password' id='admin_password'><br>
-                        <input type='submit' name='submit' value='Admin Login' id='submit'>
-                    </div>
                 </div>
+
+                <h3>Not a Student?</h3>
+                    <p>
+                        <a href="./fProject.php">Faculty Login Here!</a>
+                    </p>
+
 
                 <?php
                     $error_message = $_GET["msg"];
