@@ -46,7 +46,7 @@
                     $query_result = $update_query->fetchAll();
                     print_r($query_result);
                     $hashed_pass = hash('sha256', $password, true);
-                    echo $hashed_pass
+                    echo $hashed_pass;
                 }
                 else
                 {
