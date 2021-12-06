@@ -10,6 +10,10 @@
             $db_file = '../myDB/uni.db';
 
             try {
+                $which_button = $_Post['submit'];
+
+
+
                 //open connection to the university database file
                 $db = new PDO('sqlite:' . $db_file);
 
@@ -57,7 +61,8 @@
                 {
                     //Non-number in the studentId section
                     $redirect_url = '../project.php?msg='.$msg;
-                    header("Location: $redirect_url", true, 303);
+                    echo $which_button;
+                    #header("Location: $redirect_url", true, 303);
 
                 }
 
