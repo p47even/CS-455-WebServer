@@ -32,7 +32,7 @@
                     $update_query->bindParam(':user', $username);
                     $update_query->bindParam(':pass', $password);
 
-                /* $update_query = $db->prepare("SELECT * FROM StudentLogin;"); */
+                /*$update_query = $db->prepare("SELECT * FROM StudentLogin;"); */
 
 
                 $all_digits = preg_match("/[0-9]/", $username);
@@ -45,8 +45,14 @@
                     $update_query->execute();
                     $query_result = $update_query->fetchAll();
                     print_r($query_result);
-                    $hashed_pass = hash('sha256', $password, false);
-                    echo $hashed_pass;
+                    if(count($query_result) == 0){
+                        echo "LOGIN SUCCESFUL";
+                    }
+                    else{
+                        echo "FAILED LOGIN!";
+                    }
+                    #$hashed_pass = hash('sha256', $password, false);
+                    #echo $hashed_pass;
                 }
                 else
                 {
