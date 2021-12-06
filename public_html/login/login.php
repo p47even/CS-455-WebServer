@@ -69,6 +69,7 @@
                 }
                 else
                 {
+                    echo $all_digits;
                     //echo $msg;
                     $redirect_url = '../../project.php?msg='.$msg;
                     #header("Location: $redirect_url", true, 303); #uncomment out for the redirect
