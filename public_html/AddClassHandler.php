@@ -49,8 +49,9 @@
 
             $existing_ID = $db->query("SELECT courseName, courseID FROM Course WHERE courseID = $courseID;");
             $existing_class = $db->query("SELECT courseID, courseName FROM Course WHERE courseName = '$courseName';");
-            
-            if (count($existing_ID) == 0 && count($existing_class) == 0){
+            $ID_count = $db->query("SELECT COUNT(*) AS COUNT FROM $existing_ID;");
+            $class_count = $db->query("SELECT COUNT(*) AS COUNT $existing_class;");
+            if ($ID_count["COUNT"] == 0 && $class_count["COUNT"] == 0){
                 $insert_query = $db->prepare("INSERT INTO Course VALUES (:courseID, :deptID, :courseName, :fall, :spring);");
                     $insert_query->bindParam(':courseID', $courseID);
                     $insert_query->bindParam(':deptID', $deptID);
