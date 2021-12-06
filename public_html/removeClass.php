@@ -57,13 +57,17 @@
 
         echo "<form action='./removeClassHandler.php' method='post'>
                 <table class='center'>
-                <th>Course ID</th>
-                <th>Course Name</th>";
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                </tr>";
 
         foreach($classes as $class){
-           echo"<td><input type='checkbox' value=".$_POST["courseID"]."></td>
+           echo"<tr>
+                <td><input type='checkbox' value=".$_POST["courseID"]."></td>
                 <td>".$class["courseID"]"</td>
-                <td>".$class["courseName"]"</td>";
+                <td>".$class["courseName"]"</td>
+                </tr>";
         }
         session_destroy();
     ?>
