@@ -45,7 +45,7 @@
                     $update_query->execute();
                     $query_result = $update_query->fetchAll();
                     print_r($query_result);
-                    if(count($query_result) == 0){
+                    if(count($query_result) == 1){
                         echo "LOGIN SUCCESFUL";
                     }
                     else{
