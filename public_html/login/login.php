@@ -69,9 +69,9 @@
                 }
                 else
                 {
-                    echo "Error should be here".$all_digits;
-                    echo $username;
-                    echo $all_digits;
+                    echo "Error should be here username: ".$username." alldigits:".$all_digits;
+                    #echo $username;
+                    #echo $all_digits;
                     $redirect_url = '../../project.php?msg='.$msg;
                     #header("Location: $redirect_url", true, 303); #uncomment out for the redirect
 
