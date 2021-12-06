@@ -1,13 +1,15 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
     <body>
         <?php
-            session_start();
+            #session_start();
             //path to the SQLite database file
             $db_file = '../myDB/uni.db';
 
             try {
-
                 //open connection to the university database file
                 $db = new PDO('sqlite:' . $db_file);
 
@@ -40,18 +42,20 @@
                     print_r($query_result);
                     if(count($query_result) == 1){
                         echo "LOGIN SUCCESFUL";
+                        $_SESSION["sId"] = $username;
                         $redirect_url = '../dashboard.php';
                         header("Location: $redirect_url", true, 303);
                     }
                     else{
                         echo "FAILED LOGIN!";
-                        $msg .= "Incorrect Username or password!";
+                        $msg .= "Incorrect studentID or password!";
                         $redirect_url = '../project.php?msg='.$msg;
                         header("Location: $redirect_url", true, 303);
                     }
                 }
                 else
                 {
+                    //Non-number in the studentId section
                     $redirect_url = '../project.php?msg='.$msg;
                     header("Location: $redirect_url", true, 303);
 
