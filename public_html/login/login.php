@@ -33,26 +33,6 @@
                     $update_query->bindParam(':pass', $password);
 
 
-                /*
-                if(!preg_match("/^[a-zA-Z]+$/", $new_f_name))
-                {
-                    $msg .= "First name must be non-empty and consist of letters only<br>";
-                }
-
-                if(!preg_match("/^[a-zA-Z]$/", $new_m_name) && (strcmp("", $new_m_name) != 0))
-                {
-                    $msg .= "Middle name must be empty or a single letter<br>";
-                }
-
-                if(!preg_match("/^[a-zA-Z]+$/", $new_l_name))
-                {
-                    $msg .= "Last name must be non-empty and consist of letters only<br>";
-                }
-
-                if(!preg_match("/^[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]$/", $new_ssn))
-                {
-                    $msg .= "SSN must be in the form xxx-xx-xxxx where x is a whole number between 0 and 9<br>";
-                } */
 
 
                 $all_digits = preg_match("/[0-9]/", $username);
@@ -69,7 +49,8 @@
                 }
                 else
                 {
-                    echo "Error should be here username: ".$username." alldigits:".$all_digits;
+                    echo "Error should be here username: ".$username." alldigits:".$all_digits. " ". $_SERVER["REQUEST_METHOD"];
+
                     #echo $username;
                     #echo $all_digits;
                     $redirect_url = '../../project.php?msg='.$msg;
