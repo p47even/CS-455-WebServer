@@ -54,8 +54,8 @@
                     $msg .= "SSN must be in the form xxx-xx-xxxx where x is a whole number between 0 and 9<br>";
                 } */
 
-
-                if(!preg_match("/^[0-9]+$/", $username))
+                #!preg_match('/^[0-9]*$/', $id)
+                if(!preg_match('/^[0-9]*$/', $username))
                 {
                     $msg .= "Error 'studentID' must be numbers only";
                 }
