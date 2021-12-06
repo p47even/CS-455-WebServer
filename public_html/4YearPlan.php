@@ -1,10 +1,11 @@
 <html>
     <?php 
-        //session_start();
-        //$studentID = $_SESSION['sID'];
+        session_start();
+        $studentID = $_POST["studentID"];
+        //$studentID = $_SESSION['studentID'];
         //$studentID = $sID;
         
-        $studentID = 13; //comment this and uncomment above when it's time 
+        //$studentID = 13; //comment this and uncomment above when it's time 
 
         $seasonSpring = TRUE; 
         $db = new SQLite3('myDB/uni.db');
