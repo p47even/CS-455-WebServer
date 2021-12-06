@@ -30,6 +30,7 @@
         echo
         "<form action='./AddClassForm.php' method='post'>
         <input type='checkbox'>Add a new class to catalogue<br>
+        <input type='submit' value='Submit'>
         <form action='./removeClass.php' method='post'>
         <input type='checkbox'>Delete a class<br>
         <input type='submit' value='Submit'>";
