@@ -44,12 +44,14 @@
                 {
                     $update_query->execute();
                     $query_result = $update_query->fetchAll();
-                    echo $query_result;
+                    print_r($query_result);
                 }
                 else
                 {
-                    echo "Error should be here username: ".$username." alldigits:".$all_digits. " ". $_SERVER["REQUEST_METHOD"]. " password: ". $password;
-                    echo isset($_POST['username']);
+                    echo "Error should be here username: ".$username." alldigits:".$all_digits. " ". $_SERVER["REQUEST_METHOD"]. " password: ". $password
+                    . print_r($_POST).
+                    isset($_POST['username']);
+
                     #echo $username;
                     #echo $all_digits;
                     $redirect_url = '../project.php?msg='.$msg.$username.$password;
