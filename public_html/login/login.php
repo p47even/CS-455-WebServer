@@ -49,7 +49,7 @@
                 }
                 else
                 {
-                    echo "Error should be here username: ".$username." alldigits:".$all_digits. " ". $_SERVER["REQUEST_METHOD"];
+                    echo "Error should be here username: ".$username." alldigits:".$all_digits. " ". $_SERVER["REQUEST_METHOD"]. " password: ". $password;
 
                     #echo $username;
                     #echo $all_digits;
