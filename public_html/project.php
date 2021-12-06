@@ -35,6 +35,7 @@ session_start();
                         <input type='submit' name='submit' value='Login'>
                     </div>
                 </div>
+                <!--
                 <?php
                     $error_message = $_GET["msg"];
 
@@ -43,5 +44,6 @@ session_start();
 
                     }
                 ?>
+                -->
         </body>
 </html>
