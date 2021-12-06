@@ -60,13 +60,13 @@
                     {
                         //Non-number in the studentId section
                         $redirect_url = '../project.php?msg='.$msg;
-                        echo $which_button;
-                        #header("Location: $redirect_url", true, 303);
+                        #echo $which_button;
+                        header("Location: $redirect_url", true, 303);
 
                     }
 
                     $db = null;
-                }                
+                }
             }
             catch(PDOException $e) {
                 die('Exception : '.$e->getMessage());
