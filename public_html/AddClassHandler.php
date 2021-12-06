@@ -47,9 +47,10 @@
             //set errormode to use exceptions
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $existing_ID = $db->query("SELECT courseName, courseID, COUNT(*) FROM Course WHERE courseID = $courseID;");
-            $existing_class = $db->query("SELECT courseID, courseName, COUNT(*) FROM Course WHERE courseName = '$courseName';");
-            if ($existing_ID["COUNT(*)"] == 0 && $existing_class["COUNT(*)"] == 0){
+            $existing_ID = $db->query("SELECT courseName, courseID FROM Course WHERE courseID = $courseID;");
+            $existing_class = $db->query("SELECT courseID, courseName FROM Course WHERE courseName = '$courseName';");
+            
+            if (count($existing_ID) == 0 && count($existing_class) == 0){
                 $insert_query = $db->prepare("INSERT INTO Course VALUES (:courseID, :deptID, :courseName, :fall, :spring);");
                     $insert_query->bindParam(':courseID', $courseID);
                     $insert_query->bindParam(':deptID', $deptID);
