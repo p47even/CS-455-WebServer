@@ -23,6 +23,7 @@
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClassPromp.php">Edit Class</a>
+        <a href="4YearPlan.php">Four Year Plan</a>
     </div>
 </head>
 <body>
