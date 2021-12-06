@@ -52,7 +52,7 @@
             $existing_class = $db->query("SELECT courseID, courseName FROM Course WHERE courseName = $courseName;");
 
             if (mysql_num_rows($existing_ID) == 0 && mysql_num_rows($existing_class) == 0){
-                $insert_query = $db->prepare("INSERT INTO Course VALUES (:courseID, :deptID, :courseName, :fall, :spring);");
+                $insert_query = $db->prepare("INSERT INTO Course VALUES (:courseID, :deptID, ':courseName', :fall, :spring);");
                     $insert_query->bindParam(':courseID', $courseID);
                     $insert_query->bindParam(':courseName', $courseName);
                     $iinsert_query->bindParam(':deptID', $deptID);
