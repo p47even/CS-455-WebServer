@@ -14,8 +14,8 @@
                 //set errormode to use exceptions
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $username = $_POST["username"];
-                $password = $_POST["password"];
+                $username = $_POST['username'];
+                $password = $_POST['password'];
 
 
 
@@ -45,16 +45,15 @@
                     $update_query->execute();
                     $query_result = $update_query->fetchAll();
                     echo $query_result;
-                    echo "Error should be here username: ".$username." alldigits:".$all_digits. " ". $_SERVER["REQUEST_METHOD"]. " password: ". $password;
                 }
                 else
                 {
                     echo "Error should be here username: ".$username." alldigits:".$all_digits. " ". $_SERVER["REQUEST_METHOD"]. " password: ". $password;
-
+                    echo isset($_POST['username'])
                     #echo $username;
                     #echo $all_digits;
                     $redirect_url = '../project.php?msg='.$msg.$username.$password;
-                    header("Location: $redirect_url", true, 303); #uncomment out for the redirect
+                    #header("Location: $redirect_url", true, 303); #uncomment out for the redirect
 
                 }
 
