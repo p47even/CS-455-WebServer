@@ -112,10 +112,7 @@
         {
             $insert_status = $insert_query->execute();
             echo "<meta http-equiv='refresh' content='0; url=./AddResult.php'/>";
-        }  else
-        {
-            echo "<meta http-equiv='refresh' content='0; url=./AddClassForm.php?msg=$msg'/>";
-        }
+        } 
         session_destroy();
         $db = null;
         } catch(PDOException $e) {
