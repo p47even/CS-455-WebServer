@@ -1,5 +1,48 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+        .toolbar{
+            background-color: maroon;
+        }
+        .toolbar a:hover{
+            background-color:white;
+            color: black
+        }
+
+        .toolbar a{
+            padding: 15px 15px;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table.center {
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
+        th{
+            color: maroon;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
+    <div class="toolbar">
+        <a href="Dashboard.html">Home</a>
+        <a href="WeeklySchedule.html">Schedule</a>
+        <a href="searchClassesTemplate.php">Search for classes</a>
+        <a href="AcademicRequirements">Academic Rqueirements</a>
+        <a href="Enrollment.php">Enroll</a>
+        <a href="Discussion.html">Discussion Board</a>
+    </div>
+
+</head>
 <body>
 <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
 
