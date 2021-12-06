@@ -49,7 +49,7 @@
                 else
                 {
                     echo "Error should be here username: ".$username." alldigits:".$all_digits. " ". $_SERVER["REQUEST_METHOD"]. " password: ". $password;
-                    echo isset($_POST['username'])
+                    echo isset($_POST['username']);
                     #echo $username;
                     #echo $all_digits;
                     $redirect_url = '../project.php?msg='.$msg.$username.$password;
