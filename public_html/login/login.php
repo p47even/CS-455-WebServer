@@ -56,7 +56,7 @@
 
 
                 $all_digits = preg_match("/[0-9]/", $username);
-                if($all_digits){
+                if(!$all_digits){
                     $msg .= "Error 'studentID' must be numbers only";
                 }
 
@@ -69,7 +69,7 @@
                 }
                 else
                 {
-                    echo "Error should be here";
+                    echo "Error should be here".$all_digits;
                     echo $username;
                     echo $all_digits;
                     $redirect_url = '../../project.php?msg='.$msg;
