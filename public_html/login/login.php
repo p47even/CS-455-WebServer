@@ -56,7 +56,7 @@
 
 
                 $all_digits = preg_match("/[0-9]/", $username);
-                if($all_digits){
+                if(!$all_digits){
                     $msg .= "Error 'studentID' must be numbers only";
                 }
 
