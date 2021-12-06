@@ -24,7 +24,7 @@
 
                 <h3>Not a Student?</h3>
                     <p>
-                        <a href="./fProject.php">Faculty Login Here!</a>
+                        <a href="./fProject.php?msg=">Faculty Login Here!</a>
                     </p>
 
 
