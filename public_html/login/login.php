@@ -54,9 +54,9 @@
                     $msg .= "SSN must be in the form xxx-xx-xxxx where x is a whole number between 0 and 9<br>";
                 } */
 
-                $all_digits = is_numeric($username);
-                print $all_digits;
-                if(!$all_digits){
+
+                $all_digits = preg_match("/[0-9]/", $username);
+                if($all_digits){
                     $msg .= "Error 'studentID' must be numbers only";
                 }
 
@@ -69,8 +69,9 @@
                 }
                 else
                 {
-                    echo $all_digits;
                     echo "Error should be here";
+                    echo $username;
+                    echo $all_digits;
                     $redirect_url = '../../project.php?msg='.$msg;
                     #header("Location: $redirect_url", true, 303); #uncomment out for the redirect
 
