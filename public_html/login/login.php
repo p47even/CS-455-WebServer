@@ -10,7 +10,7 @@
             $db_file = '../myDB/uni.db';
 
             try {
-                $which_button = $_Post['submit'];
+                $which_button = $_POST['submit'];
 
 
 
