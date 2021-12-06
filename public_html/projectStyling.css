@@ -10,8 +10,10 @@ body{
     color: White;
 
 }
+
 .main{
-    display:flex;
+    display:center;
+    text-align: center;
 }
 
 /*
