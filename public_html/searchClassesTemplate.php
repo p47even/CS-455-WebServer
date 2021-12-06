@@ -34,8 +34,8 @@
         }
     </style>
     <div class="toolbar">
-        <a href="Dashboard.html">Home</a>
-        <a href="WeeklySchedule.html">Schedule</a>
+        <a href="dashboard.php">Home</a>
+        <a href="WeeklySchedule.php">Schedule</a>
         <a href="searchClassesTemplate.php">Search for Classes</a>
         <a href="AcademicRequirements">Academic Requirements</a>
         <a href="Enrollment.php">Enroll</a>
