@@ -45,9 +45,9 @@
                     }
                     else{
                         echo "FAILED LOGIN!";
-                        $msg .= "Incorrect Username or password!"
+                        $msg .= "Incorrect Username or password!";
                         $redirect_url = '../project.php?msg='.$msg;
-                        header("Location: $redirect_url", true, 303); 
+                        header("Location: $redirect_url", true, 303);
                     }
                 }
                 else
