@@ -71,8 +71,8 @@
                 {
                     //echo $msg;
                     $redirect_url = '../../project.php?msg='.$msg;
-                    header("Location: $redirect_url", true, 303);
-                    //echo "<meta http-equiv='refresh' content='0; url=./htmlForm.php?oldSsn=$new_ssn&oldFName=$new_f_name&oldMName=$new_m_name&oldLName=$new_l_name&msg=$msg'/>";
+                    #header("Location: $redirect_url", true, 303); #uncomment out for the redirect
+
                 }
 
                 $db = null;
