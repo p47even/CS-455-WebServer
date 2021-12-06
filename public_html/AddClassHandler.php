@@ -63,41 +63,49 @@
                     $insert_query->bindParam(':spring', $spring);
             } else {
                 if ($existing_ID){
-                    $msg .= "The course ID you have entered is already in use for class. Please try again";
+                    echo "The course ID you have entered is already in use for class. Please try again";
+                    $msg .= "error";
                 }
 
                 if ($existing_class){
-                    $msg .= "The class name you have entered is already in use for class. Please try again";
+                    echo "The class name you have entered is already in use for class. Please try again";
+                    $msg .= "error";
                 }
 
                 if(!$valid_deptID){
-                    $msg .= "The Department ID you have entered does not exist";
+                    echo "The Department ID you have entered does not exist";
+                    $msg .= "error";
                 }
             } 
             
             if(!preg_match("/^[a-zA-Z]+$/", $courseName))
         {
-            $msg .= "Course name must be non-empty and consist of letters only<br>";
+            echo "Course name must be non-empty and consist of letters only<br>";
+            $msg .= "error";
         }
 
         if(!preg_match("/^[0-9]+$/", $courseID))
         {
-            $msg .= "Course ID must be non-empty and consist of numbers 0-9 only<br>";
+            echo "Course ID must be non-empty and consist of numbers 0-9 only<br>";
+            $msg .= "error";
         }
 
         if(!preg_match("/^[0-9]+$/", $deptID))
         {
-            $msg .= "Department ID must be non-empty and consist of numbers 0-9 only<br>";
+            echo "Department ID must be non-empty and consist of numbers 0-9 only<br>";
+            $msg .= "error";
         }
 
         if(!preg_match("/^[0-1]+$/", $fall))
         {
-            $msg .= "Fall must be non-empty and consist of numbers 0-1 only<br>";
+            echo "Fall must be non-empty and consist of numbers 0-1 only<br>";
+            $msg .= "error";
         }
 
         if(!preg_match("/^[0-1]+$/", $spring))
         {
-            $msg .= "Spring must be non-empty and consist of numbers 0-1 only<br>";
+            echo "Spring must be non-empty and consist of numbers 0-1 only<br>";
+            $msg .= "error";
         }
 
         if(strcmp("", $msg) == 0)
