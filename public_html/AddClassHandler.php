@@ -18,12 +18,11 @@
         }
     </style>
     <div class="toolbar">
-        <a href="Dashboard.html">Home</a>
-        <a href="WeeklySchedule.php">Schedule</a>
-        <a href="searchClasses.php">Search for classes</a>
-        <a href="AcademicRequirements">Academic Rqueirements</a>
-        <a href="Enrollment.php">Enroll</a>
-        <a href="4YearPlan.php">Four Year Plan</a>
+    <a href="Dashboard.html">Home</a>
+        <a href="ProfSchedule.php">Schedule</a>
+        <a href="Search4Classes">Search for classes</a>
+        <a href="ClassRoster.php">Class Roster</a>
+        <a href="AddClass.php">Add Class</a>
     </div>
 </head>
 <body>
@@ -51,15 +50,11 @@
             $existing_ID = $db->query("SELECT courseName, courseID FROM Course WHERE courseID = $courseID;");
             $existing_class = $db->query("SELECT courseID, courseName FROM Course WHERE courseName = $courseName;");
 
-            if(!preg_match("/^[a-zA-Z]+$/", $courseName))
-        {
-            $msg .= "Course name must be non-empty and consist of letters only<br>";
-        }
             if (mysql_num_rows($existing_ID) == 0 && mysql_num_rows($existing_class) == 0){
                 $insert_query = $db->prepare("INSERT INTO Course VALUES (:courseID, :deptID, :courseName, :fall, :spring);");
                     $insert_query->bindParam(':courseID', $courseID);
+                    $insert_query->bindParam(':deptID', $deptID);
                     $insert_query->bindParam(':courseName', $courseName);
-                    $iinsert_query->bindParam(':deptID', $deptID);
                     $insert_query->bindParam(':fall', $fall);
                     $insert_query->bindParam(':spring', $spring);
             } else {
