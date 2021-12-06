@@ -21,12 +21,10 @@
         }
     </style>
     <div class="toolbar">
-        <a href="Dashboard.html">Home</a>
-        <a href="WeeklySchedule.php">Schedule</a>
-        <a href="searchClasses.php">Search for classes</a>
-        <a href="AcademicRequirements">Academic Rqueirements</a>
-        <a href="Enrollment.php">Enroll</a>
-        <a href="4YearPlan.php">Four Year Plan</a>
+    <a href="ProfSchedule.php">Schedule</a>
+        <a href="Search4Classes">Search for classes</a>
+        <a href="ClassRoster.php">Class Roster</a>
+        <a href="AddClass.php">Add Class</a>
     </div>
     <h2> Add New Class to Catalogue</h2>
 </head>
