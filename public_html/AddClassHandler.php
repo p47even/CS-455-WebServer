@@ -20,7 +20,7 @@
     <div class="toolbar">
     <a href="Dashboard.html">Home</a>
         <a href="ProfSchedule.php">Schedule</a>
-        <a href="Search4Classes">Search for classes</a>
+        <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClassForm.php">Add Class</a>
     </div>
