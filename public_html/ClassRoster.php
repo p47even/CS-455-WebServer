@@ -34,7 +34,8 @@
             text-align: center;
         }
     </style>
-        <a href="Dashboard.html">Home</a>
+        <div class ="toolbar">
+        <a href="dashboard.php">Home</a>
         <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
