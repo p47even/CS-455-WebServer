@@ -27,8 +27,8 @@
 
                 $update_query = $db->prepare("SELECT facultyID, facPassword FROM professorLogin WHERE facultyID = :user AND facPassword = :pass;");
                     $update_query->bindParam(':user', $username);
-                    $update_query->bindParam(':pass', $password);
-                    #$update_query->bindParam(':pass', $hashed_pass);
+                    #$update_query->bindParam(':pass', $password);
+                    $update_query->bindParam(':pass', $hashed_pass);
 
                 $all_digits = preg_match("/[0-9]/", $username);
                 if(!$all_digits){
