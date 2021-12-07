@@ -16,7 +16,7 @@
         unset($_SESSION["cart"]);
     }
 
-    $redirect_url = "./project.php";
+    $redirect_url = "./project.php?msg=Successfully Logout";
     header("Location: $redirect_url", true, 303);
     exit;
 ?>
