@@ -21,7 +21,7 @@
         <a href="dashboard.php">Home</a>
         <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
-        <a href="4YearPlan.php">Four Year Plan</a>
+        <a href="4YearPlanHelper.php">Four Year Plan</a>
     </div>
 </head>
 <body>
@@ -30,6 +30,7 @@
         echo
         "<form action='./AddClassForm.php' method='post'>
         <input type='checkbox'>Add a new class to catalogue<br>
+        <input type='submit' value='Submit'>
         <form action='./removeClass.php' method='post'>
         <input type='checkbox'>Delete a class<br>
         <input type='submit' value='Submit'>";

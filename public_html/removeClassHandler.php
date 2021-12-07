@@ -55,11 +55,11 @@
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $courseID = $_POST["courseID"];
-            $delete_course = $db->prepare("DELETE FROM Course WHERE courseID = $courseID" );
-            $delete_class = $db->prepare("DELETE FROM isMeeting WHERE courseID = $courseID" );
+            $delete_course = $db->prepare("DELETE FROM Course WHERE courseID = '$courseID'" );
+            $delete_class = $db->prepare("DELETE FROM isMeeting WHERE courseID = '$courseID'" );
             $course_deleted = $delete_course->execute();
             $class_deleted = $delete_class->execute();
-            echo "<meta http-equiv='refresh' content='0; url=./removeClass.php?msg=Success!'/>";
+            echo "The class has been deleted";
         }
         catch(PDOException $e) {
             die('Exception : '.$e->getMessage());

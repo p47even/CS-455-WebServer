@@ -1,10 +1,11 @@
 <html>
     <?php 
-        //session_start();
-        //$studentID = $_SESSION['sID'];
+        session_start();
+        $studentID = $_POST["studentID"];
+        //$studentID = $_SESSION['studentID'];
         //$studentID = $sID;
         
-        $studentID = 13; //comment this and uncomment above when it's time 
+        //$studentID = 13; //comment this and uncomment above when it's time 
 
         $seasonSpring = TRUE; 
         $db = new SQLite3('myDB/uni.db');
@@ -264,6 +265,7 @@
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClassForm.php">Add Class</a>
+        <a href="4YearPlanHelper.php">Four Year Plan</a>
     </div>
     <head>
         <title>Four Year Plan</title>

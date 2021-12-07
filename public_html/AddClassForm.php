@@ -19,6 +19,19 @@
         h2{
             text-align: center;
         }
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table.center {
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
+        th{
+            color: maroon;
+        }
     </style>
     <div class="toolbar">
         <a href="Dashboard.html">Home</a>
@@ -26,7 +39,7 @@
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClassPromp.php">Edit Class</a>
-        <a href="4YearPlan.php">Four Year Plan</a>
+        <a href="4YearPlanHelper.php">Four Year Plan</a>
     </div>
     <h2> Add New Class to Catalogue</h2>
 </head>

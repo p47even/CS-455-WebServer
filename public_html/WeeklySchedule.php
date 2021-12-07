@@ -40,7 +40,7 @@
         <a href="searchClasses.php">Search for classes</a>
         <a href="AcademicRequirements">Academic Rquirements</a>
         <a href="Enrollment.php">Enroll</a>
-        <a href="4YearPlan.php">Four Year Plan</a>
+        <a href="4YearPlanHelper.php">Four Year Plan</a>
     </div>
 
     <h2>Weekly Scedule</h2>
