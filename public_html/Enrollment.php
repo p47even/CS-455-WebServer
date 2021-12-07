@@ -38,7 +38,7 @@
         <a href="WeeklySchedule.php">Schedule</a>
         <a href="searchClassesTemplate.php">Search for Classes</a>
         <!-- <a href="AcademicRequirements">Academic Requirements</a> -->
-        <a href="Enrollment.php">Enroll</a>
+        <a href="Enrollment.php?msg=">Enroll</a>
         <!-- <a href="Discussion.html">Discussion Board</a> -->
         <a href="4YearPlanHelper.php">Four Year Plan</a>
         <a href="logout.php" class="logout">Logout</a>
@@ -98,6 +98,8 @@
                 unset($_SESSION["courAttrQuer"]);
             }
             
+            echo "<br><br><br><font color='red'>".$_GET['msg']."</font><br>";
+
             echo "<br><br><br><h>Cart:<h><br>";
 
             if(isset($_SESSION["cart"]) and count($_SESSION["cart"]) > 0)

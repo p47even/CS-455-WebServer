@@ -9,7 +9,7 @@
     try {
         if(isset($_SESSION["cart"]) and count($_SESSION["cart"]) != 0)
         {
-
+        $msg = "";
         //open connection to the airport database file
         $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
 
@@ -30,6 +30,12 @@
                     $update_query->bindParam(':courseID', $tuple['courseID']);
           
                 $update_query->execute();
+
+                $msg = "Enrollment Success!";
+            }
+            else
+            {
+                $msg = "FAILED TO ADD....... DUPLICATE CLASSES CANNOT BE ADDED";
             }
         }   
         
@@ -39,7 +45,7 @@
 
         $_SESSION['cart'] = array(); 
 
-        $redirect_url = $_SESSION['redirect_url']; 
+        $redirect_url = $_SESSION['redirect_url']."?msg=".$msg; 
         unset($_SESSION['redirect_url']);
         header("Location: $redirect_url", true, 303);
         exit;
