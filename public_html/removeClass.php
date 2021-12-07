@@ -76,7 +76,7 @@
         foreach($classes as $class){
             $courseID = $class["courseID"];
            echo"<tr>
-                <td><input type='radio' name = 'delete' value='".$courseID."'></td>
+                <td><input type='radio' name = 'delete' value='$courseID'></td>
                 <td>".$class["courseID"]."</td>
                 <td>".$class["courseName"]."</td>
                 </tr>";
