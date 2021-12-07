@@ -40,9 +40,9 @@
         <a href="dashboard.php">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
         <a href="searchClassesTemplate.php">Search for Classes</a>
-        <a href="AcademicRequirements">Academic Requirements</a>
+        <!-- <a href="AcademicRequirements">Academic Requirements</a> -->
         <a href="Enrollment.php">Enroll</a>
-        <a href="Discussion.html">Discussion Board</a>
+        <!-- <a href="Discussion.html">Discussion Board</a> -->
         <a href="4YearPlanHelper.php">Four Year Plan</a>
     </div>
         </head>
