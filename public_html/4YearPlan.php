@@ -57,8 +57,8 @@
         }
 
 
-        $studentID = $_POST["studentID"];
-        //$studentID = $_SESSION['studentID'];
+        //$studentID = $_POST["studentID"];
+        $studentID = $_SESSION['sID'];
         //$studentID = $sID;
         
         //$studentID = 13; //comment this and uncomment above when it's time 
