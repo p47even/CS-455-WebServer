@@ -69,11 +69,11 @@
         <?php
             session_start();
 
-            // if(!isset($_SESSION["sID"]))
-            // { 
-            //     header("Location: 'project.php?msg=Please Login First'", true, 303);
-            //     exit; 
-            // }
+            if(!isset($_SESSION["sID"]))
+            { 
+                 header("Location: 'project.php?msg=Please Login First'", true, 303);
+                 exit; 
+            }
 
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 

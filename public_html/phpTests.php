@@ -3,15 +3,7 @@ $userPassPairs = array("0"=>"zSLPj4JV","1"=>"2JxCQnub","2"=>"4vmZmHA3","3"=>"5tL
 
 $facPassPairs = array("0"=>"dc4I}+sDY","1"=>"7N~.}MgKfX","2"=>"m0]!lFjvpp","3"=>"GM4;mP]Zz?","4"=>"j>~`N0m4Ga","5"=>"v(`Qosw4]p​");
 
-<<<<<<< HEAD
-#$db_file = '../myDB/uni.db';
-//try {
-    /*
-    //open connection to the university database file
-    $db = new PDO('sqlite:' . $db_file);
-=======
 foreach($userPassPairs as $id => $pass){
->>>>>>> 3b62b86402cf2944b9e707a849eac383f53815c3
 
     $hashedPass = hash('sha256', $password, false);
     echo "UPDATE StudentLogIn SET password = " . $hashedPass " WHERE StudentID = ". $id);

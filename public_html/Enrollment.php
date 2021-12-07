@@ -77,12 +77,12 @@
         <?php
             session_start();
 
-            // if(!isset($_SESSION["sID"]))
-            // { 
-            //     $loginUrl = 'project.php?msg=Please Login First';
-            //     header("Location: $loginUrl", true, 303);
-            //     exit; 
-            // }
+            if(!isset($_SESSION["sID"]))
+            { 
+                $loginUrl = 'project.php?msg=Please Login First';
+                header("Location: $loginUrl", true, 303);
+                exit; 
+            }
             
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
@@ -94,6 +94,7 @@
                 {
                     echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font><a href='./addToCart.php?meetDay=$tuple[meetDay]&section=$tuple[section]&courseID=$tuple[courseID]'>  Add To Cart</a><br>";
                 }
+                unset($_SESSION["courAttrQuer"]);
             }
             
             echo "<br><br><br><h>Cart:<h><br>";
