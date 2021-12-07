@@ -39,7 +39,7 @@
         <a href="WeeklySchedule.php">Schedule</a>
         <a href="searchClassesTemplate.php">Search for Classes</a>
         <!-- <a href="AcademicRequirements">Academic Requirements</a> -->
-        <a href="Enrollment.php">Enroll</a>
+        <a href="Enrollment.php?msg=">Enroll</a>
         <!-- <a href="Discussion.html">Discussion Board</a> -->
         <a href="4YearPlan.php">Four Year Plan</a>
         <a href="logout.php" class="logout">Logout</a>
@@ -58,7 +58,7 @@
             exit; 
         }
 
-        
+
         $sID = $_SESSION["sID"];
         //$sID = 3;
         //open connection to the university's database file
