@@ -18,7 +18,7 @@
 
         foreach($_SESSION['cart'] as $tuple)
         {
-            $search_query = $db->prepare("SELECT * FROM ENROLL WHERE id = :id and courseID = :courseID");
+            $search_query = $db->prepare("SELECT * FROM ENROLL WHERE studentID = :id and courseID = :courseID");
                 $search_query->bindParam(':id', $_SESSION['sID']);
                 $search_query->bindParam(':courseID', $tuple['courseID']);
                 $search_query->execute();
