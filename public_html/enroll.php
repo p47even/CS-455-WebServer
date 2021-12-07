@@ -18,11 +18,19 @@
 
         foreach($_SESSION['cart'] as $tuple)
         {
-            $update_query = $db->prepare("INSERT INTO ENROLL VALUES (:id, :courseID);");
-                $update_query->bindParam(':id', $_SESSION['sID']);
-                $update_query->bindParam(':courseID', $tuple['courseID']);
+            $search_query = $db->prepare("SELECT * FROM ENROLL WHERE id = :id, courseID = :courseID");
+                $search_query->bindParam(':id', $_SESSION['sID']);
+                $search_query->bindParam(':courseID', $tuple['courseID']);
+                $search_query->execute();
+
+            if($search_query>fetchColumn() > 0)
+            {
+                $update_query = $db->prepare("INSERT INTO ENROLL VALUES (:id, :courseID);");
+                    $update_query->bindParam(':id', $_SESSION['sID']);
+                    $update_query->bindParam(':courseID', $tuple['courseID']);
           
-            $update_query->execute();
+                $update_query->execute();
+            }
         }   
         
         }
