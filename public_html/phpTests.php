@@ -3,7 +3,7 @@ $userPassPairs = array("0"=>"zSLPj4JV","1"=>"2JxCQnub","2"=>"4vmZmHA3","3"=>"5tL
 
 
 #$db_file = '../myDB/uni.db';
-try {
+//try {
     /*
     //open connection to the university database file
     $db = new PDO('sqlite:' . $db_file);
