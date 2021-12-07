@@ -16,6 +16,10 @@
             font-size: 20px;
             text-decoration: none;
         }
+        .logout
+        {
+            float: right;
+        }
         table, th, td{
             border: 1px solid black;
             border-collapse: collapse;
@@ -41,6 +45,7 @@
         <a href="Enrollment.php">Enroll</a>
         <a href="Discussion.html">Discussion Board</a>
         <a href="4YearPlanHelper.php">Four Year Plan</a>
+        <a href="4YearPlanHelper.php" class="logout">Logout</a>
     </div>
 
 </head>
