@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html>
     <body>
@@ -23,6 +20,9 @@
 
                 $msg = "";
                 $update_query = "";
+
+
+                session_start();
 
 
                 $update_query = $db->prepare("SELECT StudentID, Username FROM StudentLogin WHERE studentID = :user AND stuPassword = :pass;");
@@ -68,8 +68,6 @@
             catch(PDOException $e) {
                 die('Exception : '.$e->getMessage());
             }
-
-            session_destroy();
         ?>
     </body>
 </html>
