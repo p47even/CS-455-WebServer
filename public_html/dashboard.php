@@ -46,7 +46,11 @@
         <a href="4YearPlanHelper.php">Four Year Plan</a>
     </div>
         </head>
-
+        <body>
+            <?php
+                echo $_SESSION["sID"];
+            ?>
+        </body>
         <!--
         <body>
             <h1>Enrollment Planner Login!</h1>
