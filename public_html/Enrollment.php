@@ -89,13 +89,12 @@
 
             echo "<h>Search Results: </h><br>";
 
-            if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
+            if(isset($_SESSION["courEnrolQuer"]) and count($_SESSION["courEnrolQuer"]) != 0)
             {
-                foreach($_SESSION["courAttrQuer"] as $tuple) 
+                foreach($_SESSION["courEnrolQuer"] as $tuple) 
                 {
                     echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font><a href='./addToCart.php?meetDay=$tuple[meetDay]&section=$tuple[section]&courseID=$tuple[courseID]'>  Add To Cart</a><br>";
                 }
-                unset($_SESSION["courAttrQuer"]);
             }
             
             echo "<br><br><br><font color='red'>".$_GET['msg']."</font><br>";

@@ -161,7 +161,7 @@
 
         $query_result = $classes_query->fetchAll();
 
-        $_SESSION["courAttrQuer"] = $query_result;
+        $_SESSION["courEnrolQuer"] = $query_result;
 
         $redirect_url = $_SESSION['redirect_url']; 
         unset($_SESSION['redirect_url']);

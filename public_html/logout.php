@@ -16,7 +16,17 @@
         unset($_SESSION["cart"]);
     }
 
-    $redirect_url = "./project.php?msg=Successfully Logout";
+    if(isset($_SESSION["courAttrQuer"]))
+    {
+        unset($_SESSION["courAttrQuer"]);
+    }
+
+    if(isset($_SESSION["courEnrolQuer"]))
+    {
+        unset($_SESSION["courEnrolQuer"]);
+    }
+
+    $redirect_url = "./project.php?msg=Successfull Logout";
     header("Location: $redirect_url", true, 303);
     exit;
 ?>
