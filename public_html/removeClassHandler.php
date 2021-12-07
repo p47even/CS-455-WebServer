@@ -59,7 +59,7 @@
             $delete_class = $db->prepare("DELETE FROM isMeeting WHERE courseID = '$courseID'" );
             $course_deleted = $delete_course->execute();
             $class_deleted = $delete_class->execute();
-            echo "The class has been deleted";
+            echo "'.$courseID.'";
         }
         catch(PDOException $e) {
             die('Exception : '.$e->getMessage());
