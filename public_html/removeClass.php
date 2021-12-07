@@ -29,6 +29,15 @@
         th{
             color: maroon;
         }
+        .button {
+            color: maroon;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
         h2{
             text-align: center;
         }
@@ -66,13 +75,13 @@
 
         foreach($classes as $class){
            echo"<tr>
-                <td><input type='checkbox' value=".$_POST["courseID"]."></td>
+                <td><input type='radio' name = 'delete' value=".$_POST["courseID"]."></td>
                 <td>".$class["courseID"]."</td>
                 <td>".$class["courseName"]."</td>
                 </tr>";
         }
         echo "</table> 
-        <input type='submit' name='delete' value='Delete'></form>";
+        <input type='submit' name='Delete' value='Delete'></form>";
         session_destroy();
     ?>
 </body>
