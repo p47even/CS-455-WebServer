@@ -16,10 +16,6 @@
             font-size: 20px;
             text-decoration: none;
         }
-        .logout
-        {
-            right: 0;
-        }
         table, th, td{
             border: 1px solid black;
             border-collapse: collapse;

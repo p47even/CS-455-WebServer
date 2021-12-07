@@ -37,43 +37,26 @@
         }
     </style>
     <div class="toolbar">
-        <a href="dashboard.php">Home</a>
+    <a href="dashboard.php">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
         <a href="searchClassesTemplate.php">Search for Classes</a>
         <!-- <a href="AcademicRequirements">Academic Requirements</a> -->
         <a href="Enrollment.php">Enroll</a>
         <!-- <a href="Discussion.html">Discussion Board</a> -->
         <a href="4YearPlanHelper.php">Four Year Plan</a>
+        <a href="logout.php" class="logout">Logout</a>
     </div>
         </head>
         <body>
             <?php
                 session_start();
-                echo $_SESSION["sID"];
+                
+                if(!isset($_SESSION["sID"]))
+                { 
+                    $loginUrl = 'project.php?msg=Please Login First';
+                    header("Location: $loginUrl", true, 303);
+                    exit; 
+                }
             ?>
         </body>
-        <!--
-        <body>
-            <h1>Enrollment Planner Login!</h1>
-                <div class='main'>
-                    <div class='studentLogin'>
-                        <h2>Student Login!</h2>
-                        <form action='./login/login.php' method='post'>
-                        Username: <input type='text' name='username' id='username'><br>
-                        <form action='./login/login.php' method='post'>
-                        Password: <input type='password' name='password' id='password'><br>
-                        <input type='submit' name='submit' value='Login'>
-                    </div>
-
-                    <div class='adminLogin'>
-                        <h2>Admin Login!</h2>
-                        <form action='./login/adminLogin.php' method='post'>
-                        Username: <input type='text' name='username' id='username'><br>
-                        <form action='./login/adminLogin.php' method='post'>
-                        Password: <input type='text' name='password' id='password'><br>
-                        <input type='submit' name='submit' value='Login'>
-                    </div>
-                </div>
-        </body>
-        -->
 </html>

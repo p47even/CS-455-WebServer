@@ -35,12 +35,13 @@
         }
     </style>
     <div class="toolbar">
-        <a href="dashboard.php">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
-        <a href="searchClasses.php">Search for classes</a>
-        <a href="AcademicRequirements">Academic Rquirements</a>
+        <a href="searchClassesTemplate.php">Search for Classes</a>
+        <!-- <a href="AcademicRequirements">Academic Requirements</a> -->
         <a href="Enrollment.php">Enroll</a>
+        <!-- <a href="Discussion.html">Discussion Board</a> -->
         <a href="4YearPlanHelper.php">Four Year Plan</a>
+        <a href="logout.php" class="logout">Logout</a>
     </div>
 
     <h2>Weekly Scedule</h2>
@@ -49,14 +50,14 @@
     try {
         session_start();
 
-       // if(!isset($_SESSION["sID"]))
-           // { 
-                //$loginUrl = 'project.php?msg=Please Login First';
-                //header("Location: $loginUrl", true, 303);
-                //exit; 
-           // }
-        //$sID = $_SESSION["sID"];
-        $sID = 3;
+       if(!isset($_SESSION["sID"]))
+        { 
+            $loginUrl = 'project.php?msg=Please Login First';
+            header("Location: $loginUrl", true, 303);
+            exit; 
+        }
+        $sID = $_SESSION["sID"];
+        //$sID = 3;
         //open connection to the university's database file
         $db = new PDO('sqlite:' . './myDB/uni.db');      // <------ Line 13
 
