@@ -23,7 +23,7 @@
                 $search_query->bindParam(':courseID', $tuple['courseID']);
                 $search_query->execute();
 
-            if($search_query>fetchColumn() > 0)
+            if($search_query->fetchColumn() > 0)
             {
                 $update_query = $db->prepare("INSERT INTO ENROLL VALUES (:id, :courseID);");
                     $update_query->bindParam(':id', $_SESSION['sID']);
