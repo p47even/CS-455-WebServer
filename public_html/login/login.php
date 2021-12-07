@@ -42,7 +42,7 @@
                     print_r($query_result);
                     if(count($query_result) == 1){
                         echo "LOGIN SUCCESFUL";
-                        $_SESSION["sId"] = $username;
+                        $_SESSION["sID"] = $username;
                         $redirect_url = '../dashboard.php';
                         header("Location: $redirect_url", true, 303);
                     }

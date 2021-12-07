@@ -49,14 +49,14 @@
                     else{
                         echo "FAILED LOGIN!";
                         $msg .= "Incorrect facultyID or password!";
-                        $redirect_url = '../fProject.php?msg='.$msg;
+                        $redirect_url = '../../fProject.php?msg='.$msg;
                         header("Location: $redirect_url", true, 303);
                     }
                 }
                 else
                 {
                     //Non-number in the facultyID section
-                    $redirect_url = '../fProject.php?msg='.$msg;
+                    $redirect_url = '../../fProject.php?msg='.$msg;
                     header("Location: $redirect_url", true, 303);
 
                 }
