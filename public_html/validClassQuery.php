@@ -97,7 +97,7 @@ try
     tmp7 as (select * from Course natural join ClassRequirements),
     tmp8 as (select courseID from tmp7 where class not in (select class from Students where studentID = :sID)), --all classes that do not fulfull class requirement 
     tmp9 as (select * from tmp8 union select * from tmp6 union select * from tmp5 union select * from tmp3 union select * from tmp group by courseID)
-    select * from Course where courseID not in tmp9".$addStr);
+    select * from Course NATURAL JOIN ISMEETING where courseID not in tmp9".$addStr);
 
     $classes_query = $db->prepare($mega_query);
     $classes_query->bindParam(':sID', $_SESSION["sID"]);
