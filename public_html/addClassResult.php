@@ -37,6 +37,7 @@
                 exit; 
             }
              $facultyID = $_SESSION["fID"];
+             $deptID = "";
              try {
      
                  //open connection to the university's database file

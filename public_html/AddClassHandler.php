@@ -48,6 +48,7 @@
             $courseName = $_POST["courseName"];
             $fall = $_POST["Fall"];
             $spring = $_POST["Spring"];
+            $deptID = "";
 
 
             //set errormode to use exceptions
