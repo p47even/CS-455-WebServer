@@ -67,7 +67,7 @@
             <form action='./addStudent.php' method='post'>
             Class: <select name='class' id='class'>
                       <option value='Freshman'>Freshman</option>
-                      <option value='Sophmore'>Sophmore</option>
+                      <option value='Sophomore'>Sophomore</option>
                       <option value='Junior'>Junior</option>
                       <option value='Senior'>Senior</option>
                       <option value='Other'>Other</option>
