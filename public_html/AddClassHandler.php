@@ -67,41 +67,41 @@
                     $insert_query->bindParam(':spring', $spring);
             } else {
                 if ($existing_ID && preg_match("/^[0-9]+$/", $courseID)){
-                    $msg += "The course ID you have entered is already in use. Please try again<br>";
+                    $msg .= "The course ID you have entered is already in use. Please try again<br>";
                 }
 
                 if ($existing_class && preg_match("/^[a-zA-Z]+$/", $courseName)){
-                    $msg += "The class name you have entered is already in. Please try again<br>";
+                    $msg .= "The class name you have entered is already in. Please try again<br>";
                 }
 
                 if(!$valid_deptID){
-                    $msg += "The Department ID you have entered does not exist<br>";
+                    $msg .= "The Department ID you have entered does not exist<br>";
                 }
             } 
             
             if(!preg_match("/^[a-zA-Z]+$/", $courseName))
         {
-            $msg += "Course name must be non-empty and consist of letters only<br>";
+            $msg .= "Course name must be non-empty and consist of letters only<br>";
         }
 
         if(!preg_match("/^[0-9]+$/", $courseID))
         {
-            $msg += "Course ID must be non-empty and consist of numbers 0-9 only<br>";
+            $msg .= "Course ID must be non-empty and consist of numbers 0-9 only<br>";
         }
 
         if(!preg_match("/^[A-Z]+$/", $deptID))
         {
-            $msg += "Department ID must be non-empty and consist of numbers 0-9 only<br>";
+            $msg .= "Department ID must be non-empty and consist of numbers 0-9 only<br>";
         }
 
         if(!preg_match("/^[0-1]+$/", $fall))
         {
-            $msg += "Fall must be non-empty and consist of numbers 0-1 only<br>";
+            $msg .= "Fall must be non-empty and consist of numbers 0-1 only<br>";
         }
 
         if(!preg_match("/^[0-1]+$/", $spring))
         {
-            $msg += "Spring must be non-empty and consist of numbers 0-1 only<br>";
+            $msg .= "Spring must be non-empty and consist of numbers 0-1 only<br>";
         }
 
         if(strcmp("", $msg) == 0)
