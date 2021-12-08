@@ -99,7 +99,7 @@
                     
                     if(!in_array($this_tup, $previous_tups))
                     {
-                        echo "$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section]  $tuple[fallSemester] $tuple[springSemester] <a href='./addToCart.php?index=$counter>  Add To Cart</a><br>";
+                        echo "$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section]  $tuple[fallSemester] $tuple[springSemester]: <a href='./addToCart.php?index=$counter'>  Add To Cart</a><br>";
                         array_push($previous_tups, $this_tup);
                     }
 
@@ -109,7 +109,7 @@
                 }
             }
             
-            echo "<br><br><br><font color='red'>".$_GET['msg']."</font><br>";
+            //echo "<br><br><br><font color='red'>".$_GET['msg']."</font><br>";
 
             echo "<br><br><br><h>Cart:<h><br>";
 
