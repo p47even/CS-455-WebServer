@@ -39,7 +39,7 @@
         <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
-        <a href="AddClassPromp.php">Add Class</a>
+        <a href="AddClassForm.php">Add Class</a>
         <a href="removeClass.php">Remove Class</a>
     </div>
 
@@ -48,7 +48,13 @@
     session_start();
     try {
 
-        $faculty_ID =3;
+        if(!isset($_SESSION["fID"]))
+        { 
+            $loginUrl = 'project.php?msg=Please Login First';
+            header("Location: $loginUrl", true, 303);
+            exit; 
+        }
+        $faculty_ID = $_SESSION["fID"];
         //open connection to the university's database file
         $db = new PDO('sqlite:' . './myDB/uni.db');      // <------ Line 13
 
