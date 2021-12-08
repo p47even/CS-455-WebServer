@@ -94,6 +94,17 @@
             <?php
                 session_start();
 
+                if(isset($_GET["msg"])){
+                    $error_message = $_GET["msg"];
+
+                    if(strlen($error_message) >= 0){
+                        echo $error_message;
+
+                    }
+                }
+
+
+
                 if(!isset($_SESSION["fID"]))
                 {
                      header("Location: 'fProject.php?msg=Please Login First'", true, 303);

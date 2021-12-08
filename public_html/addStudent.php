@@ -72,27 +72,27 @@
                     if(count($check_id_result) > 0){
                         echo "FAILED LOGIN";
                         $msg .= "Error - not a new studentID";
-                        $redirect_url = './facultyDashboard.php?msg='.$msg;
+                        $redirect_url = './addStudentHandler.php?msg='.$msg;
                         header("Location: $redirect_url", true, 303);
                     }
                     if(count($check_user_result) > 0){
                         echo "FAILED LOGIN";
                         $msg .= "Error - not a new username";
-                        $redirect_url = './facultyDashboard.php?msg='.$msg;
+                        $redirect_url = './addStudentHandler.php?msg='.$msg;
                         header("Location: $redirect_url", true, 303);
                     }
 
                     else{
                         echo "Sucess!";
                         $msg .= "Student account created!";
-                        $redirect_url = './facultyDashboard.php?msg='.$msg;
+                        $redirect_url = './facultyDashboard.php';
                         header("Location: $redirect_url", true, 303);
                     }
                 }
                 else
                 {
                     //Non-number in the studentId section
-                    $redirect_url = './facultyDashboard.php?msg='.$msg;
+                    $redirect_url = './addStudentHandler.php?msg='.$msg;
                     #echo $which_button;
                     header("Location: $redirect_url", true, 303);
 
