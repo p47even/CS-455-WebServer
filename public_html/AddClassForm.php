@@ -45,6 +45,15 @@
 </head>
 <body>
     <?php
+
+    session_start();
+
+    if(!isset($_SESSION["fID"]))
+    { 
+        $loginUrl = 'project.php?msg=Please Login First';
+        header("Location: $loginUrl", true, 303);
+        exit; 
+    }
         $_POST["courseID"] = "";
         $_POST["courseName"] = "";
         $_POST["deptID"] = "";
