@@ -53,7 +53,7 @@
             Password: <input type='password' name='facultyPassword' id='facultyPassword'><br><br>
 
             <form action='./addFaculty.php' method='post'>
-            Department: <select name='class' id='class'>
+            Department: <select name='department' id='department'>
                     <option value='BIO'>Biology</option>
                     <option value='CHEM'>Chemistry</option>
                     <option value='CSCI'>Computer Science</option>
