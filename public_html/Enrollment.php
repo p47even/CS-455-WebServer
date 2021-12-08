@@ -95,15 +95,14 @@
                 $previous_tups = array();
                 foreach($_SESSION["courEnrolQuer"] as $tuple) 
                 {
-                    $this_tup = array($tuple['courseID'], $tuple['meetDay'], $tuple['section']);
+                    $this_tup = array($tuple['courseID'], $tuple['section']);
+                    
                     $display_str = "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font>";
-
-
-                    $add_link =  " <a href='./addToCart.php?index=$counter>  Add To Cart</a>";
 
                     if(!in_array($this_tup, $previous_tups))
                     {
-                        $display_str .= $add_link;
+                        $display_str .= " <a href='./addToCart.php?index=$counter>  Add To Cart</a>";
+                        echo "$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section]<br>";
                         array_push($previous_tups, $this_tup);
                     }
 
