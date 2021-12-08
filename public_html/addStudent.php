@@ -49,6 +49,10 @@
                     $insert_student_login->bindParam(':username', $username);
                     $insert_student_login->bindParam(':password', $hashed_pass);
 
+                $insert_student_major = $db->prepare("INSERT INTO Major VALUES (:id, :major);");
+                    $insert_student_major->bindParam(':id', $id);
+                    $insert_student_major->bindParam(':major', $major);
+
                 /*
                 $insert_query = $db->prepare("SELECT StudentID, Username FROM StudentLogin WHERE studentID = :user AND stuPassword = :pass;");
                     $insert_query->bindParam(':user', $id);
@@ -88,11 +92,9 @@
                     }
 
                     else{
-                        echo "Here";
                         $insert_students->execute();
-                        echo "Later";
                         $insert_student_login->execute();
-
+                        $insert_student_major->execute();
 
 
                         echo "Sucess!";

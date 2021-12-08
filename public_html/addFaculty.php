@@ -30,13 +30,11 @@
                     $check_id_dup->bindParam(':id', $id);
 
 
-                #INSERT INTO Students VALUES (21, 'Malissa Elwira', 'Sophomore', '3.9');
                 $insert_prof = $db->prepare("INSERT INTO Professor VALUES (:id, :name, :dept);");
                     $insert_prof->bindParam(':id', $id);
                     $insert_prof->bindParam(':name', $name);
                     $insert_prof->bindParam(':dept', $dept);
 
-                #INSERT INTO StudentLogin VALUES (0, 'aadiana', 'zSLPj4JV');
                 $insert_prof_login = $db->prepare("INSERT INTO professorLogin VALUES (:id, :username, :password);");
                     $insert_prof_login->bindParam(':id', $id);
                     $insert_prof_login->bindParam(':username', $username);
