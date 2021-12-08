@@ -2,7 +2,7 @@
 <html>
         <head>
                 <title>Welcome Student!</title>
-                <link rel="stylesheet" href="dashboard.css"/>
+                <link rel="stylesheet" href="dashboardStyling.css"/>
 
                 <style>
         .toolbar{
@@ -25,7 +25,7 @@
         }
 
         table.center {
-            margin-left: auto; 
+            margin-left: auto;
             margin-right: auto;
         }
 
@@ -50,12 +50,12 @@
         <body>
             <?php
                 session_start();
-                
+
                 if(!isset($_SESSION["sID"]))
-                { 
+                {
                     $loginUrl = 'project.php?msg=Please Login First';
                     header("Location: $loginUrl", true, 303);
-                    exit; 
+                    exit;
                 }
             ?>
         </body>

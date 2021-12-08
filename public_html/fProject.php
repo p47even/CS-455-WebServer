@@ -8,7 +8,7 @@
         <body>
             <h1>Enrollment Planner Login!</h1>
                 <div class='main'>
-                        <h2>Admin Login!</h2>
+                        <h2>Faculty Login!</h2>
 
                         <form action='./login/adminLogin.php/' method='post'>
                         AdminID: <input type='text' name='admin_username' id='admin_username'><br>
