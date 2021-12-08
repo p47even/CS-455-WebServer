@@ -31,8 +31,7 @@
 <?php
              session_start();
 
-            if(!isset($_SESSION["fID"]))
-            { 
+            if(!isset($_SESSION["fID"])){ 
                 $loginUrl = 'project.php?msg=Please Login First';
                 header("Location: $loginUrl", true, 303);
                 exit; 
