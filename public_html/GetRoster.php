@@ -78,7 +78,7 @@
 </head>
 <body>
     <?php 
-        echo "<h2>Students Enrolled in ".$class."</h2>";
+        echo "<h2>Students Enrolled in ".$class["courseName"]."</h2>";
             echo
                         "<table class='center'>
                             <tr>
