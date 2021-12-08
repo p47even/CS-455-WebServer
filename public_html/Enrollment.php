@@ -91,9 +91,25 @@
 
             if(isset($_SESSION["courEnrolQuer"]) and count($_SESSION["courEnrolQuer"]) != 0)
             {
+                $counter = 0;
+                $previous_tups = array();
                 foreach($_SESSION["courEnrolQuer"] as $tuple) 
                 {
-                    echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font><a href='./addToCart.php?meetDay=$tuple[meetDay]&section=$tuple[section]&courseID=$tuple[courseID]'>  Add To Cart</a><br>";
+                    $this_tup = [$tuple[courseID], $tuple[meetDay], $tuple[section]];
+                    $display_str = "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font>";
+
+
+                    $add_link =  "<a href='./addToCart.php?index=$counter>  Add To Cart</a><br>";
+
+                    if(in_array($this_tup, $previous_tups))
+                    {
+                        $display_str .= $add_link;
+                    }
+                   $display_str .= "<br>";
+
+                   echo $display_tup;
+
+                   $counter++;
                 }
             }
             
@@ -106,7 +122,7 @@
                 $counter = 0;
                 foreach($_SESSION["cart"] as $tuple) 
                 {
-                   echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font> <a href='./removeFromCart.php?index=$counter'>  Remove</a><br>";
+                   echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section] $tuple[fallSemester] $tuple[springSemester]</font> <a href='./removeFromCart.php?index=$counter'>  Remove</a>";
                    $counter++;
                 }
             }

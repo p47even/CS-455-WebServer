@@ -8,23 +8,24 @@
     try {
 
         //open connection to the airport database file
-        $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
+        // $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
 
-        //set errormode to use exceptions
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // //set errormode to use exceptions
+        // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $meetDay = $_GET["meetDay"];
-        $section = $_GET["section"];
-        $courseID = $_GET["courseID"];
+        $index = $_GET["index"];
+        // $meetDay = $_GET["meetDay"];
+        // $section = $_GET["section"];
+        // $courseID = $_GET["courseID"];
 
-        $update_query = $db->prepare("SELECT * FROM COURSE NATURAL JOIN ISMEETING WHERE meetDay = :meetDay AND section = :section AND courseID = :courseID");
-            $update_query->bindParam(':meetDay', $meetDay);
-            $update_query->bindParam(':section', $section);
-            $update_query->bindParam(':courseID', $courseID);
+        // $update_query = $db->prepare("SELECT * FROM COURSE NATURAL JOIN ISMEETING WHERE meetDay = :meetDay AND section = :section AND courseID = :courseID");
+        //     $update_query->bindParam(':meetDay', $meetDay);
+        //     $update_query->bindParam(':section', $section);
+        //     $update_query->bindParam(':courseID', $courseID);
           
-        $update_query->execute();
+        // $update_query->execute();
         
-        $queryResult = $update_query->fetchAll();
+        // $queryResult = $update_query->fetchAll();
         
         session_start();
 
@@ -33,7 +34,7 @@
             $_SESSION["cart"] = array();
         }
 
-        array_push($_SESSION['cart'], $queryResult[0]);
+        array_push($_SESSION['cart'], $_SESSION['courEnrolQuer'][(int) $index]);
 
         $db = null;
 
