@@ -104,12 +104,12 @@
                     if(!in_array($this_tup, $previous_tups))
                     {
                         $display_str .= $add_link;
+                        $previous_tups.push($this_tup);
                     }
                    $display_str .= "<br>";
 
                    echo $display_str;
 
-                   $previous_tups.push($this_tup);
                    $counter++;
                 }
             }
