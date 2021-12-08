@@ -101,7 +101,7 @@
 
                     $add_link =  "<a href='./addToCart.php?index=$counter>  Add To Cart</a><br>";
 
-                    if(in_array($this_tup, $previous_tups))
+                    if(!in_array($this_tup, $previous_tups))
                     {
                         $display_str .= $add_link;
                     }
@@ -109,6 +109,7 @@
 
                    echo $display_str;
 
+                   $previous_tups.push($this_tup);
                    $counter++;
                 }
             }
