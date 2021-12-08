@@ -61,7 +61,7 @@
                       <option value='2'>Sophmore</option>
                       <option value='3'>Junior</option>
                       <option value='4'>Senior</option>
-                      <option value='5'>Other</option>
+                      <option value='5'>Other</option><br>
 
             <form action='./addStudent.php' method='post'>
             GPA: <input type='text' name='gpa' id='gpa'><br>
@@ -74,7 +74,7 @@
                       <option value='cs'>Computer Science</option>
                       <option value='eng'>English</option>
                       <option value='hist'>History</option>
-                      <option value='math'>Mathematics</option>
+                      <option value='math'>Mathematics</option><br>
 
             <form action='./addStudent.php' method='post'>
             username: <input type='text' name='username' id='username'><br>
