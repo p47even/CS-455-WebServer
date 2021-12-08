@@ -34,13 +34,14 @@
             text-align: center;
         }
     </style>
-        <div class ="toolbar">
-        <a href="Dashboard.html">Home</a>
+    <div class ="toolbar">
+        <a href="facultyDashboard.php">Home</a>
         <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClassPromp.php">Add Class</a>
         <a href="removeClass.php">Remove Class</a>
+        <a href="logout.php" class="logout">Logout
     </div>
     <?php
         session_start();
