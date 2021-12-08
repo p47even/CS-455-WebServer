@@ -44,7 +44,8 @@
         <!-- <a href="Enrollment.php?msg=">Enroll</a> -->
         <!-- <a href="Discussion.html">Discussion Board</a> -->
         <!-- <a href="4YearPlan.php">Four Year Plan</a> -->
-        <!-- <a href="logout.php" class="logout">Logout</a> -->
+        <a href="addStudent.php">Add New Student</a>
+        <a href="logout.php" class="logout">Logout</a>
     </div>
         </head>
         <body>
