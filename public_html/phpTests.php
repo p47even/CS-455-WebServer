@@ -14,7 +14,7 @@ foreach($facPassPairs as $id => $pass){
     echo "UPDATE ProfessorLogin SET facPassword = '" . $hashedPass ."' WHERE FacultyID = ". $id . ";<br>";
 }
 echo "<br>";
-$pass = pass;
+$pass = "pass";
 $hashedPass = hash('sha256', $password, false);
 echo $hashedPass;
 ?>
