@@ -9,7 +9,7 @@
             background-color: maroon;
         }
         .toolbar a:hover{
-            background-color:white;
+            background-color:linen;
             color: black
         }
 
@@ -18,6 +18,7 @@
             color: white;
             font-size: 20px;
             text-decoration: none;
+            font-family: arial;
         }
         table, th, td{
             border: 1px solid black;
@@ -35,6 +36,12 @@
         h2{
             text-align: center;
         }
+        .center{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 35px;
+        }
     </style>
     <div class="toolbar">
     <a href="dashboard.php">Home</a>
@@ -47,7 +54,7 @@
         <a href="logout.php" class="logout">Logout</a>
     </div>
         </head>
-        <body>
+        <body style = "background-color: linen;">
             <?php
                 session_start();
 
@@ -58,6 +65,6 @@
                     exit;
                 }
             ?>
-            <img src = "./sugedpount.jpg" alt = "Welcome!" style="margin-top: 35px; padding-left: 480px">
+            <img src = "./sugedpount.jpg" alt = "Welcome!" class = "center">
         </body>
 </html>
