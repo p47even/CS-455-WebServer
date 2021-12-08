@@ -66,23 +66,23 @@
 
             <form action='./addStudent.php' method='post'>
             Class: <select name='class' id='class'>
-                      <option value='1'>Freshman</option>
-                      <option value='2'>Sophmore</option>
-                      <option value='3'>Junior</option>
-                      <option value='4'>Senior</option>
-                      <option value='5'>Other</option>
+                      <option value='Freshman'>Freshman</option>
+                      <option value='Sophmore'>Sophmore</option>
+                      <option value='Junior'>Junior</option>
+                      <option value='Senior'>Senior</option>
+                      <option value='Other'>Other</option>
                   </select>
             <br>
 
             <form action='./addStudent.php' method='post'>
             Major: <select name='major' id='major'>
-                    <option value='undecided'>Undecided</option>
-                    <option value='bio'>Biology</option>
-                    <option value='chem'>Chemistry</option>
-                    <option value='cs'>Computer Science</option>
-                    <option value='eng'>English</option>
-                    <option value='hist'>History</option>
-                    <option value='math'>Mathematics</option>
+                    <option value='Undecided'>Undecided</option>
+                    <option value='Biology'>Biology</option>
+                    <option value='Chemistry'>Chemistry</option>
+                    <option value='Computer Science'>Computer Science</option>
+                    <option value='English'>English</option>
+                    <option value='History'>History</option>
+                    <option value='Mathematics'>Mathematics</option>
                 </select>
             <br>
 

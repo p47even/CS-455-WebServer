@@ -13,7 +13,7 @@
                 //set errormode to use exceptions
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $stu_name = $_POST['studentName'];
+                $name = $_POST['studentName'];
                 $id = $_POST['studentID'];
                 $gpa = $_POST['gpa'];
                 $username = $_POST['username'];
@@ -39,7 +39,7 @@
                 #INSERT INTO Students VALUES (21, 'Malissa Elwira', 'Sophomore', '3.9');
                 $insert_students = $db->prepare("INSERT INTO Students VALUES (:id, :name, :class, :gpa);");
                     $insert_students->bindParam(':id', $id);
-                    $insert_students->bindParam(':name', $stu_name);
+                    $insert_students->bindParam(':name', $name);
                     $insert_students->bindParam(':class', $class);
                     $insert_students->bindParam(':gpa', $gpa);
 
