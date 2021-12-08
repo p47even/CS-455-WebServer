@@ -55,8 +55,8 @@
         Course ID: <input type='number' name='courseID' id='courseID'><br>
         Course Name: <input type='text' name='courseName' id='courseName' ><br>
         Department ID: <input type='text' name='deptID' id='deptID'><br>
-        Meet in Fall? (0 = no, 1 = yes) <input type='text' name='Fall' id='Fall'><br>
-        Meet in Spring? (0 = no, 1 = yes)<input type='text' name='Spring' id='Spring'><br>
+        Meet in Fall? (0 = no, 1 = yes) <input type='text' name='Fall' id='Fall' min="0" max="1"><br>
+        Meet in Spring? (0 = no, 1 = yes)<input type='text' name='Spring' id='Spring' min="0" max="1"><br>
         <input type='submit' name='Create' value='Create'>
 
 </body>
