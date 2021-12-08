@@ -53,6 +53,14 @@
             <?php
                 session_start();
 
+
+                $error_message = $_GET["msg"];
+
+                if(strlen($error_message) >= 0){
+                    echo $error_message;
+
+                }
+
                 if(!isset($_SESSION["fID"]))
                 {
                     $loginUrl = 'fProject.php?msg=Please Login First';

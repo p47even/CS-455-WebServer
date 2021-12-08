@@ -35,11 +35,11 @@
             </style>
             <div class="toolbar">
                 <a href="facultyDashboard.php">Home</a>
-                <!--<a href="ProfSchedule.php">Schedule</a> -->
-                <!--<a href="searchClasses.php">Search for classes</a> -->
-                <!--<a href="ClassRoster.php">Class Roster</a> -->
-                <!--<a href="AddClassPromp.php">Add Class</a> -->
-                <!-- <a href="removeClass.php">Remove Class</a> -->
+                <a href="ProfSchedule.php">Schedule</a>
+                <a href="searchClasses.php">Search for classes</a>
+                <a href="ClassRoster.php">Class Roster</a>
+                <a href="AddClassPromp.php">Add Class</a>
+                <a href="removeClass.php">Remove Class</a>
                 <a href="addStudentHandler.php">Add New Student</a>
                 <a href="logout.php" class="logout">Logout</a>
 
@@ -55,18 +55,14 @@
             <form action='./addStudent.php' method='post'>
             StudentID: <input type='text' name='studentID' id='studentID'><br><br>
 
-
-
             <form action='./addStudent.php' method='post'>
             GPA: <input type='text' name='gpa' id='gpa'><br><br>
 
-
+            <form action='./addStudent.php' method='post'>
+            Username: <input type='text' name='username' id='username'><br><br>
 
             <form action='./addStudent.php' method='post'>
-            username: <input type='text' name='Username' id='Username'><br><br>
-
-            <form action='./addStudent.php' method='post'>
-            password: <input type='password' name='Password' id='Password'><br><br>
+            Password: <input type='password' name='password' id='password'><br><br>
 
             <form action='./addStudent.php' method='post'>
             Class: <select name='class' id='class'>
