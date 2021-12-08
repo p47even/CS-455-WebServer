@@ -35,16 +35,19 @@
                 $check_user_dup = $db->prepare("SELECT Username FROM StudentLogin WHERE username = :username;");
                     $check_user_dup->bindParam(':username', $username);
 
+
+                #INSERT INTO Students VALUES (21, 'Malissa Elwira', 'Sophomore', '3.9');
                 $insert_students = $db->prepare("INSERT INTO Students VALUES (:id, :name, :class, :gpa);");
                     $insert_students->bindParam(':id', $id);
                     $insert_students->bindParam(':name', $stu_name);
                     $insert_students->bindParam(':class', $class);
                     $insert_students->bindParam(':gpa', $gpa);
 
+                #INSERT INTO StudentLogin VALUES (0, 'aadiana', 'zSLPj4JV');
                 $insert_student_login = $db->prepare("INSERT INTO StudentLogin VALUES (:id, :username, :password);");
-                    $insert_students->bindParam(':id', $id);
-                    $insert_students->bindParam(':username', $username);
-                    $insert_students->bindParam(':password', $hashed_pass);
+                    $insert_student_login->bindParam(':id', $id);
+                    $insert_student_login->bindParam(':username', $username);
+                    $insert_student_login->bindParam(':password', $hashed_pass);
 
                 /*
                 $insert_query = $db->prepare("SELECT StudentID, Username FROM StudentLogin WHERE studentID = :user AND stuPassword = :pass;");
