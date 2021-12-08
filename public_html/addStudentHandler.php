@@ -33,16 +33,17 @@
                     text-align: center;
                 }
             </style>
-            <!--<div class="toolbar">
-                <a href="dashboard.php">Home</a>
-                <a href="WeeklySchedule.php">Schedule</a>
-                <a href="searchClassesTemplate.php">Search for Classes</a>
-                <a href="AcademicRequirements">Academic Requirements</a>
-                <a href="Enrollment.php?msg=">Enroll</a>
-                <a href="Discussion.html">Discussion Board</a>
-                <a href="4YearPlan.php">Four Year Plan</a>
+            <div class="toolbar">
+                <a href="facultyDashboard.php">Home</a>
+                <!--<a href="ProfSchedule.php">Schedule</a> -->
+                <!--<a href="searchClasses.php">Search for classes</a> -->
+                <!--<a href="ClassRoster.php">Class Roster</a> -->
+                <!--<a href="AddClassPromp.php">Add Class</a> -->
+                <!-- <a href="removeClass.php">Remove Class</a> -->
+                <a href="addStudentHandler.php">Add New Student</a>
                 <a href="logout.php" class="logout">Logout</a>
-            </div> -->
+
+            </div>
 
     </head>
     <body>
