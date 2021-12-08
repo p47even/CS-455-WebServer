@@ -3,10 +3,6 @@
 <body>
     <?php
 
-    $db_file = './myDB/uni.db';
-
-    try {
-
         //open connection to the airport database file
         // $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
 
@@ -34,21 +30,16 @@
             $_SESSION["cart"] = array();
         }
 
-        array_push($_SESSION['cart'], $_SESSION['courEnrolQuer'][(int) $index]);
-
-        $db = null;
+        if(!in_array($_SESSION['courEnrolQuer'][(int) $index], $_SESSION['cart']))
+        {
+            array_push($_SESSION['cart'], $_SESSION['courEnrolQuer'][(int) $index]);
+        }
 
         $redirect_url = $_SESSION['redirect_url']."?msg="; 
         unset($_SESSION['redirect_url']);
         header("Location: $redirect_url", true, 303);
         exit;
         
-    }
-    catch(PDOException $e) {
-        die('Exception : '.$e->getMessage());
-    }
-    
-    
     ?>
 
 </body>
