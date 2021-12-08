@@ -6,7 +6,7 @@
             background-color: maroon;
         }
         .toolbar a:hover{
-            background-color:linen;
+            background-color:white;
             color: black
         }
 
@@ -116,7 +116,7 @@
         <?php 
         session_start();
         
-        if(!isset($_SESSION["sID"]) and !isset($_SESSION["fID"]))
+        if(!isset($_SESSION["sID"]) and !isset($_SESSION["fID"])) // 
         { 
              header("Location: 'project.php?msg=Please Login First'", true, 303);
              exit; 
