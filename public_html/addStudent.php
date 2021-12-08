@@ -60,16 +60,16 @@
 
                 if(strcmp("", $msg) == 0)
                 {
-                    echo "Here";
+
                     $check_id_dup->execute();
                     $check_id_result = $check_id_dup->fetchAll();
 
-                    echo "Later";
+
 
                     $check_user_dup->execute();
                     $check_user_result = $check_user_dup->fetchAll();
 
-                    echo "Past executes";
+
 
                     if(count($check_id_result) > 0){
                         echo "FAILED LOGIN";
@@ -85,8 +85,12 @@
                     }
 
                     else{
+                        echo "Here";
                         $insert_students->execute();
+                        echo "Later";
                         $insert_student_login->execute();
+                        
+
 
                         echo "Sucess!";
                         $msg .= "Student account created!";
