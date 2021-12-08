@@ -67,9 +67,12 @@
         Meet in Fall?  <select name='Fall' id='Fall'>
                             <option value ='1'> Yes</option>
                             <option value ='0'> No</option><br>
+                        </select>
         Meet in Spring? <select name='Fall' id='Fall'>
                             <option value ='1'> Yes</option>
                             <option value ='0'> No</option><br>
+                        </select>
+        <input type='submit' name='Add' value='Add'>
     </form>  
 </body>
 </html>
