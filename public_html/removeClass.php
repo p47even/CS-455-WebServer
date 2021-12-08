@@ -66,7 +66,7 @@
         $_POST["courseID"] = "";
 
         echo "<form action='./removeClassHandler.php' method='post'>
-                Course ID: <input type='text' name = 'courseID' id='courseID'><br>
+                Course ID: <input type='number' name = 'courseID' id='courseID'><br>
                 <input type='submit' name='Delete' value='Delete'>
                 <table class='center'>
                 <tr>

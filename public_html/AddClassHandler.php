@@ -62,13 +62,13 @@
                     $insert_query->bindParam(':fall', $fall);
                     $insert_query->bindParam(':spring', $spring);
             } else {
-                if ($existing_ID){
-                    echo "The course ID you have entered is already in use for class. Please try again";
+                if ($existing_ID && preg_match("/^[0-9]+$/", $courseID)){
+                    echo "The course ID you have entered is already in use. Please try again";
                     $msg .= "error";
                 }
 
-                if ($existing_class){
-                    echo "The class name you have entered is already in use for class. Please try again";
+                if ($existing_class && preg_match("/^[a-zA-Z]+$/", $courseName)){
+                    echo "The class name you have entered is already in. Please try again";
                     $msg .= "error";
                 }
 
