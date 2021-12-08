@@ -58,5 +58,6 @@
                     exit;
                 }
             ?>
+            <img src = "./sugedpount.jpg" alt = "Welcome!" style="margin-top: 35px; padding-left: 480px">
         </body>
 </html>
