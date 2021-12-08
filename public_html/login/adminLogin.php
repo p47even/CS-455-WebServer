@@ -42,7 +42,7 @@
                     if(count($query_result) == 1){
                         echo "LOGIN SUCCESFUL";
                         $_SESSION["fID"] = $username;
-                        $redirect_url = '../../facultyDashboard.php';
+                        $redirect_url = '../../facultyDashboard.php?msg='.$msg;
                         header("Location: $redirect_url", true, 303);
                     }
                     else{
