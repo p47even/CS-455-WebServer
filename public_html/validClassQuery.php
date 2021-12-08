@@ -99,7 +99,7 @@ try
     }
     if($deptIDGiven == TRUE)
     { 
-        $classes_query->bindParam(':deptID', $courseName);
+        $classes_query->bindParam(':deptID', $deptID);
     }
     if($courseNameGiven == TRUE)
     {

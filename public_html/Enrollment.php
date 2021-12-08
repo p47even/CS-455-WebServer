@@ -109,7 +109,7 @@
                 }
             }
             
-            //echo "<br><br><br><font color='red'>".$_GET['msg']."</font><br>";
+            echo "<br><br><br><font color='red'>".$_GET['msg']."</font><br>";
 
             echo "<br><br><br><h>Cart:<h><br>";
 
