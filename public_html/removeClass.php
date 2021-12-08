@@ -66,9 +66,10 @@
         $_POST["courseID"] = "";
 
         echo "<form action='./removeClassHandler.php' method='post'>
+                Course ID: <input type='text' name = 'courseID' id='courseID'><br>
+                <input type='submit' name='Delete' value='Delete'>
                 <table class='center'>
                 <tr>
-                    <th>Select</th>
                     <th>Course ID</th>
                     <th>Course Name</th>
                 </tr>";
@@ -76,13 +77,11 @@
         foreach($classes as $class){
             $courseID = $class["courseID"];
            echo"<tr>
-                <td><input type='radio' name = 'delete' value='$courseID'></td>
                 <td>".$class["courseID"]."</td>
                 <td>".$class["courseName"]."</td>
                 </tr>";
         }
-        echo "</table> 
-        <input type='submit' name='Delete' value='Delete'></form>";
+        echo "</table>";
         session_destroy();
     ?>
 </body>
