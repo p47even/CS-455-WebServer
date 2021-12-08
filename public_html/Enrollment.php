@@ -95,27 +95,21 @@
                 $previous_tups = array();
                 foreach($_SESSION["courEnrolQuer"] as $tuple) 
                 {
-                    $this_tup = array($tuple['courseID'], $tuple['meetDay'], $tuple['section']);
-                    $display_str = "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font>";
-
-
-                    $add_link =  " <a href='./addToCart.php?index=$counter>  Add To Cart</a>";
-
+                    $this_tup = array($tuple['courseID'], $tuple['section']);
+                    
                     if(!in_array($this_tup, $previous_tups))
                     {
-                        $display_str .= $add_link;
+                        echo "$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section]  $tuple[fallSemester] $tuple[springSemester]: <a href='./addToCart.php?index=$counter'>  Add To Cart</a><br>";
                         array_push($previous_tups, $this_tup);
                     }
 
-                   $display_str .= "<br>";
-
-                   echo $display_str;
+                   echo "<font color='blue'>$tuple[meetDay] $tuple[meetTime] -> $tuple[endTime] $tuple[location]</font><br>";
 
                    $counter++;
                 }
             }
             
-            echo "<br><br><br><font color='red'>".$_GET['msg']."</font><br>";
+            //echo "<br><br><br><font color='red'>".$_GET['msg']."</font><br>";
 
             echo "<br><br><br><h>Cart:<h><br>";
 

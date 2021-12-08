@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html>
     <body>
@@ -24,6 +21,8 @@
                 $msg = "";
                 $update_query = "";
 
+                session_start();
+
 
                 $update_query = $db->prepare("SELECT facultyID, facPassword FROM professorLogin WHERE facultyID = :user AND facPassword = :pass;");
                     $update_query->bindParam(':user', $username);
@@ -43,7 +42,7 @@
                     if(count($query_result) == 1){
                         echo "LOGIN SUCCESFUL";
                         $_SESSION["fID"] = $username;
-                        $redirect_url = '../facultyDashboard.php';
+                        $redirect_url = '../../facultyDashboard.php';
                         header("Location: $redirect_url", true, 303);
                     }
                     else{
@@ -67,7 +66,7 @@
                 die('Exception : '.$e->getMessage());
             }
 
-            session_destroy();
+            #session_destroy();
         ?>
     </body>
 </html>
