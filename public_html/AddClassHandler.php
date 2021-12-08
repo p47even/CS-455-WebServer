@@ -67,17 +67,17 @@
                     $insert_query->bindParam(':spring', $spring);
             } else {
                 if ($existing_ID && preg_match("/^[0-9]+$/", $courseID)){
-                    echo "The course ID you have entered is already in use. Please try again";
+                    echo "The course ID you have entered is already in use. Please try again<br>";
                     $msg .= "error";
                 }
 
                 if ($existing_class && preg_match("/^[a-zA-Z]+$/", $courseName)){
-                    echo "The class name you have entered is already in. Please try again";
+                    echo "The class name you have entered is already in. Please try again<br>";
                     $msg .= "error";
                 }
 
                 if(!$valid_deptID){
-                    echo "The Department ID you have entered does not exist";
+                    echo "The Department ID you have entered does not exist<br>";
                     $msg .= "error";
                 }
             } 
@@ -116,7 +116,10 @@
         {
             $insert_status = $insert_query->execute();
             echo "<meta http-equiv='refresh' content='0; url=./addClassResult.php'/>";
-        } 
+        } else{
+            $redirect_url = './AddClassForm.php?msg='.$msg;
+            header("Location: $redirect_url", true, 303);
+        }
         $db = null;
         } catch(PDOException $e) {
             die('Exception : '.$e->getMessage());

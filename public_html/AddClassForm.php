@@ -49,6 +49,15 @@
 
     session_start();
 
+    if(isset($_GET["msg"])){
+        $error_message = $_GET["msg"];
+
+        if(strlen($error_message) >= 0){
+            echo $error_message;
+
+        }
+    }
+
     if(!isset($_SESSION["fID"])){ 
         $loginUrl = 'project.php?msg=Please Login First';
         header("Location: $loginUrl", true, 303);
