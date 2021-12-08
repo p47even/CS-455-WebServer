@@ -117,7 +117,7 @@
         if(strcmp("", $msg) == 0)
         {
             $insert_status = $insert_query->execute();
-            echo "<meta http-equiv='refresh' content='0; url=./AddResult.php'/>";
+            echo "<meta http-equiv='refresh' content='0; url=./addClassResult.php'/>";
         } 
         $db = null;
         } catch(PDOException $e) {
