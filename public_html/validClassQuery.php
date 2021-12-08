@@ -95,11 +95,12 @@ try
     tmp5 as (select requirementID as courseID from tmp natural join Requirements), --all children of currently enrolled classes
     tmp6 as (select distinct requirementID as courseID from tmp5 natural join Requirements), --all children of tmp5
     tmp7 as (select * from Course natural join ClassRequirements),
-    tmp8 as (select courseID from tmp7 where class not in (select class from Students where studentID = 5)), --all classes that do not fulfull class requirement --CHANGE STUDENTID HERE
+    tmp8 as (select courseID from tmp7 where class not in (select class from Students where studentID = :sID)), --all classes that do not fulfull class requirement 
     tmp9 as (select * from tmp8 union select * from tmp6 union select * from tmp5 union select * from tmp3 union select * from tmp group by courseID)
     select * from Course where courseID not in tmp9".$addStr);
 
     $classes_query = $db->prepare($mega_query);
+    $classes_query->bindParam(':sID', $_SESSION["sID"]);
     if($courseIDGiven == TRUE)
     {    
         $classes_query->bindParam(':courseID', $courseID);
