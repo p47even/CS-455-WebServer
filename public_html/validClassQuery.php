@@ -15,7 +15,6 @@ try
     $attrStr = "";
 
     $courseID = $_POST["courseID"];
-
     $courseIDGiven = FALSE;
     if($courseID != "")
     {
@@ -78,14 +77,7 @@ try
         }
     }
 
-    $addStr = "";
-
-    if($attrAdded != 0)
-    {
-        $addStr .= " WHERE ";
-    }
-
-    $addStr .= $attrStr.";";
+    $attrStr .= ";";
 
 
     $mega_query = ("with tmp as (select courseID from Enroll where studentID = :sID),
@@ -97,7 +89,7 @@ try
     tmp7 as (select * from Course natural join ClassRequirements),
     tmp8 as (select courseID from tmp7 where class not in (select class from Students where studentID = :sID)), --all classes that do not fulfull class requirement 
     tmp9 as (select * from tmp8 union select * from tmp6 union select * from tmp5 union select * from tmp3 union select * from tmp group by courseID)
-    select * from Course NATURAL JOIN ISMEETING where courseID not in tmp9".$addStr);
+    select * from Course NATURAL JOIN ISMEETING where courseID not in tmp9".$attrStr);
 
     $classes_query = $db->prepare($mega_query);
     $classes_query->bindParam(':sID', $_SESSION["sID"]);
