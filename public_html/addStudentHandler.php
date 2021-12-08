@@ -50,23 +50,23 @@
             <h1>Add a New Student</h1>
 
             <form action='./addStudent.php' method='post'>
-            Student Name: <input type='text' name='studentName' id='studentName'><br>
+            Student Name: <input type='text' name='studentName' id='studentName'><br><br>
 
             <form action='./addStudent.php' method='post'>
-            StudentID: <input type='text' name='studentID' id='studentID'><br>
-
-
-
-            <form action='./addStudent.php' method='post'>
-            GPA: <input type='text' name='gpa' id='gpa'><br>
+            StudentID: <input type='text' name='studentID' id='studentID'><br><br>
 
 
 
             <form action='./addStudent.php' method='post'>
-            username: <input type='text' name='username' id='username'><br>
+            GPA: <input type='text' name='gpa' id='gpa'><br><br>
+
+
 
             <form action='./addStudent.php' method='post'>
-            password: <input type='password' name='password' id='password'><br>
+            username: <input type='text' name='Username' id='Username'><br><br>
+
+            <form action='./addStudent.php' method='post'>
+            password: <input type='password' name='Password' id='Password'><br><br>
 
             <form action='./addStudent.php' method='post'>
             Class: <select name='class' id='class'>
