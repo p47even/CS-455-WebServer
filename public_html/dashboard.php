@@ -54,7 +54,7 @@
         <a href="logout.php" class="logout">Logout</a>
     </div>
         </head>
-        <body>
+        <body style = "background-color: linen;">
             <?php
                 session_start();
 
