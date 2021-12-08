@@ -37,7 +37,7 @@
                     $insert_prof->bindParam(':dept', $dept);
 
                 #INSERT INTO StudentLogin VALUES (0, 'aadiana', 'zSLPj4JV');
-                $insert_prof_login = $db->prepare("INSERT INTO StudentLogin VALUES (:id, :username, :password);");
+                $insert_prof_login = $db->prepare("INSERT INTO professorLogin VALUES (:id, :username, :password);");
                     $insert_prof_login->bindParam(':id', $id);
                     $insert_prof_login->bindParam(':username', $username);
                     $insert_prof_login->bindParam(':password', $hashed_pass);
