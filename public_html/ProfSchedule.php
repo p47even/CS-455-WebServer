@@ -143,7 +143,7 @@
 
                 echo "</table>";
         $db = null;
-        session_destroy();
+        //session_destroy();
     ?>
 
 </body>

@@ -91,7 +91,6 @@
                 </tr>";
         }
         echo "</table>";
-        session_destroy();
     ?>
 </body>
 </html>

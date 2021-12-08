@@ -74,7 +74,6 @@
             die('Exception : '.$e->getMessage());
         }
         $db = null;
-        session_destroy();
     ?>
 </body>
 </html>

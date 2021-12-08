@@ -120,7 +120,6 @@
             $insert_status = $insert_query->execute();
             echo "<meta http-equiv='refresh' content='0; url=./AddResult.php'/>";
         } 
-        session_destroy();
         $db = null;
         } catch(PDOException $e) {
             die('Exception : '.$e->getMessage());
