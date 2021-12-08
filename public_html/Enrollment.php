@@ -99,13 +99,14 @@
                     $display_str = "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font>";
 
 
-                    $add_link =  "<a href='./addToCart.php?index=$counter>  Add To Cart</a><br>";
+                    $add_link =  " <a href='./addToCart.php?index=$counter>  Add To Cart</a>";
 
                     if(!in_array($this_tup, $previous_tups))
                     {
                         $display_str .= $add_link;
                         array_push($previous_tups, $this_tup);
                     }
+
                    $display_str .= "<br>";
 
                    echo $display_str;
@@ -123,7 +124,7 @@
                 $counter = 0;
                 foreach($_SESSION["cart"] as $tuple) 
                 {
-                   echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section] $tuple[fallSemester] $tuple[springSemester]</font> <a href='./removeFromCart.php?index=$counter'>  Remove</a>";
+                   echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section] $tuple[fallSemester] $tuple[springSemester]</font> <a href='./removeFromCart.php?index=$counter'>  Remove</a><br>";
                    $counter++;
                 }
             }
