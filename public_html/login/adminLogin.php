@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html>
     <body>
@@ -23,6 +20,8 @@
 
                 $msg = "";
                 $update_query = "";
+
+                session_start();
 
 
                 $update_query = $db->prepare("SELECT facultyID, facPassword FROM professorLogin WHERE facultyID = :user AND facPassword = :pass;");
@@ -67,7 +66,7 @@
                 die('Exception : '.$e->getMessage());
             }
 
-            session_destroy();
+            #session_destroy();
         ?>
     </body>
 </html>
