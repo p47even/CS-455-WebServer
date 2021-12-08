@@ -124,6 +124,8 @@
         
         $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
         $numAttrs = 5;
+        $fallInd = 3;
+        $sprInd = 4;
         if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
         {
             foreach($_SESSION["courAttrQuer"] as $tuple) 
