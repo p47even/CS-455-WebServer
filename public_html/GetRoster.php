@@ -80,14 +80,17 @@
 <body>
     <?php 
             echo
-                        "<table class='center'>
-                            <tr>
-                                <th>".$class["courseName"]."</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
+                        "<table class='center'>";
+            foreach($class as $tuple) {
+                    echo " <tr>
+                            <th>".$tuple["courseName"]." </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            </tr>";  
+                        }            
+
+            echo               " <tr>
                                 <th>StudentID</th>
                                 <th>Student Name</th>
                                 <th>Class</th>
