@@ -83,8 +83,8 @@
                         "<table class='center'>";
             foreach($class as $tuple) {
                     echo " <tr>
-                            <th>".$tuple["courseName"]." </th>
                             <th></th>
+                            <th>".$tuple["courseName"]." </th>
                             <th></th>
                             <th></th>
                             </tr>";  
