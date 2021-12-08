@@ -116,7 +116,7 @@
         <?php 
         session_start();
         
-        if(!isset($_SESSION["sID"]))
+        if(!isset($_SESSION["sID"]) and !isset($_SESSION["fID"]))
         { 
              header("Location: 'project.php?msg=Please Login First'", true, 303);
              exit; 
