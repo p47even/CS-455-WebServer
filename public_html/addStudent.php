@@ -97,7 +97,7 @@
 
                         echo "Sucess!";
                         $msg .= "Student account created!";
-                        $redirect_url = './facultyDashboard.php';
+                        $redirect_url = './facultyDashboard.php?msg='.$msg;
                         header("Location: $redirect_url", true, 303);
                     }
                 }
