@@ -63,7 +63,6 @@
     <form action='./AddClassHandler.php' method='post'>
         Course ID: <input type='number' name='courseID' id='courseID'><br>
         Course Name: <input type='text' name='courseName' id='courseName' ><br>
-        Department ID: <input type='text' name='deptID' id='deptID'><br>
         Meet in Fall? (Yes = 1, No = 0) <select name='Fall' id='Fall'>
                             <option value ='1'> 1</option>
                             <option value ='0'> 0</option><br>

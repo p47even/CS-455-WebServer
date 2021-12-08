@@ -45,7 +45,8 @@
                  //set errormode to use exceptions
                  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
      
-                 $deptID = $_POST["deptID"];
+                 $deptID -> $db->query("SELECT deptID FROM Professor WHERE facultyID = $faculty_ID;");
+
                  $classes_available = $db->query("SELECT courseID, courseName FROM Course WHERE deptID =$deptID;");
 
                  echo
