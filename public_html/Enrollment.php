@@ -107,7 +107,7 @@
                     }
                    $display_str .= "<br>";
 
-                   echo $display_tup;
+                   echo $display_str;
 
                    $counter++;
                 }
