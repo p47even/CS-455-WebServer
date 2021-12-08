@@ -33,7 +33,7 @@
                     $check_id_dup->bindParam(':id', $id);
 
                 $check_user_dup = $db->prepare("SELECT Username FROM StudentLogin WHERE username = :username;");
-                    $check_user_dup->bindParam(':usernmae', $username);
+                    $check_user_dup->bindParam(':username', $username);
 
                 $insert_students = $db->prepare("INSERT INTO Students VALUES (:id, :name, :class, :gpa);");
                     $insert_students->bindParam(':id', $id);
@@ -65,6 +65,7 @@
                     $check_id_result = $check_id_dup->fetchAll();
 
                     echo "Later";
+
                     $check_user_dup->execute();
                     $check_user_result = $check_user_dup->fetchAll();
 
