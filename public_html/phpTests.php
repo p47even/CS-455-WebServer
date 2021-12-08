@@ -5,12 +5,12 @@ $facPassPairs = array("0"=>"dc4I}+sDY","1"=>"7N~.}MgKfX","2"=>"m0]!lFjvpp","3"=>
 
 foreach($userPassPairs as $id => $pass){
 
-    $hashedPass = hash('sha256', $password, false);
+    $hashedPass = hash('sha256', $pass, false);
     echo "UPDATE StudentLogIn SET password = " . $hashedPass . " WHERE StudentID = " . $id;
 }
 echo "<br>";
 foreach($facPassPairs as $id => $pass){
-    $hashedPass = hash('sha256', $password, false);
+    $hashedPass = hash('sha256', $pass, false);
     echo "UPDATE FacultyLogin SET password = " . $hashedPass ." WHERE FacultyID = ". $id;
 }
 ?>
