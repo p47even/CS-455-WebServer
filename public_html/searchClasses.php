@@ -14,94 +14,33 @@
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $attrStr = "";
-        $attrAdded = 0;
-        
-        $courseID = $_POST["courseID"];
-        
-        $courseIDGiven = FALSE;
-        if($courseID != "")
-        {
-            if($attrAdded != 0)
-            {
-                $attrStr .= ",";
-            }
-            $attrStr .= " courseID = :courseID";
-            $attrAdded++;
-            $courseIDGiven = TRUE;
-        }
-
-        $deptID = $_POST["deptID"];
-        $deptIDGiven = FALSE;
-        if($deptID != "")
-        {
-            if($attrAdded != 0)
-            {
-                $attrStr .= ",";
-            }
-            $attrStr .= " deptID = :deptID";
-            $attrAdded++;
-            $deptIDGiven = TRUE;
-        }
-
-        $courseName = $_POST["courseName"];
-        $courseNameGiven = FALSE;
-        if($courseName != "")
-        {
-            if($attrAdded != 0)
-            {
-                $attrStr .= ",";
-            }
-            $attrStr .= " courseName = :courseName";
-            $attrAdded++;
-            $courseNameGiven = TRUE;
-        }
-
-        $semester = $_POST["semester"];
-        if($semester != "")
-        {
-            if($attrAdded != 0)
-            {
-                $attrStr .= " and";
-            }
-
-            if($semester == "fall")
-            {
-                $attrStr .= " fallSemester = 1";
-                $attrStr .= " and springSemester = 0";
-            }
-            else
-            {
-                $attrStr .= " springSemester = 1";
-                $attrStr .= " and fallSemester = 0";
-            }
-            $attrAdded++;
-        }
-
         $addStr = "";
+        $attrAdded = 0;
+        $attrList = ['courseID','deptID','courseName'];
 
-        if($attrAdded != 0)
-        {
-            $addStr .= " WHERE ";
-        }
-
-        $addStr .= $attrStr.";";
+        $addStr = getAttrs($attrList);
         
-        $querStmnt = "SELECT * FROM COURSE".$addStr;
+        $semester = $_POST["semester"];
+        if($semester != ""){
+            if($addStr != ""){ $addStr .= ' and '; } 
+            if($semester == "fall") { $addStr .= " fallSemester = 1";}
+            else if($semester == "spring"){ $addStr .= " springSemester = 1";}
+            else if($semester == "fallOnly"){ $addStr .= " fallSemester = 1 and springSemester = 0";}
+            else if($semester == "springOnly"){ $addStr .= " fallSemester = 0 and springSemester = 1";}
+        }
+        $addStr.=';';
 
+
+        $querStmnt = "SELECT * FROM COURSE";
+        if (strcmp($addStr,';') == 0){
+            $querStmnt.=$addStr;
+        }
+        else { 
+            $querStmnt .= " WHERE ".$addStr;
+        }
+        //$querStmt $addStr;
         $classes_query = $db->prepare($querStmnt);
-        if($courseIDGiven == TRUE)
-        {    
-            $classes_query->bindParam(':courseID', $courseID);
-        }
-        if($deptIDGiven == TRUE)
-        {
-            $classes_query->bindParam(':deptID', $courseName);
-        }
-        if($courseNameGiven == TRUE)
-        {
-            $classes_query->bindParam(':courseName', $courseName);
-        }
+
 
         $classes_query->execute();
 
@@ -115,8 +54,31 @@
         exit;
     }
     catch(PDOException $e) {
-        die('Exception : '.$e->getMessage());
+        $redirect_url = $_SESSION['redirect_url']; 
+        unset($_SESSION['redirect_url']);
+        header("Location: $redirect_url", true, 303);
+        exit;
+        //die('Exception : '.$e->getMessage());
     }
+
+    function getAttrs($attrList){
+        $attrStr = "";
+        for ($i = 0; $i < count($attrList); $i++){
+            $value = $_POST[ $attrList[$i] ];
+            if ($value != ""){
+                if ($attrStr != ""){
+                    $attrStr .= ' and ';
+                }
+                if (gettype($value) == "string"){
+                    $value = '\''.$value.'\'';
+                }
+                $attrStr .= $attrList[$i]." = ".$value;
+
+            }
+        }
+        return $attrStr;
+    }
+    
     ?>
 </body>
 </html>

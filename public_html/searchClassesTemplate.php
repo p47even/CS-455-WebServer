@@ -14,11 +14,16 @@
             padding: 15px 15px;
             color: white;
             font-size: 20px;
+            font-family: arial;
             text-decoration: none;
         }
         table, th, td{
             border: 1px solid black;
             border-collapse: collapse;
+            font-family: arial;
+            font-size:20px;
+            border-style: dotted;
+            padding: 15px 15px;
         }
 
         table.center {
@@ -31,6 +36,10 @@
         }
         h2{
             text-align: center;
+        }
+        form{
+            font-family: arial;
+            margin-left: 5px;
         }
     </style>
     <div class="toolbar">
@@ -45,7 +54,8 @@
     </div>
 
 </head>
-<body>
+<body style = "background-color:linen">
+<h1 style = "color:beige;font-family:arial;background-color:maroon;text-align:center"> Search for Classes </h1>
 
         <form action='./searchClasses.php' method='post'>
         courseID: <input type='text' name='courseID' id='courseID'><br>
@@ -61,21 +71,23 @@
                   <option value=''>---</option>
                   <option value='fall'>Fall Semester</option>
                   <option value='spring'>Spring Semester</option>
+                  <option value='fallOnly'>Fall Only</option>
+                  <option value='springOnly'>Spring Only</option>
         
         <input type='submit' name='submit' value='Search'>
     <br>
     <br>
-
+<!--
     <p>
-        <?php
+                
             session_start();
-
+            /*
             if(!isset($_SESSION["sID"]))
             { 
                  header("Location: 'project.php?msg=Please Login First'", true, 303);
                  exit; 
             }
-
+            */
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
             if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
@@ -88,6 +100,46 @@
             }
         ?>
     </p>
+        -->
+    <table>
+        <tr>
+            <?php 
+                echo "<th>Course ID</th>";
+                echo "<th>Department ID</th>";
+                echo "<th>Course Name</th>";
+                echo "<th>Taught in Fall</th>";
+                echo "<th>Taught in Spring</th>";
+                ?>
+        </tr>
+        <tr>
+            
+        <?php 
+        session_start();
+        
+        if(!isset($_SESSION["sID"]))
+        { 
+             header("Location: 'project.php?msg=Please Login First'", true, 303);
+             exit; 
+        }
+        
+        $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
+        $numAttrs = 5;
+        if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
+        {
+            foreach($_SESSION["courAttrQuer"] as $tuple) 
+            {
+                $str = "<tr>";
+                for ($i = 0; $i < $numAttrs; $i++){
+                    $str .= '<td>'.$tuple[$i].'</td>';
+                }
+                $str .= "</tr>";
+                echo $str;
+            }
+            unset($_SESSION["courAttrQuer"]);
+        }
+        
+        ?>
+    </table>
 
 </body>
 </html>
