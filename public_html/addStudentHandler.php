@@ -55,6 +55,19 @@
             <form action='./addStudent.php' method='post'>
             StudentID: <input type='text' name='studentID' id='studentID'><br>
 
+
+
+            <form action='./addStudent.php' method='post'>
+            GPA: <input type='text' name='gpa' id='gpa'><br>
+
+
+
+            <form action='./addStudent.php' method='post'>
+            username: <input type='text' name='username' id='username'><br>
+
+            <form action='./addStudent.php' method='post'>
+            password: <input type='password' name='password' id='password'><br>
+
             <form action='./addStudent.php' method='post'>
             Class: <select name='class' id='class'>
                       <option value='1'>Freshman</option>
@@ -64,23 +77,14 @@
                       <option value='5'>Other</option><br>
 
             <form action='./addStudent.php' method='post'>
-            GPA: <input type='text' name='gpa' id='gpa'><br>
-
-            <form action='./addStudent.php' method='post'>
             Major: <select name='major' id='major'>
-                      <option value='undecided'>Undecided</option>
-                      <option value='bio'>Biology</option>
-                      <option value='chem'>Chemistry</option>
-                      <option value='cs'>Computer Science</option>
-                      <option value='eng'>English</option>
-                      <option value='hist'>History</option>
-                      <option value='math'>Mathematics</option><br>
-
-            <form action='./addStudent.php' method='post'>
-            username: <input type='text' name='username' id='username'><br>
-
-            <form action='./addStudent.php' method='post'>
-            password: <input type='password' name='password' id='password'><br>
+                    <option value='undecided'>Undecided</option>
+                    <option value='bio'>Biology</option>
+                    <option value='chem'>Chemistry</option>
+                    <option value='cs'>Computer Science</option>
+                    <option value='eng'>English</option>
+                    <option value='hist'>History</option>
+                    <option value='math'>Mathematics</option><br>
 
             <input type='submit' name='submit' value='Create'>
         <br>
