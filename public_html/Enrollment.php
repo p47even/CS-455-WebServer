@@ -95,7 +95,7 @@
                 $previous_tups = array();
                 foreach($_SESSION["courEnrolQuer"] as $tuple) 
                 {
-                    $this_tup = [$tuple[courseID], $tuple[meetDay], $tuple[section]];
+                    $this_tup = array($tuple['courseID'], $tuple['meetDay'], $tuple['section']);
                     $display_str = "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font>";
 
 
