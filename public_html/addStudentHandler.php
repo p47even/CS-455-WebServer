@@ -56,7 +56,7 @@
             StudentID: <input type='text' name='studentID' id='studentID'><br>
 
             <form action='./addStudent.php' method='post'>
-            Class: <select name='class' id='class'>
+            Class: 
                       <option value='1'>Freshman</option>
                       <option value='2'>Sophmore</option>
                       <option value='3'>Junior</option>
