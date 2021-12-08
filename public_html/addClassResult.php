@@ -24,7 +24,7 @@
         <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClassForm.php">Add Class</a>
         <a href="removeClass.php">Remove Class</a>
-        <a href="logout.php" class="logout">Logout
+        <a href="logout.php" class="logout">Logout</a>
     </div>
 </head>
 <body>
