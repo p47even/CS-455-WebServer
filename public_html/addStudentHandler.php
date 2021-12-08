@@ -74,7 +74,7 @@
                       <option value='2'>Sophmore</option>
                       <option value='3'>Junior</option>
                       <option value='4'>Senior</option>
-                      <option value='5'>Other</option></form>
+                      <option value='5'>Other</option></form><br>
 
             <form action='./addStudent.php' method='post'>
             Major: <select name='major' id='major'>
@@ -84,7 +84,7 @@
                     <option value='cs'>Computer Science</option>
                     <option value='eng'>English</option>
                     <option value='hist'>History</option>
-                    <option value='math'>Mathematics</option><br>
+                    <option value='math'>Mathematics</option></form><br>
 
             <input type='submit' name='submit' value='Create'>
         <br>
