@@ -63,6 +63,7 @@
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $courseID = $_POST["courseID"];
+            echo $courseID;
             $delete_course = $db->prepare("DELETE FROM Course WHERE courseID = '$courseID'" );
             $delete_class = $db->prepare("DELETE FROM isMeeting WHERE courseID = '$courseID'" );
             if (preg_match("/^[0-1]+$/", $courseID)){
