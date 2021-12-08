@@ -22,8 +22,8 @@
         <a href="ProfSchedule.php">Schedule</a>
         <a href="searchClasses.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
-        <a href="AddClassPromp.php">Edit Class</a>
-        <a href="4YearPlanHelper.php">Four Year Plan</a>
+        <a href="AddClassPromp.php">Add Class</a>
+        <a href="removeClass.php">Remove Class</a>
     </div>
 </head>
 <body>
