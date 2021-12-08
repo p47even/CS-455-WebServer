@@ -112,7 +112,9 @@
             $schedule[$schedIndex] = $startingCourseNames[$SC];
             $schedIndex++;
         }
-        $schedIndex = goToNextSemester($schedIndex, $numCoursesPerSemester);
+        if ($schedIndex % $numCoursesPerSemester != 0){
+            $schedIndex = goToNextSemester($schedIndex, $numCoursesPerSemester);
+        }
         if ($seasonSpring) { $classInd++; }
         $seasonSpring = !$seasonSpring;
 
