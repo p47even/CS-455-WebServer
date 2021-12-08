@@ -72,7 +72,7 @@
                       <option value='4'>Senior</option>
                       <option value='5'>Other</option>
                   </select>
-            </form><br>
+            <br>
 
             <form action='./addStudent.php' method='post'>
             Major: <select name='major' id='major'>
@@ -84,7 +84,7 @@
                     <option value='hist'>History</option>
                     <option value='math'>Mathematics</option>
                 </select>
-            </form><br>
+            <br>
 
             <input type='submit' name='submit' value='Create'>
         <br>

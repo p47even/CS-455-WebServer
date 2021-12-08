@@ -60,7 +60,6 @@
                     $msg .= "Error 'studentID' must be numbers only";
                 }
 
-
                 if(strcmp("", $msg) == 0)
                 {
                     $check_id_dup->execute();
