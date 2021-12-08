@@ -52,7 +52,7 @@
         <a href="4YearPlan.php">Four Year Plan</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>
-
+    <title>Class Search</title>
 </head>
 <body style = "background-color:linen">
 <h1 style = "color:beige;font-family:arial;background-color:maroon;text-align:center"> Search for Classes </h1>
