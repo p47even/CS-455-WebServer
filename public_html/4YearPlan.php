@@ -69,6 +69,12 @@
         $numCoursesPerSemester = 4;
         $numSemesters = 8;
         $numSemestersPerClass = 2;
+    
+        $q0 = 'select * from Students where studentID = '.$studentID.';';
+        $q0Result = $db->query($q0);
+        $q0Array = $q0Result->fetchArray();
+        $studentName = $q0Array['studentName'];
+        $class = $q0Array['class'];
 
         $query = 'select * from Students natural join Enroll natural join Course where studentID = '.$studentID.';';
 
@@ -80,8 +86,6 @@
         $startingCourseNames = array(); //names of all currently enrolled courses
         $allCourseNames = array(); //courseNames for whole department
         $coursesinDept = array(); //courseIDs for whole department
-        $class = '';
-        $studentName = '';
 
         //populate $startingCourses
         $i = 0;
