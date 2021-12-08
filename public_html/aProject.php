@@ -8,15 +8,18 @@
         <body>
             <h1>Enrollment Planner Login!</h1>
                 <div class='main'>
-                        <h2>Faculty Login!</h2>
 
-                        <form action='./login/adminLogin.php/' method='post'>
-                        AdminID: <input type='text' name='admin_username' id='admin_username'><br>
+                        <h2>Administrator Login!</h2>
 
-                        <form action='./login/adminLogin.php' method='post'>
-                        Password: <input type='password' name='admin_password' id='admin_password'><br>
+                        <form action='./login/super_login.php' method='post'>
+                        StudentID: <input type='text' name='username' id='username'><br>
+
+                        <form action='./login/super_login.php' method='post'>
+                        Password: <input type='password' name='password' id='password'><br>
 
                         <input type='submit' name='submit' value='Login'><br><br><br>
+
+
                 </div>
 
                 <?php
@@ -28,11 +31,12 @@
                     }
                 ?>
 
-                <h3>Not Faculty?</h3>
+                <h3>Not an Admin?</h3>
                     <p>
-                        <a href="./project.php?msg=">Student Login Here!</a><br>
-                        <a href="./aProject.php?msg=">Admin Login Here!</a>
+                        <a href="./fProject.php?msg=">Faculty Login Here!</a><br>
+                        <a href="./project.php?msg=">Student Login Here!</a>
                     </p>
+
 
 
         </body>

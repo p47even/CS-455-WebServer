@@ -33,7 +33,8 @@
 
                 <h3>Not a Student?</h3>
                     <p>
-                        <a href="./fProject.php?msg=">Faculty Login Here!</a>
+                        <a href="./fProject.php?msg=">Faculty Login Here!</a><br>
+                        <a href="./aProject.php?msg=">Admin Login Here!</a>
                     </p>
 
 
