@@ -40,7 +40,7 @@
     <a href="facultyDashboard.php">Home</a>
 
         <a href="ProfSchedule.php">Schedule</a>
-        <a href="searchClasses.php">Search for classes</a>
+        <a href="searchClassesTemplate.php">Search for classes</a>
         <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClassForm.php">Add Class</a>
         <a href="removeClass.php">Remove Class</a>
