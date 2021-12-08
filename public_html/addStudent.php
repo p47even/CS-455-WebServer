@@ -38,7 +38,7 @@
                 $insert_students = $db->prepare("INSERT INTO Students VALUES (:id, :name, :class, :gpa);");
                     $insert_students->bindParam(':id', $id);
                     $insert_students->bindParam(':name', $stu_name);
-                    $insert_students->bindParam(':class', $gpa);
+                    $insert_students->bindParam(':class', $class);
                     $insert_students->bindParam(':gpa', $gpa);
 
                 $insert_student_login = $db->prepare("INSERT INTO StudentLogin VALUES (:id, :username, :password);");
@@ -89,7 +89,7 @@
                         $insert_students->execute();
                         echo "Later";
                         $insert_student_login->execute();
-                        
+
 
 
                         echo "Sucess!";
