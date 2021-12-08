@@ -6,7 +6,7 @@
             background-color: maroon;
         }
         .toolbar a:hover{
-            background-color:linen;
+            background-color:white;
             color: black;
         }
 
