@@ -49,7 +49,7 @@
     <?php 
         session_start();
 
-        if(!isset($_REQUEST["sID"]))
+        if(!isset($_SESSION["sID"]))
         { 
             $loginUrl = 'project.php?msg=Please Login First';
             header("Location: $loginUrl", true, 303);
@@ -58,7 +58,7 @@
 
 
         //$studentID = $_POST["studentID"];
-        $studentID = $_REQUEST['sID'];
+        $studentID = $_SESSION['sID'];
         //$studentID = $sID;
         
         //$studentID = 13; //comment this and uncomment above when it's time 
