@@ -1,6 +1,6 @@
 <?php
     session_start();
-    
+
     if(isset($_SESSION["sID"]))
     {
         unset($_SESSION["sID"]);
@@ -9,6 +9,10 @@
     if(isset($_SESSION["fID"]))
     {
         unset($_SESSION["fID"]);
+    }
+    if(isset($_SESSION["aID"]))
+    {
+        unset($_SESSION["aID"]);
     }
 
     if(isset($_SESSION["cart"]))
