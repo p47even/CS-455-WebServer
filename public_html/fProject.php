@@ -33,6 +33,7 @@
                         <a href="./project.php?msg=">Student Login Here!</a><br>
                         <a href="./aProject.php?msg=">Admin Login Here!</a>
                     </p>
+                    <img src = "./sugedpount.jpg" alt = "Welcome!" class = "center" style = "width:325px; height: 325px;">
 
 
         </body>
