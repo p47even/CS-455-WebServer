@@ -31,11 +31,9 @@
 
                 $check_id_dup = $db->prepare("SELECT StudentID FROM Students WHERE studentID = :id;");
                     $check_id_dup->bindParam(':id', $id);
-                    $check_id_dup->bindParam(':pass', $hashed_pass);
 
-                $check_user_dup = $db->prepare("SELECT StudentID FROM Students WHERE studentID = :id;");
-                    $check_user_dup->bindParam(':id', $id);
-                    $check_user_dup->bindParam(':pass', $hashed_pass);
+                $check_user_dup = $db->prepare("SELECT Username FROM StudentLogin WHERE username = :username;");
+                    $check_user_dup->bindParam(':usernmae', $username);
 
                 $insert_students = $db->prepare("INSERT INTO Students VALUES (:id, :name, :class, :gpa);");
                     $insert_students->bindParam(':id', $id);
@@ -83,6 +81,9 @@
                     }
 
                     else{
+                        $insert_students->execute();
+                        $insert_student_login->execute();
+
                         echo "Sucess!";
                         $msg .= "Student account created!";
                         $redirect_url = './facultyDashboard.php';
