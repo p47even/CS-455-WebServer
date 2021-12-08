@@ -74,7 +74,7 @@
                       <option value='2'>Sophmore</option>
                       <option value='3'>Junior</option>
                       <option value='4'>Senior</option>
-                      <option value='5'>Other</option><br>
+                      <option value='5'>Other</option></form>
 
             <form action='./addStudent.php' method='post'>
             Major: <select name='major' id='major'>
