@@ -26,7 +26,7 @@
 
                 session_start();
 
-                $check_id_dup = $db->prepare("SELECT facultyID FROM Professors WHERE facultyID = :id;");
+                $check_id_dup = $db->prepare("SELECT facultyID FROM Professor WHERE facultyID = :id;");
                     $check_id_dup->bindParam(':id', $id);
 
 
