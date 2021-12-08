@@ -70,7 +70,7 @@
                 $class_deleted = $delete_class->execute();
                 echo "<meta http-equiv='refresh' content='0; url=./removeClass.php'/>";
             } else {
-                
+                echo "<meta http-equiv='refresh' content='0; url=./removeClass.php'/>";
             }
         }
         catch(PDOException $e) {
