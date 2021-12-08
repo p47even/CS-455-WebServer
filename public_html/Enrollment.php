@@ -97,18 +97,13 @@
                 {
                     $this_tup = array($tuple['courseID'], $tuple['section']);
                     
-                    $display_str = "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[meetDay] $tuple[section] $tuple[meetTime] -> $tuple[endTime] $tuple[location] $tuple[fallSemester] $tuple[springSemester]</font>";
-
                     if(!in_array($this_tup, $previous_tups))
                     {
-                        $display_str .= " <a href='./addToCart.php?index=$counter>  Add To Cart</a>";
-                        echo "$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section]<br>";
+                        echo "$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section]  $tuple[fallSemester] $tuple[springSemester] <a href='./addToCart.php?index=$counter>  Add To Cart</a><br>";
                         array_push($previous_tups, $this_tup);
                     }
 
-                   $display_str .= "<br>";
-
-                   echo $display_str;
+                   echo "<font color='blue'>$tuple[meetDay] $tuple[meetTime] -> $tuple[endTime] $tuple[location]</font><br>";
 
                    $counter++;
                 }
