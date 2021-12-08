@@ -16,13 +16,8 @@
                         <form action='./login/adminLogin.php' method='post'>
                         Password: <input type='password' name='admin_password' id='admin_password'><br>
 
-                        <input type='submit' name='submit' value='Login'><br>
+                        <input type='submit' name='submit' value='Login'><br><br><br>
                 </div>
-
-                <h3>Not Faculty?</h3>
-                    <p>
-                        <a href="./project.php?msg=">Student Login Here!</a>
-                    </p>
 
                 <?php
                     $error_message = $_GET["msg"];
@@ -32,5 +27,12 @@
 
                     }
                 ?>
+
+                <h3>Not Faculty?</h3>
+                    <p>
+                        <a href="./project.php?msg=">Student Login Here!</a>
+                    </p>
+
+
         </body>
 </html>

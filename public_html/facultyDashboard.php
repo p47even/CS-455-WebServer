@@ -38,19 +38,30 @@
     </style>
     <div class="toolbar">
     <a href="facultyDashboard.php">Home</a>
-        <!-- <a href="WeeklySchedule.php">Schedule</a> -->
-        <!-- <a href="searchClassesTemplate.php">Search for Classes</a> -->
-        <!-- <a href="AcademicRequirements">Academic Requirements</a> -->
-        <!-- <a href="Enrollment.php?msg=">Enroll</a> -->
-        <!-- <a href="Discussion.html">Discussion Board</a> -->
-        <!-- <a href="4YearPlan.php">Four Year Plan</a> -->
-        <a href="addStudent.php">Add New Student</a>
+
+        <a href="ProfSchedule.php">Schedule</a>
+        <a href="searchClasses.php">Search for classes</a>
+        <a href="ClassRoster.php">Class Roster</a>
+        <a href="AddClassPromp.php">Add Class</a>
+        <a href="removeClass.php">Remove Class</a>
+        <a href="addStudentHandler.php">Add New Student</a>
         <a href="logout.php" class="logout">Logout</a>
+
     </div>
         </head>
         <body>
             <?php
                 session_start();
+
+
+                if(isset($_GET["msg"])){
+                    $error_message = $_GET["msg"];
+
+                    if(strlen($error_message) >= 0){
+                        echo $error_message;
+
+                    }
+                }
 
                 if(!isset($_SESSION["fID"]))
                 {
@@ -59,5 +70,6 @@
                     exit;
                 }
             ?>
+            <img src = "./sugedpount.jpg" alt = "Welcome!" style="margin-top: 35px; padding-left: 480px">
         </body>
 </html>
