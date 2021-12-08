@@ -68,9 +68,9 @@
                             <option value ='1'> 1</option>
                             <option value ='0'> 0</option><br>
                         </select>
-        Meet in Spring? (Yes = 1, No = 0)<select name='Fall' id='Fall'>
-                            <option value ='1'> 1</option>
-                            <option value ='0'> 0</option><br>
+        Meet in Spring? (Yes = 1, No = 0)<select name='Spring' id='Spring'>
+                            <option value ='1'> 1 </option>
+                            <option value ='0'> 0 </option><br>
                         </select>
         <input type='submit' name='Add' value='Add'>
     </form>  
