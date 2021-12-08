@@ -47,25 +47,25 @@
 </head>
 <body>
 
-    <form action='./searchCourses.php' method='post'>
+    <form action='./validClassQuery.php' method='post'>
         courseID: <input type='text' name='courseID' id='courseID'><br>
 
-        <form action='./searchCourses.php' method='post'>
+        <form action='./validClassQuery.php' method='post'>
         deptID: <input type='text' name='deptID' id='deptID'><br>
 
-        <form action='./searchCourses.php' method='post'>
+        <form action='./validClassQuery.php' method='post'>
         courseName: <input type='text' name='courseName' id='courseName'><br>
 
-        <form action='./searchCourses.php' method='post'>
+        <form action='./validClassQuery.php' method='post'>
         meetTime: <input type='text' name='meetTime' id='meetTime'>
         
-        <form action='./searchCourses.php' method='post'>
+        <form action='./validClassQuery.php' method='post'>
         endTime: <input type='text' name='endTime' id='endTime'><br>
 
-        <form action='./searchCourses.php' method='post'>
+        <form action='./validClassQuery.php' method='post'>
         location: <input type='text' name='location' id='location'><br>
 
-        <form action='./searchCourses.php' method='post'>
+        <form action='./validClassQuery.php' method='post'>
         semester: <select name='semester' id='semester'>
                   <option value=''>---</option>
                   <option value='fall'>Fall Semester</option>
