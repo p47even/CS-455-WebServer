@@ -61,16 +61,11 @@
         $_POST["Spring"] = "";
     ?>
     <form action='./AddClassHandler.php' method='post'>
+        Course ID: <input type='text' name='deptID' id='deptID'><br>
         Course ID: <input type='number' name='courseID' id='courseID'><br>
         Course Name: <input type='text' name='courseName' id='courseName' ><br>
-        Meet in Fall? (Yes = 1, No = 0) <select name='Fall' id='Fall'>
-                            <option value ='1'> 1</option>
-                            <option value ='0'> 0</option><br>
-                        </select>
-        Meet in Spring? (Yes = 1, No = 0)<select name='Spring' id='Spring'>
-                            <option value ='1'> 1 </option>
-                            <option value ='0'> 0 </option><br>
-                        </select>
+        Meet in Fall? (Yes = 1, No = 0) <input type='text' name='Fall' id='Fall' ><br>
+        Meet in Spring? (Yes = 1, No = 0)<input type='text' name='Spring' id='Spring'><br>
         <input type='submit' name='Add' value='Add'>
     </form>  
 </body>

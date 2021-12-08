@@ -48,12 +48,10 @@
             $courseName = $_POST["courseName"];
             $fall = $_POST["Fall"];
             $spring = $_POST["Spring"];
-            $deptID = "";
-
+            $deptID = $_POST["deptID"];
 
             //set errormode to use exceptions
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $deptID -> $db->query("SELECT deptID FROM Professor WHERE facultyID = $facultyID;");
             $existing_ID = $db->query("SELECT courseName, courseID FROM Course WHERE courseID = $courseID;");
             $existing_class = $db->query("SELECT courseID, courseName FROM Course WHERE courseName = '$courseName';");
             $query_deptID = $db->query("SELECT * FROM Department WHERE deptID = '$deptID';");
