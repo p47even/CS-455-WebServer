@@ -25,6 +25,7 @@
         table.center {
             margin-left: auto; 
             margin-right: auto;
+            margin-top: 50 px;
         }
 
         th{
@@ -78,9 +79,14 @@
 </head>
 <body>
     <?php 
-        echo "<h2>Students Enrolled in ".$class["courseName"]."</h2>";
             echo
                         "<table class='center'>
+                            <tr>
+                                <th>".$class["courseName"]."</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
                             <tr>
                                 <th>StudentID</th>
                                 <th>Student Name</th>
