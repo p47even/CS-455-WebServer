@@ -45,9 +45,9 @@
                  //set errormode to use exceptions
                  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
      
-                 $deptID -> $db->query("SELECT deptID FROM Professor WHERE facultyID = $faculty_ID;");
+                 $deptID -> $db->query("SELECT deptID FROM Professor WHERE facultyID = $facultyID;");
 
-                 $classes_available = $db->query("SELECT courseID, courseName FROM Course WHERE deptID =$deptID;");
+                 $classes_available = $db->query("SELECT courseID, courseName FROM Course WHERE deptID = '$deptID';");
 
                  echo
                         "<table class='center'>
