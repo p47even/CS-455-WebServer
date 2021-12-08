@@ -18,7 +18,7 @@ try
     $courseIDGiven = FALSE;
     if($courseID != "")
     {
-        $attrStr .= "and courseID = :courseID";
+        $attrStr .= " and courseID = :courseID";
         $courseIDGiven = TRUE;
     }
 
