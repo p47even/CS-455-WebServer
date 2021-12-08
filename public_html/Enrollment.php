@@ -85,7 +85,7 @@
                 exit; 
             }
             
-            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF']."?msg=";
+            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
             echo "<h>Search Results: </h><br>";
 
