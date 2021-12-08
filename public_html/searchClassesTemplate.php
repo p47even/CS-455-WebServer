@@ -130,6 +130,14 @@
             {
                 $str = "<tr>";
                 for ($i = 0; $i < $numAttrs; $i++){
+                    if ($i == $fallInd || $i == $sprInd){
+                        if($tuple[$i] == 1){
+                            $tuple[$i] = '✓';
+                        }
+                        else{
+                            $tuple[$i] = '✗';
+                        }
+                    }
                     $str .= '<td>'.$tuple[$i].'</td>';
                 }
                 $str .= "</tr>";
