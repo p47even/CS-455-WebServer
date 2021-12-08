@@ -60,7 +60,6 @@
         //$studentID = $_POST["studentID"];
         $studentID = $_SESSION['sID'];
         //$studentID = $sID;
-        echo $studentID;
         //$studentID = 13; //comment this and uncomment above when it's time 
 
         $seasonSpring = TRUE; 
