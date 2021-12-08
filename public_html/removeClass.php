@@ -54,7 +54,14 @@
 <body>
     <?php
         session_start();
-        $facultyID = 3;
+        
+        if(!isset($_SESSION["fID"]))
+        { 
+            $loginUrl = 'project.php?msg=Please Login First';
+            header("Location: $loginUrl", true, 303);
+            exit; 
+        }
+        $facultyID = $_SESSION["fID"];
 
         //open connection to the university's database file
         $db = new PDO('sqlite:' . './myDB/uni.db');
