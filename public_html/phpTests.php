@@ -15,6 +15,6 @@ foreach($facPassPairs as $id => $pass){
 }
 echo "<br>";
 $pass = "pass";
-$hashedPass = hash('sha256', $password, false);
+$hashedPass = hash('sha256', $pass, false);
 echo $hashedPass;
 ?>
