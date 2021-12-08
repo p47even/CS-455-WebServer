@@ -38,7 +38,7 @@
 
         $db = null;
 
-        $redirect_url = $_SESSION['redirect_url']; 
+        $redirect_url = $_SESSION['redirect_url']."?msg="; 
         unset($_SESSION['redirect_url']);
         header("Location: $redirect_url", true, 303);
         exit;
