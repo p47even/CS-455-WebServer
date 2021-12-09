@@ -16,6 +16,23 @@
             font-size: 20px;
             text-decoration: none;
         }
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table.center {
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: 50 px;
+        }
+
+        th{
+            color: maroon;
+        }
+        h2{
+            text-align: center;
+        }
     </style>
     <div class="toolbar">
     <a href="facultyDashboard.php">Home</a>
@@ -107,11 +124,25 @@
         if(strcmp("", $msg) == 0)
         {
             $insert_status = $insert_query->execute();
-            echo "<meta http-equiv='refresh' content='0; url=./addClassResult.php'/>";
         } else{
             $redirect_url = './AddClassForm.php?msg='.$msg;
             header("Location: $redirect_url", true, 303);
         }
+        $classes = $db->query("SELECT courseName, courseID FROM Course WHERE deptID = '$deptID';");
+        echo "<h2>Success!</h2>";
+        echo
+                        "<table class='center'>
+                            <tr>
+                                <th>Course ID</th>
+                                <th>Course Name</th>
+                            </tr>"; 
+
+                    foreach($classes as $class) {
+                        echo " <tr>
+                                <td>".$class["courseID"]. " </td>
+                                <td>".$class["courseName"]. "</td>
+                                </tr>"; 
+                    }
         $db = null;
         } catch(PDOException $e) {
             die('Exception : '.$e->getMessage());
