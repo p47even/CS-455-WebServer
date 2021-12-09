@@ -67,12 +67,11 @@
         $thClass = "";
         $frClass = "";
         
-        $query_str = $db->query("SELECT * FROM Teaching NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE facultyID = $faculty_ID;");
-        $monClass = $db->query("SELECT meetTime, endTime, courseName, location FROM $query_str WHERE meetDay = 'Monday' ORDER BY meetTime;");
-        $tuClass = $db->query("SELECT meetTime, endTime, courseName, location FROM $query_str WHERE meetDay = 'Tuesday' ORDER BY meetTime;");
-        $wedClass = $db->query("SELECT meetTime, endTime, courseName, location FROM $query_str WHERE meetDay = 'Wedmesday' ORDER BY meetTime;");
-        $thClass = $db->query("SELECT  meetTime, endTime, courseName, location FROM $query_str WHERE meetDay = 'Thursday' ORDER BY meetTime;"); 
-        $frClass = $db->query("SELECT meetTime, endTime, courseName, location FROM $query_str WHERE meetDay = 'Friday' ORDER BY meetTime;");
+        $monClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Teaching NATURAL JOIN isMeeting NATURAL JOIN Course WHERE facultyID = $faculty_ID) WHERE meetDay = 'Monday' ORDER BY meetTime;");
+        $tuClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Teaching NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE facultyID = $faculty_ID) WHERE meetDay = 'Tuesday' ORDER BY meetTime;");
+        $wedClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Teaching NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE facultyID = $faculty_ID) WHERE meetDay = 'Wedmesday' ORDER BY meetTime;");
+        $thClass = $db->query("SELECT  meetTime, endTime, courseName, location FROM (SELECT * FROM Teaching NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE facultyID = $faculty_ID) WHERE meetDay = 'Thursday' ORDER BY meetTime;"); 
+        $frClass = $db->query("SELECT meetTime, endTime, courseName, location FROM (SELECT * FROM Teaching NATURAL JOIN IsMeeting NATURAL JOIN Course WHERE facultyID = $faculty_ID) WHERE meetDay = 'Friday' ORDER BY meetTime;");
 
     }
     catch(PDOException $e) {
