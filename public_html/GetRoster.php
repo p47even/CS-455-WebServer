@@ -35,6 +35,7 @@
             text-align: center;
         }
     </style>
+     <!-- Tool bar that helps users navigate between pages -->
     <div class="toolbar">
     <a href="facultyDashboard.php">Home</a>
         <a href="ProfSchedule.php">Schedule</a>
@@ -47,29 +48,49 @@
 
     <?php
         session_start();
-        
+        //checks to see if there has been a failed attempt to get a roster
+        if(isset($_GET["msg"])){
+            //Failed attempt to add class
+            $error_message = $_GET["msg"];
+            //prints what inputs were invalid
+            if(strlen($error_message) >= 0){
+                echo $error_message;
+
+            }
+        }
+
+         //Checks to see if a faculty member is logged in as faculty
         if(!isset($_SESSION["fID"])){ 
+            //user is not logged in so redirect to log in
             $loginUrl = 'project.php?msg=Please Login First';
             header("Location: $loginUrl", true, 303);
             exit; 
         }
-        $facultyID = $_SESSION["fID"];
+
+        $facultyID = $_SESSION["fID"]; //gets the ID of user
+
         try {
 
             //open connection to the university's database file
-            $db = new PDO('sqlite:' . './myDB/uni.db');      // <------ Line 13
+            $db = new PDO('sqlite:' . './myDB/uni.db');      
 
             //set errormode to use exceptions
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $courseID = $_POST["courseID"];
-            $students = "";
-            $class = "";
-            if (preg_match("/^[0-9]$/", $courseID) && strcmp("", $courseID) != 0){
+            $courseID = $_POST["courseID"]; //courseID entered by user 
+            $students = ""; //keep track of students in course requested
+            $class = ""; //name of course requested
+            $msg = "";//error message if input is invalid
+
+            //checks that input is valid before getting information from the db
+            if (strcmp("", $courseID) != 0){
+                //get students' names, ID, class and major that are  enrolled in class
                 $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major NATURAL JOIN Teaching WHERE courseID = $courseID AND facultyID = $facultyID;");
+                //gets the name of the class rquested
                 $class = $db->query("SELECT courseName FROM Course WHERE courseID = $courseID;");
             } else {
-                echo "Invalid input please provide a valid course ID";
+                //input was invalid 
+                $msg .= "Invalid input please provide a valid course ID";
             }
         }
         catch(PDOException $e) {
@@ -79,6 +100,10 @@
 </head>
 <body>
     <?php 
+
+        //checks if input is of valid type by checking if the error message is empty
+        if(strcmp("", $msg) == 0){
+            //input is valid so print a table with the information of all the students enrolled in the class
             echo
                         "<table class='center'>";
             foreach($class as $tuple) {
@@ -107,6 +132,11 @@
                     }
 
                 echo "</table>";
+        } else{
+            // the input is not valid so redirect to roster form and display what went wrong
+            $redirect_url = './ClassRoster.php?msg='.$msg;
+            header("Location: $redirect_url", true, 303);
+        }
         $db = null;
     ?>
 
