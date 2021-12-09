@@ -101,8 +101,9 @@
 <body>
     <?php 
 
+        $student_count = $students->fetch();
         //checks if input is of valid type by checking if the error message is empty
-        if(strcmp("", $msg) == 0){
+        if(strcmp("", $msg) == 0 && $student_count){
             //input is valid so print a table with the information of all the students enrolled in the class
             echo
                         "<table class='center'>";
@@ -133,6 +134,8 @@
 
                 echo "</table>";
         } else{
+            //input was invalid 
+            $msg .= "Invalid input please provide a valid course ID";
             // the input is not valid so redirect to roster form and display what went wrong
             $redirect_url = './ClassRoster.php?msg='.$msg;
             header("Location: $redirect_url", true, 303);
