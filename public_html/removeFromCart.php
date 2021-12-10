@@ -6,6 +6,15 @@
 
         session_start();
 
+        if(!isset($_SESSION["sID"]))
+            { 
+                $loginUrl = 'project.php?msg=Please Login First';
+                header("Location: $loginUrl", true, 303);
+                exit; 
+            }
+            
+            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
+
         \array_splice($_SESSION['cart'], (int) $index, 1);
 
         $redirect_url = $_SESSION['redirect_url']."?msg="; 

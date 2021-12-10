@@ -25,6 +25,16 @@
         
         session_start();
 
+
+        if(!isset($_SESSION["sID"]))
+            { 
+                $loginUrl = 'project.php?msg=Please Login First';
+                header("Location: $loginUrl", true, 303);
+                exit; 
+            }
+            
+            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
+
         if(!isset($_SESSION["cart"]))
         {
             $_SESSION["cart"] = array();
