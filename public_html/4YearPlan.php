@@ -139,14 +139,6 @@
             $j = 0;
             
             //get all courses that will be added to the table from the listed major.
-            /*
-            tmp: current enrollments
-            tmp2: all courses whose children
-            tmp3/4: courses 
-            tmp5: rename requirementID to courseID
-            tmp6:
-            tmp7:
-            */
             $filterQuery = 
                 'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),
                 tmp2 as (select distinct courseID from Requirements where requirementID in tmp),
@@ -196,7 +188,7 @@
                 $k++;
             }          
 
-            //get reqs per class
+            //get class requirements for future courses
             $classReqQuery = 
                 'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),
                 tmp2 as (select distinct courseID from Requirements where requirementID in tmp),
@@ -263,11 +255,11 @@
             }
             
         }
-
+        //advance $schedIndex to start of next semester
         function goToNextSemester($schedIndex, $numCoursesPerSemester){
             return $schedIndex += $numCoursesPerSemester-($schedIndex%$numCoursesPerSemester);
         }
-
+        //add element to table
         function echoTableElements($start, $schedule, $numToIter){
             $str = '<tr>';
             for ($i = $start; $i < count($schedule); $i += $numToIter){
