@@ -16,22 +16,7 @@
             font-size: 20px;
             text-decoration: none;
         }
-        table, th, td{
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
 
-        table.center {
-            margin-left: auto; 
-            margin-right: auto;
-        }
-
-        th{
-            color: maroon;
-        }
-        h2{
-            text-align: center;
-        }
     </style>
     <div class="toolbar">
         <a href="dashboard.php">Home</a>
@@ -78,6 +63,7 @@
         <?php
             session_start();
 
+            // If the user is not signed in to a student accoutn, redirect them to login page
             if(!isset($_SESSION["sID"]))
             { 
                 $loginUrl = 'project.php?msg=Please Login First';
@@ -85,10 +71,11 @@
                 exit; 
             }
             
+            // Set redirection url so it can return here
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
+            // Display search results
             echo "<h>Search Results: </h><br>";
-
             if(isset($_SESSION["courEnrolQuer"]) and count($_SESSION["courEnrolQuer"]) != 0)
             {
                 $counter = 0;
@@ -99,7 +86,17 @@
                     
                     if(!in_array($this_tup, $previous_tups))
                     {
-                        echo "$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section]  $tuple[fallSemester] $tuple[springSemester]: <a href='./addToCart.php?index=$counter'>  Add To Cart</a><br>";
+                        $semesterStr = "Fall/Spring";
+                    if($tuple[fallSemester] == 1 && $tuple[springSemester] == 0)
+                    {
+                        $semesterStr = "Fall";
+                    }
+                    else
+                    {
+                        $semesterStr = "Spring";
+                    }
+                    
+                        echo "$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section]  $semesterStr <a href='./addToCart.php?index=$counter'>  Add To Cart</a><br>";
                         array_push($previous_tups, $this_tup);
                     }
 
@@ -109,16 +106,28 @@
                 }
             }
             
+            // Display error / success message if any
             echo "<br><br><br><font color='red'>".$_GET['msg']."</font><br>";
 
             echo "<br><br><br><h>Cart:<h><br>";
 
+            // Display current cart
             if(isset($_SESSION["cart"]) and count($_SESSION["cart"]) > 0)
             {
                 $counter = 0;
                 foreach($_SESSION["cart"] as $tuple) 
                 {
-                   echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section] $tuple[fallSemester] $tuple[springSemester]</font> <a href='./removeFromCart.php?index=$counter'>  Remove</a><br>";
+                    $semesterStr = "Fall/Spring";
+                    if($tuple[fallSemester] == 1 && $tuple[springSemester] == 0)
+                    {
+                        $semesterStr = "Fall";
+                    }
+                    else
+                    {
+                        $semesterStr = "Spring";
+                    }
+
+                   echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section] $semesterStr</font> <a href='./removeFromCart.php?index=$counter'>  Remove</a><br>";
                    $counter++;
                 }
             }

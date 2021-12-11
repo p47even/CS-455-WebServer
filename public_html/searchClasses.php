@@ -4,6 +4,7 @@
     <?php
     session_start();
     
+    // If the user is not signed in as a student, redirect them to login page
     if(!isset($_SESSION["sID"])) //check if user is logged in
             { 
                 $loginUrl = 'project.php?msg=Please Login First';
@@ -18,7 +19,7 @@
 
     try {
 
-        //open connection to the airport database file
+        //open connection to the database file
         $db = new PDO('sqlite:' . $db_file);      
 
         //set errormode to use exceptions

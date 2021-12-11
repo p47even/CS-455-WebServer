@@ -17,30 +17,7 @@
             font-family: arial;
             text-decoration: none;
         }
-        table, th, td{
-            border: 1px solid black;
-            border-collapse: collapse;
-            font-family: arial;
-            font-size:20px;
-            border-style: dotted;
-            padding: 15px 15px;
-        }
-
-        table.center {
-            margin-left: auto; 
-            margin-right: auto;
-        }
-
-        th{
-            color: maroon;
-        }
-        h2{
-            text-align: center;
-        }
-        form{
-            font-family: arial;
-            margin-left: 5px;
-        }
+        
     </style>
     <div class="toolbar">
         <a href="dashboard.php">Home</a>
@@ -97,10 +74,13 @@
              exit; 
         }
         
+        // Set redirect adddress to come back here
         $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
         $numAttrs = 5;
         $fallInd = 3; //index of fallSemester attribute
         $sprInd = 4; //index of fallSemester attribute
+
+        // Display results of the search
         if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
         {
             foreach($_SESSION["courAttrQuer"] as $tuple) //build table elements
