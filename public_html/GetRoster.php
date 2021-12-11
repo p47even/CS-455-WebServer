@@ -91,6 +91,9 @@
             } else {
                 //input was invalid 
                 $msg .= "Invalid input please provide a valid course ID";
+                // the input is not valid so redirect to roster form and display what went wrong
+                $redirect_url = './ClassRoster.php?msg='.$msg;
+                header("Location: $redirect_url", true, 303);
             }
         }
         catch(PDOException $e) {
