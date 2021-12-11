@@ -46,9 +46,7 @@
         <a href="dashboard.php">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
         <a href="searchClassesTemplate.php">Search for Classes</a>
-        <!-- <a href="AcademicRequirements">Academic Requirements</a> -->
         <a href="Enrollment.php?msg=">Enroll</a>
-        <!-- <a href="Discussion.html">Discussion Board</a> -->
         <a href="4YearPlan.php">Four Year Plan</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>
@@ -56,7 +54,7 @@
 </head>
 <body style = "background-color:linen">
 <h1 style = "color:beige;font-family:arial;background-color:maroon;text-align:center"> Search for Classes </h1>
-
+<!-- form for what parameters user wants defined (to be sent to searchClasses.php) -->
         <form action='./searchClasses.php' method='post'>
         courseID: <input type='text' name='courseID' id='courseID'><br>
 
@@ -77,34 +75,11 @@
         <input type='submit' name='submit' value='Search'>
     <br>
     <br>
-<!--
-    <p>
-                
-            session_start();
-            /*
-            if(!isset($_SESSION["sID"]))
-            { 
-                 header("Location: 'project.php?msg=Please Login First'", true, 303);
-                 exit; 
-            }
-            */
-            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
-            if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
-            {
-                foreach($_SESSION["courAttrQuer"] as $tuple) 
-                {
-                    echo "<font color='blue'>$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[fallSemester] $tuple[springSemester]<br></font>";
-                }
-                unset($_SESSION["courAttrQuer"]);
-            }
-        ?>
-    </p>
-        -->
     <table>
         <tr>
             <?php 
-                echo "<th>Course ID</th>";
+                echo "<th>Course ID</th>"; //table columns
                 echo "<th>Department ID</th>";
                 echo "<th>Course Name</th>";
                 echo "<th>Taught in Fall</th>";
@@ -116,7 +91,7 @@
         <?php 
         session_start();
         
-        if(!isset($_SESSION["sID"]) and !isset($_SESSION["fID"])) // 
+        if(!isset($_SESSION["sID"]) and !isset($_SESSION["fID"])) //Return to login screen if ids not set
         { 
              header("Location: project.php?msg=Please Login First", true, 303);
              exit; 
@@ -124,16 +99,16 @@
         
         $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
         $numAttrs = 5;
-        $fallInd = 3;
-        $sprInd = 4;
+        $fallInd = 3; //index of fallSemester attribute
+        $sprInd = 4; //index of fallSemester attribute
         if(isset($_SESSION["courAttrQuer"]) and count($_SESSION["courAttrQuer"]) != 0)
         {
-            foreach($_SESSION["courAttrQuer"] as $tuple) 
+            foreach($_SESSION["courAttrQuer"] as $tuple) //build table elements
             {
                 $str = "<tr>";
                 for ($i = 0; $i < $numAttrs; $i++){
                     if ($i == $fallInd || $i == $sprInd){
-                        if($tuple[$i] == 1){
+                        if($tuple[$i] == 1){ //replace spring and fall semester values (0 and 1) with ✓ and ✗ for simplicity
                             $tuple[$i] = '✓';
                         }
                         else{
