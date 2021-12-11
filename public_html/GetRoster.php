@@ -83,7 +83,7 @@
             $msg = "";//error message if input is invalid
 
             //checks that input is valid before getting information from the db
-            if (isset($_POST["courseID"])){
+            if (!empty($_POST["courseID"])){
                 //get students' names, ID, class and major that are  enrolled in class
                 $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major NATURAL JOIN Teaching WHERE courseID = $courseID AND facultyID = $facultyID;");
                 //gets the name of the class rquested
