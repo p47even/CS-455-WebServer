@@ -37,9 +37,7 @@
         <a href="dashboard.php">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
         <a href="searchClassesTemplate.php">Search for Classes</a>
-        <!-- <a href="AcademicRequirements">Academic Requirements</a> -->
         <a href="Enrollment.php?msg=">Enroll</a>
-        <!-- <a href="Discussion.html">Discussion Board</a> -->
         <a href="4YearPlan.php">Four Year Plan</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>
@@ -49,7 +47,7 @@
     <?php 
         session_start();
 
-        if(!isset($_SESSION["sID"]))
+        if(!isset($_SESSION["sID"])) //redirect to login if studentID not set
         { 
             $loginUrl = 'project.php?msg=Please Login First';
             header("Location: $loginUrl", true, 303);
@@ -57,25 +55,26 @@
         }
 
 
-        //$studentID = $_POST["studentID"];
         $studentID = $_SESSION['sID'];
-        //$studentID = $sID;
-        //$studentID = 13; //comment this and uncomment above when it's time 
 
-        $seasonSpring = TRUE; 
+        $seasonSpring = TRUE; //current semester, assuming spring since there are students currently enrolled in capston 
         $db = new SQLite3('myDB/uni.db');
-        $classes = ['Freshman','Sophomore','Junior','Senior'];
-        $classInd = 0;
+
         $numCoursesPerSemester = 4;
         $numSemesters = 8;
-        $numSemestersPerClass = 2;
     
-        $q0 = 'select * from Students where studentID = '.$studentID.';';
+        $classes = ['Freshman','Sophomore','Junior','Senior'];
+        $classInd = 0; //keeps track of current class (freshman, sophomore, etc)
+        $numSemestersPerClass = 2;
+        
+        //get basic student info regardless of enrollments
+        $q0 = 'select * from Students where studentID = '.$studentID.';'; 
         $q0Result = $db->query($q0);
         $q0Array = $q0Result->fetchArray();
         $studentName = $q0Array['studentName'];
         $class = $q0Array['class'];
 
+        //get all current enrollments
         $query = 'select * from Students natural join Enroll natural join Course where studentID = '.$studentID.';';
 
         $result = $db->query($query);
@@ -87,7 +86,7 @@
         $allCourseNames = array(); //courseNames for whole department
         $coursesinDept = array(); //courseIDs for whole department
 
-        //populate $startingCourses
+        //populate $startingCourses with current enrollments
         $i = 0;
         while ($currCoursesArray = $result->fetchArray()) { 
             $startingCourses[$i] = $currCoursesArray['courseID'];
@@ -97,30 +96,30 @@
             $i ++;
         }
 
-        //fill table for current semester
+        //create table, adjust starting position, and fill with current enrollments
         $schedule = array_fill(0,$numCoursesPerSemester*$numSemesters,'');
-
         $schedIndex = 0; //set starting index
-        $toMultiply = 0;
-        while (!($class == $classes[$classInd])){
+    
+        $toMultiply = 0; 
+        while (!($class == $classes[$classInd])){ //move starting index based on class
             $toMultiply+=$numSemestersPerClass;
             $classInd++;
         }
         $schedIndex = $numCoursesPerSemester*$toMultiply;
 
-        if ($seasonSpring) {
+        if ($seasonSpring) { //start at spring semester if needed
             $schedIndex += $numCoursesPerSemester;
         }
 
-        for($SC = 0; $SC < count($startingCourseNames); $SC++){
+        for($SC = 0; $SC < count($startingCourseNames); $SC++){ //fill with current enrollments
             $schedule[$schedIndex] = $startingCourseNames[$SC];
             $schedIndex++;
         }
-        if ($schedIndex % $numCoursesPerSemester != 0){
+        if ($schedIndex % $numCoursesPerSemester != 0){ //advance index to start of next semester if not already there
             $schedIndex = goToNextSemester($schedIndex, $numCoursesPerSemester);
         }
-        if ($seasonSpring) { $classInd++; }
-        $seasonSpring = !$seasonSpring;
+        if ($seasonSpring) { $classInd++; } //update $classInd if going to next semester goes to next class
+        $seasonSpring = !$seasonSpring; //change current season
 
         //get major
         $majorQuery = 'select Major from Students natural join Major where studentID = '.$studentID.';';
@@ -138,7 +137,16 @@
             $springSems = array();
             $filterResultArray = array();
             $j = 0;
-
+            
+            //get all courses that will be added to the table from the listed major.
+            /*
+            tmp: current enrollments
+            tmp2: all courses whose children
+            tmp3/4: courses 
+            tmp5: rename requirementID to courseID
+            tmp6:
+            tmp7:
+            */
             $filterQuery = 
                 'with tmp as (select courseID from Enroll where studentID = '.$studentID.'),
                 tmp2 as (select distinct courseID from Requirements where requirementID in tmp),
