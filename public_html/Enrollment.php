@@ -86,7 +86,8 @@
                     
                     if(!in_array($this_tup, $previous_tups))
                     {
-                        $semesterStr = "Fall/Spring";
+                    
+                    $semesterStr = "Fall/Spring";
                     if($tuple[fallSemester] == 1 && $tuple[springSemester] == 0)
                     {
                         $semesterStr = "Fall";
@@ -96,7 +97,7 @@
                         $semesterStr = "Spring";
                     }
                     
-                        echo "$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section]  $semesterStr <a href='./addToCart.php?index=$counter'>  Add To Cart</a><br>";
+                        echo "$tuple[courseID] $tuple[deptID] $tuple[courseName] $tuple[section] $semesterStr <a href='./addToCart.php?index=$counter'>  Add To Cart</a><br>";
                         array_push($previous_tups, $this_tup);
                     }
 
