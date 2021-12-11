@@ -82,9 +82,8 @@
             $class = ""; //name of course requested
             $msg = "";//error message if input is invalid
 
-            echo $courseID;
             //checks that input is valid before getting information from the db
-            if (strcmp("", $courseID) != 0){
+            if (!isset($courseID)){
                 //get students' names, ID, class and major that are  enrolled in class
                 $students = $db->query("SELECT studentID, studentName, class, major FROM Students NATURAL JOIN Enroll NATURAL JOIN Major NATURAL JOIN Teaching WHERE courseID = $courseID AND facultyID = $facultyID;");
                 //gets the name of the class rquested
