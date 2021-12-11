@@ -6,9 +6,9 @@
     
     if(!isset($_SESSION["sID"])) //check if user is logged in
             { 
-                //$loginUrl = 'project.php?msg=Please Login First';
-                //header("Location: $loginUrl", true, 303);
-                header("Location: searchClassesTemplate.php", true, 303);
+                $loginUrl = 'project.php?msg=Please Login First';
+                header("Location: $loginUrl", true, 303);
+                ////header("Location: searchClassesTemplate.php", true, 303);
                 exit; 
             }
     
