@@ -4,7 +4,7 @@
     <?php
     session_start();
 
-    if(!isset($_SESSION["sID"]))
+    if(!isset($_SESSION["sID"])) //check if user is logged in
             { 
                 $loginUrl = 'project.php?msg=Please Login First';
                 header("Location: $loginUrl", true, 303);
@@ -20,20 +20,19 @@
     try {
 
         //open connection to the airport database file
-        $db = new PDO('sqlite:' . $db_file);      // <------ Line 13
+        $db = new PDO('sqlite:' . $db_file);      
 
         //set errormode to use exceptions
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $addStr = "";
-        $attrAdded = 0;
-        $attrList = ['courseID','deptID','courseName'];
+        $addStr = ""; //non-semester attribute names sent from searchClassesTemplate.php
+        $attrList = ['courseID','deptID','courseName']; //non-semester attrs in Students
 
         $addStr = getAttrs($attrList);
         
         $semester = $_POST["semester"];
-        if($semester != ""){
-            if($addStr != ""){ $addStr .= ' and '; } 
+        if($semester != ""){ //handle semester
+            if($addStr != ""){ $addStr .= ' and '; } //add ' and ' if not first attribute to be filtered on
             if($semester == "fall") { $addStr .= " fallSemester = 1";}
             else if($semester == "spring"){ $addStr .= " springSemester = 1";}
             else if($semester == "fallOnly"){ $addStr .= " fallSemester = 1 and springSemester = 0";}
@@ -43,13 +42,12 @@
 
 
         $querStmnt = "SELECT * FROM COURSE";
-        if (strcmp($addStr,';') == 0){
+        if (strcmp($addStr,';') == 0){ //if $addStr is empty, statment is 'SELECT * FROM COURSE;'
             $querStmnt.=$addStr;
         }
         else { 
             $querStmnt .= " WHERE ".$addStr;
         }
-        //$querStmt $addStr;
         $classes_query = $db->prepare($querStmnt);
 
 
@@ -69,18 +67,17 @@
         unset($_SESSION['redirect_url']);
         header("Location: $redirect_url", true, 303);
         exit;
-        //die('Exception : '.$e->getMessage());
     }
 
-    function getAttrs($attrList){
+    function getAttrs($attrList){ //add attribute value to select query
         $attrStr = "";
         for ($i = 0; $i < count($attrList); $i++){
             $value = $_POST[ $attrList[$i] ];
             if ($value != ""){
                 if ($attrStr != ""){
-                    $attrStr .= ' and ';
+                    $attrStr .= ' and '; //add ' and ' if not first attribute to be filtered on
                 }
-                if (gettype($value) == "string"){
+                if (gettype($value) == "string"){ //add quotes if string
                     $value = '\''.$value.'\'';
                 }
                 $attrStr .= $attrList[$i]." = ".$value;
