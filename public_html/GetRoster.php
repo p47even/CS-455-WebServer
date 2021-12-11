@@ -82,6 +82,7 @@
             $class = ""; //name of course requested
             $msg = "";//error message if input is invalid
 
+            echo $courseID;
             //checks that input is valid before getting information from the db
             if (strcmp("", $courseID) != 0){
                 //get students' names, ID, class and major that are  enrolled in class
