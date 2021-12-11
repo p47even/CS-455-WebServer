@@ -12,8 +12,6 @@
                 header("Location: $loginUrl", true, 303);
                 exit; 
             }
-            
-            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
         \array_splice($_SESSION['cart'], (int) $index, 1);
 

@@ -32,8 +32,6 @@
                 header("Location: $loginUrl", true, 303);
                 exit; 
             }
-            
-            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
         if(!isset($_SESSION["cart"]))
         {

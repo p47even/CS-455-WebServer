@@ -11,8 +11,6 @@
                 header("Location: searchClassesTemplate.php", true, 303);
                 exit; 
             }
-            
-            //$_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
     
 
     //path to the SQLite database file
