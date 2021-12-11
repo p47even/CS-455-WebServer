@@ -3,7 +3,7 @@
 <body>
     <?php
     session_start();
-
+    /*
     if(!isset($_SESSION["sID"])) //check if user is logged in
             { 
                 $loginUrl = 'project.php?msg=Please Login First';
@@ -12,7 +12,7 @@
             }
             
             $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
-
+    */
 
     //path to the SQLite database file
     $db_file = './myDB/uni.db';
