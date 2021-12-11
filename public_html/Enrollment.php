@@ -119,7 +119,7 @@
                 foreach($_SESSION["cart"] as $tuple) 
                 {
                     $semesterStr = "Fall/Spring";
-                    if($tuple[fallSemester] == 1 && $tuple[springSemester] == 0)
+                    if($tuple["fallSemester"] == 1 && $tuple["springSemester"] == 0)
                     {
                         $semesterStr = "Fall";
                     }
