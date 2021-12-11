@@ -8,10 +8,11 @@
             { 
                 $loginUrl = 'project.php?msg=Please Login First';
                 header("Location: $loginUrl", true, 303);
+                //header("Location: $loginUrl", true, 303);
                 exit; 
             }
             
-            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
+            //$_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
 
     //path to the SQLite database file
