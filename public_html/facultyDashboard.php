@@ -36,9 +36,9 @@
             text-align: center;
         }
     </style>
+    <!-- Toolbar that helps users navigate between pages -->
     <div class="toolbar">
-    <a href="facultyDashboard.php">Home</a>
-
+        <a href="facultyDashboard.php">Home</a>
         <a href="ProfSchedule.php">Schedule</a>
         <a href="ClassRoster.php">Class Roster</a>
         <a href="AddClassForm.php">Add Class</a>
@@ -52,7 +52,6 @@
             <?php
                 session_start();
 
-
                 if(isset($_GET["msg"])){
                     $error_message = $_GET["msg"];
 
@@ -61,7 +60,7 @@
 
                     }
                 }
-
+                //Check if the student is logged in and redirect them to the login page if not
                 if(!isset($_SESSION["fID"]))
                 {
                     $loginUrl = 'fProject.php?msg=Please Login First';

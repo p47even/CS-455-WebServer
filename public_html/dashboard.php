@@ -43,8 +43,9 @@
             margin-top: 35px;
         }
     </style>
+    <!-- Toolbar that helps users navigate between pages -->
     <div class="toolbar">
-    <a href="dashboard.php">Home</a>
+        <a href="dashboard.php">Home</a>
         <a href="WeeklySchedule.php">Schedule</a>
         <a href="searchClassesTemplate.php">Search for Classes</a>
         <!-- <a href="AcademicRequirements">Academic Requirements</a> -->
@@ -58,6 +59,7 @@
             <?php
                 session_start();
 
+                //Check if the student is logged in and redirect them to the login page if not
                 if(!isset($_SESSION["sID"]))
                 {
                     $loginUrl = 'project.php?msg=Please Login First';

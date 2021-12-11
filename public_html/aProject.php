@@ -25,21 +25,23 @@
                 </div>
 
                 <?php
-                    $error_message = $_GET["msg"];
+                    //If theres a message get it and print it out
+                    //Ususally related to bad input into the form
+                    if(isset($_GET["msg"])){
+                        $error_message = $_GET["msg"];
 
-                    if(strlen($error_message) >= 0){
-                        echo $error_message;
+                        if(strlen($error_message) >= 0){
+                            echo $error_message;
 
+                        }
                     }
                 ?>
-
+                <!-- Other login pages linked at the bottom -->
                 <h3>Not an Admin?</h3>
                     <p>
                         <a href="./fProject.php?msg=">Faculty Login Here!</a><br>
                         <a href="./project.php?msg=">Student Login Here!</a>
                     </p>
                     <img src = "./sugedpount.jpg" alt = "Welcome!" class = "center" style = "width:325px; height: 325px;">
-
-
         </body>
 </html>

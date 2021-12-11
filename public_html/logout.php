@@ -1,6 +1,7 @@
 <?php
     session_start();
 
+    //Unset all session variables on logout
     if(isset($_SESSION["sID"]))
     {
         unset($_SESSION["sID"]);
@@ -30,6 +31,7 @@
         unset($_SESSION["courEnrolQuer"]);
     }
 
+    //Redirect to the student login page on logout
     $redirect_url = "./project.php?msg=Successfull Logout";
     header("Location: $redirect_url", true, 303);
     exit;

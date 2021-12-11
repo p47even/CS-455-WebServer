@@ -8,6 +8,8 @@
         <body>
             <h1>Enrollment Planner Login!</h1>
                 <div class='main'>
+                    <!-- Form containing all the information to check faculty credentials -->
+                    <!-- Sent to login w/ _POST -->
                         <h2>Faculty Login!</h2>
 
                         <form action='./login/adminLogin.php/' method='post'>
@@ -20,12 +22,14 @@
                 </div>
 
                 <?php
+
+                if(isset($_GET["msg"])){
                     $error_message = $_GET["msg"];
 
                     if(strlen($error_message) >= 0){
                         echo $error_message;
-
                     }
+                }
                 ?>
 
                 <h3>Not Faculty?</h3>
