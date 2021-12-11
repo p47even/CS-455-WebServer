@@ -9,7 +9,7 @@ if(!isset($_SESSION["sID"]))
                 exit; 
             }
             
-            $_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
+            //$_SESSION['redirect_url'] = $_SERVER['PHP_SELF'];
 
 
 //path to the SQLite database file
