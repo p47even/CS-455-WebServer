@@ -33,7 +33,7 @@
                     text-align: center;
                 }
             </style>
-            <!-- Tool bar that helps users navigate between pages -->
+            <!-- Toolbar that helps users navigate between pages -->
             <div class="toolbar">
                 <a href="adminDashboard.php">Home</a>
                 <a href="addFacultyHandler.php">Add New Faculty</a>
@@ -42,9 +42,10 @@
 
     </head>
     <body>
+        <!-- Form containing all the information we need to create a new faculty memeber -->
+        <!-- Sent to addFaculty.php w/ _POST -->
             <h1>Add New Faculty</h1>
-            <!-- Form containing all the information we need to create a new faculty memeber -->
-            <!-- Sent to addFaculty.php w/ _POST -->
+
             <form action='./addFaculty.php' method='post'>
             Faculty Name: <input type='text' name='facultyName' id='facultyName'><br><br>
 
@@ -93,6 +94,5 @@
 
             ?>
         </p>
-
     </body>
 </html>

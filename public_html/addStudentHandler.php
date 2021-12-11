@@ -33,6 +33,7 @@
                     text-align: center;
                 }
             </style>
+            <!-- Toolbar that helps users navigate between pages -->
             <div class="toolbar">
                 <a href="facultyDashboard.php">Home</a>
                 <a href="ProfSchedule.php">Schedule</a>
@@ -42,11 +43,12 @@
                 <a href="removeClass.php">Remove Class</a>
                 <a href="addStudentHandler.php">Add New Student</a>
                 <a href="logout.php" class="logout">Logout</a>
-
             </div>
 
     </head>
     <body>
+        <!-- Form containing all the information we need to create a new student -->
+        <!-- Sent to addStudent.php w/ _POST -->
             <h1>Add a New Student</h1>
 
             <form action='./addStudent.php' method='post'>
@@ -94,6 +96,8 @@
             <?php
                 session_start();
 
+                //If theres a message get it and print it out
+                //Ususally related to bad input into the form
                 if(isset($_GET["msg"])){
                     $error_message = $_GET["msg"];
 
@@ -103,16 +107,13 @@
                     }
                 }
 
-
-
+                //Check if the admin is logged in and redirect them to the login page if not
                 if(!isset($_SESSION["fID"]))
                 {
                      header("Location: 'fProject.php?msg=Please Login First'", true, 303);
                      exit;
                 }
-
             ?>
         </p>
-
     </body>
 </html>

@@ -13,6 +13,7 @@
                 //set errormode to use exceptions
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+                //Set variables the info from the handler form
                 $name = $_POST['studentName'];
                 $id = $_POST['studentID'];
                 $gpa = $_POST['gpa'];
@@ -21,6 +22,7 @@
                 $class = $_POST['class'];
                 $major = $_POST['major'];
 
+                //Securely hash the password
                 $hashed_pass = hash('sha256', $password, false);
 
                 $msg = "";
@@ -29,6 +31,9 @@
 
                 session_start();
 
+                //Use SQL prepare statements to avoid injection
+
+                //SQL query to check if the facultyID or username already exists in the database
                 $check_id_dup = $db->prepare("SELECT StudentID FROM Students WHERE studentID = :id;");
                     $check_id_dup->bindParam(':id', $id);
 
@@ -36,14 +41,13 @@
                     $check_user_dup->bindParam(':username', $username);
 
 
-                #INSERT INTO Students VALUES (21, 'Malissa Elwira', 'Sophomore', '3.9');
+                //Add the student info to the DB
                 $insert_students = $db->prepare("INSERT INTO Students VALUES (:id, :name, :class, :gpa);");
                     $insert_students->bindParam(':id', $id);
                     $insert_students->bindParam(':name', $name);
                     $insert_students->bindParam(':class', $class);
                     $insert_students->bindParam(':gpa', $gpa);
 
-                #INSERT INTO StudentLogin VALUES (0, 'aadiana', 'zSLPj4JV');
                 $insert_student_login = $db->prepare("INSERT INTO StudentLogin VALUES (:id, :username, :password);");
                     $insert_student_login->bindParam(':id', $id);
                     $insert_student_login->bindParam(':username', $username);
@@ -53,31 +57,25 @@
                     $insert_student_major->bindParam(':id', $id);
                     $insert_student_major->bindParam(':major', $major);
 
-                /*
-                $insert_query = $db->prepare("SELECT StudentID, Username FROM StudentLogin WHERE studentID = :user AND stuPassword = :pass;");
-                    $insert_query->bindParam(':user', $id);
-                    $insert_query->bindParam(':pass', $hashed_pass); */
 
-
-
+                //make sure the ID is just numbers
                 $all_digits = preg_match("/[0-9]/", $id);
                 if(!$all_digits){
                     $msg .= "Error 'studentID' must be numbers only";
                 }
 
+                //If the ID is just numbers
                 if(strcmp("", $msg) == 0)
                 {
-
+                    //Execute SQL query to check if the studentID or username already exists
                     $check_id_dup->execute();
                     $check_id_result = $check_id_dup->fetchAll();
-
-
 
                     $check_user_dup->execute();
                     $check_user_result = $check_user_dup->fetchAll();
 
 
-
+                    //If either id or username already exist make them restart
                     if(count($check_id_result) > 0){
                         echo "FAILED LOGIN";
                         $msg .= "Error - not a new studentID";
@@ -90,12 +88,11 @@
                         $redirect_url = './addStudentHandler.php?msg='.$msg;
                         header("Location: $redirect_url", true, 303);
                     }
-
+                    //If both are unique add them to the database
                     else{
                         $insert_students->execute();
                         $insert_student_login->execute();
                         $insert_student_major->execute();
-
 
                         echo "Sucess!";
                         $msg .= "Student account created!";
@@ -107,13 +104,9 @@
                 {
                     //Non-number in the studentId section
                     $redirect_url = './addStudentHandler.php?msg='.$msg;
-                    #echo $which_button;
                     header("Location: $redirect_url", true, 303);
-
                 }
-
                 $db = null;
-
             }
             catch(PDOException $e) {
                 die('Exception : '.$e->getMessage());
