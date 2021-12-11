@@ -4,8 +4,9 @@ session_start();
 
 if(!isset($_SESSION["sID"]))
             { 
-                $loginUrl = 'project.php?msg=Please Login First';
-                header("Location: $loginUrl", true, 303);
+                //$loginUrl = 'project.php?msg=Please Login First';
+                //header("Location: $loginUrl", true, 303);
+                header("Location: enroll.php", true, 303);
                 exit; 
             }
             
