@@ -8,7 +8,8 @@
         <body>
             <h1>Enrollment Planner Login!</h1>
                 <div class='main'>
-
+                    <!-- Form containing all the information to check login credentials -->
+                    <!-- Sent to login/login.php w/ _POST -->
                         <h2>Student Login!</h2>
 
                         <form action='./login/login.php' method='post'>
@@ -23,11 +24,12 @@
                 </div>
 
                 <?php
-                    $error_message = $_GET["msg"];
+                    if(isset($_GET["msg"])){
+                        $error_message = $_GET["msg"];
 
-                    if(strlen($error_message) >= 0){
-                        echo $error_message;
-
+                        if(strlen($error_message) >= 0){
+                            echo $error_message;
+                        }
                     }
                 ?>
 
