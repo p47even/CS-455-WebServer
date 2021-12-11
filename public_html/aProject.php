@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!-- Admin login screen -->
         <head>
                 <title>Enrollment Planner!</title>
                 <link rel="stylesheet" href="projectStyling.css"/>
@@ -8,7 +9,8 @@
         <body>
             <h1>Enrollment Planner Login!</h1>
                 <div class='main'>
-
+                    <!-- Form to check login cridentials (id and password)-->
+                    <!-- Sent to super_login.php w/ _POST -->
                         <h2>Administrator Login!</h2>
 
                         <form action='./login/super_login.php' method='post'>

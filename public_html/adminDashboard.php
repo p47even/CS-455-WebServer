@@ -37,8 +37,8 @@
         }
     </style>
     <div class="toolbar">
-    <a href="adminDashboard.php">Home</a>
-
+        <!-- Toolbar that helps users navigate between pages -->
+        <a href="adminDashboard.php">Home</a>
         <a href="addFacultyHandler.php">Add New Faculty</a>
         <a href="logout.php" class="logout">Logout</a>
 
@@ -48,7 +48,7 @@
             <?php
                 session_start();
 
-
+                //If theres a message get it and print it out
                 if(isset($_GET["msg"])){
                     $error_message = $_GET["msg"];
 
@@ -57,7 +57,7 @@
 
                     }
                 }
-
+                //Check if the admin is logged in and redirect them to the login page if not
                 if(!isset($_SESSION["aID"]))
                 {
                     $loginUrl = 'aProject.php?msg=Please Login First';

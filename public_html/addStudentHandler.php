@@ -107,7 +107,7 @@
                     }
                 }
 
-                //Check if the admin is logged in and redirect them to the login page if not
+                //Check if the user is logged in and redirect them to the login page if not
                 if(!isset($_SESSION["fID"]))
                 {
                      header("Location: 'fProject.php?msg=Please Login First'", true, 303);
